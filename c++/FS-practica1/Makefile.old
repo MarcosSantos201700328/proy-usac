@@ -1,0 +1,6 @@
+CC = gcc
+CFLAGS = -lext2fs -ggdb
+practica1: practica1.c
+	$(CC) $(CFLAGS) practica1.c -o practica1
+
+

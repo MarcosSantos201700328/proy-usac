@@ -1,0 +1,37 @@
+Inicializar();
+Crear_Confederacion('Uefa','Federacion Europea de Foot Ball',1.00);
+Crear_Confederacion('Uefa','Federacion Europea',2.00);
+Crear_Confederacion('conmebol','Federacion ff',5.1);
+crear_confederacion('concacaf','Federacion de Centroamerica y el Caribe', 1.5);
+crear_confederacion('concaf','cf',3);
+crear_confederacion('nigga','Federacion Africana',2);
+crear_seleccion('ale','alemania','uefa');
+crear_seleccion('gua','guatemala','concacaf');
+crear_seleccion('bra','brasil','conmebol');
+crear_seleccion('arg','argentina','conmebol');
+crear_seleccion('ing','inglaterra','uefa');
+crear_seleccion('nig','Nigeria','nigga');
+crear_seleccion('esp','Espana','uefa');
+crear_torneo('M-2006','Mundial Alemania 2006','s',0,2);
+crear_torneo('M-2006','Mundial Alemania 2006','s',0,2.4);
+crear_torneo('CONF-2005','Copa Confederaciones 2005','s',0,1.75);
+crear_torneo('E-2006','Eliminatoria Alemania 2006','s',4,1.5);
+crear_torneo('CP-2006','Copa Pepsi-Guatemala 2006','n',0,1.75);
+crear_torneo('m-2002','Mundial Corea-Japon 2002','s',0,2.5);
+juego('bra','ale','ale', 2, 2,0,0,90,2,6,2002,'M-2002');
+juego('arg','ing','arg', 2, 2,5,4,120,2,6,2002,'M-2002');
+juego('nig','esp','esp',2,3,0,0,90,3,6,2002,'M-2002');
+Puntos_Acumulados(2002,1,2004,12);
+Puntos_Acumulados(2004,6,2005,5);
+Puntos_Acumulados(2005,1,2005,3);
+Puntos_Acumulados(2005,2,2005,4);
+Premio_Mejor_Equipo(2002);
+Premio_Mejor_Equipo(A);
+Premio_Desempeno(2002);
+Premio_Desempeno(A);
+Clasificacion(2002,6);
+Clasificacion(2001,15);
+Clasificacion(2004,6);
+Clasificacion(2001,1);
+
+

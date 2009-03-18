@@ -1,0 +1,13 @@
+README de FSContent:
+
+Directorios:
+
+./bin/: Ejecutable de FSContent
+./doc/: Documentacion
+./php/: Reportes Web
+./sql/: Estructura de la Base de datos
+./src/: Codigo fuente de FSContent
+
+Por favor, lea la documentacion incluida en el directorio doc (especialmente el manual de usuario) antes de utilizar la aplicacion.
+
+(c) 2006 Erik Giron (C# 200313492)

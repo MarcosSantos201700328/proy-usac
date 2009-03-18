@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura asignacion</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura asignacion</h1><!-- doxytag: class="asignacion" -->Clase de almacenamiento de una asignacion en el AST.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="ast_8h-source.html">ast.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para asignacion:<p><center><img src="structasignacion__coll__graph.png" border="0" usemap="#asignacion__coll__map" alt="Collaboration graph"></center>
+<map name="asignacion__coll__map">
+<area href="structexpr.html" shape="rect" coords="74,162,138,312" alt="">
+<area href="structoperacion.html" shape="rect" coords="124,390,209,494" alt="">
+<area href="structconstante.html" shape="rect" coords="8,8,88,98" alt="">
+<area href="structvariable.html" shape="rect" coords="112,8,218,98" alt="">
+</map>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structasignacion.html#o0">variable</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Identificador de variable a asignar.  <a href="#o0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structexpr.html">expr</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structasignacion.html#o1">hijo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Expresion a evaluar para asignar valor.  <a href="#o1"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase de almacenamiento de una asignacion en el AST. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00216">216</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o1"></a><!-- doxytag: member="asignacion::hijo" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structexpr.html">expr</a>* <a class="el" href="structasignacion.html#o1">asignacion::hijo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Expresion a evaluar para asignar valor. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00218">218</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00952">borrarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, y <a class="el" href="ast_8c-source.html#l00088">insertarAsignacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o0"></a><!-- doxytag: member="asignacion::variable" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char* <a class="el" href="structasignacion.html#o0">asignacion::variable</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Identificador de variable a asignar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00217">217</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00952">borrarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, y <a class="el" href="ast_8c-source.html#l00088">insertarAsignacion()</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="ast_8h-source.html">ast.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:26 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

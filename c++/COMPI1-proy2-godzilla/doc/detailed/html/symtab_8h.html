@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia del Archivo /media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>Referencia del Archivo symtab.h</h1>Estructuras de la tabla de simbolos.Incluyendo rutinas de insercion, busqueda y eliminacion. <a href="#_details">Más...</a>
+<p>
+<code>#include &quot;<a class="el" href="constantes_8h-source.html">constantes.h</a>&quot;</code><br>
+
+<p>
+Dependencia gráfica adjunta para symtab.h:<p><center><img src="symtab_8h__incl.png" border="0" usemap="#/media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h_map" alt=""></center>
+<map name="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h_map">
+<area href="constantes_8h.html" shape="rect" coords="478,8,574,32" alt="">
+</map>
+
+<p>
+Este gráfico muestra que archivos directa o indirectamente incluyen a este archivo:<p><center><img src="symtab_8h__dep__incl.png" border="0" usemap="#/media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.hdep_map" alt=""></center>
+<map name="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.hdep_map">
+<area href="ast_8h.html" shape="rect" coords="490,8,885,32" alt="">
+<area href="symtab_8c.html" shape="rect" coords="478,56,897,80" alt="">
+</map>
+
+<p>
+<a href="symtab_8h-source.html">Ir al código fuente de este archivo.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Clases</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbol.html">symbol</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nodo de la tabla de simbolos.  <a href="structsymbol.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymtab.html">symtab</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tabla de simbolos usando modelo de lista simple.  <a href="structsymtab.html#_details">Más...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Tipos definidos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structsymtab.html">symtab</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a0">symtab</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ESTRUCTURA.  <a href="#a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structsymbol.html">symbol</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a1">symbol</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Funciones</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsymbol.html">symbol</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a2">insertarSimbolo</a> (char *id, int tipo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Inserta un nuevo simbolo sin comprobar su previa existencia.  <a href="#a2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsymbol.html">symbol</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a3">buscarSimbolo</a> (char *id)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Busca y devuelve simbolo segun su identificador dado en el param.  <a href="#a3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a4">borrarTabla</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Elimina todos los registros de la tabla de simbolos.  <a href="#a4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a5">openSymtabFile</a> (const char *filename)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Abre archivo hacia donde se imprimira archivo de tabla de simbolos.  <a href="#a5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a6">closeSymtabFile</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cierra archivo hacia donde se escribio tabla de simbolos.  <a href="#a6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="symtab_8h.html#a7">printSymtabFile</a> (int linea)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Imprime tabla de simbolos a archivo dado.  <a href="#a7"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Estructuras de la tabla de simbolos.Incluyendo rutinas de insercion, busqueda y eliminacion. 
+<p>
+
+<p>
+Definición en el archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.<hr><h2>Documentación de los tipos definidos</h2>
+<a class="anchor" name="a1"></a><!-- doxytag: member="symtab.h::symbol" ref="a1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structsymbol.html">symbol</a> <a class="el" href="structsymbol.html">symbol</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00011">11</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a0"></a><!-- doxytag: member="symtab.h::symtab" ref="a0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structsymtab.html">symtab</a> <a class="el" href="structsymtab.html">symtab</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+ESTRUCTURA. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00010">10</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Documentación de las funciones</h2>
+<a class="anchor" name="a4"></a><!-- doxytag: member="symtab.h::borrarTabla" ref="a4" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarTabla           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Elimina todos los registros de la tabla de simbolos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8c-source.html#l00088">88</a> del archivo <a class="el" href="symtab_8c-source.html">symtab.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8h-source.html#l00026">symtab::actual</a>, <a class="el" href="symtab_8c-source.html#l00074">borrarNodos()</a>, y <a class="el" href="symtab_8h-source.html#l00025">symtab::primero</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a3"></a><!-- doxytag: member="symtab.h::buscarSimbolo" ref="a3" args="(char *id)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsymbol.html">symbol</a>* buscarSimbolo           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>id</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Busca y devuelve simbolo segun su identificador dado en el param. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>identificador de la variable a buscar </td></tr>
+  </table>
+</dl>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8c-source.html#l00060">60</a> del archivo <a class="el" href="symtab_8c-source.html">symtab.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8h-source.html#l00026">symtab::actual</a>, <a class="el" href="symtab_8h-source.html#l00025">symtab::primero</a>, y <a class="el" href="symtab_8h-source.html#l00021">symbol::siguiente</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00350">evaluarDeclaracion()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, y <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a6"></a><!-- doxytag: member="symtab.h::closeSymtabFile" ref="a6" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int closeSymtabFile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Cierra archivo hacia donde se escribio tabla de simbolos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8c-source.html#l00113">113</a> del archivo <a class="el" href="symtab_8c-source.html">symtab.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8c-source.html#l00020">symtabfile</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a2"></a><!-- doxytag: member="symtab.h::insertarSimbolo" ref="a2" args="(char *id, int tipo)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsymbol.html">symbol</a>* insertarSimbolo           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>tipo</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inserta un nuevo simbolo sin comprobar su previa existencia. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>identificador de la nueva var. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tipo</em>&nbsp;</td><td>tipo de datos de la var. </td></tr>
+  </table>
+</dl>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8c-source.html#l00023">23</a> del archivo <a class="el" href="symtab_8c-source.html">symtab.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8h-source.html#l00026">symtab::actual</a>, <a class="el" href="symtab_8h-source.html#l00014">symbol::id</a>, <a class="el" href="symtab_8h-source.html#l00025">symtab::primero</a>, <a class="el" href="symtab_8h-source.html#l00021">symbol::siguiente</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="symtab_8h-source.html#l00015">symbol::tipo</a>, y <a class="el" href="structsymbol.html#o5">symbol::valor</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00350">evaluarDeclaracion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a5"></a><!-- doxytag: member="symtab.h::openSymtabFile" ref="a5" args="(const char *filename)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int openSymtabFile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>filename</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Abre archivo hacia donde se imprimira archivo de tabla de simbolos. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>filename</em>&nbsp;</td><td>nombre de archivo al que se le adjuntara la extension xml</td></tr>
+  </table>
+</dl>
+trunca a cero el archivo xml 
+<p>
+Definición en la línea <a class="el" href="symtab_8c-source.html#l00099">99</a> del archivo <a class="el" href="symtab_8c-source.html">symtab.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8c-source.html#l00020">symtabfile</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a7"></a><!-- doxytag: member="symtab.h::printSymtabFile" ref="a7" args="(int linea)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int printSymtabFile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>linea</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Imprime tabla de simbolos a archivo dado. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>linea</em>&nbsp;</td><td>linea en donde se leyo el comando vertablasimbolos() </td></tr>
+  </table>
+</dl>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8c-source.html#l00122">122</a> del archivo <a class="el" href="symtab_8c-source.html">symtab.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8h-source.html#l00026">symtab::actual</a>, <a class="el" href="symtab_8h-source.html#l00014">symbol::id</a>, <a class="el" href="symtab_8h-source.html#l00025">symtab::primero</a>, <a class="el" href="symtab_8h-source.html#l00021">symbol::siguiente</a>, <a class="el" href="symtab_8c-source.html#l00020">symtabfile</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="symtab_8h-source.html#l00015">symbol::tipo</a>, y <a class="el" href="structsymbol.html#o5">symbol::valor</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00254">insertarLlamadaSymTab()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:23 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

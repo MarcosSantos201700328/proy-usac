@@ -1,0 +1,2909 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia del Archivo /media/docs/progra/c++/compiladores1/proy2/godzilla/src/ast.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>Referencia del Archivo ast.h</h1>Definiciones y estructura del arbol de sintaxis abstracta. <a href="#_details">Más...</a>
+<p>
+<code>#include &quot;<a class="el" href="constantes_8h-source.html">constantes.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="symtab_8h-source.html">symtab.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="colaerr_8h-source.html">colaerr.h</a>&quot;</code><br>
+
+<p>
+Dependencia gráfica adjunta para ast.h:<p><center><img src="ast_8h__incl.png" border="0" usemap="#/media/docs/progra/c++/compiladores1/proy2/godzilla/src/ast.h_map" alt=""></center>
+<map name="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/ast.h_map">
+<area href="constantes_8h.html" shape="rect" coords="577,10,673,34" alt="">
+<area href="symtab_8h.html" shape="rect" coords="452,58,526,82" alt="">
+<area href="colaerr_8h.html" shape="rect" coords="453,106,525,130" alt="">
+</map>
+
+<p>
+Este gráfico muestra que archivos directa o indirectamente incluyen a este archivo:<p><center><img src="ast_8h__dep__incl.png" border="0" usemap="#/media/docs/progra/c++/compiladores1/proy2/godzilla/src/ast.hdep_map" alt=""></center>
+<map name="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/ast.hdep_map">
+<area href="ast_8c.html" shape="rect" coords="464,8,858,32" alt="">
+<area href="godzilla_8h.html" shape="rect" coords="450,56,872,80" alt="">
+</map>
+
+<p>
+<a href="ast_8h-source.html">Ir al código fuente de este archivo.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Clases</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvariable.html">variable</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de variables en el AST.  <a href="structvariable.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconstante.html">constante</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de constantes en el AST.  <a href="structconstante.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperacion.html">operacion</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de operaciones en el AST.  <a href="structoperacion.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoIf.html">enunciadoIf</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de enunciados If en el AST.  <a href="structenunciadoIf.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoWhile.html">enunciadoWhile</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de enunciados while en el AST.  <a href="structenunciadoWhile.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoFor.html">enunciadoFor</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de enunciados for en el AST.  <a href="structenunciadoFor.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structexpr.html">expr</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de raiz de un arbol de expresiones en el AST.  <a href="structexpr.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structasignacion.html">asignacion</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de una asignacion en el AST.  <a href="structasignacion.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprintCall.html">printCall</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de una llamada a Print o a vartablasimbolos en el AST.  <a href="structprintCall.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsentencia.html">sentencia</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de raiz de un arbol de sentencias en el AST, siendo a su vez una lista.  <a href="structsentencia.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtoken.html">token</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de raiz de una lista enlazada de Tokens a imprimir con el comando Print en el AST.  <a href="structtoken.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdeclaracion.html">declaracion</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de raiz de una declaracion en el AST.  <a href="structdeclaracion.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnodoHijo.html">nodoHijo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nodo a usar para pasar entre producciones de la sintaxis, y paso de expresiones al recorrer un arbol de expresiones.  <a href="structnodoHijo.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraiz.html">raiz</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">punto de entrada del AST  <a href="structraiz.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structast.html">ast</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Estructura del arbol abstracto de sintaxis (AST), basico para poder evaluar construcciones iterativas del lenguaje.  <a href="structast.html#_details">Más...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Definiciones</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a0">yyout</a>&nbsp;&nbsp;&nbsp;embedout</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Aliases de yacc en QT, cambiar a nombre de parser a utilizar.  <a href="#a0"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Tipos definidos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structsentencia.html">sentencia</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a1">sentencia</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structvariable.html">variable</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a2">variable</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structconstante.html">constante</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a3">constante</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structoperacion.html">operacion</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a4">operacion</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structenunciadoIf.html">enunciadoIf</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a5">enunciadoIf</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structenunciadoWhile.html">enunciadoWhile</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a6">enunciadoWhile</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structenunciadoFor.html">enunciadoFor</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a7">enunciadoFor</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structexpr.html">expr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a8">expr</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structasignacion.html">asignacion</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a9">asignacion</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structprintCall.html">printCall</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a10">printCall</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structtoken.html">token</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a11">token</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structdeclaracion.html">declaracion</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a12">declaracion</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="ast_8h.html#a13">enunciado</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a13">enunciado</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structnodoHijo.html">nodoHijo</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a14">nodo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structraiz.html">raiz</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a15">raiz</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structast.html">ast</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a16">ast</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Funciones</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a17">insertarConstante</a> (int, int)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega una constante al arbol de expresiones.  <a href="#a17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a18">insertarVariable</a> (char *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega una variable al arbol de expresiones.  <a href="#a18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a19">insertarCadena</a> (char *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega una cadena al arbol de expresiones.  <a href="#a19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a20">insertarOperacion</a> (int, <a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Inserta una operacion al arbol de expresiones.  <a href="#a20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a21">insertarExpresion</a> (<a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nuevo arbol de expresiones al arbol principal.  <a href="#a21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a22">insertarAsignacion</a> (char *, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega una asignacion al arbol principal.  <a href="#a22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a23">insertarSentencia</a> (int, <a class="el" href="structnodoHijo.html">nodo</a> *, int)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">agrega una sentencia al arbol principal  <a href="#a23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a24">insertarDeclaracion</a> (char *, int)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">agrega una nuva declaracion al arbol principal  <a href="#a24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a25">insertarEnunciadoIf</a> (<a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nuevo enunciado if al arbol de sentencias.  <a href="#a25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a26">insertarCicloWhile</a> (<a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nuevo ciclo while ar arbol de sentecias.  <a href="#a26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a27">insertarCicloFor</a> (char *, int, int, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nuevo ciclo for al arbol de sentencias.  <a href="#a27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a28">insertarToken</a> (int, void *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nuevo token al arbol de sentencias.  <a href="#a28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a29">insertarLlamada</a> (<a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nueva llamada de impresion a yyout al arbol de sentencias.  <a href="#a29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a30">insertarLlamadaSymTab</a> (int)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un nueva llamada de impresion de tabla de simbolos al arbol de sentencias.  <a href="#a30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a31">concatenarTokens</a> (<a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Concatena tokens para parametros de llamadas.  <a href="#a31"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a32">concatenarSentencia</a> (<a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structnodoHijo.html">nodo</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Concatena sentencias para caminar por estas.  <a href="#a32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a33">crearRaiz</a> (<a class="el" href="structnodoHijo.html">nodo</a> *, <a class="el" href="structast.html">ast</a> *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Genera el nodo raiz para el arbol dado en el segundo parametro como punto de inicio del arbol y punto de meta del recorrido sintactico.  <a href="#a33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a34">refNodoHijo</a> (int tipo, void *dato)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Crea un nodo que refiere al nodo recien creado para sea utilizado por el nodo anterior a este.  <a href="#a34"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a35">recorrerArbol</a> (<a class="el" href="structast.html">ast</a> *tree, char *filename)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Recorre el arbol y escribe resultado en archivo salida.  <a href="#a35"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a36">recorrerSentencia</a> (<a class="el" href="structsentencia.html">sentencia</a> *s)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Recorre sentencias recursivamente y devuelve resultado acarreado.  <a href="#a36"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a37">evaluarSentencia</a> (<a class="el" href="structsentencia.html">sentencia</a> *s)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua sentencia y selecciona tipo de sentencia a evaluar.  <a href="#a37"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a38">evaluarDeclaracion</a> (<a class="el" href="structdeclaracion.html">declaracion</a> *d)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua declaracion.  <a href="#a38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a39">evaluarAsignacion</a> (<a class="el" href="structasignacion.html">asignacion</a> *a)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua asignacion.  <a href="#a39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a40">evaluarExpresion</a> (<a class="el" href="structexpr.html">expr</a> *e)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua expresion y selecciona tipo de expresion a evaluar.  <a href="#a40"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a41">evaluarOperacion</a> (<a class="el" href="structoperacion.html">operacion</a> *o)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Selecciona operacion binaria a evaluar.  <a href="#a41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a42">evaluarOr</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion logica OR.  <a href="#a42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a43">evaluarAnd</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion logica AND.  <a href="#a43"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a44">evaluarGT</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion comparativa Mayor Que.  <a href="#a44"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a45">evaluarGET</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion comparativa Mayor o igual Que.  <a href="#a45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a46">evaluarLT</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion comparativa Menor Que.  <a href="#a46"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a47">evaluarLET</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion comparativa Menor o Igual Que.  <a href="#a47"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a48">evaluarEQ</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion comparativa Igual.  <a href="#a48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a49">evaluarNEQ</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion comparativa Desigual.  <a href="#a49"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a50">evaluarSuma</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion aritmetica Suma, y la concatenacion de cadenas.  <a href="#a50"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a51">evaluarResta</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion aritmetica Resta.  <a href="#a51"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a52">evaluarMult</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion aritmetica Multiplicacion.  <a href="#a52"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a53">evaluarDiv</a> (<a class="el" href="structnodoHijo.html">nodo</a> *n1, <a class="el" href="structnodoHijo.html">nodo</a> *n2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua operacion aritmetica Division.  <a href="#a53"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a54">evaluarIf</a> (<a class="el" href="structenunciadoIf.html">enunciadoIf</a> *eif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua bifurcacion If.  <a href="#a54"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a55">evaluarWhile</a> (<a class="el" href="structenunciadoWhile.html">enunciadoWhile</a> *ew)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua bucle While.  <a href="#a55"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a56">evaluarFor</a> (<a class="el" href="structenunciadoFor.html">enunciadoFor</a> *ef)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua bucle For.  <a href="#a56"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a57">evaluarPrintCall</a> (<a class="el" href="structprintCall.html">printCall</a> *pc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua llamada a imprimir en archivo.  <a href="#a57"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a58">imprimirTokens</a> (<a class="el" href="structtoken.html">token</a> *t)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evalua recursivamente lista de tokens a imprimir.  <a href="#a58"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a59">error</a> (char *err, int tipo, void *dato)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Escribe error semantico hacia cola de errores semanticos.  <a href="#a59"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a60">borrarArbol</a> (<a class="el" href="structast.html">ast</a> *tree)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Funciones de eliminacion logica.  <a href="#a60"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a61">borrarSentencias</a> (<a class="el" href="structsentencia.html">sentencia</a> *s)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Borra nodo sentencia.  <a href="#a61"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a62">borrarDeclaracion</a> (<a class="el" href="structdeclaracion.html">declaracion</a> *d)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Borra nodo declaracion.  <a href="#a62"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a63">borrarAsignacion</a> (<a class="el" href="structasignacion.html">asignacion</a> *a)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Borrar Asignacion.  <a href="#a63"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a64">borrarExpresion</a> (<a class="el" href="structexpr.html">expr</a> *e)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Elimina de memoria arbol de expresiones.  <a href="#a64"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a65">borrarOperacion</a> (<a class="el" href="structoperacion.html">operacion</a> *o)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">borra nodo operacion de mem  <a href="#a65"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a66">borrarIf</a> (<a class="el" href="structenunciadoIf.html">enunciadoIf</a> *eif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">borra nodo if  <a href="#a66"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a67">borrarWhile</a> (<a class="el" href="structenunciadoWhile.html">enunciadoWhile</a> *ew)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">borra nodo While  <a href="#a67"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a68">borrarFor</a> (<a class="el" href="structenunciadoFor.html">enunciadoFor</a> *ef)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">borra nodo for  <a href="#a68"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a69">borrarPrintCall</a> (<a class="el" href="structprintCall.html">printCall</a> *pc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">borra nodo de llamada a imprimir en archivo  <a href="#a69"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a70">borrarTokens</a> (<a class="el" href="structtoken.html">token</a> *t)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">borra recursivamente listado de tokens  <a href="#a70"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Definiciones y estructura del arbol de sintaxis abstracta. 
+<p>
+
+<p>
+Definición en el archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de las definiciones</h2>
+<a class="anchor" name="a0"></a><!-- doxytag: member="ast.h::yyout" ref="a0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define <a class="el" href="ast_8c.html#a0">yyout</a>&nbsp;&nbsp;&nbsp;embedout          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Aliases de yacc en QT, cambiar a nombre de parser a utilizar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00011">11</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Documentación de los tipos definidos</h2>
+<a class="anchor" name="a9"></a><!-- doxytag: member="ast.h::asignacion" ref="a9" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structasignacion.html">asignacion</a> <a class="el" href="structasignacion.html">asignacion</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00031">31</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a16"></a><!-- doxytag: member="ast.h::ast" ref="a16" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structast.html">ast</a> <a class="el" href="structast.html">ast</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00038">38</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a3"></a><!-- doxytag: member="ast.h::constante" ref="a3" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structconstante.html">constante</a> <a class="el" href="structconstante.html">constante</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00025">25</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a12"></a><!-- doxytag: member="ast.h::declaracion" ref="a12" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structdeclaracion.html">declaracion</a> <a class="el" href="structdeclaracion.html">declaracion</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00034">34</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a13"></a><!-- doxytag: member="ast.h::enunciado" ref="a13" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="ast_8h.html#a13">enunciado</a> <a class="el" href="ast_8h.html#a13">enunciado</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00035">35</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a7"></a><!-- doxytag: member="ast.h::enunciadoFor" ref="a7" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structenunciadoFor.html">enunciadoFor</a> <a class="el" href="structenunciadoFor.html">enunciadoFor</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00029">29</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a5"></a><!-- doxytag: member="ast.h::enunciadoIf" ref="a5" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structenunciadoIf.html">enunciadoIf</a> <a class="el" href="structenunciadoIf.html">enunciadoIf</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00027">27</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a6"></a><!-- doxytag: member="ast.h::enunciadoWhile" ref="a6" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structenunciadoWhile.html">enunciadoWhile</a> <a class="el" href="structenunciadoWhile.html">enunciadoWhile</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00028">28</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a8"></a><!-- doxytag: member="ast.h::expr" ref="a8" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structexpr.html">expr</a> <a class="el" href="structexpr.html">expr</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00030">30</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a14"></a><!-- doxytag: member="ast.h::nodo" ref="a14" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structnodoHijo.html">nodoHijo</a> <a class="el" href="structnodoHijo.html">nodo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00036">36</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a4"></a><!-- doxytag: member="ast.h::operacion" ref="a4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structoperacion.html">operacion</a> <a class="el" href="structoperacion.html">operacion</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00026">26</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a10"></a><!-- doxytag: member="ast.h::printCall" ref="a10" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structprintCall.html">printCall</a> <a class="el" href="structprintCall.html">printCall</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00032">32</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a15"></a><!-- doxytag: member="ast.h::raiz" ref="a15" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structraiz.html">raiz</a> <a class="el" href="structraiz.html">raiz</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00037">37</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a1"></a><!-- doxytag: member="ast.h::sentencia" ref="a1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structsentencia.html">sentencia</a> <a class="el" href="structsentencia.html">sentencia</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00023">23</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a11"></a><!-- doxytag: member="ast.h::token" ref="a11" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structtoken.html">token</a> <a class="el" href="structtoken.html">token</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00033">33</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a2"></a><!-- doxytag: member="ast.h::variable" ref="a2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structvariable.html">variable</a> <a class="el" href="structvariable.html">variable</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00024">24</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Documentación de las funciones</h2>
+<a class="anchor" name="a60"></a><!-- doxytag: member="ast.h::borrarArbol" ref="a60" args="(ast *tree)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarArbol           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structast.html">ast</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>tree</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Funciones de eliminacion logica. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00897">897</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00270">ast::actual</a>, <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8h-source.html#l00265">raiz::hijo</a>, <a class="el" href="ast_8h-source.html#l00269">ast::root</a>, y <a class="el" href="ast_8h-source.html#l00271">ast::tipoActual</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a63"></a><!-- doxytag: member="ast.h::borrarAsignacion" ref="a63" args="(asignacion *a)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarAsignacion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structasignacion.html">asignacion</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>a</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Borrar Asignacion. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00952">952</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00962">borrarExpresion()</a>, <a class="el" href="ast_8h-source.html#l00218">asignacion::hijo</a>, y <a class="el" href="ast_8h-source.html#l00217">asignacion::variable</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a62"></a><!-- doxytag: member="ast.h::borrarDeclaracion" ref="a62" args="(declaracion *d)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarDeclaracion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structdeclaracion.html">declaracion</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>d</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Borra nodo declaracion. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00943">943</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00254">declaracion::identificador</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a64"></a><!-- doxytag: member="ast.h::borrarExpresion" ref="a64" args="(expr *e)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarExpresion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structexpr.html">expr</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>e</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Elimina de memoria arbol de expresiones. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00962">962</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00985">borrarOperacion()</a>, <a class="el" href="structexpr.html#o5">expr::hijo</a>, <a class="el" href="constantes_8h-source.html#l00014">T_CONSTANTE</a>, <a class="el" href="constantes_8h-source.html#l00044">T_LITERAL</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00015">T_VARIABLE</a>, y <a class="el" href="ast_8h-source.html#l00206">expr::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00952">borrarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00995">borrarIf()</a>, <a class="el" href="ast_8c-source.html#l00985">borrarOperacion()</a>, y <a class="el" href="ast_8c-source.html#l01008">borrarWhile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a68"></a><!-- doxytag: member="ast.h::borrarFor" ref="a68" args="(enunciadoFor *ef)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarFor           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoFor.html">enunciadoFor</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>ef</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+borra nodo for 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l01017">1017</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8h-source.html#l00201">enunciadoFor::cuerpo</a>, y <a class="el" href="ast_8h-source.html#l00198">enunciadoFor::indice</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a66"></a><!-- doxytag: member="ast.h::borrarIf" ref="a66" args="(enunciadoIf *eif)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarIf           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoIf.html">enunciadoIf</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>eif</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+borra nodo if 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00995">995</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00962">borrarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8h-source.html#l00189">enunciadoIf::else_stmt</a>, <a class="el" href="ast_8h-source.html#l00187">enunciadoIf::test</a>, y <a class="el" href="ast_8h-source.html#l00188">enunciadoIf::then_stmt</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a65"></a><!-- doxytag: member="ast.h::borrarOperacion" ref="a65" args="(operacion *o)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarOperacion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structoperacion.html">operacion</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>o</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+borra nodo operacion de mem 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00985">985</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00962">borrarExpresion()</a>, <a class="el" href="ast_8h-source.html#l00182">operacion::loper</a>, y <a class="el" href="ast_8h-source.html#l00183">operacion::roper</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00962">borrarExpresion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a69"></a><!-- doxytag: member="ast.h::borrarPrintCall" ref="a69" args="(printCall *pc)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarPrintCall           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structprintCall.html">printCall</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>pc</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+borra nodo de llamada a imprimir en archivo 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l01026">1026</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l01036">borrarTokens()</a>, y <a class="el" href="ast_8h-source.html#l00223">printCall::hijos</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a61"></a><!-- doxytag: member="ast.h::borrarSentencias" ref="a61" args="(sentencia *s)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarSentencias           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>s</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Borra nodo sentencia. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00914">914</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00952">borrarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00943">borrarDeclaracion()</a>, <a class="el" href="ast_8c-source.html#l01017">borrarFor()</a>, <a class="el" href="ast_8c-source.html#l00995">borrarIf()</a>, <a class="el" href="ast_8c-source.html#l01026">borrarPrintCall()</a>, <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8c-source.html#l01008">borrarWhile()</a>, <a class="el" href="structsentencia.html#o9">sentencia::hijo</a>, <a class="el" href="ast_8h-source.html#l00228">sentencia::siguiente</a>, <a class="el" href="constantes_8h-source.html#l00020">T_ASIGNACION</a>, <a class="el" href="constantes_8h-source.html#l00027">T_CALL</a>, <a class="el" href="constantes_8h-source.html#l00022">T_DECLARACION</a>, <a class="el" href="constantes_8h-source.html#l00025">T_FOR</a>, <a class="el" href="constantes_8h-source.html#l00023">T_IF</a>, <a class="el" href="constantes_8h-source.html#l00024">T_WHILE</a>, y <a class="el" href="ast_8h-source.html#l00229">sentencia::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00897">borrarArbol()</a>, <a class="el" href="ast_8c-source.html#l01017">borrarFor()</a>, <a class="el" href="ast_8c-source.html#l00995">borrarIf()</a>, <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, y <a class="el" href="ast_8c-source.html#l01008">borrarWhile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a70"></a><!-- doxytag: member="ast.h::borrarTokens" ref="a70" args="(token *t)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarTokens           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structtoken.html">token</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>t</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+borra recursivamente listado de tokens 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l01036">1036</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l01036">borrarTokens()</a>, <a class="el" href="structtoken.html#o5">token::hijo</a>, <a class="el" href="ast_8h-source.html#l00245">token::siguiente</a>, <a class="el" href="constantes_8h-source.html#l00028">T_CADENA</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, y <a class="el" href="ast_8h-source.html#l00244">token::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l01026">borrarPrintCall()</a>, y <a class="el" href="ast_8c-source.html#l01036">borrarTokens()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a67"></a><!-- doxytag: member="ast.h::borrarWhile" ref="a67" args="(enunciadoWhile *ew)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void borrarWhile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoWhile.html">enunciadoWhile</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>ew</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+borra nodo While 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l01008">1008</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00962">borrarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8h-source.html#l00194">enunciadoWhile::cuerpo</a>, y <a class="el" href="ast_8h-source.html#l00193">enunciadoWhile::test</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a32"></a><!-- doxytag: member="ast.h::concatenarSentencia" ref="a32" args="(nodo *, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* concatenarSentencia           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Concatena sentencias para caminar por estas. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00140">140</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, y <a class="el" href="ast_8h-source.html#l00228">sentencia::siguiente</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a31"></a><!-- doxytag: member="ast.h::concatenarTokens" ref="a31" args="(nodo *, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* concatenarTokens           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Concatena tokens para parametros de llamadas. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00231">231</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, y <a class="el" href="ast_8h-source.html#l00245">token::siguiente</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a33"></a><!-- doxytag: member="ast.h::crearRaiz" ref="a33" args="(nodo *, ast *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void crearRaiz           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structast.html">ast</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Genera el nodo raiz para el arbol dado en el segundo parametro como punto de inicio del arbol y punto de meta del recorrido sintactico. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00263">263</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00270">ast::actual</a>, <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8h-source.html#l00265">raiz::hijo</a>, <a class="el" href="ast_8h-source.html#l00269">ast::root</a>, <a class="el" href="constantes_8h-source.html#l00021">T_SENTENCIA</a>, y <a class="el" href="ast_8h-source.html#l00271">ast::tipoActual</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a59"></a><!-- doxytag: member="ast.h::error" ref="a59" args="(char *err, int tipo, void *dato)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void error           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>err</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>tipo</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>void *&nbsp;</td>
+          <td class="mdname" nowrap> <em>dato</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Escribe error semantico hacia cola de errores semanticos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00280">280</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8c-source.html#l00074">errorSemantico()</a>, <a class="el" href="ast_8h-source.html#l00230">sentencia::numLinea</a>, y <a class="el" href="constantes_8h-source.html#l00021">T_SENTENCIA</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00491">evaluarAnd()</a>, <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00350">evaluarDeclaracion()</a>, <a class="el" href="ast_8c-source.html#l00671">evaluarDiv()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, <a class="el" href="ast_8c-source.html#l00611">evaluarGET()</a>, <a class="el" href="ast_8c-source.html#l00591">evaluarGT()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, <a class="el" href="ast_8c-source.html#l00651">evaluarLET()</a>, <a class="el" href="ast_8c-source.html#l00631">evaluarLT()</a>, <a class="el" href="ast_8c-source.html#l00693">evaluarMult()</a>, <a class="el" href="ast_8c-source.html#l00513">evaluarOr()</a>, <a class="el" href="ast_8c-source.html#l00836">evaluarPrintCall()</a>, <a class="el" href="ast_8c-source.html#l00707">evaluarResta()</a>, <a class="el" href="ast_8c-source.html#l00721">evaluarSuma()</a>, <a class="el" href="ast_8c-source.html#l00778">evaluarWhile()</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, y <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a43"></a><!-- doxytag: member="ast.h::evaluarAnd" ref="a43" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarAnd           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion logica AND. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00491">491</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a39"></a><!-- doxytag: member="ast.h::evaluarAsignacion" ref="a39" args="(asignacion *a)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarAsignacion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structasignacion.html">asignacion</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>a</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua asignacion. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00359">359</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8c-source.html#l00060">buscarSimbolo()</a>, <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8h-source.html#l00218">asignacion::hijo</a>, <a class="el" href="constantes_8h-source.html#l00020">T_ASIGNACION</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00016">T_NUMERO</a>, <a class="el" href="symtab_8h-source.html#l00015">symbol::tipo</a>, <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>, <a class="el" href="structsymbol.html#o5">symbol::valor</a>, y <a class="el" href="ast_8h-source.html#l00217">asignacion::variable</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a38"></a><!-- doxytag: member="ast.h::evaluarDeclaracion" ref="a38" args="(declaracion *d)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarDeclaracion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structdeclaracion.html">declaracion</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>d</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua declaracion. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00350">350</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8c-source.html#l00060">buscarSimbolo()</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8h-source.html#l00254">declaracion::identificador</a>, <a class="el" href="symtab_8c-source.html#l00023">insertarSimbolo()</a>, <a class="el" href="constantes_8h-source.html#l00022">T_DECLARACION</a>, y <a class="el" href="ast_8h-source.html#l00255">declaracion::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a53"></a><!-- doxytag: member="ast.h::evaluarDiv" ref="a53" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarDiv           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion aritmetica Division. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00671">671</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a48"></a><!-- doxytag: member="ast.h::evaluarEQ" ref="a48" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarEQ           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion comparativa Igual. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00535">535</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a40"></a><!-- doxytag: member="ast.h::evaluarExpresion" ref="a40" args="(expr *e)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarExpresion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structexpr.html">expr</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>e</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua expresion y selecciona tipo de expresion a evaluar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00391">391</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8c-source.html#l00060">buscarSimbolo()</a>, <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>, <a class="el" href="structexpr.html#o5">expr::hijo</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00014">T_CONSTANTE</a>, <a class="el" href="constantes_8h-source.html#l00019">T_EXPR</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00044">T_LITERAL</a>, <a class="el" href="constantes_8h-source.html#l00016">T_NUMERO</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="constantes_8h-source.html#l00015">T_VARIABLE</a>, <a class="el" href="symtab_8h-source.html#l00015">symbol::tipo</a>, <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>, <a class="el" href="ast_8h-source.html#l00206">expr::tipo</a>, y <a class="el" href="structsymbol.html#o5">symbol::valor</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>, y <a class="el" href="ast_8c-source.html#l00778">evaluarWhile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a56"></a><!-- doxytag: member="ast.h::evaluarFor" ref="a56" args="(enunciadoFor *ef)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarFor           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoFor.html">enunciadoFor</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>ef</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua bucle For. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00807">807</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00199">enunciadoFor::asignacion</a>, <a class="el" href="symtab_8c-source.html#l00060">buscarSimbolo()</a>, <a class="el" href="ast_8h-source.html#l00201">enunciadoFor::cuerpo</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8h-source.html#l00198">enunciadoFor::indice</a>, <a class="el" href="ast_8h-source.html#l00200">enunciadoFor::limite</a>, <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>, <a class="el" href="constantes_8h-source.html#l00025">T_FOR</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="symtab_8h-source.html#l00015">symbol::tipo</a>, y <a class="el" href="structsymbol.html#o5">symbol::valor</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a45"></a><!-- doxytag: member="ast.h::evaluarGET" ref="a45" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarGET           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion comparativa Mayor o igual Que. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00611">611</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a44"></a><!-- doxytag: member="ast.h::evaluarGT" ref="a44" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarGT           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion comparativa Mayor Que. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00591">591</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a54"></a><!-- doxytag: member="ast.h::evaluarIf" ref="a54" args="(enunciadoIf *eif)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarIf           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoIf.html">enunciadoIf</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>eif</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua bifurcacion If. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00746">746</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8h-source.html#l00189">enunciadoIf::else_stmt</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00023">T_IF</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, <a class="el" href="ast_8h-source.html#l00187">enunciadoIf::test</a>, <a class="el" href="ast_8h-source.html#l00188">enunciadoIf::then_stmt</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a47"></a><!-- doxytag: member="ast.h::evaluarLET" ref="a47" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarLET           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion comparativa Menor o Igual Que. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00651">651</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a46"></a><!-- doxytag: member="ast.h::evaluarLT" ref="a46" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarLT           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion comparativa Menor Que. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00631">631</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a52"></a><!-- doxytag: member="ast.h::evaluarMult" ref="a52" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarMult           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion aritmetica Multiplicacion. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00693">693</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a49"></a><!-- doxytag: member="ast.h::evaluarNEQ" ref="a49" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarNEQ           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion comparativa Desigual. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00563">563</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a41"></a><!-- doxytag: member="ast.h::evaluarOperacion" ref="a41" args="(operacion *o)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarOperacion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structoperacion.html">operacion</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>o</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Selecciona operacion binaria a evaluar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00444">444</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00491">evaluarAnd()</a>, <a class="el" href="ast_8c-source.html#l00671">evaluarDiv()</a>, <a class="el" href="ast_8c-source.html#l00535">evaluarEQ()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00611">evaluarGET()</a>, <a class="el" href="ast_8c-source.html#l00591">evaluarGT()</a>, <a class="el" href="ast_8c-source.html#l00651">evaluarLET()</a>, <a class="el" href="ast_8c-source.html#l00631">evaluarLT()</a>, <a class="el" href="ast_8c-source.html#l00693">evaluarMult()</a>, <a class="el" href="ast_8c-source.html#l00563">evaluarNEQ()</a>, <a class="el" href="ast_8c-source.html#l00513">evaluarOr()</a>, <a class="el" href="ast_8c-source.html#l00707">evaluarResta()</a>, <a class="el" href="ast_8c-source.html#l00721">evaluarSuma()</a>, <a class="el" href="ast_8h-source.html#l00182">operacion::loper</a>, <a class="el" href="constantes_8h-source.html#l00030">OP_AND</a>, <a class="el" href="constantes_8h-source.html#l00040">OP_DIV</a>, <a class="el" href="constantes_8h-source.html#l00033">OP_EQ</a>, <a class="el" href="constantes_8h-source.html#l00036">OP_GET</a>, <a class="el" href="constantes_8h-source.html#l00035">OP_GT</a>, <a class="el" href="constantes_8h-source.html#l00032">OP_LET</a>, <a class="el" href="constantes_8h-source.html#l00031">OP_LT</a>, <a class="el" href="constantes_8h-source.html#l00039">OP_MULT</a>, <a class="el" href="constantes_8h-source.html#l00034">OP_NEQ</a>, <a class="el" href="constantes_8h-source.html#l00029">OP_OR</a>, <a class="el" href="constantes_8h-source.html#l00038">OP_RESTA</a>, <a class="el" href="constantes_8h-source.html#l00037">OP_SUMA</a>, <a class="el" href="ast_8h-source.html#l00181">operacion::operador</a>, y <a class="el" href="ast_8h-source.html#l00183">operacion::roper</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a42"></a><!-- doxytag: member="ast.h::evaluarOr" ref="a42" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarOr           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion logica OR. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00513">513</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a57"></a><!-- doxytag: member="ast.h::evaluarPrintCall" ref="a57" args="(printCall *pc)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarPrintCall           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structprintCall.html">printCall</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>pc</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua llamada a imprimir en archivo. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00836">836</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8h-source.html#l00223">printCall::hijos</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, <a class="el" href="constantes_8h-source.html#l00027">T_CALL</a>, <a class="el" href="constantes_8h-source.html#l00046">T_PRINTCALL</a>, y <a class="el" href="ast_8h-source.html#l00222">printCall::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a51"></a><!-- doxytag: member="ast.h::evaluarResta" ref="a51" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarResta           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion aritmetica Resta. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00707">707</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a37"></a><!-- doxytag: member="ast.h::evaluarSentencia" ref="a37" args="(sentencia *s)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarSentencia           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>s</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua sentencia y selecciona tipo de sentencia a evaluar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00317">317</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00350">evaluarDeclaracion()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, <a class="el" href="ast_8c-source.html#l00836">evaluarPrintCall()</a>, <a class="el" href="ast_8c-source.html#l00778">evaluarWhile()</a>, <a class="el" href="structsentencia.html#o9">sentencia::hijo</a>, <a class="el" href="constantes_8h-source.html#l00020">T_ASIGNACION</a>, <a class="el" href="constantes_8h-source.html#l00027">T_CALL</a>, <a class="el" href="constantes_8h-source.html#l00022">T_DECLARACION</a>, <a class="el" href="constantes_8h-source.html#l00011">T_ERROR</a>, <a class="el" href="constantes_8h-source.html#l00025">T_FOR</a>, <a class="el" href="constantes_8h-source.html#l00023">T_IF</a>, <a class="el" href="constantes_8h-source.html#l00024">T_WHILE</a>, y <a class="el" href="ast_8h-source.html#l00229">sentencia::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a50"></a><!-- doxytag: member="ast.h::evaluarSuma" ref="a50" args="(nodo *n1, nodo *n2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* evaluarSuma           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>n2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua operacion aritmetica Suma, y la concatenacion de cadenas. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00721">721</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00444">evaluarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a55"></a><!-- doxytag: member="ast.h::evaluarWhile" ref="a55" args="(enunciadoWhile *ew)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int evaluarWhile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoWhile.html">enunciadoWhile</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>ew</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua bucle While. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00778">778</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00194">enunciadoWhile::cuerpo</a>, <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00012">T_FALSE</a>, <a class="el" href="constantes_8h-source.html#l00013">T_TRUE</a>, <a class="el" href="constantes_8h-source.html#l00024">T_WHILE</a>, <a class="el" href="ast_8h-source.html#l00193">enunciadoWhile::test</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a58"></a><!-- doxytag: member="ast.h::imprimirTokens" ref="a58" args="(token *t)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int imprimirTokens           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structtoken.html">token</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>t</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Evalua recursivamente lista de tokens a imprimir. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00852">852</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="symtab_8c-source.html#l00060">buscarSimbolo()</a>, <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="structtoken.html#o5">token::hijo</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, <a class="el" href="ast_8h-source.html#l00245">token::siguiente</a>, <a class="el" href="constantes_8h-source.html#l00042">T_BOOLEAN</a>, <a class="el" href="constantes_8h-source.html#l00028">T_CADENA</a>, <a class="el" href="constantes_8h-source.html#l00017">T_IDENTIFICADOR</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00016">T_NUMERO</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="constantes_8h-source.html#l00026">T_TOKEN</a>, <a class="el" href="symtab_8h-source.html#l00015">symbol::tipo</a>, <a class="el" href="ast_8h-source.html#l00244">token::tipo</a>, <a class="el" href="structsymbol.html#o5">symbol::valor</a>, y <a class="el" href="ast_8h-source.html#l00011">yyout</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00836">evaluarPrintCall()</a>, y <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a22"></a><!-- doxytag: member="ast.h::insertarAsignacion" ref="a22" args="(char *, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarAsignacion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega una asignacion al arbol principal. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00088">88</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8h-source.html#l00218">asignacion::hijo</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00020">T_ASIGNACION</a>, y <a class="el" href="ast_8h-source.html#l00217">asignacion::variable</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a19"></a><!-- doxytag: member="ast.h::insertarCadena" ref="a19" args="(char *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarCadena           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega una cadena al arbol de expresiones. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00039">39</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="structexpr.html#o5">expr::hijo</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00019">T_EXPR</a>, <a class="el" href="constantes_8h-source.html#l00044">T_LITERAL</a>, y <a class="el" href="ast_8h-source.html#l00206">expr::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a27"></a><!-- doxytag: member="ast.h::insertarCicloFor" ref="a27" args="(char *, int, int, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarCicloFor           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nuevo ciclo for al arbol de sentencias. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00194">194</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00199">enunciadoFor::asignacion</a>, <a class="el" href="ast_8h-source.html#l00201">enunciadoFor::cuerpo</a>, <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8h-source.html#l00198">enunciadoFor::indice</a>, <a class="el" href="ast_8h-source.html#l00200">enunciadoFor::limite</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, y <a class="el" href="constantes_8h-source.html#l00025">T_FOR</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a26"></a><!-- doxytag: member="ast.h::insertarCicloWhile" ref="a26" args="(nodo *, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarCicloWhile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nuevo ciclo while ar arbol de sentecias. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00183">183</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00194">enunciadoWhile::cuerpo</a>, <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00024">T_WHILE</a>, y <a class="el" href="ast_8h-source.html#l00193">enunciadoWhile::test</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a17"></a><!-- doxytag: member="ast.h::insertarConstante" ref="a17" args="(int, int)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarConstante           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega una constante al arbol de expresiones. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00024">24</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00176">constante::dato</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00014">T_CONSTANTE</a>, y <a class="el" href="ast_8h-source.html#l00175">constante::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a24"></a><!-- doxytag: member="ast.h::insertarDeclaracion" ref="a24" args="(char *, int)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarDeclaracion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+agrega una nuva declaracion al arbol principal 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00158">158</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00254">declaracion::identificador</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00022">T_DECLARACION</a>, y <a class="el" href="ast_8h-source.html#l00255">declaracion::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a25"></a><!-- doxytag: member="ast.h::insertarEnunciadoIf" ref="a25" args="(nodo *, nodo *, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarEnunciadoIf           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nuevo enunciado if al arbol de sentencias. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00166">166</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8h-source.html#l00189">enunciadoIf::else_stmt</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00023">T_IF</a>, <a class="el" href="ast_8h-source.html#l00187">enunciadoIf::test</a>, y <a class="el" href="ast_8h-source.html#l00188">enunciadoIf::then_stmt</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a21"></a><!-- doxytag: member="ast.h::insertarExpresion" ref="a21" args="(nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarExpresion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nuevo arbol de expresiones al arbol principal. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00061">61</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="structexpr.html#o5">expr::hijo</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00014">T_CONSTANTE</a>, <a class="el" href="constantes_8h-source.html#l00019">T_EXPR</a>, <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>, <a class="el" href="constantes_8h-source.html#l00015">T_VARIABLE</a>, <a class="el" href="ast_8h-source.html#l00206">expr::tipo</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00049">insertarOperacion()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a29"></a><!-- doxytag: member="ast.h::insertarLlamada" ref="a29" args="(nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarLlamada           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nueva llamada de impresion a yyout al arbol de sentencias. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00243">243</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8h-source.html#l00223">printCall::hijos</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00027">T_CALL</a>, <a class="el" href="constantes_8h-source.html#l00046">T_PRINTCALL</a>, y <a class="el" href="ast_8h-source.html#l00222">printCall::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a30"></a><!-- doxytag: member="ast.h::insertarLlamadaSymTab" ref="a30" args="(int)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarLlamadaSymTab           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nueva llamada de impresion de tabla de simbolos al arbol de sentencias. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00254">254</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00223">printCall::hijos</a>, <a class="el" href="symtab_8c-source.html#l00122">printSymtabFile()</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="constantes_8h-source.html#l00027">T_CALL</a>, <a class="el" href="constantes_8h-source.html#l00047">T_PRINTSYMCALL</a>, y <a class="el" href="ast_8h-source.html#l00222">printCall::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a20"></a><!-- doxytag: member="ast.h::insertarOperacion" ref="a20" args="(int, nodo *, nodo *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarOperacion           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inserta una operacion al arbol de expresiones. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00049">49</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="ast_8c-source.html#l00061">insertarExpresion()</a>, <a class="el" href="ast_8h-source.html#l00182">operacion::loper</a>, <a class="el" href="ast_8h-source.html#l00181">operacion::operador</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="ast_8h-source.html#l00183">operacion::roper</a>, y <a class="el" href="constantes_8h-source.html#l00018">T_OPERACION</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a23"></a><!-- doxytag: member="ast.h::insertarSentencia" ref="a23" args="(int, nodo *, int)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarSentencia           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structnodoHijo.html">nodo</a> *&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+agrega una sentencia al arbol principal 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00100">100</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, <a class="el" href="structsentencia.html#o9">sentencia::hijo</a>, <a class="el" href="ast_8h-source.html#l00230">sentencia::numLinea</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="ast_8h-source.html#l00228">sentencia::siguiente</a>, <a class="el" href="constantes_8h-source.html#l00020">T_ASIGNACION</a>, <a class="el" href="constantes_8h-source.html#l00027">T_CALL</a>, <a class="el" href="constantes_8h-source.html#l00022">T_DECLARACION</a>, <a class="el" href="constantes_8h-source.html#l00011">T_ERROR</a>, <a class="el" href="constantes_8h-source.html#l00025">T_FOR</a>, <a class="el" href="constantes_8h-source.html#l00023">T_IF</a>, <a class="el" href="constantes_8h-source.html#l00021">T_SENTENCIA</a>, <a class="el" href="constantes_8h-source.html#l00024">T_WHILE</a>, y <a class="el" href="ast_8h-source.html#l00229">sentencia::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a28"></a><!-- doxytag: member="ast.h::insertarToken" ref="a28" args="(int, void *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarToken           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>void *&nbsp;</td>
+          <td class="mdname" nowrap></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un nuevo token al arbol de sentencias. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00207">207</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="structtoken.html#o5">token::hijo</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, <a class="el" href="ast_8h-source.html#l00245">token::siguiente</a>, <a class="el" href="constantes_8h-source.html#l00028">T_CADENA</a>, <a class="el" href="constantes_8h-source.html#l00017">T_IDENTIFICADOR</a>, <a class="el" href="constantes_8h-source.html#l00041">T_INTEGER</a>, <a class="el" href="constantes_8h-source.html#l00016">T_NUMERO</a>, <a class="el" href="constantes_8h-source.html#l00043">T_STRING</a>, <a class="el" href="constantes_8h-source.html#l00026">T_TOKEN</a>, y <a class="el" href="ast_8h-source.html#l00244">token::tipo</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a18"></a><!-- doxytag: member="ast.h::insertarVariable" ref="a18" args="(char *)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* insertarVariable           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega una variable al arbol de expresiones. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00031">31</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00171">variable::identificador</a>, <a class="el" href="ast_8c-source.html#l00017">refNodoHijo()</a>, y <a class="el" href="constantes_8h-source.html#l00015">T_VARIABLE</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a35"></a><!-- doxytag: member="ast.h::recorrerArbol" ref="a35" args="(ast *tree, char *filename)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int recorrerArbol           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structast.html">ast</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>filename</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Recorre el arbol y escribe resultado en archivo salida. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00294">294</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00265">raiz::hijo</a>, <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>, y <a class="el" href="ast_8h-source.html#l00269">ast::root</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a36"></a><!-- doxytag: member="ast.h::recorrerSentencia" ref="a36" args="(sentencia *s)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int recorrerSentencia           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>s</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Recorre sentencias recursivamente y devuelve resultado acarreado. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00305">305</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8c-source.html#l00280">error()</a>, <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>, <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>, <a class="el" href="ast_8h-source.html#l00228">sentencia::siguiente</a>, y <a class="el" href="constantes_8h-source.html#l00021">T_SENTENCIA</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, <a class="el" href="ast_8c-source.html#l00778">evaluarWhile()</a>, <a class="el" href="ast_8c-source.html#l00294">recorrerArbol()</a>, y <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a34"></a><!-- doxytag: member="ast.h::refNodoHijo" ref="a34" args="(int tipo, void *dato)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structnodoHijo.html">nodo</a>* refNodoHijo           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap> <em>tipo</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>void *&nbsp;</td>
+          <td class="mdname" nowrap> <em>dato</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Crea un nodo que refiere al nodo recien creado para sea utilizado por el nodo anterior a este. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8c-source.html#l00017">17</a> del archivo <a class="el" href="ast_8c-source.html">ast.c</a>.
+<p>
+Hace referencia a <a class="el" href="ast_8h-source.html#l00261">nodoHijo::dato</a>, y <a class="el" href="ast_8h-source.html#l00260">nodoHijo::tipo</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00491">evaluarAnd()</a>, <a class="el" href="ast_8c-source.html#l00671">evaluarDiv()</a>, <a class="el" href="ast_8c-source.html#l00535">evaluarEQ()</a>, <a class="el" href="ast_8c-source.html#l00611">evaluarGET()</a>, <a class="el" href="ast_8c-source.html#l00591">evaluarGT()</a>, <a class="el" href="ast_8c-source.html#l00651">evaluarLET()</a>, <a class="el" href="ast_8c-source.html#l00631">evaluarLT()</a>, <a class="el" href="ast_8c-source.html#l00693">evaluarMult()</a>, <a class="el" href="ast_8c-source.html#l00563">evaluarNEQ()</a>, <a class="el" href="ast_8c-source.html#l00513">evaluarOr()</a>, <a class="el" href="ast_8c-source.html#l00707">evaluarResta()</a>, <a class="el" href="ast_8c-source.html#l00721">evaluarSuma()</a>, <a class="el" href="ast_8c-source.html#l00088">insertarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00039">insertarCadena()</a>, <a class="el" href="ast_8c-source.html#l00194">insertarCicloFor()</a>, <a class="el" href="ast_8c-source.html#l00183">insertarCicloWhile()</a>, <a class="el" href="ast_8c-source.html#l00024">insertarConstante()</a>, <a class="el" href="ast_8c-source.html#l00158">insertarDeclaracion()</a>, <a class="el" href="ast_8c-source.html#l00166">insertarEnunciadoIf()</a>, <a class="el" href="ast_8c-source.html#l00061">insertarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00243">insertarLlamada()</a>, <a class="el" href="ast_8c-source.html#l00254">insertarLlamadaSymTab()</a>, <a class="el" href="ast_8c-source.html#l00049">insertarOperacion()</a>, <a class="el" href="ast_8c-source.html#l00100">insertarSentencia()</a>, <a class="el" href="ast_8c-source.html#l00207">insertarToken()</a>, y <a class="el" href="ast_8c-source.html#l00031">insertarVariable()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:10 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

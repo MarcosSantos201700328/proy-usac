@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura enunciadoIf</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura enunciadoIf</h1><!-- doxytag: class="enunciadoIf" -->Clase de almacenamiento de enunciados If en el AST.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="ast_8h-source.html">ast.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para enunciadoIf:<p><center><img src="structenunciadoIf__coll__graph.png" border="0" usemap="#enunciadoIf__coll__map" alt="Collaboration graph"></center>
+<map name="enunciadoIf__coll__map">
+<area href="structsentencia.html" shape="rect" coords="255,573,357,781" alt="">
+<area href="structenunciadoWhile.html" shape="rect" coords="77,859,191,950" alt="">
+<area href="structenunciadoFor.html" shape="rect" coords="297,845,398,965" alt="">
+<area href="structdeclaracion.html" shape="rect" coords="299,397,403,487" alt="">
+<area href="structasignacion.html" shape="rect" coords="427,397,513,487" alt="">
+<area href="structexpr.html" shape="rect" coords="134,162,198,311" alt="">
+<area href="structoperacion.html" shape="rect" coords="73,390,158,494" alt="">
+<area href="structconstante.html" shape="rect" coords="67,7,147,98" alt="">
+<area href="structvariable.html" shape="rect" coords="171,7,278,98" alt="">
+<area href="structprintCall.html" shape="rect" coords="537,397,606,487" alt="">
+<area href="structtoken.html" shape="rect" coords="519,162,623,311" alt="">
+</map>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structexpr.html">expr</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoIf.html#o0">test</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Expresion booleana a evaluar (if(expr)).  <a href="#o0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoIf.html#o1">then_stmt</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sentencia o sentencias a evaluar en then.  <a href="#o1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoIf.html#o2">else_stmt</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sentencia o sentencias a evaluar en else.  <a href="#o2"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase de almacenamiento de enunciados If en el AST. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00186">186</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o2"></a><!-- doxytag: member="enunciadoIf::else_stmt" ref="o2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a>* <a class="el" href="structenunciadoIf.html#o2">enunciadoIf::else_stmt</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sentencia o sentencias a evaluar en else. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00189">189</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00995">borrarIf()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, y <a class="el" href="ast_8c-source.html#l00166">insertarEnunciadoIf()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o0"></a><!-- doxytag: member="enunciadoIf::test" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structexpr.html">expr</a>* <a class="el" href="structenunciadoIf.html#o0">enunciadoIf::test</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Expresion booleana a evaluar (if(expr)). 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00187">187</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00995">borrarIf()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, y <a class="el" href="ast_8c-source.html#l00166">insertarEnunciadoIf()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o1"></a><!-- doxytag: member="enunciadoIf::then_stmt" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a>* <a class="el" href="structenunciadoIf.html#o1">enunciadoIf::then_stmt</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sentencia o sentencias a evaluar en then. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00188">188</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00995">borrarIf()</a>, <a class="el" href="ast_8c-source.html#l00746">evaluarIf()</a>, y <a class="el" href="ast_8c-source.html#l00166">insertarEnunciadoIf()</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="ast_8h-source.html">ast.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:47 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

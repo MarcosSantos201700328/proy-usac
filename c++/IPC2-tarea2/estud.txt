@@ -1,0 +1,2 @@
+Estudiante(2002-12205,'Monica Lewinski','16-5 Av. Siempre Viva Zona 17',55373859,correoM@hotmail.com);
+Estudiante(2000-13105,'Miguel Paiz','16-4 Av. Siempre Viva Zona 17',55373959,correoP@hotmail.com);

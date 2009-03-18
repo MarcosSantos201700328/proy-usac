@@ -1,0 +1,45 @@
+Crear_Tipo_Instalacion(1,"Restoran");
+Crear_Tipo_Instalacion(2,"FR");
+Crear_tipo_instalacion(3,"Sanitario");
+crear_tipo_instalacion(1,"prostibulo");
+crear_tipo_instalacion(4,"prostibulo");
+/
+crear_tipo_instalacion(f,"    prostibulo");
+\
+Agregar_Instalacion(1,1,"Ristorante Don Pedro",100,0,100);
+Agregar_Instalacion(2,1,"Ristorante Don Quijote",300,0,100);
+Agregar_Instalacion(3,2,"Simple Suite",1,55,500);
+/
+Agregar_Instalacion(3,66,"fsas",1,44,51);
+\
+Agregar_Cliente(111111,"SG1","33av", 24497166 , " 10 de Agosto de 1988","H");
+Agregar_Cliente(111112,"SG2","Z8",24405083,"4 Abril de 1986","H");
+
+Crear_Promocion(1,"Fiesta de Independencia 2005",01/09/2005,23/09/2005,2,10);
+Crear_Promocion(2,"Happy Day",05/05/2003,23/09/2003,2,50);
+Crear_Promocion(3,"Holidays",01/12/2005,1/01/2006,1,75);
+Crear_Promocion(1,"Fiesta de Independencia",01/09/2005,18/09/2005,2,20);
+/
+Crear_Promocion(4,"Error de descuento",15/05/2003,16/12/2003,4,200);
+Crear_Promocion(4,"Error de instalacion",15/05/2003,16/12/2003,10,75);
+Crear_Promocion(4,"Error de Fecha",1505/2003,16/f/2003,10,75);
+\
+Crear_Tipo_Actividad(1,1,"Almuerzo");
+Crear_Tipo_Actividad(2,1,"Te Social");
+Crear_Tipo_Actividad(1,1,"Hartazon");
+/
+Crear_Tipo_Actividad(3,8,"Error de Tipo Instalacion");
+Crear_Tipo_Actividad(f,f,"Error de lexico1");
+Crear_Tipo_Actividad(f,f,"Error de Lexico 2);
+\
+Hacer_Reservacion(1,111111,25/06/2005,1,1);
+Hacer_Reservacion(2,111112,28/06/2005,6,2);
+Hacer_Reservacion(2,111112,02/09/2005,6,2);
+/
+Hacer_Reservacion(2,111111,29/06/2005,6,2);
+Hacer_Reservacion(4,111112,28/06/2005,6,5);
+\
+eliminar_reservacion(1,111111,25/06/2005);
+
+Asignar_Consumo_AYB(1,1,111111,60.00,30/09/2005);
+Asignar_Consumo_ayb(3,1,111112,40.00,30/09/2005);

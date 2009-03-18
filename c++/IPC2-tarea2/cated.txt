@@ -1,0 +1,2 @@
+Catedratico(2000153,'Luis Samayoa','11-11 5ta. avenida z.9',luis_samayoa@yahoo.com);
+Catedratico(2000152,'Luis Leal','11-10 5ta. avenida z.9',luis_leal@yahoo.com);

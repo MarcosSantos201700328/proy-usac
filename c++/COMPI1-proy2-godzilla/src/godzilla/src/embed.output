@@ -1,0 +1,1432 @@
+Terminales que no se usan
+
+   TK_EOF
+
+
+Gramática
+
+    0 $accept: inicio $end
+
+    1 inicio: embed
+    2       | inicio embed
+
+    3 embed: OPEN_EMBED codigo CLOSE_EMBED
+    4      | error CLOSE_EMBED
+    5      | OPEN_EMBED CLOSE_EMBED
+
+    6 codigo: sentencias
+
+    7 sentencias: sentencia
+    8           | sentencias sentencia
+
+    9 sentencia: def_var
+   10          | asignacion
+   11          | condicionales
+   12          | ciclos
+   13          | llamadas
+   14          | error
+
+   15 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_INTEGER TK_PUNTOCOMA
+   16        | KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_BOOLEAN TK_PUNTOCOMA
+   17        | KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_STRING TK_PUNTOCOMA
+
+   18 asignacion: TK_IDENTIFICADOR TK_OP_ASIGNACION expr TK_PUNTOCOMA
+
+   19 condicionales: KW_IF expr KW_THEN bloque KW_ELSE bloque
+
+   20 ciclos: ciclo_while
+   21       | ciclo_for
+
+   22 ciclo_while: KW_WHILE expr bloque
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR TK_OP_ASIGNACION TK_NUMERO KW_TO TK_NUMERO bloque
+
+   24 llamadas: KW_PRINT TK_APAREN lista_tokens TK_CPAREN TK_PUNTOCOMA
+   25         | KW_PRINTSYMTAB TK_APAREN TK_CPAREN TK_PUNTOCOMA
+
+   26 lista_tokens: lista_tokens TK_COMA token
+   27             | token
+
+   28 token: TK_IDENTIFICADOR
+   29      | TK_CADENA
+   30      | TK_NUMERO
+
+   31 bloque: KW_BEGIN sentencias bloque KW_END TK_PUNTOCOMA
+   32       | KW_BEGIN error KW_END TK_PUNTOCOMA
+   33       | sentencia
+
+   34 expr: expr_and
+   35     | expr KW_OP_OR expr_and
+
+   36 expr_and: expr_igual
+   37         | expr_and KW_OP_AND expr_igual
+
+   38 expr_igual: expr_relacional
+   39           | expr_igual TK_OP_EQ expr_relacional
+   40           | expr_igual TK_OP_NOEQ expr_relacional
+
+   41 expr_relacional: expr_suma
+   42                | expr_relacional TK_OP_GT expr_suma
+   43                | expr_relacional TK_OP_GET expr_suma
+   44                | expr_relacional TK_OP_LT expr_suma
+   45                | expr_relacional TK_OP_LET expr_suma
+
+   46 expr_suma: expr_mult
+   47          | expr_suma TK_OP_SUMA expr_mult
+   48          | expr_suma TK_OP_RESTA expr_mult
+
+   49 expr_mult: term
+   50          | expr_mult TK_OP_MULT term
+   51          | expr_mult TK_OP_DIV term
+
+   52 term: TK_NUMERO
+   53     | KW_TRUE
+   54     | KW_FALSE
+   55     | TK_APAREN expr TK_CPAREN
+   56     | TK_APAREN error TK_CPAREN
+   57     | TK_IDENTIFICADOR
+   58     | TK_CADENA
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256) 4 14 32 56
+TK_COMA (258) 26
+TK_OP_ASIGNACION (259) 18 23
+KW_OP_OR (260) 35
+KW_OP_AND (261) 37
+TK_OP_NOEQ (262) 40
+TK_OP_EQ (263) 39
+TK_OP_LET (264) 45
+TK_OP_LT (265) 44
+TK_OP_GET (266) 43
+TK_OP_GT (267) 42
+TK_OP_RESTA (268) 48
+TK_OP_SUMA (269) 47
+TK_OP_DIV (270) 51
+TK_OP_MULT (271) 50
+TK_CPAREN (272) 24 25 55 56
+TK_APAREN (273) 24 25 55 56
+TK_NUMERO (274) 23 30 52
+KW_TRUE (275) 53
+KW_FALSE (276) 54
+TK_IDENTIFICADOR (277) 15 16 17 18 23 28 57
+TK_CADENA (278) 29 58
+OPEN_EMBED (279) 3 5
+CLOSE_EMBED (280) 3 4 5
+KW_VAR (281) 15 16 17
+TK_DOSPUNTOS (282) 15 16 17
+KW_INTEGER (283) 15
+KW_BOOLEAN (284) 16
+KW_STRING (285) 17
+TK_PUNTOCOMA (286) 15 16 17 18 24 25 31 32
+KW_THEN (287) 19
+KW_IF (288) 19
+KW_ELSE (289) 19
+KW_WHILE (290) 22
+KW_FOR (291) 23
+KW_TO (292) 23
+KW_BEGIN (293) 31 32
+KW_END (294) 31 32
+KW_PRINT (295) 24
+KW_PRINTSYMTAB (296) 25
+TK_EOF (297)
+
+
+No terminales con las reglas donde aparecen
+
+$accept (43)
+    en la izquierda: 0
+inicio (44)
+    en la izquierda: 1 2, en la derecha: 0 2
+embed (45)
+    en la izquierda: 3 4 5, en la derecha: 1 2
+codigo (46)
+    en la izquierda: 6, en la derecha: 3
+sentencias (47)
+    en la izquierda: 7 8, en la derecha: 6 8 31
+sentencia (48)
+    en la izquierda: 9 10 11 12 13 14, en la derecha: 7 8 33
+def_var (49)
+    en la izquierda: 15 16 17, en la derecha: 9
+asignacion (50)
+    en la izquierda: 18, en la derecha: 10
+condicionales (51)
+    en la izquierda: 19, en la derecha: 11
+ciclos (52)
+    en la izquierda: 20 21, en la derecha: 12
+ciclo_while (53)
+    en la izquierda: 22, en la derecha: 20
+ciclo_for (54)
+    en la izquierda: 23, en la derecha: 21
+llamadas (55)
+    en la izquierda: 24 25, en la derecha: 13
+lista_tokens (56)
+    en la izquierda: 26 27, en la derecha: 24 26
+token (57)
+    en la izquierda: 28 29 30, en la derecha: 26 27
+bloque (58)
+    en la izquierda: 31 32 33, en la derecha: 19 22 23 31
+expr (59)
+    en la izquierda: 34 35, en la derecha: 18 19 22 35 55
+expr_and (60)
+    en la izquierda: 36 37, en la derecha: 34 35 37
+expr_igual (61)
+    en la izquierda: 38 39 40, en la derecha: 36 37 39 40
+expr_relacional (62)
+    en la izquierda: 41 42 43 44 45, en la derecha: 38 39 40 42 43
+    44 45
+expr_suma (63)
+    en la izquierda: 46 47 48, en la derecha: 41 42 43 44 45 47 48
+expr_mult (64)
+    en la izquierda: 49 50 51, en la derecha: 46 47 48 50 51
+term (65)
+    en la izquierda: 52 53 54 55 56 57 58, en la derecha: 49 50 51
+
+
+estado 0
+
+    0 $accept: . inicio $end
+
+    error       desplazar e ir al estado 1
+    OPEN_EMBED  desplazar e ir al estado 2
+
+    inicio  ir al estado 3
+    embed   ir al estado 4
+
+
+estado 1
+
+    4 embed: error . CLOSE_EMBED
+
+    CLOSE_EMBED  desplazar e ir al estado 5
+
+
+estado 2
+
+    3 embed: OPEN_EMBED . codigo CLOSE_EMBED
+    5      | OPEN_EMBED . CLOSE_EMBED
+
+    error             desplazar e ir al estado 6
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    CLOSE_EMBED       desplazar e ir al estado 8
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    codigo         ir al estado 15
+    sentencias     ir al estado 16
+    sentencia      ir al estado 17
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+
+
+estado 3
+
+    0 $accept: inicio . $end
+    2 inicio: inicio . embed
+
+    $end        desplazar e ir al estado 25
+    error       desplazar e ir al estado 1
+    OPEN_EMBED  desplazar e ir al estado 2
+
+    embed  ir al estado 26
+
+
+estado 4
+
+    1 inicio: embed .
+
+    $default  reduce usando la regla 1 (inicio)
+
+
+estado 5
+
+    4 embed: error CLOSE_EMBED .
+
+    $default  reduce usando la regla 4 (embed)
+
+
+estado 6
+
+   14 sentencia: error .
+
+    $default  reduce usando la regla 14 (sentencia)
+
+
+estado 7
+
+   18 asignacion: TK_IDENTIFICADOR . TK_OP_ASIGNACION expr TK_PUNTOCOMA
+
+    TK_OP_ASIGNACION  desplazar e ir al estado 27
+
+
+estado 8
+
+    5 embed: OPEN_EMBED CLOSE_EMBED .
+
+    $default  reduce usando la regla 5 (embed)
+
+
+estado 9
+
+   15 def_var: KW_VAR . TK_IDENTIFICADOR TK_DOSPUNTOS KW_INTEGER TK_PUNTOCOMA
+   16        | KW_VAR . TK_IDENTIFICADOR TK_DOSPUNTOS KW_BOOLEAN TK_PUNTOCOMA
+   17        | KW_VAR . TK_IDENTIFICADOR TK_DOSPUNTOS KW_STRING TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 28
+
+
+estado 10
+
+   19 condicionales: KW_IF . expr KW_THEN bloque KW_ELSE bloque
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr             ir al estado 35
+    expr_and         ir al estado 36
+    expr_igual       ir al estado 37
+    expr_relacional  ir al estado 38
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 11
+
+   22 ciclo_while: KW_WHILE . expr bloque
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr             ir al estado 42
+    expr_and         ir al estado 36
+    expr_igual       ir al estado 37
+    expr_relacional  ir al estado 38
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 12
+
+   23 ciclo_for: KW_FOR . TK_IDENTIFICADOR TK_OP_ASIGNACION TK_NUMERO KW_TO TK_NUMERO bloque
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 43
+
+
+estado 13
+
+   24 llamadas: KW_PRINT . TK_APAREN lista_tokens TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 44
+
+
+estado 14
+
+   25 llamadas: KW_PRINTSYMTAB . TK_APAREN TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 45
+
+
+estado 15
+
+    3 embed: OPEN_EMBED codigo . CLOSE_EMBED
+
+    CLOSE_EMBED  desplazar e ir al estado 46
+
+
+estado 16
+
+    6 codigo: sentencias .
+    8 sentencias: sentencias . sentencia
+
+    error             desplazar e ir al estado 6
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    CLOSE_EMBED  reduce usando la regla 6 (codigo)
+
+    sentencia      ir al estado 47
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+
+
+estado 17
+
+    7 sentencias: sentencia .
+
+    $default  reduce usando la regla 7 (sentencias)
+
+
+estado 18
+
+    9 sentencia: def_var .
+
+    $default  reduce usando la regla 9 (sentencia)
+
+
+estado 19
+
+   10 sentencia: asignacion .
+
+    $default  reduce usando la regla 10 (sentencia)
+
+
+estado 20
+
+   11 sentencia: condicionales .
+
+    $default  reduce usando la regla 11 (sentencia)
+
+
+estado 21
+
+   12 sentencia: ciclos .
+
+    $default  reduce usando la regla 12 (sentencia)
+
+
+estado 22
+
+   20 ciclos: ciclo_while .
+
+    $default  reduce usando la regla 20 (ciclos)
+
+
+estado 23
+
+   21 ciclos: ciclo_for .
+
+    $default  reduce usando la regla 21 (ciclos)
+
+
+estado 24
+
+   13 sentencia: llamadas .
+
+    $default  reduce usando la regla 13 (sentencia)
+
+
+estado 25
+
+    0 $accept: inicio $end .
+
+    $default  aceptar
+
+
+estado 26
+
+    2 inicio: inicio embed .
+
+    $default  reduce usando la regla 2 (inicio)
+
+
+estado 27
+
+   18 asignacion: TK_IDENTIFICADOR TK_OP_ASIGNACION . expr TK_PUNTOCOMA
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr             ir al estado 48
+    expr_and         ir al estado 36
+    expr_igual       ir al estado 37
+    expr_relacional  ir al estado 38
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 28
+
+   15 def_var: KW_VAR TK_IDENTIFICADOR . TK_DOSPUNTOS KW_INTEGER TK_PUNTOCOMA
+   16        | KW_VAR TK_IDENTIFICADOR . TK_DOSPUNTOS KW_BOOLEAN TK_PUNTOCOMA
+   17        | KW_VAR TK_IDENTIFICADOR . TK_DOSPUNTOS KW_STRING TK_PUNTOCOMA
+
+    TK_DOSPUNTOS  desplazar e ir al estado 49
+
+
+estado 29
+
+   55 term: TK_APAREN . expr TK_CPAREN
+   56     | TK_APAREN . error TK_CPAREN
+
+    error             desplazar e ir al estado 50
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr             ir al estado 51
+    expr_and         ir al estado 36
+    expr_igual       ir al estado 37
+    expr_relacional  ir al estado 38
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 30
+
+   52 term: TK_NUMERO .
+
+    $default  reduce usando la regla 52 (term)
+
+
+estado 31
+
+   53 term: KW_TRUE .
+
+    $default  reduce usando la regla 53 (term)
+
+
+estado 32
+
+   54 term: KW_FALSE .
+
+    $default  reduce usando la regla 54 (term)
+
+
+estado 33
+
+   57 term: TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 57 (term)
+
+
+estado 34
+
+   58 term: TK_CADENA .
+
+    $default  reduce usando la regla 58 (term)
+
+
+estado 35
+
+   19 condicionales: KW_IF expr . KW_THEN bloque KW_ELSE bloque
+   35 expr: expr . KW_OP_OR expr_and
+
+    KW_OP_OR  desplazar e ir al estado 52
+    KW_THEN   desplazar e ir al estado 53
+
+
+estado 36
+
+   34 expr: expr_and .
+   37 expr_and: expr_and . KW_OP_AND expr_igual
+
+    KW_OP_AND  desplazar e ir al estado 54
+
+    $default  reduce usando la regla 34 (expr)
+
+
+estado 37
+
+   36 expr_and: expr_igual .
+   39 expr_igual: expr_igual . TK_OP_EQ expr_relacional
+   40           | expr_igual . TK_OP_NOEQ expr_relacional
+
+    TK_OP_NOEQ  desplazar e ir al estado 55
+    TK_OP_EQ    desplazar e ir al estado 56
+
+    $default  reduce usando la regla 36 (expr_and)
+
+
+estado 38
+
+   38 expr_igual: expr_relacional .
+   42 expr_relacional: expr_relacional . TK_OP_GT expr_suma
+   43                | expr_relacional . TK_OP_GET expr_suma
+   44                | expr_relacional . TK_OP_LT expr_suma
+   45                | expr_relacional . TK_OP_LET expr_suma
+
+    TK_OP_LET  desplazar e ir al estado 57
+    TK_OP_LT   desplazar e ir al estado 58
+    TK_OP_GET  desplazar e ir al estado 59
+    TK_OP_GT   desplazar e ir al estado 60
+
+    $default  reduce usando la regla 38 (expr_igual)
+
+
+estado 39
+
+   41 expr_relacional: expr_suma .
+   47 expr_suma: expr_suma . TK_OP_SUMA expr_mult
+   48          | expr_suma . TK_OP_RESTA expr_mult
+
+    TK_OP_RESTA  desplazar e ir al estado 61
+    TK_OP_SUMA   desplazar e ir al estado 62
+
+    $default  reduce usando la regla 41 (expr_relacional)
+
+
+estado 40
+
+   46 expr_suma: expr_mult .
+   50 expr_mult: expr_mult . TK_OP_MULT term
+   51          | expr_mult . TK_OP_DIV term
+
+    TK_OP_DIV   desplazar e ir al estado 63
+    TK_OP_MULT  desplazar e ir al estado 64
+
+    $default  reduce usando la regla 46 (expr_suma)
+
+
+estado 41
+
+   49 expr_mult: term .
+
+    $default  reduce usando la regla 49 (expr_mult)
+
+
+estado 42
+
+   22 ciclo_while: KW_WHILE expr . bloque
+   35 expr: expr . KW_OP_OR expr_and
+
+    error             desplazar e ir al estado 6
+    KW_OP_OR          desplazar e ir al estado 52
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_BEGIN          desplazar e ir al estado 65
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    sentencia      ir al estado 66
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+    bloque         ir al estado 67
+
+
+estado 43
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR . TK_OP_ASIGNACION TK_NUMERO KW_TO TK_NUMERO bloque
+
+    TK_OP_ASIGNACION  desplazar e ir al estado 68
+
+
+estado 44
+
+   24 llamadas: KW_PRINT TK_APAREN . lista_tokens TK_CPAREN TK_PUNTOCOMA
+
+    TK_NUMERO         desplazar e ir al estado 69
+    TK_IDENTIFICADOR  desplazar e ir al estado 70
+    TK_CADENA         desplazar e ir al estado 71
+
+    lista_tokens  ir al estado 72
+    token         ir al estado 73
+
+
+estado 45
+
+   25 llamadas: KW_PRINTSYMTAB TK_APAREN . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 74
+
+
+estado 46
+
+    3 embed: OPEN_EMBED codigo CLOSE_EMBED .
+
+    $default  reduce usando la regla 3 (embed)
+
+
+estado 47
+
+    8 sentencias: sentencias sentencia .
+
+    $default  reduce usando la regla 8 (sentencias)
+
+
+estado 48
+
+   18 asignacion: TK_IDENTIFICADOR TK_OP_ASIGNACION expr . TK_PUNTOCOMA
+   35 expr: expr . KW_OP_OR expr_and
+
+    KW_OP_OR      desplazar e ir al estado 52
+    TK_PUNTOCOMA  desplazar e ir al estado 75
+
+
+estado 49
+
+   15 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS . KW_INTEGER TK_PUNTOCOMA
+   16        | KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS . KW_BOOLEAN TK_PUNTOCOMA
+   17        | KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS . KW_STRING TK_PUNTOCOMA
+
+    KW_INTEGER  desplazar e ir al estado 76
+    KW_BOOLEAN  desplazar e ir al estado 77
+    KW_STRING   desplazar e ir al estado 78
+
+
+estado 50
+
+   56 term: TK_APAREN error . TK_CPAREN
+
+    TK_CPAREN  desplazar e ir al estado 79
+
+
+estado 51
+
+   35 expr: expr . KW_OP_OR expr_and
+   55 term: TK_APAREN expr . TK_CPAREN
+
+    KW_OP_OR   desplazar e ir al estado 52
+    TK_CPAREN  desplazar e ir al estado 80
+
+
+estado 52
+
+   35 expr: expr KW_OP_OR . expr_and
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_and         ir al estado 81
+    expr_igual       ir al estado 37
+    expr_relacional  ir al estado 38
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 53
+
+   19 condicionales: KW_IF expr KW_THEN . bloque KW_ELSE bloque
+
+    error             desplazar e ir al estado 6
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_BEGIN          desplazar e ir al estado 65
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    sentencia      ir al estado 66
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+    bloque         ir al estado 82
+
+
+estado 54
+
+   37 expr_and: expr_and KW_OP_AND . expr_igual
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_igual       ir al estado 83
+    expr_relacional  ir al estado 38
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 55
+
+   40 expr_igual: expr_igual TK_OP_NOEQ . expr_relacional
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_relacional  ir al estado 84
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 56
+
+   39 expr_igual: expr_igual TK_OP_EQ . expr_relacional
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_relacional  ir al estado 85
+    expr_suma        ir al estado 39
+    expr_mult        ir al estado 40
+    term             ir al estado 41
+
+
+estado 57
+
+   45 expr_relacional: expr_relacional TK_OP_LET . expr_suma
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_suma  ir al estado 86
+    expr_mult  ir al estado 40
+    term       ir al estado 41
+
+
+estado 58
+
+   44 expr_relacional: expr_relacional TK_OP_LT . expr_suma
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_suma  ir al estado 87
+    expr_mult  ir al estado 40
+    term       ir al estado 41
+
+
+estado 59
+
+   43 expr_relacional: expr_relacional TK_OP_GET . expr_suma
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_suma  ir al estado 88
+    expr_mult  ir al estado 40
+    term       ir al estado 41
+
+
+estado 60
+
+   42 expr_relacional: expr_relacional TK_OP_GT . expr_suma
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_suma  ir al estado 89
+    expr_mult  ir al estado 40
+    term       ir al estado 41
+
+
+estado 61
+
+   48 expr_suma: expr_suma TK_OP_RESTA . expr_mult
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_mult  ir al estado 90
+    term       ir al estado 41
+
+
+estado 62
+
+   47 expr_suma: expr_suma TK_OP_SUMA . expr_mult
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    expr_mult  ir al estado 91
+    term       ir al estado 41
+
+
+estado 63
+
+   51 expr_mult: expr_mult TK_OP_DIV . term
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    term  ir al estado 92
+
+
+estado 64
+
+   50 expr_mult: expr_mult TK_OP_MULT . term
+
+    TK_APAREN         desplazar e ir al estado 29
+    TK_NUMERO         desplazar e ir al estado 30
+    KW_TRUE           desplazar e ir al estado 31
+    KW_FALSE          desplazar e ir al estado 32
+    TK_IDENTIFICADOR  desplazar e ir al estado 33
+    TK_CADENA         desplazar e ir al estado 34
+
+    term  ir al estado 93
+
+
+estado 65
+
+   31 bloque: KW_BEGIN . sentencias bloque KW_END TK_PUNTOCOMA
+   32       | KW_BEGIN . error KW_END TK_PUNTOCOMA
+
+    error             desplazar e ir al estado 94
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    sentencias     ir al estado 95
+    sentencia      ir al estado 17
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+
+
+estado 66
+
+   33 bloque: sentencia .
+
+    $default  reduce usando la regla 33 (bloque)
+
+
+estado 67
+
+   22 ciclo_while: KW_WHILE expr bloque .
+
+    $default  reduce usando la regla 22 (ciclo_while)
+
+
+estado 68
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR TK_OP_ASIGNACION . TK_NUMERO KW_TO TK_NUMERO bloque
+
+    TK_NUMERO  desplazar e ir al estado 96
+
+
+estado 69
+
+   30 token: TK_NUMERO .
+
+    $default  reduce usando la regla 30 (token)
+
+
+estado 70
+
+   28 token: TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 28 (token)
+
+
+estado 71
+
+   29 token: TK_CADENA .
+
+    $default  reduce usando la regla 29 (token)
+
+
+estado 72
+
+   24 llamadas: KW_PRINT TK_APAREN lista_tokens . TK_CPAREN TK_PUNTOCOMA
+   26 lista_tokens: lista_tokens . TK_COMA token
+
+    TK_COMA    desplazar e ir al estado 97
+    TK_CPAREN  desplazar e ir al estado 98
+
+
+estado 73
+
+   27 lista_tokens: token .
+
+    $default  reduce usando la regla 27 (lista_tokens)
+
+
+estado 74
+
+   25 llamadas: KW_PRINTSYMTAB TK_APAREN TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 99
+
+
+estado 75
+
+   18 asignacion: TK_IDENTIFICADOR TK_OP_ASIGNACION expr TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 18 (asignacion)
+
+
+estado 76
+
+   15 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_INTEGER . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 100
+
+
+estado 77
+
+   16 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_BOOLEAN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 101
+
+
+estado 78
+
+   17 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_STRING . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 102
+
+
+estado 79
+
+   56 term: TK_APAREN error TK_CPAREN .
+
+    $default  reduce usando la regla 56 (term)
+
+
+estado 80
+
+   55 term: TK_APAREN expr TK_CPAREN .
+
+    $default  reduce usando la regla 55 (term)
+
+
+estado 81
+
+   35 expr: expr KW_OP_OR expr_and .
+   37 expr_and: expr_and . KW_OP_AND expr_igual
+
+    KW_OP_AND  desplazar e ir al estado 54
+
+    $default  reduce usando la regla 35 (expr)
+
+
+estado 82
+
+   19 condicionales: KW_IF expr KW_THEN bloque . KW_ELSE bloque
+
+    KW_ELSE  desplazar e ir al estado 103
+
+
+estado 83
+
+   37 expr_and: expr_and KW_OP_AND expr_igual .
+   39 expr_igual: expr_igual . TK_OP_EQ expr_relacional
+   40           | expr_igual . TK_OP_NOEQ expr_relacional
+
+    TK_OP_NOEQ  desplazar e ir al estado 55
+    TK_OP_EQ    desplazar e ir al estado 56
+
+    $default  reduce usando la regla 37 (expr_and)
+
+
+estado 84
+
+   40 expr_igual: expr_igual TK_OP_NOEQ expr_relacional .
+   42 expr_relacional: expr_relacional . TK_OP_GT expr_suma
+   43                | expr_relacional . TK_OP_GET expr_suma
+   44                | expr_relacional . TK_OP_LT expr_suma
+   45                | expr_relacional . TK_OP_LET expr_suma
+
+    TK_OP_LET  desplazar e ir al estado 57
+    TK_OP_LT   desplazar e ir al estado 58
+    TK_OP_GET  desplazar e ir al estado 59
+    TK_OP_GT   desplazar e ir al estado 60
+
+    $default  reduce usando la regla 40 (expr_igual)
+
+
+estado 85
+
+   39 expr_igual: expr_igual TK_OP_EQ expr_relacional .
+   42 expr_relacional: expr_relacional . TK_OP_GT expr_suma
+   43                | expr_relacional . TK_OP_GET expr_suma
+   44                | expr_relacional . TK_OP_LT expr_suma
+   45                | expr_relacional . TK_OP_LET expr_suma
+
+    TK_OP_LET  desplazar e ir al estado 57
+    TK_OP_LT   desplazar e ir al estado 58
+    TK_OP_GET  desplazar e ir al estado 59
+    TK_OP_GT   desplazar e ir al estado 60
+
+    $default  reduce usando la regla 39 (expr_igual)
+
+
+estado 86
+
+   45 expr_relacional: expr_relacional TK_OP_LET expr_suma .
+   47 expr_suma: expr_suma . TK_OP_SUMA expr_mult
+   48          | expr_suma . TK_OP_RESTA expr_mult
+
+    TK_OP_RESTA  desplazar e ir al estado 61
+    TK_OP_SUMA   desplazar e ir al estado 62
+
+    $default  reduce usando la regla 45 (expr_relacional)
+
+
+estado 87
+
+   44 expr_relacional: expr_relacional TK_OP_LT expr_suma .
+   47 expr_suma: expr_suma . TK_OP_SUMA expr_mult
+   48          | expr_suma . TK_OP_RESTA expr_mult
+
+    TK_OP_RESTA  desplazar e ir al estado 61
+    TK_OP_SUMA   desplazar e ir al estado 62
+
+    $default  reduce usando la regla 44 (expr_relacional)
+
+
+estado 88
+
+   43 expr_relacional: expr_relacional TK_OP_GET expr_suma .
+   47 expr_suma: expr_suma . TK_OP_SUMA expr_mult
+   48          | expr_suma . TK_OP_RESTA expr_mult
+
+    TK_OP_RESTA  desplazar e ir al estado 61
+    TK_OP_SUMA   desplazar e ir al estado 62
+
+    $default  reduce usando la regla 43 (expr_relacional)
+
+
+estado 89
+
+   42 expr_relacional: expr_relacional TK_OP_GT expr_suma .
+   47 expr_suma: expr_suma . TK_OP_SUMA expr_mult
+   48          | expr_suma . TK_OP_RESTA expr_mult
+
+    TK_OP_RESTA  desplazar e ir al estado 61
+    TK_OP_SUMA   desplazar e ir al estado 62
+
+    $default  reduce usando la regla 42 (expr_relacional)
+
+
+estado 90
+
+   48 expr_suma: expr_suma TK_OP_RESTA expr_mult .
+   50 expr_mult: expr_mult . TK_OP_MULT term
+   51          | expr_mult . TK_OP_DIV term
+
+    TK_OP_DIV   desplazar e ir al estado 63
+    TK_OP_MULT  desplazar e ir al estado 64
+
+    $default  reduce usando la regla 48 (expr_suma)
+
+
+estado 91
+
+   47 expr_suma: expr_suma TK_OP_SUMA expr_mult .
+   50 expr_mult: expr_mult . TK_OP_MULT term
+   51          | expr_mult . TK_OP_DIV term
+
+    TK_OP_DIV   desplazar e ir al estado 63
+    TK_OP_MULT  desplazar e ir al estado 64
+
+    $default  reduce usando la regla 47 (expr_suma)
+
+
+estado 92
+
+   51 expr_mult: expr_mult TK_OP_DIV term .
+
+    $default  reduce usando la regla 51 (expr_mult)
+
+
+estado 93
+
+   50 expr_mult: expr_mult TK_OP_MULT term .
+
+    $default  reduce usando la regla 50 (expr_mult)
+
+
+estado 94
+
+   14 sentencia: error .
+   32 bloque: KW_BEGIN error . KW_END TK_PUNTOCOMA
+
+    KW_END  desplazar e ir al estado 104
+
+    $default  reduce usando la regla 14 (sentencia)
+
+
+estado 95
+
+    8 sentencias: sentencias . sentencia
+   31 bloque: KW_BEGIN sentencias . bloque KW_END TK_PUNTOCOMA
+
+    error             desplazar e ir al estado 6
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_BEGIN          desplazar e ir al estado 65
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    sentencia      ir al estado 105
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+    bloque         ir al estado 106
+
+
+estado 96
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR TK_OP_ASIGNACION TK_NUMERO . KW_TO TK_NUMERO bloque
+
+    KW_TO  desplazar e ir al estado 107
+
+
+estado 97
+
+   26 lista_tokens: lista_tokens TK_COMA . token
+
+    TK_NUMERO         desplazar e ir al estado 69
+    TK_IDENTIFICADOR  desplazar e ir al estado 70
+    TK_CADENA         desplazar e ir al estado 71
+
+    token  ir al estado 108
+
+
+estado 98
+
+   24 llamadas: KW_PRINT TK_APAREN lista_tokens TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 109
+
+
+estado 99
+
+   25 llamadas: KW_PRINTSYMTAB TK_APAREN TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 25 (llamadas)
+
+
+estado 100
+
+   15 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_INTEGER TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 15 (def_var)
+
+
+estado 101
+
+   16 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_BOOLEAN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 16 (def_var)
+
+
+estado 102
+
+   17 def_var: KW_VAR TK_IDENTIFICADOR TK_DOSPUNTOS KW_STRING TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 17 (def_var)
+
+
+estado 103
+
+   19 condicionales: KW_IF expr KW_THEN bloque KW_ELSE . bloque
+
+    error             desplazar e ir al estado 6
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_BEGIN          desplazar e ir al estado 65
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    sentencia      ir al estado 66
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+    bloque         ir al estado 110
+
+
+estado 104
+
+   32 bloque: KW_BEGIN error KW_END . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 111
+
+
+estado 105
+
+    8 sentencias: sentencias sentencia .
+   33 bloque: sentencia .
+
+    KW_END    reduce usando la regla 33 (bloque)
+    $default  reduce usando la regla 8 (sentencias)
+
+
+estado 106
+
+   31 bloque: KW_BEGIN sentencias bloque . KW_END TK_PUNTOCOMA
+
+    KW_END  desplazar e ir al estado 112
+
+
+estado 107
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR TK_OP_ASIGNACION TK_NUMERO KW_TO . TK_NUMERO bloque
+
+    TK_NUMERO  desplazar e ir al estado 113
+
+
+estado 108
+
+   26 lista_tokens: lista_tokens TK_COMA token .
+
+    $default  reduce usando la regla 26 (lista_tokens)
+
+
+estado 109
+
+   24 llamadas: KW_PRINT TK_APAREN lista_tokens TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 24 (llamadas)
+
+
+estado 110
+
+   19 condicionales: KW_IF expr KW_THEN bloque KW_ELSE bloque .
+
+    $default  reduce usando la regla 19 (condicionales)
+
+
+estado 111
+
+   32 bloque: KW_BEGIN error KW_END TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 32 (bloque)
+
+
+estado 112
+
+   31 bloque: KW_BEGIN sentencias bloque KW_END . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 114
+
+
+estado 113
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR TK_OP_ASIGNACION TK_NUMERO KW_TO TK_NUMERO . bloque
+
+    error             desplazar e ir al estado 6
+    TK_IDENTIFICADOR  desplazar e ir al estado 7
+    KW_VAR            desplazar e ir al estado 9
+    KW_IF             desplazar e ir al estado 10
+    KW_WHILE          desplazar e ir al estado 11
+    KW_FOR            desplazar e ir al estado 12
+    KW_BEGIN          desplazar e ir al estado 65
+    KW_PRINT          desplazar e ir al estado 13
+    KW_PRINTSYMTAB    desplazar e ir al estado 14
+
+    sentencia      ir al estado 66
+    def_var        ir al estado 18
+    asignacion     ir al estado 19
+    condicionales  ir al estado 20
+    ciclos         ir al estado 21
+    ciclo_while    ir al estado 22
+    ciclo_for      ir al estado 23
+    llamadas       ir al estado 24
+    bloque         ir al estado 115
+
+
+estado 114
+
+   31 bloque: KW_BEGIN sentencias bloque KW_END TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 31 (bloque)
+
+
+estado 115
+
+   23 ciclo_for: KW_FOR TK_IDENTIFICADOR TK_OP_ASIGNACION TK_NUMERO KW_TO TK_NUMERO bloque .
+
+    $default  reduce usando la regla 23 (ciclo_for)

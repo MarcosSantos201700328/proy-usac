@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<errores>
+	<sintacticos>
+		<error numero="2">
+			<linea>28</linea>
+			<columna>19</columna>
+			<descripcion>syntax error, unexpected TK_OP_EQ, expecting TK_OP_ASIGNACION</descripcion>
+		</error>
+		<error numero="3">
+			<linea>28</linea>
+			<columna>23</columna>
+			<descripcion>syntax error, unexpected TK_OP_SUMA, expecting TK_OP_ASIGNACION</descripcion>
+		</error>
+		<error numero="4">
+			<linea>28</linea>
+			<columna>25</columna>
+			<descripcion>syntax error, unexpected TK_NUMERO</descripcion>
+		</error>
+		<error numero="5">
+			<linea>28</linea>
+			<columna>26</columna>
+			<descripcion>syntax error, unexpected TK_PUNTOCOMA</descripcion>
+		</error>
+	</sintacticos>
+	<semanticos>
+		<error numero="2">
+			<linea>0</linea>
+			<descripcion>Resultado de expresion invalida, debe ser true o false</descripcion>
+		</error>
+		<error numero="3">
+			<linea>29</linea>
+			<descripcion>El error ocurrio dentro de esta sentencia</descripcion>
+		</error>
+	</semanticos>
+</errores>

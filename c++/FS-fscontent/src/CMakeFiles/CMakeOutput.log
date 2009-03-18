@@ -1,0 +1,89 @@
+The system is: Linux - 2.6.15-23-686 - unknown
+Determining if the C compiler is GNU succeeded with the following output:
+# 1 "/usr/share/CMake/Modules/CMakeTestGNU.c"
+# 1 "<interno>"
+# 1 "<línea de orden>"
+# 1 "/usr/share/CMake/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C++ compiler is GNU succeeded with the following output:
+# 1 "/usr/share/CMake/Modules/CMakeTestGNU.c"
+# 1 "<interno>"
+# 1 "<línea de orden>"
+# 1 "/usr/share/CMake/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C compiler works passed with the following output:
+/usr/bin/cmake -H/home/kreig/projects/fs/fscontent/CMakeTmp -B/home/kreig/projects/fs/fscontent/CMakeTmp --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/make -f CMakeFiles/Makefile2 cmTryCompileExec
+make[1]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/cmake -H/home/kreig/projects/fs/fscontent/CMakeTmp -B/home/kreig/projects/fs/fscontent/CMakeTmp --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/make -f CMakeFiles/Makefile2 CMakeFiles/cmTryCompileExec.dir/all
+make[2]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/depend
+make[3]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+Scanning dependencies of target cmTryCompileExec
+/usr/bin/cmake -E cmake_depends  "Unix Makefiles" /home/kreig/projects/fs/fscontent/CMakeTmp /home/kreig/projects/fs/fscontent/CMakeTmp /home/kreig/projects/fs/fscontent/CMakeTmp/CMakeFiles/cmTryCompileExec.dir/DependInfo.cmake
+make[3]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.o
+gcc  -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.o   -c /home/kreig/projects/fs/fscontent/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E remove -f cmTryCompileExec
+gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/testCCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[3]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+make[2]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+make[1]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/cmake -H/home/kreig/projects/fs/fscontent/CMakeTmp -B/home/kreig/projects/fs/fscontent/CMakeTmp --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/make -f CMakeFiles/Makefile2 cmTryCompileExec
+make[1]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/cmake -H/home/kreig/projects/fs/fscontent/CMakeTmp -B/home/kreig/projects/fs/fscontent/CMakeTmp --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/make -f CMakeFiles/Makefile2 CMakeFiles/cmTryCompileExec.dir/all
+make[2]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/depend
+make[3]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+Scanning dependencies of target cmTryCompileExec
+/usr/bin/cmake -E cmake_depends  "Unix Makefiles" /home/kreig/projects/fs/fscontent/CMakeTmp /home/kreig/projects/fs/fscontent/CMakeTmp /home/kreig/projects/fs/fscontent/CMakeTmp/CMakeFiles/cmTryCompileExec.dir/DependInfo.cmake
+make[3]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+gcc -DCHECK_TYPE_SIZE_TYPE="void*"   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/kreig/projects/fs/fscontent/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E remove -f cmTryCompileExec
+gcc      -DCHECK_TYPE_SIZE_TYPE="void*"  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[3]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+make[2]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+make[1]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+/usr/bin/cmake -H/home/kreig/projects/fs/fscontent/CMakeTmp -B/home/kreig/projects/fs/fscontent/CMakeTmp --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/make -f CMakeFiles/Makefile2 cmTryCompileExec
+make[1]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/cmake -H/home/kreig/projects/fs/fscontent/CMakeTmp -B/home/kreig/projects/fs/fscontent/CMakeTmp --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/make -f CMakeFiles/Makefile2 CMakeFiles/cmTryCompileExec.dir/all
+make[2]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/depend
+make[3]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+Scanning dependencies of target cmTryCompileExec
+/usr/bin/cmake -E cmake_depends  "Unix Makefiles" /home/kreig/projects/fs/fscontent/CMakeTmp /home/kreig/projects/fs/fscontent/CMakeTmp /home/kreig/projects/fs/fscontent/CMakeTmp/CMakeFiles/cmTryCompileExec.dir/DependInfo.cmake
+make[3]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[3]: se ingresa al directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o
+c++   -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o -c /home/kreig/projects/fs/fscontent/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -E remove -f cmTryCompileExec
+c++         -fPIC "CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[3]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+make[2]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+make[1]: se sale del directorio `/home/kreig/projects/fs/fscontent/CMakeTmp'
+
+

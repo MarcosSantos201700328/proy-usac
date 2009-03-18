@@ -1,0 +1,229 @@
+painkiller
+    description: Computer
+    width: 32 bits
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-memory
+          description: System memory
+          physical id: 0
+          size: 511MB
+     *-cpu
+          product: Intel(R) Pentium(R) 4 CPU 1400MHz
+          vendor: Intel Corp.
+          physical id: 1
+          bus info: cpu@0
+          version: 15.0.7
+          size: 1400MHz
+          width: 32 bits
+          capabilities: fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm up
+          configuration: id=0
+        *-cache:0
+             description: L1 cache
+             physical id: 0
+             size: 8KB
+        *-cache:1
+             description: L2 cache
+             physical id: 1
+             size: 256KB
+     *-pci
+          description: Host bridge
+          product: 82850 850 (Tehama) Chipset Host Bridge (MCH)
+          vendor: Intel Corporation
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 02
+          width: 32 bits
+          clock: 33MHz
+          configuration: driver=agpgart-intel module=intel_agp
+        *-pci:0
+             description: PCI bridge
+             product: 82850 850 (Tehama) Chipset AGP Bridge
+             vendor: Intel Corporation
+             physical id: 1
+             bus info: pci@0000:00:01.0
+             version: 02
+             width: 32 bits
+             clock: 66MHz
+             capabilities: pci normal_decode bus_master
+           *-display
+                description: VGA compatible controller
+                product: NV34GL [Quadro FX 500/600 PCI]
+                vendor: nVidia Corporation
+                physical id: 0
+                bus info: pci@0000:01:00.0
+                version: a1
+                width: 32 bits
+                clock: 66MHz
+                capabilities: vga bus_master vga_palette cap_list
+                configuration: driver=nvidia latency=248 maxlatency=1 mingnt=5 module=nvidia
+        *-pci:1
+             description: PCI bridge
+             product: 82801 PCI Bridge
+             vendor: Intel Corporation
+             physical id: 1e
+             bus info: pci@0000:00:1e.0
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master
+           *-network:0
+                description: Ethernet interface
+                product: NetXtreme BCM5700 Gigabit Ethernet
+                vendor: Broadcom Corporation
+                physical id: 7
+                bus info: pci@0000:02:07.0
+                logical name: eth1
+                version: 12
+                serial: 00:04:76:2f:b7:ce
+                width: 64 bits
+                clock: 66MHz
+                capabilities: bus_master cap_list ethernet physical
+                configuration: broadcast=yes driver=tg3 driverversion=3.77 latency=64 mingnt=64 module=tg3 multicast=yes
+           *-multimedia:0
+                description: Multimedia audio controller
+                product: SB Live! EMU10k1
+                vendor: Creative Labs
+                physical id: 8
+                bus info: pci@0000:02:08.0
+                version: 07
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: driver=EMU10K1_Audigy latency=64 maxlatency=20 mingnt=2 module=snd_emu10k1
+           *-input
+                description: Input device controller
+                product: SB Live! Game Port
+                vendor: Creative Labs
+                physical id: 8.1
+                bus info: pci@0000:02:08.1
+                version: 07
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: driver=Emu10k1_gameport latency=64 module=emu10k1_gp
+           *-multimedia:1
+                description: Multimedia video controller
+                product: Bt848 Video Capture
+                vendor: Brooktree Corporation
+                physical id: 9
+                bus info: pci@0000:02:09.0
+                version: 12
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master
+                configuration: driver=bttv latency=64 maxlatency=40 mingnt=16 module=bttv
+           *-communication UNCLAIMED
+                description: Communication controller
+                product: HCF 56k Data/Fax/Voice/Spkp (w/Handset) Modem
+                vendor: Conexant
+                physical id: a
+                bus info: pci@0000:02:0a.0
+                version: 08
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: latency=64
+           *-firewire
+                description: FireWire (IEEE 1394)
+                product: TSB12LV23 IEEE-1394 Controller
+                vendor: Texas Instruments
+                physical id: b
+                bus info: pci@0000:02:0b.0
+                version: 00
+                width: 32 bits
+                clock: 33MHz
+                capabilities: ohci bus_master cap_list
+                configuration: driver=ohci1394 latency=64 maxlatency=4 mingnt=3 module=ohci1394
+           *-network:1
+                description: Ethernet interface
+                product: 3c905C-TX/TX-M [Tornado]
+                vendor: 3Com Corporation
+                physical id: c
+                bus info: pci@0000:02:0c.0
+                logical name: eth0
+                version: 78
+                serial: 00:06:5b:1d:90:1c
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list ethernet physical
+                configuration: broadcast=yes driver=3c59x latency=64 maxlatency=10 mingnt=10 module=3c59x multicast=yes
+        *-isa
+             description: ISA bridge
+             product: 82801BA ISA Bridge (LPC)
+             vendor: Intel Corporation
+             physical id: 1f
+             bus info: pci@0000:00:1f.0
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             capabilities: isa bus_master
+             configuration: latency=0
+        *-ide
+             description: IDE interface
+             product: 82801BA IDE U100 Controller
+             vendor: Intel Corporation
+             physical id: 1f.1
+             bus info: pci@0000:00:1f.1
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             capabilities: ide bus_master
+             configuration: driver=ata_piix latency=0 module=ata_piix
+        *-usb:0
+             description: USB Controller
+             product: 82801BA/BAM USB Controller #1
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             capabilities: uhci bus_master
+             configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+        *-serial UNCLAIMED
+             description: SMBus
+             product: 82801BA/BAM SMBus Controller
+             vendor: Intel Corporation
+             physical id: 1f.3
+             bus info: pci@0000:00:1f.3
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             configuration: latency=0
+        *-usb:1
+             description: USB Controller
+             product: 82801BA/BAM USB Controller #1
+             vendor: Intel Corporation
+             physical id: 1f.4
+             bus info: pci@0000:00:1f.4
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             capabilities: uhci bus_master
+             configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+        *-multimedia
+             description: Multimedia audio controller
+             product: 82801BA/BAM AC'97 Audio Controller
+             vendor: Intel Corporation
+             physical id: 1f.5
+             bus info: pci@0000:00:1f.5
+             version: 04
+             width: 32 bits
+             clock: 33MHz
+             capabilities: bus_master
+             configuration: driver=Intel ICH latency=0 module=snd_intel8x0
+  *-network:0
+       description: Ethernet interface
+       physical id: 1
+       logical name: br0
+       serial: 00:04:76:2f:b7:ce
+       capabilities: ethernet physical
+       configuration: broadcast=yes driver=bridge driverversion=2.3 firmware=N/A ip=192.168.1.250 multicast=yes
+  *-network:1
+       description: Ethernet interface
+       physical id: 2
+       logical name: vbox0
+       serial: 00:ff:05:72:24:24
+       capabilities: ethernet physical
+       configuration: broadcast=yes driver=tun driverversion=1.6 firmware=N/A multicast=yes

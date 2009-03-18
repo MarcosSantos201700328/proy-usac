@@ -1,0 +1,4 @@
+base referer
+rect $constantes_8h.html 577,10 673,34
+rect $symtab_8h.html 452,58 526,82
+rect $colaerr_8h.html 453,106 525,130

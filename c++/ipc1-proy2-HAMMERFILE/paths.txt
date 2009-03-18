@@ -1,0 +1,5 @@
+C:\Datos\Importantes\Proyecto.bin Binario 24/10/2003
+D:\PROY.EXE Ejecutable 2/3/2004
+C:\Windows\Readme.txt Texto 1/2/2004
+C:\Documentos\Uno.doc Documento 2/2/2001
+C:\sh.mp3 Musica 2/2/2001

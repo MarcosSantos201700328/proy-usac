@@ -1,0 +1,132 @@
+\section{Referencia de la Clase Browser\-Dock}
+\label{classBrowserDock}\index{BrowserDock@{BrowserDock}}
+Dock\-Window del browser empotrable en la ventana principal, heredando de QDock\-Window.  
+
+
+{\tt \#include $<$browser.h$>$}
+
+\subsection*{M\'{e}todos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+{\bf Browser\-Dock} (QWidget $\ast$parent, const char $\ast$name=0, WFlags f=0)
+\begin{CompactList}\small\item\em Constructor, llama al constructor padre con los mismos parametros. \item\end{CompactList}\item 
+{\bf Browser\-Dock} (Place p, QWidget $\ast$parent, const char $\ast$name, WFlags f)
+\begin{CompactList}\small\item\em Constructor, llama al constructor padre con los mismos parametros. \item\end{CompactList}\item 
+{\bf $\sim$Browser\-Dock} ()
+\item 
+void {\bf set\-Source} (QString filename)
+\begin{CompactList}\small\item\em Abre el archivo dado en el browser. \item\end{CompactList}\item 
+void {\bf set\-Label} (QString label)
+\begin{CompactList}\small\item\em Asigna titulo de ventana. \item\end{CompactList}\item 
+void {\bf orientacion} (Orientation o)
+\begin{CompactList}\small\item\em establece orientacion para el browserdock \item\end{CompactList}\end{CompactItemize}
+\subsection*{Atributos privados}
+\begin{CompactItemize}
+\item 
+QText\-Browser $\ast$ {\bf b}
+\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Dock\-Window del browser empotrable en la ventana principal, heredando de QDock\-Window. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 13 del archivo browser.h.
+
+\subsection{Documentaci\'{o}n del constructor y destructor}
+\index{BrowserDock@{Browser\-Dock}!BrowserDock@{BrowserDock}}
+\index{BrowserDock@{BrowserDock}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Browser\-Dock::Browser\-Dock (QWidget $\ast$ {\em parent}, const char $\ast$ {\em name} = {\tt 0}, WFlags {\em f} = {\tt 0})}\label{classBrowserDock_a0}
+
+
+Constructor, llama al constructor padre con los mismos parametros. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 11 del archivo browser.cpp.
+
+Hace referencia a b.\index{BrowserDock@{Browser\-Dock}!BrowserDock@{BrowserDock}}
+\index{BrowserDock@{BrowserDock}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Browser\-Dock::Browser\-Dock (Place {\em p}, QWidget $\ast$ {\em parent}, const char $\ast$ {\em name}, WFlags {\em f})}\label{classBrowserDock_a1}
+
+
+Constructor, llama al constructor padre con los mismos parametros. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 23 del archivo browser.cpp.
+
+Hace referencia a b.\index{BrowserDock@{Browser\-Dock}!~BrowserDock@{$\sim$BrowserDock}}
+\index{~BrowserDock@{$\sim$BrowserDock}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Browser\-Dock::$\sim$Browser\-Dock ()}\label{classBrowserDock_a2}
+
+
+
+
+Definici\'{o}n en la l\'{\i}nea 34 del archivo browser.cpp.
+
+Hace referencia a b.
+
+\subsection{Documentaci\'{o}n de las funciones miembro}
+\index{BrowserDock@{Browser\-Dock}!orientacion@{orientacion}}
+\index{orientacion@{orientacion}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Browser\-Dock::orientacion (Orientation {\em o})}\label{classBrowserDock_a5}
+
+
+establece orientacion para el browserdock 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 56 del archivo browser.cpp.\index{BrowserDock@{Browser\-Dock}!setLabel@{setLabel}}
+\index{setLabel@{setLabel}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Browser\-Dock::set\-Label (QString {\em label})}\label{classBrowserDock_a4}
+
+
+Asigna titulo de ventana. 
+
+\begin{Desc}
+\item[Par\'{a}metros:]
+\begin{description}
+\item[{\em label}]cadena de nombre \end{description}
+\end{Desc}
+
+
+Definici\'{o}n en la l\'{\i}nea 52 del archivo browser.cpp.
+
+Referenciado por God\-Zilla::God\-Zilla().\index{BrowserDock@{Browser\-Dock}!setSource@{setSource}}
+\index{setSource@{setSource}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Browser\-Dock::set\-Source (QString {\em file\-Name})}\label{classBrowserDock_a3}
+
+
+Abre el archivo dado en el browser. 
+
+\begin{Desc}
+\item[Par\'{a}metros:]
+\begin{description}
+\item[{\em file\-Name}]nombre de archivo a mostrar en el Qtext\-Browser \end{description}
+\end{Desc}
+
+
+Definici\'{o}n en la l\'{\i}nea 39 del archivo browser.cpp.
+
+Hace referencia a b.
+
+Referenciado por God\-Zilla::leer\-Archivo\-Error(), God\-Zilla::leer\-Archivo\-Salida(), God\-Zilla::leer\-Archivo\-Tabla\-Simbolos(), y God\-Zilla::parse\-Input().
+
+\subsection{Documentaci\'{o}n de los datos miembro}
+\index{BrowserDock@{Browser\-Dock}!b@{b}}
+\index{b@{b}!BrowserDock@{Browser\-Dock}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}QText\-Browser$\ast$ {\bf Browser\-Dock::b}\hspace{0.3cm}{\tt  [private]}}\label{classBrowserDock_r0}
+
+
+
+
+Definici\'{o}n en la l\'{\i}nea 22 del archivo browser.h.
+
+Referenciado por Browser\-Dock(), set\-Source(), y $\sim$Browser\-Dock().
+
+La documentaci\'{o}n para esta clase fu\'{e} generada a partir de los siguientes archivos:\begin{CompactItemize}
+\item 
+/media/docs/progra/c++/compiladores1/proy2/godzilla/src/{\bf browser.h}\item 
+/media/docs/progra/c++/compiladores1/proy2/godzilla/src/{\bf browser.cpp}\end{CompactItemize}

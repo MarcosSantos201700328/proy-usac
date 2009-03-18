@@ -1,0 +1,70 @@
+\section{Referencia de la Estructura operacion}
+\label{structoperacion}\index{operacion@{operacion}}
+Clase de almacenamiento de operaciones en el AST.  
+
+
+{\tt \#include $<$ast.h$>$}
+
+Diagrama de colaboraci\'{o}n para operacion:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=141pt]{structoperacion__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Atributos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+int {\bf operador}
+\begin{CompactList}\small\item\em Operador. \item\end{CompactList}\item 
+{\bf expr} $\ast$ {\bf loper}
+\begin{CompactList}\small\item\em Expresion a la izquierda del operador. \item\end{CompactList}\item 
+{\bf expr} $\ast$ {\bf roper}
+\begin{CompactList}\small\item\em Expresion a la derecha del operador. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Clase de almacenamiento de operaciones en el AST. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 180 del archivo ast.h.
+
+\subsection{Documentaci\'{o}n de los datos miembro}
+\index{operacion@{operacion}!loper@{loper}}
+\index{loper@{loper}!operacion@{operacion}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf expr}$\ast$ {\bf operacion::loper}}\label{structoperacion_o1}
+
+
+Expresion a la izquierda del operador. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 182 del archivo ast.h.
+
+Referenciado por borrar\-Operacion(), evaluar\-Operacion(), y insertar\-Operacion().\index{operacion@{operacion}!operador@{operador}}
+\index{operador@{operador}!operacion@{operacion}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf operacion::operador}}\label{structoperacion_o0}
+
+
+Operador. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 181 del archivo ast.h.
+
+Referenciado por evaluar\-Operacion(), y insertar\-Operacion().\index{operacion@{operacion}!roper@{roper}}
+\index{roper@{roper}!operacion@{operacion}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf expr}$\ast$ {\bf operacion::roper}}\label{structoperacion_o2}
+
+
+Expresion a la derecha del operador. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 183 del archivo ast.h.
+
+Referenciado por borrar\-Operacion(), evaluar\-Operacion(), y insertar\-Operacion().
+
+La documentaci\'{o}n para esta estructura fu\'{e} generada a partir del siguiente archivo:\begin{CompactItemize}
+\item 
+/media/docs/progra/c++/compiladores1/proy2/godzilla/src/{\bf ast.h}\end{CompactItemize}

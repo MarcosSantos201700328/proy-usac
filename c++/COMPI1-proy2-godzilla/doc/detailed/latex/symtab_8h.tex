@@ -1,0 +1,172 @@
+\section{Referencia del Archivo /media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h}
+\label{symtab_8h}\index{/media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h@{/media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h}}
+Estructuras de la tabla de simbolos.Incluyendo rutinas de insercion, busqueda y eliminacion. 
+
+{\tt \#include \char`\"{}constantes.h\char`\"{}}\par
+
+
+Dependencia gr\'{a}fica adjunta para symtab.h:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{symtab_8h__incl}
+\end{center}
+\end{figure}
+
+
+Este gr\'{a}fico muestra que archivos directa o indirectamente incluyen a este archivo:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=352pt]{symtab_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Clases}
+\begin{CompactItemize}
+\item 
+struct {\bf symbol}
+\begin{CompactList}\small\item\em Nodo de la tabla de simbolos. \item\end{CompactList}\item 
+struct {\bf symtab}
+\begin{CompactList}\small\item\em Tabla de simbolos usando modelo de lista simple. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Tipos definidos}
+\begin{CompactItemize}
+\item 
+typedef {\bf symtab} {\bf symtab}
+\begin{CompactList}\small\item\em ESTRUCTURA. \item\end{CompactList}\item 
+typedef {\bf symbol} {\bf symbol}
+\end{CompactItemize}
+\subsection*{Funciones}
+\begin{CompactItemize}
+\item 
+{\bf symbol} $\ast$ {\bf insertar\-Simbolo} (char $\ast$id, int tipo)
+\begin{CompactList}\small\item\em Inserta un nuevo simbolo sin comprobar su previa existencia. \item\end{CompactList}\item 
+{\bf symbol} $\ast$ {\bf buscar\-Simbolo} (char $\ast$id)
+\begin{CompactList}\small\item\em Busca y devuelve simbolo segun su identificador dado en el param. \item\end{CompactList}\item 
+void {\bf borrar\-Tabla} (void)
+\begin{CompactList}\small\item\em Elimina todos los registros de la tabla de simbolos. \item\end{CompactList}\item 
+int {\bf open\-Symtab\-File} (const char $\ast$filename)
+\begin{CompactList}\small\item\em Abre archivo hacia donde se imprimira archivo de tabla de simbolos. \item\end{CompactList}\item 
+int {\bf close\-Symtab\-File} (void)
+\begin{CompactList}\small\item\em Cierra archivo hacia donde se escribio tabla de simbolos. \item\end{CompactList}\item 
+int {\bf print\-Symtab\-File} (int linea)
+\begin{CompactList}\small\item\em Imprime tabla de simbolos a archivo dado. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Estructuras de la tabla de simbolos.Incluyendo rutinas de insercion, busqueda y eliminacion. 
+
+
+
+Definici\'{o}n en el archivo {\bf symtab.h}.
+
+\subsection{Documentaci\'{o}n de los tipos definidos}
+\index{symtab.h@{symtab.h}!symbol@{symbol}}
+\index{symbol@{symbol}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf symbol} {\bf symbol}}\label{symtab_8h_a1}
+
+
+
+
+Definici\'{o}n en la l\'{\i}nea 11 del archivo symtab.h.\index{symtab.h@{symtab.h}!symtab@{symtab}}
+\index{symtab@{symtab}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf symtab} {\bf symtab}}\label{symtab_8h_a0}
+
+
+ESTRUCTURA. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 10 del archivo symtab.h.
+
+\subsection{Documentaci\'{o}n de las funciones}
+\index{symtab.h@{symtab.h}!borrarTabla@{borrarTabla}}
+\index{borrarTabla@{borrarTabla}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void borrar\-Tabla (void)}\label{symtab_8h_a4}
+
+
+Elimina todos los registros de la tabla de simbolos. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 88 del archivo symtab.c.
+
+Hace referencia a symtab::actual, borrar\-Nodos(), y symtab::primero.\index{symtab.h@{symtab.h}!buscarSimbolo@{buscarSimbolo}}
+\index{buscarSimbolo@{buscarSimbolo}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf symbol}$\ast$ buscar\-Simbolo (char $\ast$ {\em id})}\label{symtab_8h_a3}
+
+
+Busca y devuelve simbolo segun su identificador dado en el param. 
+
+\begin{Desc}
+\item[Par\'{a}metros:]
+\begin{description}
+\item[{\em id}]identificador de la variable a buscar \end{description}
+\end{Desc}
+
+
+Definici\'{o}n en la l\'{\i}nea 60 del archivo symtab.c.
+
+Hace referencia a symtab::actual, symtab::primero, y symbol::siguiente.
+
+Referenciado por evaluar\-Asignacion(), evaluar\-Declaracion(), evaluar\-Expresion(), evaluar\-For(), y imprimir\-Tokens().\index{symtab.h@{symtab.h}!closeSymtabFile@{closeSymtabFile}}
+\index{closeSymtabFile@{closeSymtabFile}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int close\-Symtab\-File (void)}\label{symtab_8h_a6}
+
+
+Cierra archivo hacia donde se escribio tabla de simbolos. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 113 del archivo symtab.c.
+
+Hace referencia a symtabfile.\index{symtab.h@{symtab.h}!insertarSimbolo@{insertarSimbolo}}
+\index{insertarSimbolo@{insertarSimbolo}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf symbol}$\ast$ insertar\-Simbolo (char $\ast$ {\em id}, int {\em tipo})}\label{symtab_8h_a2}
+
+
+Inserta un nuevo simbolo sin comprobar su previa existencia. 
+
+\begin{Desc}
+\item[Par\'{a}metros:]
+\begin{description}
+\item[{\em id}]identificador de la nueva var. \item[{\em tipo}]tipo de datos de la var. \end{description}
+\end{Desc}
+
+
+Definici\'{o}n en la l\'{\i}nea 23 del archivo symtab.c.
+
+Hace referencia a symtab::actual, symbol::id, symtab::primero, symbol::siguiente, T\_\-BOOLEAN, T\_\-INTEGER, T\_\-STRING, symbol::tipo, y symbol::valor.
+
+Referenciado por evaluar\-Declaracion().\index{symtab.h@{symtab.h}!openSymtabFile@{openSymtabFile}}
+\index{openSymtabFile@{openSymtabFile}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int open\-Symtab\-File (const char $\ast$ {\em filename})}\label{symtab_8h_a5}
+
+
+Abre archivo hacia donde se imprimira archivo de tabla de simbolos. 
+
+\begin{Desc}
+\item[Par\'{a}metros:]
+\begin{description}
+\item[{\em filename}]nombre de archivo al que se le adjuntara la extension xml\end{description}
+\end{Desc}
+trunca a cero el archivo xml 
+
+Definici\'{o}n en la l\'{\i}nea 99 del archivo symtab.c.
+
+Hace referencia a symtabfile.\index{symtab.h@{symtab.h}!printSymtabFile@{printSymtabFile}}
+\index{printSymtabFile@{printSymtabFile}!symtab.h@{symtab.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int print\-Symtab\-File (int {\em linea})}\label{symtab_8h_a7}
+
+
+Imprime tabla de simbolos a archivo dado. 
+
+\begin{Desc}
+\item[Par\'{a}metros:]
+\begin{description}
+\item[{\em linea}]linea en donde se leyo el comando vertablasimbolos() \end{description}
+\end{Desc}
+
+
+Definici\'{o}n en la l\'{\i}nea 122 del archivo symtab.c.
+
+Hace referencia a symtab::actual, symbol::id, symtab::primero, symbol::siguiente, symtabfile, T\_\-BOOLEAN, T\_\-INTEGER, T\_\-STRING, symbol::tipo, y symbol::valor.
+
+Referenciado por insertar\-Llamada\-Sym\-Tab().

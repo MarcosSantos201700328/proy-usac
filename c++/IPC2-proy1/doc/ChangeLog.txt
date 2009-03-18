@@ -1,0 +1,128 @@
+2005-09-23  Erik Giron  <kreig@localhost.localdomain>
+
+	* first.cpp: VERSION FINAL...
+	Eliminados los limites para nombre de torneo, confederacion y seleccion
+
+2005-09-22  Erik Giron  <kreig@localhost.localdomain>
+
+	* first.cpp:
+	Arreglados varios bugs,(actualizacion de torneo y seleccion, contador de lexemas, etc.),
+
+2005-09-21  Erik Giron  <kreig@localhost.localdomain>
+
+	* first.cpp: Arreglados varios calculos de punteos de juegos.
+
+2005-09-19  Erik Giron  <kreig@localhost.localdomain>
+
+	* first.h: Actualizada lista TODO
+
+	* first.cpp:
+	Arreglado el bug que no hacia funcionar Quicksort implementanto memcpy()
+
+2005-09-18  Erik Giron  <kreig@localhost.localdomain>
+
+	* first.cpp: Agregadas directivas para que compile bajo Borland C
+
+	* first.h:
+	Agregadas directivas para compilar bajo Borland C 3.1 sin errores
+
+	* first.h, first.cpp: New file.
+
+	* main.cpp: Agregados los prototipos de todas las funciones
+
+	* main.cpp: Chequeo solo para backup
+
+	* main.cpp:
+	Arreglado el bug de la funcion MES al declarar la variable a retornar "static".
+	Arreglado el bug de que en el reporte de FIFA/Cocacola muestra 2 veces el mismo pais.
+
+2005-09-17  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: Agregada Inicializacion de archivo de Clasificacion
+
+	* main.cpp:
+	Implementada la funcionalidad "Clasificacion FIFA/COCA-COLA"
+
+2005-09-16  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp:
+	Validado para que no calcule nada cuando no se haya ingresado ningun juego previamente (bandera juegoCalculado en parse)
+
+	* main.cpp: Implementada la funcionalidad de mejor desempeno
+
+2005-09-15  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: Terminada la implementacion de Mejor_Equipo()
+
+	* main.cpp:
+	Implementado el parser de Premio Mejor Equipo, asi como la funcion principal de calculo de este punteo para cada equipo
+
+2005-09-14  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: Arreglado el bug del calculo de puntos acumulados
+
+	* main.cpp: TEMPORAL POR SI LO ARRUINO
+
+2005-09-13  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: Los datos de Puntos Acumulados ya son mostrados en salida;
+
+2005-09-12  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp:
+	Implementado funcion de Crear Indices ordenados de Puntos Acumulados;
+
+2005-09-11  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp:
+	Implantada funcion de actualizar archivo de puntos acumulados
+
+	* main.cpp:
+	Implementado parser y validador de fechas para Calculo Puntos
+
+2005-09-10  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: La funcion de calculo de puntos fue implementada.
+
+2005-09-09  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: Implantado parser para instruccion juego()
+
+2005-09-08  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: - crea_torneo ya crea y modifica torneos.
+	- Mejorada la estructura juego para incorporar puntos acumulados para cada equipo.
+
+	* main.cpp:
+	Reimplementada la funcion de crear confederacion para cumplir con los nuevos requisitos
+
+	* main.cpp: Implementada funcion de parser cmd_creatorneo;
+
+	* main.cpp:
+	Hecho algoritmo de Crear/modificaf Seleccion, validado para que no cree cuando no existe confederacino asignada.
+
+2005-09-07  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: - Creado armatoste para las demas funciones
+	- Creaconfed ya genera datos correctamente
+
+	* main.cpp:
+	Agregada la logica para modificar cuando ya existe el registro
+
+	* main.cpp: Mejorado el parser para validar datos de entrada
+
+2005-09-06  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp: Implementada la funcion inicializar en el parser,
+
+	* main.cpp:
+	Creado la interfaz del Menu; Implementadas las funciones de setInput y SetOutput,
+	Creada la funcion msgErr que saca errores a archivo de salida o a stdout.
+
+2005-09-05  Erik Giron  <kreig@localhost.localdomain>
+
+	* main.cpp:
+	Creada estructura inicial del programa, con los tipos de dato a usar, funciones setInput, setOutput, menu, aun en esqueleto.
+
+	* main.cpp: New file.
+

@@ -1,0 +1,5 @@
+base referer
+rect $structexpr.html 74,162 138,312
+rect $structoperacion.html 124,390 209,494
+rect $structconstante.html 8,8 88,98
+rect $structvariable.html 112,8 218,98

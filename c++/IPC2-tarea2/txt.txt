@@ -1,0 +1,3 @@
+Estudiante(115,'jun kwon','direccion',1151155,113154);
+Estudiante(200313492,'kreig iron','vvf5',24498561,15546);
+Catedratico(1515115,'sh ff','dir',1516);

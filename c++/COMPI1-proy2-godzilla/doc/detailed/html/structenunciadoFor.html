@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura enunciadoFor</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura enunciadoFor</h1><!-- doxytag: class="enunciadoFor" -->Clase de almacenamiento de enunciados for en el AST.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="ast_8h-source.html">ast.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para enunciadoFor:<p><center><img src="structenunciadoFor__coll__graph.png" border="0" usemap="#enunciadoFor__coll__map" alt="Collaboration graph"></center>
+<map name="enunciadoFor__coll__map">
+<area href="structsentencia.html" shape="rect" coords="210,573,312,781" alt="">
+<area href="structenunciadoIf.html" shape="rect" coords="350,859,444,963" alt="">
+<area href="structenunciadoWhile.html" shape="rect" coords="165,866,280,957" alt="">
+<area href="structdeclaracion.html" shape="rect" coords="8,403,112,494" alt="">
+<area href="structasignacion.html" shape="rect" coords="229,403,314,494" alt="">
+<area href="structexpr.html" shape="rect" coords="489,162,553,311" alt="">
+<area href="structoperacion.html" shape="rect" coords="514,397,600,501" alt="">
+<area href="structconstante.html" shape="rect" coords="422,7,502,98" alt="">
+<area href="structvariable.html" shape="rect" coords="526,7,633,98" alt="">
+<area href="structprintCall.html" shape="rect" coords="136,403,205,494" alt="">
+<area href="structtoken.html" shape="rect" coords="118,162,222,311" alt="">
+</map>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoFor.html#o0">indice</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Identificador indice que apunta a variable entera.  <a href="#o0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoFor.html#o1">asignacion</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Entero a asignar a variable.  <a href="#o1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoFor.html#o2">limite</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Entero limite del ciclo.  <a href="#o2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structenunciadoFor.html#o3">cuerpo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cuerpo de sentencias a evaluar.  <a href="#o3"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase de almacenamiento de enunciados for en el AST. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00197">197</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o1"></a><!-- doxytag: member="enunciadoFor::asignacion" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structenunciadoFor.html#o1">enunciadoFor::asignacion</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Entero a asignar a variable. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00199">199</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, y <a class="el" href="ast_8c-source.html#l00194">insertarCicloFor()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o3"></a><!-- doxytag: member="enunciadoFor::cuerpo" ref="o3" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a>* <a class="el" href="structenunciadoFor.html#o3">enunciadoFor::cuerpo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Cuerpo de sentencias a evaluar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00201">201</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l01017">borrarFor()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, y <a class="el" href="ast_8c-source.html#l00194">insertarCicloFor()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o0"></a><!-- doxytag: member="enunciadoFor::indice" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char* <a class="el" href="structenunciadoFor.html#o0">enunciadoFor::indice</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Identificador indice que apunta a variable entera. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00198">198</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l01017">borrarFor()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, y <a class="el" href="ast_8c-source.html#l00194">insertarCicloFor()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o2"></a><!-- doxytag: member="enunciadoFor::limite" ref="o2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structenunciadoFor.html#o2">enunciadoFor::limite</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Entero limite del ciclo. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00200">200</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, y <a class="el" href="ast_8c-source.html#l00194">insertarCicloFor()</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="ast_8h-source.html">ast.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:42 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

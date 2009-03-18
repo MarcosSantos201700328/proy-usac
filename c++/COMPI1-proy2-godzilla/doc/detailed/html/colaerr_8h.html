@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia del Archivo /media/docs/progra/c++/compiladores1/proy2/godzilla/src/colaerr.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>Referencia del Archivo colaerr.h</h1>Definiciones de la cola almacenadora de errores . <a href="#_details">Más...</a>
+<p>
+<code>#include &lt;stdio.h&gt;</code><br>
+<code>#include &lt;stdlib.h&gt;</code><br>
+<code>#include &lt;string.h&gt;</code><br>
+
+<p>
+Dependencia gráfica adjunta para colaerr.h:<p><center><img src="colaerr_8h__incl.png" border="0" usemap="#/media/docs/progra/c++/compiladores1/proy2/godzilla/src/colaerr.h_map" alt=""></center>
+
+<p>
+Este gráfico muestra que archivos directa o indirectamente incluyen a este archivo:<p><center><img src="colaerr_8h__dep__incl.png" border="0" usemap="#/media/docs/progra/c++/compiladores1/proy2/godzilla/src/colaerr.hdep_map" alt=""></center>
+<map name="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/colaerr.hdep_map">
+<area href="ast_8h.html" shape="rect" coords="482,8,877,32" alt="">
+<area href="godzilla_8h.html" shape="rect" coords="935,33,1357,57" alt="">
+<area href="colaerr_8c.html" shape="rect" coords="471,106,887,130" alt="">
+</map>
+
+<p>
+<a href="colaerr_8h-source.html">Ir al código fuente de este archivo.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Clases</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtipoError.html">tipoError</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clase de almacenamiento de error.  <a href="structtipoError.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnodoColaErr.html">nodoColaErr</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nodo de la cola de errores.  <a href="structnodoColaErr.html#_details">Más...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolaErr.html">colaErr</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cola de errores.  <a href="structcolaErr.html#_details">Más...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Tipos definidos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structnodoColaErr.html">nodoColaErr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a2">nodoColaErr</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structcolaErr.html">colaErr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a3">colaErr</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structtipoError.html">tipoError</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a4">tipoError</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Funciones</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a5">encolarError</a> (<a class="el" href="structcolaErr.html">colaErr</a> *cerr, <a class="el" href="structtipoError.html">tipoError</a> *err)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un error a la cola de errores.  <a href="#a5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structtipoError.html">tipoError</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a6">sacarError</a> (<a class="el" href="structcolaErr.html">colaErr</a> *cerr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega un error a la cola de errores.  <a href="#a6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a7">errorLexico</a> (char *msg)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Devuelve primer error en la cola de erroes.  <a href="#a7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a8">errorSintactico</a> (char *msg)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega mensaje a la cola de errores lexicos.  <a href="#a8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a9">errorSemantico</a> (char *msg, int numlinea)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega mensaje a la cola de errores sintacticos.  <a href="#a9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a10">escribirErrorLogXML</a> (const char *filename)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Agrega mensaje a la cola de errores semanticos.  <a href="#a10"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a0">line_num</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="colaerr_8h.html#a1">column</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Definiciones de la cola almacenadora de errores . 
+<p>
+
+<p>
+Definición en el archivo <a class="el" href="colaerr_8h-source.html">colaerr.h</a>.<hr><h2>Documentación de los tipos definidos</h2>
+<a class="anchor" name="a3"></a><!-- doxytag: member="colaerr.h::colaErr" ref="a3" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structcolaErr.html">colaErr</a> <a class="el" href="structcolaErr.html">colaErr</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8h-source.html#l00024">24</a> del archivo <a class="el" href="colaerr_8h-source.html">colaerr.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a2"></a><!-- doxytag: member="colaerr.h::nodoColaErr" ref="a2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structnodoColaErr.html">nodoColaErr</a> <a class="el" href="structnodoColaErr.html">nodoColaErr</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8h-source.html#l00023">23</a> del archivo <a class="el" href="colaerr_8h-source.html">colaerr.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a4"></a><!-- doxytag: member="colaerr.h::tipoError" ref="a4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef struct <a class="el" href="structtipoError.html">tipoError</a> <a class="el" href="structtipoError.html">tipoError</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8h-source.html#l00025">25</a> del archivo <a class="el" href="colaerr_8h-source.html">colaerr.h</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Documentación de las funciones</h2>
+<a class="anchor" name="a5"></a><!-- doxytag: member="colaerr.h::encolarError" ref="a5" args="(colaErr *cerr, tipoError *err)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void encolarError           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structcolaErr.html">colaErr</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>cerr</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="structtipoError.html">tipoError</a> *&nbsp;</td>
+          <td class="mdname" nowrap> <em>err</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un error a la cola de errores. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8c-source.html#l00024">24</a> del archivo <a class="el" href="colaerr_8c-source.html">colaerr.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8h-source.html#l00035">nodoColaErr::err</a>, <a class="el" href="colaerr_8h-source.html#l00040">colaErr::primero</a>, <a class="el" href="colaerr_8h-source.html#l00036">nodoColaErr::siguiente</a>, y <a class="el" href="colaerr_8h-source.html#l00041">colaErr::ultimo</a>.
+<p>
+Referenciado por <a class="el" href="colaerr_8c-source.html#l00053">errorLexico()</a>, <a class="el" href="colaerr_8c-source.html#l00074">errorSemantico()</a>, y <a class="el" href="colaerr_8c-source.html#l00063">errorSintactico()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a7"></a><!-- doxytag: member="colaerr.h::errorLexico" ref="a7" args="(char *msg)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void errorLexico           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>msg</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Devuelve primer error en la cola de erroes. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8c-source.html#l00053">53</a> del archivo <a class="el" href="colaerr_8c-source.html">colaerr.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8h-source.html#l00030">tipoError::col</a>, <a class="el" href="colaerr_8h.html#a1">column</a>, <a class="el" href="colaerr_8h-source.html#l00031">tipoError::desc</a>, <a class="el" href="colaerr_8c-source.html#l00024">encolarError()</a>, <a class="el" href="colaerr_8c-source.html#l00022">huboErrorLexico</a>, <a class="el" href="colaerr_8h.html#a0">line_num</a>, y <a class="el" href="colaerr_8h-source.html#l00029">tipoError::linea</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a9"></a><!-- doxytag: member="colaerr.h::errorSemantico" ref="a9" args="(char *msg, int numlinea)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void errorSemantico           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>numlinea</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega mensaje a la cola de errores sintacticos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8c-source.html#l00074">74</a> del archivo <a class="el" href="colaerr_8c-source.html">colaerr.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8h-source.html#l00030">tipoError::col</a>, <a class="el" href="colaerr_8h-source.html#l00031">tipoError::desc</a>, <a class="el" href="colaerr_8c-source.html#l00024">encolarError()</a>, <a class="el" href="colaerr_8c-source.html#l00021">huboErrorSemantico</a>, y <a class="el" href="colaerr_8h-source.html#l00029">tipoError::linea</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00280">error()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a8"></a><!-- doxytag: member="colaerr.h::errorSintactico" ref="a8" args="(char *msg)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void errorSintactico           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>msg</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega mensaje a la cola de errores lexicos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8c-source.html#l00063">63</a> del archivo <a class="el" href="colaerr_8c-source.html">colaerr.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8h-source.html#l00030">tipoError::col</a>, <a class="el" href="colaerr_8h.html#a1">column</a>, <a class="el" href="colaerr_8h-source.html#l00031">tipoError::desc</a>, <a class="el" href="colaerr_8c-source.html#l00024">encolarError()</a>, <a class="el" href="colaerr_8c-source.html#l00020">huboErrorSintactico</a>, <a class="el" href="colaerr_8h.html#a0">line_num</a>, y <a class="el" href="colaerr_8h-source.html#l00029">tipoError::linea</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a10"></a><!-- doxytag: member="colaerr.h::escribirErrorLogXML" ref="a10" args="(const char *filename)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int escribirErrorLogXML           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const char *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>filename</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega mensaje a la cola de errores semanticos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8c-source.html#l00084">84</a> del archivo <a class="el" href="colaerr_8c-source.html">colaerr.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8h-source.html#l00030">tipoError::col</a>, <a class="el" href="colaerr_8h-source.html#l00031">tipoError::desc</a>, <a class="el" href="colaerr_8c-source.html#l00017">errfile</a>, <a class="el" href="colaerr_8h-source.html#l00029">tipoError::linea</a>, <a class="el" href="colaerr_8h-source.html#l00040">colaErr::primero</a>, y <a class="el" href="colaerr_8c-source.html#l00036">sacarError()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a6"></a><!-- doxytag: member="colaerr.h::sacarError" ref="a6" args="(colaErr *cerr)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structtipoError.html">tipoError</a>* sacarError           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="structcolaErr.html">colaErr</a> *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>cerr</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Agrega un error a la cola de errores. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="colaerr_8c-source.html#l00036">36</a> del archivo <a class="el" href="colaerr_8c-source.html">colaerr.c</a>.
+<p>
+Hace referencia a <a class="el" href="colaerr_8h-source.html#l00035">nodoColaErr::err</a>, <a class="el" href="colaerr_8h-source.html#l00040">colaErr::primero</a>, <a class="el" href="colaerr_8h-source.html#l00036">nodoColaErr::siguiente</a>, y <a class="el" href="colaerr_8h-source.html#l00041">colaErr::ultimo</a>.
+<p>
+Referenciado por <a class="el" href="colaerr_8c-source.html#l00084">escribirErrorLogXML()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Documentación de las variables</h2>
+<a class="anchor" name="a1"></a><!-- doxytag: member="colaerr.h::column" ref="a1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="colaerr_8h.html#a1">column</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Referenciado por <a class="el" href="colaerr_8c-source.html#l00053">errorLexico()</a>, y <a class="el" href="colaerr_8c-source.html#l00063">errorSintactico()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a0"></a><!-- doxytag: member="colaerr.h::line_num" ref="a0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="colaerr_8h.html#a0">line_num</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Referenciado por <a class="el" href="colaerr_8c-source.html#l00053">errorLexico()</a>, y <a class="el" href="colaerr_8c-source.html#l00063">errorSintactico()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:15 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Comando:crear_torneo('m-2003','Mundial Corea-Japon 2003','s',0,2.f);
+parametro erroneo: 2.f
+Comentario: Componer para que no lea ningun caracter despues del punto
+----------------------------------------------------------------------
+

@@ -1,0 +1,377 @@
+(<) Cadena leida: "esta" 
+(>) Resultado operacion unaria:
+	"esta"
+(*) Concatenacion 2 veces
+(>) Resultado operacion binaria:
+	"estaesta"
+(<) Cadena leida: "es una prueba de concate" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estaestaes una prueba de concate"
+(<) Cadena leida: "nacion" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estaestaes una prueba de concatenacion"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "estaestaes una prueba de concatenacion"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "el " 
+(<) Cadena leida: "archivo " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo "
+(<) Cadena leida: "de " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de "
+(<) Cadena leida: "prueba " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba "
+(<) Cadena leida: "va " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba va "
+(<) Cadena leida: "hacer " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba va hacer "
+(<) Cadena leida: "mas " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba va hacer mas "
+(<) Cadena leida: "o " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba va hacer mas o "
+(<) Cadena leida: "menos " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba va hacer mas o menos "
+(<) Cadena leida: "asi" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"el archivo de prueba va hacer mas o menos asi"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "el archivo de prueba va hacer mas o menos asi"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "primer" 
+(<) Cadena leida: "proyecto" 
+(*) Rotacion a la derecha 2 caracteres
+(>) Resultado operacion binaria:
+	"toproyec"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"primertoproyec"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "primertoproyec"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "las" 
+(<) Cadena leida: "diferencias" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferencias"
+(<) Cadena leida: "entre" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentre"
+(<) Cadena leida: "este" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreeste"
+(<) Cadena leida: "archivo" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivo"
+(<) Cadena leida: "y" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivoy"
+(<) Cadena leida: "el" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivoyel"
+(<) Cadena leida: "de" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivoyelde"
+(<) Cadena leida: "entrada" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivoyeldeentrada"
+(<) Cadena leida: "podrian" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivoyeldeentradapodrian"
+(<) Cadena leida: "ser" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"lasdiferenciasentreestearchivoyeldeentradapodrianser"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "lasdiferenciasentreestearchivoyeldeentradapodrianser"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "A" 
+(<) Cadena leida: "mucho" 
+(<) Cadena leida: "mas" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"muchomas"
+(<) Cadena leida: "grande" 
+(*) Concatenacion 2 veces
+(>) Resultado operacion binaria:
+	"grandegrande"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"muchomasgrandegrande"
+(>) Resultado operacion unaria:
+	"muchomasgrandegrande"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"Amuchomasgrandegrande"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "Amuchomasgrandegrande"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "B	errores" 
+(<) Cadena leida: "como" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"B	errorescomo"
+(<) Cadena leida: "este" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"B	errorescomoeste"
+(<) Cadena leida: "sin" 
+(<) Cadena leida: "operador" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"sinoperador"
+(<) Cadena leida: "entre" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"sinoperadorentre"
+(<) Cadena leida: "esta" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"sinoperadorentreesta"
+(<) Cadena leida: "operacion" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"sinoperadorentreestaoperacion"
+(>) Resultado operacion unaria:
+	"sinoperadorentreestaoperacion"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"B	errorescomoestesinoperadorentreestaoperacion"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "B	errorescomoestesinoperadorentreestaoperacion"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "C	entrada" 
+(<) Cadena leida: "es una prueba" 
+(>) Resultado operacion unaria:
+	"es una prueba"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"C	entradaes una prueba"
+(<) Cadena leida: "salida" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"C	entradaes una pruebasalida"
+(<) Cadena leida: "es una prueba" 
+(>) Resultado operacion unaria:
+	"es una prueba"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"C	entradaes una pruebasalidaes una prueba"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "C	entradaes una pruebasalidaes una prueba"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "esto" 
+(<) Cadena leida: "quiere" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquiere"
+(<) Cadena leida: "decir" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecir"
+(<) Cadena leida: "que" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirque"
+(<) Cadena leida: "si" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesi"
+(<) Cadena leida: "una" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiuna"
+(<) Cadena leida: "cadena" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadena"
+(<) Cadena leida: "tiene" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadenatiene"
+(<) Cadena leida: "espacios" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadenatieneespacios"
+(<) Cadena leida: "tiene" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadenatieneespaciostiene"
+(<) Cadena leida: "que" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadenatieneespaciostieneque"
+(<) Cadena leida: "salir" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadenatieneespaciostienequesalir"
+(<) Cadena leida: "asi" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"estoquieredecirquesiunacadenatieneespaciostienequesalirasi"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "estoquieredecirquesiunacadenatieneespaciostienequesalirasi"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "D" 
+(<) Cadena leida: "otro" 
+(>) Resultado operacion unaria:
+	"otro"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"Dotro"
+(<) Cadena leida: "tipo" 
+(<) Cadena leida: "de" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"tipode"
+(>) Resultado operacion unaria:
+	"tipode"
+(<) Cadena leida: "error" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"tipodeerror"
+(>) Resultado operacion unaria:
+	"tipodeerror"
+(*) Concatenacion 2 veces
+(>) Resultado operacion binaria:
+	"tipodeerrortipodeerror"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"Dotrotipodeerrortipodeerror"
+(<) Cadena leida: "abcdefg" 
+(>) Resultado operacion unaria:
+	"gabcdef"
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"Dotrotipodeerrortipodeerrorgabcdef"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "Dotrotipodeerrortipodeerrorgabcdef"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "E	fijense " 
+(<) Cadena leida: "que " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"E	fijense que "
+(<) Cadena leida: "los " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"E	fijense que los "
+(<) Cadena leida: "parentesis " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"E	fijense que los parentesis "
+(<) Cadena leida: "son " 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"E	fijense que los parentesis son "
+(<) Cadena leida: "anidados" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"E	fijense que los parentesis son anidados"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "E	fijense que los parentesis son anidados"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "F	si" 
+(<) Cadena leida: "pueden" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipueden"
+(<) Cadena leida: "cada" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencada"
+(<) Cadena leida: "operacion" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencadaoperacion"
+(<) Cadena leida: "coloquenla" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencadaoperacioncoloquenla"
+(<) Cadena leida: "en" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencadaoperacioncoloquenlaen"
+(<) Cadena leida: "una" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencadaoperacioncoloquenlaenuna"
+(<) Cadena leida: "sola" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencadaoperacioncoloquenlaenunasola"
+(<) Cadena leida: "linea" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"F	sipuedencadaoperacioncoloquenlaenunasolalinea"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "F	sipuedencadaoperacioncoloquenlaenunasolalinea"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "bueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facil" 
+(>) Resultado operacion unaria:
+	"bueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facil"
+(*) Concatenacion 2 veces
+(>) Resultado operacion binaria:
+	"bueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facilbueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facil"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "bueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facilbueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facil"
+Instruccion finalizada. 
+================================================================================
+
+(<) Cadena leida: "por cier " 
+(<) Cadena leida: "to tambien pueden venir errores lexicos" 
+(*) Concatenacion
+(>) Resultado operacion binaria:
+	"por cier to tambien pueden venir errores lexicos"
+(->) RESULTADO DE OPERACIONES HASTA FINAL DE SENTENCIA:
+		 "por cier to tambien pueden venir errores lexicos"
+Instruccion finalizada. 
+================================================================================
+

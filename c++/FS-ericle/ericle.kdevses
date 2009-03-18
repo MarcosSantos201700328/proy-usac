@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE KDevPrjSession>
+<KDevPrjSession>
+ <DocsAndViews NumberOfDocuments="3" >
+  <Doc0 NumberOfViews="1" URL="file:///home/kreig/projects/fs/ericle/src/ericlemainwindow.cpp" >
+   <View0 line="211" Type="Source" />
+  </Doc0>
+  <Doc1 NumberOfViews="1" URL="file:///home/kreig/projects/fs/ericle/src/ericlemainwindow.h" >
+   <View0 line="35" Type="Source" />
+  </Doc1>
+  <Doc2 NumberOfViews="1" URL="file:///home/kreig/projects/fs/ericle/src/logger.c" >
+   <View0 line="17" Type="Source" />
+  </Doc2>
+ </DocsAndViews>
+ <pluginList>
+  <kdevdebugger>
+   <breakpointList>
+    <breakpoint0 location="/home/kreig/projects/fs/ericle/src/ericleresultsetwidget.cpp:57" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
+     <tracedExpressions/>
+    </breakpoint0>
+    <breakpoint1 location="/home/kreig/projects/fs/ericle/src/database.cpp:57" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
+     <tracedExpressions/>
+    </breakpoint1>
+    <breakpoint2 location="/home/kreig/projects/fs/ericle/src/database.cpp:171" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
+     <tracedExpressions/>
+    </breakpoint2>
+    <breakpoint3 location="/home/kreig/projects/fs/ericle/src/database.cpp:462" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
+     <tracedExpressions/>
+    </breakpoint3>
+    <breakpoint4 location="/home/kreig/projects/fs/ericle/src/ericlemainwindow.cpp:107" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
+     <tracedExpressions/>
+    </breakpoint4>
+   </breakpointList>
+  </kdevdebugger>
+  <kdevbookmarks>
+   <bookmarks>
+    <bookmark url="/home/kreig/projects/fs/ericle/src/database.cpp" >
+     <mark line="41" />
+    </bookmark>
+   </bookmarks>
+  </kdevbookmarks>
+  <kdevvalgrind>
+   <executable path="" params="" />
+   <valgrind path="" params="" />
+   <calltree path="" params="" />
+   <kcachegrind path="" />
+  </kdevvalgrind>
+ </pluginList>
+</KDevPrjSession>

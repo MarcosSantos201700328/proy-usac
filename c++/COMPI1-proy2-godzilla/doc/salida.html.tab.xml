@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<symbols>
+	<symtab at="14">
+	</symtab>
+	<symtab at="46">
+		<symbol entry="1">
+			<identificador>i</identificador>
+			<tipo> ENTERO </tipo>
+			<valor> 7 </valor>
+		</symbol>
+		<symbol entry="2">
+			<identificador>j</identificador>
+			<tipo> BOOLEANO </tipo>
+			<valor>TRUE </valor>
+		</symbol>
+		<symbol entry="3">
+			<identificador>k</identificador>
+			<tipo> CADENA </tipo>
+			<valor> <b>then</b> </valor>
+		</symbol>
+		<symbol entry="4">
+			<identificador>l</identificador>
+			<tipo> ENTERO </tipo>
+			<valor> 0 </valor>
+		</symbol>
+	</symtab>
+	<symtab at="57">
+		<symbol entry="1">
+			<identificador>i</identificador>
+			<tipo> ENTERO </tipo>
+			<valor> 11 </valor>
+		</symbol>
+		<symbol entry="2">
+			<identificador>j</identificador>
+			<tipo> BOOLEANO </tipo>
+			<valor>TRUE </valor>
+		</symbol>
+		<symbol entry="3">
+			<identificador>k</identificador>
+			<tipo> CADENA </tipo>
+			<valor> texto </valor>
+		</symbol>
+		<symbol entry="4">
+			<identificador>l</identificador>
+			<tipo> ENTERO </tipo>
+			<valor> 0 </valor>
+		</symbol>
+	</symtab>
+</symbols>

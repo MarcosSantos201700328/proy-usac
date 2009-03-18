@@ -1,0 +1,23 @@
+;; Object practica1/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "practica1/"
+  :tables (list 
+   (semanticdb-table "practica1.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include (:system-flag t) nil [1 19]) ("stdlib.h" include (:system-flag t) nil [20 39]) ("string.h" include (:system-flag t) nil [40 59]) ("ext2fs/ext2fs.h" include (:system-flag t) nil [60 86]) ("fs" variable (:default-value "NULL;" :type ("ext2_filsys" type (:type "class") nil nil)) nil [184 206]) ("dir" variable (:type ("ext2_ino_t" type (:type "class") nil nil)) nil [207 226]) ("cwd" variable (:type ("ext2_ino_t" type (:type "class") nil nil)) nil [207 226]) ("ismounted" function (:arguments (("devpath" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [387 407])) :type "int") nil [373 958]) ("buscarArchivo" function (:arguments (("devpath" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [1881 1901]) ("filename" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [1902 1923])) :type "int") nil [1863 2481]) ("main" function (:arguments (("argc" variable (:type "int") (reparse-symbol arg-sub-list) [2503 2512]) ("argv" variable (:pointer 1 :dereference 1 :type "char") (reparse-symbol arg-sub-list) [2513 2526])) :type "int") nil [2494 3419]))
+    :file "practica1.c"
+    :pointmax 3421
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-mode
+    :tags '(("AUTOMAKE_OPTIONS" variable (:default-value ("1.4")) nil [20 43]) ("bin_PROGRAMS" variable (:default-value ("practica1")) nil [58 83]) ("practica1_CFLAGS" variable (:default-value ("-Wall" "-ggdb" "-lext2fs")) nil [83 123]) ("practica1_SOURCES" variable (:default-value ("practica1.c")) nil [123 155]) ("INCLUDES" variable (:default-value ("$(all_includes)")) nil [155 182]) ("practica1_LDFLAGS" variable (:default-value ("$(all_libraries)")) nil [182 219]) ("CFLAGS" variable (:default-value ("$(practica1_CFLAGS)")) nil [219 248]))
+    :file "Makefile.am"
+    :pointmax 248
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

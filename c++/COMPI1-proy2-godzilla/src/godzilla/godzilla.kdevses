@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE KDevPrjSession>
+<KDevPrjSession>
+ <DocsAndViews NumberOfDocuments="3" >
+  <Doc0 NumberOfViews="1" URL="file:///media/docs/progra/c%2B%2B/compiladores1/proy2/godzilla/src/godzilla.cpp" >
+   <View0 line="0" Type="Source" />
+  </Doc0>
+  <Doc1 NumberOfViews="1" URL="file:///media/docs/progra/c%2B%2B/compiladores1/proy2/godzilla/src/embed.y" >
+   <View0 line="276" Type="Source" />
+  </Doc1>
+  <Doc2 NumberOfViews="1" URL="file:///media/docs/progra/c%2B%2B/compiladores1/proy2/godzilla/src/ast.c" >
+   <View0 line="95" Type="Source" />
+  </Doc2>
+ </DocsAndViews>
+ <pluginList>
+  <kdevdebugger>
+   <breakpointList/>
+  </kdevdebugger>
+  <kdevbookmarks>
+   <bookmarks>
+    <bookmark url="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/godzilla.cpp" >
+     <mark line="223" />
+    </bookmark>
+    <bookmark url="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/browser.cpp" >
+     <mark line="46" />
+    </bookmark>
+    <bookmark url="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/ast.c" >
+     <mark line="904" />
+    </bookmark>
+    <bookmark url="/media/docs/progra/c++/compiladores1/proy2/godzilla/src/embed.y" >
+     <mark line="260" />
+    </bookmark>
+   </bookmarks>
+  </kdevbookmarks>
+  <kdevrbdebugger>
+   <breakpointList/>
+   <watchExpressions/>
+  </kdevrbdebugger>
+  <kdevvalgrind>
+   <executable path="" params="" />
+   <valgrind path="" params="" />
+   <calltree path="" params="" />
+   <kcachegrind path="" />
+  </kdevvalgrind>
+ </pluginList>
+</KDevPrjSession>

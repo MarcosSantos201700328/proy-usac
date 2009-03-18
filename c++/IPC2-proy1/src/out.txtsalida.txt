@@ -1,0 +1,131 @@
+		Reporte General
+
+Instruccion inicializiar en linea No. 1 
+
+Linea#3
+Se Creo la confederacion FEDERACION EUROPEA DE FOOT BALL  con factor nivel de 1.000000 
+Linea#4
+Se Creo la confederacion CONFEDERACION SURAMERICANA  con factor nivel de 0.950000 
+Linea#5
+Se Creo la confederacion CONFEDERACION DE ASIA  con factor nivel de 0.800000 
+Linea#6
+Se Creo la confederacion CONFE . NORTE Y CENTROAMERICANA  con factor nivel de 0.900000 
+Linea#8
+Se Actualizo la confederacion CONFEDERACION DE ASIA  con factor nivel de 0.750000 
+Linea#10
+Se Creo la seleccion ALEMANIA  y se asigno a la UEFA 
+Aviso: Se esperaba otro tipo de lexema, esta instruccion sera ignorada
+Aviso: Se encontraron 1 o mas errores, la instruccion actual sera ignorada
+Linea#12
+Se Creo la seleccion ESPANIA  y se asigno a la UEFA 
+Linea#13
+Se Creo la seleccion HOLANDA  y se asigno a la UEFA 
+Linea#14
+Se Creo la seleccion FRANCIA  y se asigno a la UEFA 
+Linea#15
+Se Creo la seleccion INGLATERRA  y se asigno a la UEFA 
+Linea#16
+Se Creo la seleccion TURQUIA  y se asigno a la UEFA 
+Linea#17
+Se Creo la seleccion ITALIA  y se asigno a la UEFA 
+Linea#18
+Se Creo la seleccion JAPON  y se asigno a la ASIA 
+Linea#19
+Se Creo la seleccion KOREA  y se asigno a la ASIA 
+Linea#20
+Se Actualizo la seleccion KOREA DEL SUR  y se asigno a la ASIA 
+Linea#21
+,Imposible crear seleccion AUSTRALIA , no existe confederacion OCEANIA 
+Linea#22
+Se Creo la seleccion GUATEMALA  y se asigno a la CONCACAF 
+Linea#23
+Se Creo la seleccion MEXICO  y se asigno a la CONCACAF 
+Linea#24
+Se Creo la seleccion USA  y se asigno a la CONCACAF 
+Linea#25
+Se Creo la seleccion HONDURAS  y se asigno a la CONCACAF 
+Linea#26
+Se Creo la seleccion CANADA  y se asigno a la CONCACAF 
+Aviso: Se esperaba otro tipo de lexema, esta instruccion sera ignorada
+Aviso: Se encontraron 1 o mas errores, la instruccion actual sera ignorada
+Linea#28
+Se Creo la seleccion BRASIL  y se asigno a la CONMEBOL 
+Linea#29
+Se Creo la seleccion ARGENTINA  y se asigno a la CONMEBOL 
+Linea#32
+Se Creo el torneo MUNDIAL DE ALEMANIA (M-2006), la bonificacion para visitantes es 0 
+Linea#33
+Se Creo el torneo ELIMINATORIA ALEMANIA (E-2006), la bonificacion para visitantes es 3 
+Linea#34
+Se Creo el torneo COPA CONFEDERACIONES (C-2005), la bonificacion para visitantes es 2 
+Linea#35
+Se Creo el torneo COPA PEPSI 2005 (PEPSI), la bonificacion para visitantes es 0 
+Linea#36
+Se Actualizo el torneo COPA PEPSI 2005 (PEPSI), la bonificacion para visitantes es 0 
+Linea#38
+Torneo = C-2005, Juego 1 de Enero, 2005, BRA - 3, ARG - 2, en 90 Minutos. Puntos de Clasificacion obtenidos: BRA : 39, ARG : -1
+Linea#39
+Torneo = C-2005, Juego 2 de Enero, 2005, JAP - 0, ALE - 2, en 90 Minutos. Puntos de Clasificacion obtenidos: JAP : -6, ALE : 48
+Linea#40
+Torneo = C-2005, Juego 3 de Enero, 2005, GUA - 1, MEX - 1, en 90 Minutos. Puntos de Clasificacion obtenidos: GUA : 11, MEX : 14
+Linea#41
+Torneo = C-2005, Juego 4 de Enero, 2005, ALE - 1, BRA - 3, en 90 Minutos. Puntos de Clasificacion obtenidos: ALE : 0, BRA : 45
+Linea#42
+Torneo = C-2005, Juego 5 de Enero, 2005, JAP - 0, GUA - 0, en 120 Minutos. Puntos de Clasificacion obtenidos: JAP : 9, GUA : 36
+Linea#43
+Torneo = C-2005, Juego 6 de Enero, 2005, MEX - 1, ARG - 2, en 90 Minutos. Puntos de Clasificacion obtenidos: MEX : 0, ARG : 42
+Linea#44
+Torneo = C-2005, Juego 7 de Enero, 2005, ALE - 2, ARG - 2, en 90 Minutos. Puntos de Clasificacion obtenidos: ALE : 13, ARG : 14
+PUNTOS ACUMULADOS DE Diciembre 2004 a Diciembre 2005 
+
+
+
+SELECCION		CONFEDERACION			PUNTOS ACUMULADOS
+
+BRA		CONMEBOL			78.000000
+ARG		CONMEBOL			100.000000
+JAP		ASIA			2.000000
+ALE		UEFA			205.000000
+GUA		CONCACAF			22.000000
+MEX		CONCACAF			28.000000
+Linea#44
+Torneo = C-2005, Juego 7 de Enero, 2005, ALE - 2, ARG - 2, en 90 Minutos. Puntos de Clasificacion obtenidos: ALE : 13, ARG : 14
+Linea#47
+En el A~no 2005 el mejor equipo fue ARGENTINA  con un punteo de 30.
+Linea#48
+En el a~no 2005 el equipo con mejor desempeno fue BRASIL  que genero 7056 puntos
+Linea#49
+Clasificacion Fifa/CocaCola a Enero de 2005
+Seleccion	Puntos Acumulados	Incr.Decr resp Enero de 2005
+KOREA DEL SUR 		0			0
+
+ITALIA 		0			0
+
+USA 		0			0
+
+CANADA 		0			0
+
+HONDURAS 		0			0
+
+TURQUIA 		0			0
+
+HOLANDA 		0			0
+
+ESPANIA 		0			0
+
+FRANCIA 		0			0
+
+INGLATERRA 		0			0
+
+JAPON 		10			0
+
+MEXICO 		14			0
+
+BRASIL 		45			0
+
+GUATEMALA 		47			0
+
+ARGENTINA 		56			0
+
+ARGENTINA 		56			0
+

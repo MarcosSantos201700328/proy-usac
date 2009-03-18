@@ -1,0 +1,58 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>Fantasma</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>Fantasma</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>46</x>
+            <y>23</y>
+            <width>32</width>
+            <height>32</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>32</horstretch>
+            <verstretch>32</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>32</width>
+            <height>32</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Fantasma</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>lblFantasma</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>32</width>
+                <height>32</height>
+            </rect>
+        </property>
+        <property name="pixmap">
+            <pixmap>image0</pixmap>
+        </property>
+        <property name="scaledContents">
+            <bool>true</bool>
+        </property>
+    </widget>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="312">89504e470d0a1a0a0000000d49484452000000200000001e08060000004d0a1c29000000ff494441544889ed96310ec2300c455dc4d02330f6283e06638ed2a364ec317c14c61ea11b0cf5af8885491048cec05fbe1c7da9f1abdb6420a23b05ea14f97022a2732d90d47954afe405beed9e2bf9700203393390bd8ee7b1ac6d4090db8a326daf37d01f01b7732b4bc2cdbd27114ee0f80a923aab4b5ef69af9394f22b2afa76bb9eee5a7328fe764f57002c70cd8778f8e20db194d97a26ccd8b9698857e094c665a6feb5a2e1802ad79d1b21b02ff0db8a7615e2aff812ff350bf0448ff5cb3996ef68e00275f3b32fa25c0f0c643cfcd038145a30a27f0df40f5560c893a7f9a73de3dd43f0181a311e7ced89ab30a27e0de8a21ef3effab5c388107f65357d701ebb61e0000000049454e44ae426082</data>
+    </image>
+</images>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

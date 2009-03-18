@@ -1,0 +1,61 @@
+<html>
+<head>
+</head>
+<body>
+<%
+var i: integer;
+var j: boolean;
+var k: string;
+var l: integer;
+k:='a1';
+print(k);
+k:= 'a'+'b'+'c'+'<br>'+'1';
+print(k);
+vertablasimbolos();
+
+for i:= 1 to 5
+	begin
+		print('<font size = "',i,'"> Letra Tamano ',i,'</font><br>');
+		print('<br>',i,'<br>');
+		j:= true;
+	end;
+
+while i<4
+	begin
+		j := false;
+		i := i + 1;
+	end;
+
+if l >= 0 then
+	begin			
+		k:= '<b>then</b>';
+		i := i + 1;
+		print (k,'<blink> esto en then </blink>');
+	end;
+else
+	begin
+		k:= 'sentencia else';
+		i := i-1;
+		print (k);
+	end;
+
+%>
+<hr>
+
+<%
+vertablasimbolos();
+print('<ol type="1"><b><u>Listado ordenado de elementos</u></b>');
+for i:=1 to 10
+	print('<li><i><font color="blue"> elemento no </font>',i,'</i></li><br>');	
+print('</ol>');
+k:= 'texto';
+%>
+
+<hr>
+<%
+print('<b>fin</b> ',k);
+vertablasimbolos();
+%>
+
+</body>
+</html>

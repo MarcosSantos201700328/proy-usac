@@ -1,0 +1,12 @@
+base referer
+rect $structenunciadoIf.html 545,853 638,957
+rect $structenunciadoWhile.html 131,859 246,950
+rect $structenunciadoFor.html 351,845 453,965
+rect $structdeclaracion.html 231,397 335,487
+rect $structasignacion.html 359,397 445,487
+rect $structexpr.html 113,162 177,311
+rect $structoperacion.html 7,390 93,494
+rect $structconstante.html 46,7 126,98
+rect $structvariable.html 150,7 257,98
+rect $structprintCall.html 709,397 778,487
+rect $structtoken.html 691,162 795,311

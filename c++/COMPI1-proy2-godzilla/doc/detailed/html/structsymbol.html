@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura symbol</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura symbol</h1><!-- doxytag: class="symbol" -->Nodo de la tabla de simbolos.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="symtab_8h-source.html">symtab.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para symbol:<p><center><img src="structsymbol__coll__graph.png" border="0" usemap="#symbol__coll__map" alt="Collaboration graph"></center>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbol.html#o0">id</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbol.html#o1">tipo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>union {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;char *&nbsp;&nbsp;&nbsp;<a class="el" href="structsymbol.html#o2">valorCadena</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structsymbol.html#o3">valorEntero</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;&nbsp;<a class="el" href="structsymbol.html#o4">valorBoolean</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbol.html#o5">valor</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsymbol.html">symbol</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsymbol.html#o6">siguiente</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Nodo de la tabla de simbolos. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00013">13</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o0"></a><!-- doxytag: member="symbol::id" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char* <a class="el" href="structsymbol.html#o0">symbol::id</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00014">14</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.
+<p>
+Referenciado por <a class="el" href="symtab_8c-source.html#l00074">borrarNodos()</a>, <a class="el" href="symtab_8c-source.html#l00023">insertarSimbolo()</a>, y <a class="el" href="symtab_8c-source.html#l00122">printSymtabFile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o6"></a><!-- doxytag: member="symbol::siguiente" ref="o6" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsymbol.html">symbol</a>* <a class="el" href="structsymbol.html#o6">symbol::siguiente</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00021">21</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.
+<p>
+Referenciado por <a class="el" href="symtab_8c-source.html#l00074">borrarNodos()</a>, <a class="el" href="symtab_8c-source.html#l00060">buscarSimbolo()</a>, <a class="el" href="symtab_8c-source.html#l00023">insertarSimbolo()</a>, y <a class="el" href="symtab_8c-source.html#l00122">printSymtabFile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o1"></a><!-- doxytag: member="symbol::tipo" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structsymbol.html#o1">symbol::tipo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00015">15</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.
+<p>
+Referenciado por <a class="el" href="symtab_8c-source.html#l00074">borrarNodos()</a>, <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, <a class="el" href="symtab_8c-source.html#l00023">insertarSimbolo()</a>, y <a class="el" href="symtab_8c-source.html#l00122">printSymtabFile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o5"></a><!-- doxytag: member="symbol::valor" ref="o5" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">union { ... }  <a class="el" href="structsymbol.html#o5">symbol::valor</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Referenciado por <a class="el" href="symtab_8c-source.html#l00074">borrarNodos()</a>, <a class="el" href="ast_8c-source.html#l00359">evaluarAsignacion()</a>, <a class="el" href="ast_8c-source.html#l00391">evaluarExpresion()</a>, <a class="el" href="ast_8c-source.html#l00807">evaluarFor()</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, <a class="el" href="symtab_8c-source.html#l00023">insertarSimbolo()</a>, y <a class="el" href="symtab_8c-source.html#l00122">printSymtabFile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o4"></a><!-- doxytag: member="symbol::valorBoolean" ref="o4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char <a class="el" href="structsymbol.html#o4">symbol::valorBoolean</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00019">19</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o2"></a><!-- doxytag: member="symbol::valorCadena" ref="o2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char* <a class="el" href="structsymbol.html#o2">symbol::valorCadena</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00017">17</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o3"></a><!-- doxytag: member="symbol::valorEntero" ref="o3" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structsymbol.html#o3">symbol::valorEntero</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="symtab_8h-source.html#l00018">18</a> del archivo <a class="el" href="symtab_8h-source.html">symtab.h</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="symtab_8h-source.html">symtab.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:40:13 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

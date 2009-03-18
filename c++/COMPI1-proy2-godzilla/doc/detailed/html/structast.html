@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura ast</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura ast</h1><!-- doxytag: class="ast" -->Estructura del arbol abstracto de sintaxis (AST), basico para poder evaluar construcciones iterativas del lenguaje.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="ast_8h-source.html">ast.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para ast:<p><center><img src="structast__coll__graph.png" border="0" usemap="#ast__coll__map" alt="Collaboration graph"></center>
+<map name="ast__coll__map">
+<area href="structraiz.html" shape="rect" coords="477,684,530,758" alt="">
+<area href="structsentencia.html" shape="rect" coords="338,376,439,584" alt="">
+<area href="structenunciadoIf.html" shape="rect" coords="599,669,693,773" alt="">
+<area href="structenunciadoWhile.html" shape="rect" coords="118,676,233,766" alt="">
+<area href="structenunciadoFor.html" shape="rect" coords="323,661,425,781" alt="">
+<area href="structdeclaracion.html" shape="rect" coords="278,221,382,312" alt="">
+<area href="structasignacion.html" shape="rect" coords="406,221,491,312" alt="">
+<area href="structexpr.html" shape="rect" coords="417,8,481,157" alt="">
+<area href="structprintCall.html" shape="rect" coords="25,221,94,312" alt="">
+<area href="structtoken.html" shape="rect" coords="7,8,111,157" alt="">
+</map>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structraiz.html">raiz</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structast.html#o0">root</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">apuntador a raiz  <a href="#o0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structast.html#o1">actual</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">puntero auzliiar  <a href="#o1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structast.html#o2">tipoActual</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">tipo del nodo actual  <a href="#o2"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Estructura del arbol abstracto de sintaxis (AST), basico para poder evaluar construcciones iterativas del lenguaje. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00268">268</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o1"></a><!-- doxytag: member="ast::actual" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void* <a class="el" href="structast.html#o1">ast::actual</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+puntero auzliiar 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00270">270</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00897">borrarArbol()</a>, y <a class="el" href="ast_8c-source.html#l00263">crearRaiz()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o0"></a><!-- doxytag: member="ast::root" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structraiz.html">raiz</a>* <a class="el" href="structast.html#o0">ast::root</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+apuntador a raiz 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00269">269</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00897">borrarArbol()</a>, <a class="el" href="ast_8c-source.html#l00263">crearRaiz()</a>, y <a class="el" href="ast_8c-source.html#l00294">recorrerArbol()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o2"></a><!-- doxytag: member="ast::tipoActual" ref="o2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structast.html#o2">ast::tipoActual</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+tipo del nodo actual 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00271">271</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00897">borrarArbol()</a>, y <a class="el" href="ast_8c-source.html#l00263">crearRaiz()</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="ast_8h-source.html">ast.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:31 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

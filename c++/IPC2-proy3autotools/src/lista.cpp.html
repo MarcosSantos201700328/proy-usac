@@ -1,0 +1,245 @@
+
+<html>
+<head>
+<title>lista.cpp</title>
+<meta name="generator" content="c2html 0.9.5">
+<meta name="date" content="2005-11-25T03:14:44+00:00">
+</head>
+
+<body bgcolor="#FFFFFF">
+<pre width="80"><font color="#A020F0">#ifndef LISTA_CPP</font>
+<strong><font color="#228B22">#define LISTA_CPP</font></strong>
+<font color="#A020F0">#ifdef bc</font>
+
+<font color="#A020F0">#endif</font>
+
+<strong><font color="#228B22">#define ASCENDENTE 1</font></strong>
+<strong><font color="#228B22">#define DESCENDENTE 0</font></strong>
+template&lt;class DATO&gt;
+class Lista {
+<strong><font color="#FF0000">  private:</font></strong>
+   //// Clase local de Lista para Nodo de Lista:
+<font color="#A020F0">   #ifndef bc</font>
+   template &lt;class DATON&gt;
+   class Nodo {
+<strong><font color="#FF0000">         public:</font></strong>
+          // Constructor:
+          Nodo(const DATON dat, Nodo&lt;DATON&gt; *sig) : dato(dat), siguiente(sig) {}
+          // Miembros:
+          DATON dato;
+          Nodo&lt;DATON&gt; *siguiente;
+   };
+<font color="#A020F0">   #endif</font>
+   // Punteros de la lista, para cabeza y nodo actual:
+   Nodo&lt;DATO&gt; *primero;
+   Nodo&lt;DATO&gt; *actual;
+
+<strong><font color="#FF0000">  public:</font></strong>
+   // Constructor y destructor b&Atilde;¡sicos:
+   Lista() : primero(NULL), actual(NULL) {}
+   ~Lista();
+   // Funciones de inserci&Atilde;³n:
+   void InsertarFinal(const DATO dat);
+   void InsertarPrincipio(const DATO dat);
+   bool InsertarActual(const DATO dat);
+   void Insertar(const DATO dat);
+   // Funciones de borrado:
+   void BorrarActual();
+   bool BorrarPrimerValor(const DATO dat);
+   // Funci&Atilde;³n de b&Atilde;ºsqueda:
+   bool BuscarPrimerValor(const DATO dat);
+   // Comprobar si la lista est&Atilde;¡ vac&Atilde;­a:
+   bool Vacia() { <font color="#4169E1">return</font> primero==NULL; }
+   // Devolver referencia al dato del nodo actual:
+   DATO &amp;ValorActual() { <font color="#4169E1">return</font> actual-&gt;dato; }
+   // Hacer que el nodo actual sea el primero:
+   void Primero() { actual = primero; }
+   // Comprobar si el nodo actual es v&Atilde;¡lido:
+   bool Actual() { <font color="#4169E1">return</font> actual != NULL; }
+   // Moverse al siguiente nodo de la lista:
+   void Siguiente() { <font color="#4169E1">if</font>(actual) actual = actual-&gt;siguiente; }
+   // Sobrecargar operator++ en forma sufija para los mismo:
+   void operator++(int) { Siguiente(); }
+   // Aplicar una funci&Atilde;³n a cada elemento de la lista:
+   void ParaCada(void (*func)(DATO&amp;));
+};
+
+<font color="#A020F0">#ifdef bc</font>
+// Necesario ya que en borland c++ 3.1 no se permite
+// la anidacion de clases, aunque se viola el encapsulado
+// al declarar los miembros como publicos
+template &lt;class DATON&gt;
+class Nodo {
+<strong><font color="#FF0000">  public:</font></strong>
+// Constructor:
+  Nodo(const DATON dat, Nodo&lt;DATON&gt; *sig) : dato(dat), siguiente(sig) {}
+  // Miembros:
+  DATON dato;
+  Nodo&lt;DATON&gt; *siguiente;
+
+};
+<font color="#A020F0">#endif</font>
+<font color="#B22222">/**************************************************************/</font>
+//using namespace std;
+
+
+// Destructor
+template&lt;class DATO&gt;
+Lista&lt;DATO&gt;::~Lista()
+{
+   <font color="#4169E1">while</font>(!Vacia()) {
+      actual = primero;
+      primero = primero-&gt;siguiente;
+      delete actual;
+   }
+}
+
+template&lt;class DATO&gt;
+void Lista&lt;DATO&gt;::InsertarFinal(const DATO dat)
+{
+   Nodo&lt;DATO&gt; *ultimo;
+
+   // Si la lista est&aacute; vac&iacute;a, insertar al principio:
+   <font color="#4169E1">if</font>(Vacia()) InsertarPrincipio(dat);
+   <font color="#4169E1">else</font> { // Si no lo est&aacute;:
+      // Buscar el &uacute;ltimo nodo:
+          ultimo = primero;
+      <font color="#4169E1">while</font>(ultimo-&gt;siguiente) ultimo = ultimo-&gt;siguiente;
+      // Insertar a continuaci&oacute;n:
+      ultimo-&gt;siguiente = new Nodo&lt;DATO&gt;(dat, NULL);
+   }
+}
+
+template&lt;class DATO&gt;
+void Lista&lt;DATO&gt;::InsertarPrincipio(const DATO dat)
+{
+   primero = new Nodo&lt;DATO&gt;(dat, primero);
+}
+
+template&lt;class DATO&gt;
+bool Lista&lt;DATO&gt;::InsertarActual(const DATO dat)
+{
+   // S&oacute;lo si la lista no est&aacute; vac&iacute;a y actual es v&aacute;lido:
+   <font color="#4169E1">if</font>(!Vacia() &amp;&amp; actual) {
+      actual-&gt;siguiente = new Nodo&lt;DATO&gt;(dat, actual-&gt;siguiente);
+      <font color="#4169E1">return</font> true;
+   }
+   // Si no se puede insertar, retornar con false:
+   <font color="#4169E1">return</font> false;
+}
+
+// Insertar ordenadamente:
+template&lt;class DATO&gt;
+void Lista&lt;DATO&gt;::Insertar(const DATO dat)
+{
+  Nodo&lt;DATO&gt; *temp = primero;
+  Nodo&lt;DATO&gt; *anterior = NULL;
+  
+  // Si la lista est&aacute; vac&iacute;a, insertar al principio:
+  <font color="#4169E1">if</font>(Vacia()) InsertarPrincipio(dat);
+  <font color="#4169E1">else</font> {
+        // Buscar el nodo anterior al primer nodo con un dato mayor qur 'dat'
+    <font color="#4169E1">while</font>(temp &amp;&amp; temp-&gt;dato &lt; dat) {
+      anterior = temp;
+      temp = temp-&gt;siguiente;
+    }
+    // Si no hay anterior, insertar al principio,
+    // nuestro valor es el menor de la lista:
+    <font color="#4169E1">if</font>(!anterior)
+      InsertarPrincipio(dat);
+    <font color="#4169E1">else</font> // Insertar:
+      anterior-&gt;siguiente = new Nodo&lt;DATO&gt;(dat, temp);
+  }
+}
+
+template&lt;class DATO&gt;
+void Lista&lt;DATO&gt;::BorrarActual()
+{
+   Nodo&lt;DATO&gt; *anterior;
+
+   // Si el nodo actual es el primero:
+   <font color="#4169E1">if</font>(actual &amp;&amp; actual == primero) {
+      // El primer nodo ser&aacute; ahora el segundo:
+      // Sacar el nodo actual de la lista:
+      primero = actual-&gt;siguiente;
+      // Borrarlo:
+      delete actual;
+      actual = NULL;
+   } <font color="#4169E1">else</font>
+   <font color="#4169E1">if</font>(actual &amp;&amp; !Vacia()) {
+      // Buscar el nodo anterior al actual:
+      anterior = primero;
+      <font color="#4169E1">while</font>(anterior &amp;&amp; anterior-&gt;siguiente != actual)
+         anterior = anterior-&gt;siguiente;
+      // Sacar el nodo actual de la lista:
+      anterior-&gt;siguiente = actual-&gt;siguiente;
+          // Borrarlo:
+      delete actual;
+      actual = NULL;
+   }
+}
+
+// Borrar el primer nodo cuyo dato sea igual a 'dat':
+template&lt;class DATO&gt;
+bool Lista&lt;DATO&gt;::BorrarPrimerValor(const DATO dat)
+{
+   Nodo&lt;DATO&gt; *anterior = NULL;
+   Nodo&lt;DATO&gt; *temp = primero;
+
+   <font color="#4169E1">if</font>(!Vacia()) {
+      // Si la lista no est&aacute; vac&iacute;a, buscar el nodo a borrar (temp)
+      // y el nodo anterior a ese (anterior):
+      <font color="#4169E1">while</font>(temp &amp;&amp; temp-&gt;dato != dat) {
+         anterior = temp;
+         temp = temp-&gt;siguiente;
+      }
+      // Si el valor est&aacute; en la lista:
+      <font color="#4169E1">if</font>(temp) {
+         // Si anterior es v&aacute;lido, no es el primer valor de la lista
+         <font color="#4169E1">if</font>(anterior) // Sacar nodo temp de la lista
+            anterior-&gt;siguiente = temp-&gt;siguiente;
+         <font color="#4169E1">else</font>         // Ahora el primero es el segundo:
+           primero = temp-&gt;siguiente;  // Borrar primer elemento
+         // Borrar nodo:
+         delete temp;
+         <font color="#4169E1">return</font> true; // Se ha encontrado y borrado dat
+      }
+   }
+   <font color="#4169E1">return</font> false; // valor no encontrado
+}
+
+// Busca el primer nodo con valor 'dat':
+template&lt;class DATO&gt;
+bool Lista&lt;DATO&gt;::BuscarPrimerValor(const DATO dat)
+{
+   actual = primero;
+
+   // Si la lista no est&aacute; vac&iacute;a:
+   <font color="#4169E1">if</font>(!Vacia()) {
+      <font color="#4169E1">while</font>(actual &amp;&amp; actual-&gt;dato != dat) {
+         actual = actual-&gt;siguiente;
+      }
+   }
+   // Si el nodo es v&aacute;lido, se ha encontrado el valor:
+   <font color="#4169E1">return</font> actual != NULL;
+}
+
+// Aplicar una funci&oacute;n a cada nodo de la lista:
+template&lt;class DATO&gt;
+void Lista&lt;DATO&gt;::ParaCada(void (*func)(DATO&amp;))
+{
+   Nodo&lt;DATO&gt; *temp = primero;
+
+   // Recorrer la lista:
+   <font color="#4169E1">while</font>(temp) {
+      // Aplicar la funci&oacute;n:
+      func(temp-&gt;dato);
+      temp = temp-&gt;siguiente;
+   }
+}
+
+<font color="#A020F0">#endif</font>
+</pre>
+</body>
+
+</html>

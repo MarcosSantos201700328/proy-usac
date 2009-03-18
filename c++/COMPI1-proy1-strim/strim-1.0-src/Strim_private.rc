@@ -1,0 +1,30 @@
+// THIS FILE WILL BE OVERWRITTEN BY DEV-C++!
+// DO NOT EDIT!
+
+#include <windows.h> // include for version info constants
+
+
+//
+// TO CHANGE VERSION INFORMATION, EDIT PROJECT OPTIONS...
+//
+1 VERSIONINFO
+FILEVERSION 1,0,1,20
+PRODUCTVERSION 1,0,1,20
+FILETYPE VFT_APP
+{
+  BLOCK "StringFileInfo"
+	 {
+		 BLOCK "040904E4"
+		 {
+			 VALUE "CompanyName", "Erik Vladimir Giron Marquez"
+			 VALUE "FileVersion", ""
+			 VALUE "FileDescription", "Developed using the Dev-C++ IDE"
+			 VALUE "InternalName", ""
+			 VALUE "LegalCopyright", "(c) 2006 Erik Giron"
+			 VALUE "LegalTrademarks", "Distribuido bajo la licencia GPL"
+			 VALUE "OriginalFilename", ""
+			 VALUE "ProductName", ""
+			 VALUE "ProductVersion", ""
+		 }
+	 }
+}

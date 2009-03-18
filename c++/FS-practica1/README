@@ -1,0 +1,36 @@
+Practica 1 de Manejo e implementacion de Archivos.
+por Erik Vladimir Giron Marquez C# 200313492
+
+- Busca un archivo dado como segundo parámetro, en la partición dada en el primer parámetro, y muestra ciertos datos internos del inode.
+
+Prerequisitos:
+=============
+gcc 3.4 +
+glibc 2.3 +
+libext2fs 1.38 +
+Linux Kernel 2.2.x +
+
+
+Uso:
+====
+
+$ sudo ./practica1 [path del dispositivo] [nombre del archivo]
+
+e.g.:
+  sudo ./practica1 /dev/hda10 lista.txt
+
+NOTA: deberá tener permisos de superusuario para acceder al dispositivo
+
+Compilacion:
+===========
+
+
+tar -xvzf practica1.tar.gz ./
+./configure
+make
+
+Limitantes:
+==========
+Debido a que las funciones del libex2fs no estan muy bien documentadas(especialmente la de ext2fs_dir_iterate), los archivos serán buscados solamente en el directorio raíz del sistema de archivos, 
+
+Este archivo esta bajo la licencia pública GNU.

@@ -1,0 +1,7 @@
+base referer
+rect $browser_8h.html 494,202 574,226
+rect $parserheader_8h.html 478,250 590,274
+rect $ast_8h.html 509,298 560,322
+rect $colaerr_8h.html 660,348 732,372
+rect $constantes_8h.html 801,250 897,274
+rect $symtab_8h.html 658,300 733,324

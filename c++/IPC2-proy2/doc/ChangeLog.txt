@@ -1,0 +1,133 @@
+2005-10-21  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h: mothell RC1
+
+	* mothell.cpp: mothell. RC1
+
+2005-10-19  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp: Etapa 2 debug
+
+2005-10-18  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp: Implementada la ultima funcion de calcular gasto.
+	Comienza la etapa de Debug
+
+2005-10-17  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp:
+	Implementados los metodos para generar el reporte de gasto de reservacion
+
+2005-10-13  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h:
+	hecha relacion de agregacion de clientes e instalaciones en clase reservacion para generar reporte de manera mas sencilla
+	agregadas varios metodos adicionales a la clase Reservacion para reflejar los cambios
+
+	* mothell.cpp: Implementada funcion de listar Reservaciones
+
+	* mothell.h: Backup
+
+2005-10-12  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp: Agregada la opcione de ListarClientes
+
+2005-10-11  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp: Agregado la funcion Instalaciones_Disponibles
+
+2005-10-10  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp:
+	agregadas las funciones necesarias para reservaciones disponibles
+
+2005-10-09  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp:
+	Implementada las funcinoes de cambiar descuento, consultar descuento y consultar precio
+
+	* mothell.h:
+	Actualizado TODO y agregados metodos para consulta a clase Instalacion
+
+2005-10-07  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h: *** empty log message ***
+
+	* mothell.cpp: Mejorada la salida de datos de cada accion tomada,
+	Arreglados algunos bugs de Consumo
+
+	* mothell.cpp: implementado Consumo y Extender
+
+2005-10-06  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp: Reimplementada la clase Reservacion y su parser
+
+	* mothell.h: Implementadas las nuevas reglas del enunciado
+
+	* mothell.cpp:
+	Actualizada los parsers y las clases para tipoInstalacion Instalacion y Cliente
+
+2005-10-05  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h:
+	Esquematizada la clase Consumo y actualizada la clase Reservacion para cumplir requerimientos de clase Consumo
+
+	* mothell.cpp: Implementado parser para Consumo
+
+	* mothell.cpp:
+	Agregadas las funciones de Leer y aplicarDescuento a reservacion,
+	Agregadas las funciones de BuscarDatoFecha a promo
+
+2005-10-04  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h: Hecha la clase reservacion parcialmente
+
+	* mothell.cpp: Implementada clase Resrvacion parcialmente
+	Implementado parser para Hacer_Reservacion
+	Implementado parser para Eliminar_Reservacion
+	Agregados mas operadores al TDA de fecha
+
+2005-10-03  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h: Agregadas operaciones de suma de dias a la clase Fecha
+
+	* mothell.cpp: Implementadas otras operaciones de la clase fecha
+
+	* mothell.h: Terminada Clase actividad
+
+	* mothell.cpp: implementada clase actividad
+
+2005-10-02  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.cpp: Implementado y debugeado el parser para la clase Promo
+	Implementada la clase Promo con todos sus miembros
+
+	* mothell.h:
+	Movida y generalizada la funcion miembro CrearTipoInstalacion a la clase base Dato para reutilizacion de codigo
+	Arreglados algunos problemas de diseno respecto las clases y sus constructores
+
+	* mothell.cpp: Arreglado el problema de los destructores virtuales
+	Arreglado el problema ocasionado por std::fstream al actualizar datos,
+	ahora se usaran las interfaces estandares de stdlib
+
+2005-10-01  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h: Clase Cliente
+
+	* mothell.cpp:
+	Mejorado el almacenamiento de datos de la clase Instalacion
+	Implementada la clase Cliente
+	Implementado Parser para la clase Cliente
+
+2005-09-30  Erik Giron  <kreig@localhost.localdomain>
+
+	* mothell.h: Agregado constructor a Dato.
+	Agregada bandera de validacion para guardar dato si los campos son correctos
+
+	* mothell.cpp: Implementado el parser para AgregarInstalacion
+	Implementado parcialmente clase AgregarInstalacion
+
+	* mothell.cpp: Implementada Fecha
+
+	* mothell.h, mothell.cpp: New file.
+

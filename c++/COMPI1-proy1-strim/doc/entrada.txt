@@ -1,0 +1,21 @@
+(esta)^2.es una prueba de concate.nacion#
+	el . archivo . de . prueba . va . hacer . mas .	o . menos . asi#
+primer.proyecto>=2#
+
+
+
+
+las.diferencias.entre.este.archivo.y.el.de.entrada.podrian.ser#
+
+A.	(mucho.mas.grande^2)#
+B	errores.como.este.(sin.operador.entre.esta.operacion)#
+C	entrada.(es una prueba).salida.(es una prueba)#
+	esto.quiere.decir.que.si.una.cadena.tiene.espacios.tiene.que.salir.asi#
+D.(otro).((tipo.de).error)^2 . abcdefg>#
+E	fijense . que . los . parentesis . son . anidados#
+F	si.pueden.cada.operacion.coloquenla.en.una.sola.linea#
+
+
+(bueno algo asi va hacer el archivo con el que se les va a calificar asi que buena suerte y aprovechen que este proyecto es facil)^2#
+
+por cier . to tambien pueden venir errores lexicos#

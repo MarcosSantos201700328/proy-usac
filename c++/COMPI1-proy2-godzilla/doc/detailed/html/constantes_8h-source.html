@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: /media/docs/progra/c++/compiladores1/proy2/godzilla/src/constantes.h Source File</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>constantes.h</h1><a href="constantes_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00003"></a>00003 <span class="comment">/* Godzilla</span>
+<a name="l00004"></a>00004 <span class="comment">* Proyecto No. 2 de Lenguajes y Compiladores 1</span>
+<a name="l00005"></a>00005 <span class="comment">* (c) 2006 Erik Giron C# 200313492</span>
+<a name="l00006"></a>00006 <span class="comment">*/</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#ifndef CONSTANTES_H</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span><span class="preprocessor">#define CONSTANTES_H</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span>
+<a name="l00010"></a>00010 <span class="comment">/* Constantes que identificaran a los nodos y a la tabla de simbolos*/</span>
+<a name="l00011"></a><a class="code" href="constantes_8h.html#a0">00011</a> <span class="preprocessor">#define T_ERROR -1</span>
+<a name="l00012"></a><a class="code" href="constantes_8h.html#a1">00012</a> <span class="preprocessor"></span><span class="preprocessor">#define T_FALSE 0</span>
+<a name="l00013"></a><a class="code" href="constantes_8h.html#a2">00013</a> <span class="preprocessor"></span><span class="preprocessor">#define T_TRUE 1</span>
+<a name="l00014"></a><a class="code" href="constantes_8h.html#a3">00014</a> <span class="preprocessor"></span><span class="preprocessor">#define T_CONSTANTE 1000</span>
+<a name="l00015"></a><a class="code" href="constantes_8h.html#a4">00015</a> <span class="preprocessor"></span><span class="preprocessor">#define T_VARIABLE 1001</span>
+<a name="l00016"></a><a class="code" href="constantes_8h.html#a5">00016</a> <span class="preprocessor"></span><span class="preprocessor">#define T_NUMERO 1002</span>
+<a name="l00017"></a><a class="code" href="constantes_8h.html#a6">00017</a> <span class="preprocessor"></span><span class="preprocessor">#define T_IDENTIFICADOR  1003</span>
+<a name="l00018"></a><a class="code" href="constantes_8h.html#a7">00018</a> <span class="preprocessor"></span><span class="preprocessor">#define T_OPERACION 1004</span>
+<a name="l00019"></a><a class="code" href="constantes_8h.html#a8">00019</a> <span class="preprocessor"></span><span class="preprocessor">#define T_EXPR 1005</span>
+<a name="l00020"></a><a class="code" href="constantes_8h.html#a9">00020</a> <span class="preprocessor"></span><span class="preprocessor">#define T_ASIGNACION 1006</span>
+<a name="l00021"></a><a class="code" href="constantes_8h.html#a10">00021</a> <span class="preprocessor"></span><span class="preprocessor">#define T_SENTENCIA 1007</span>
+<a name="l00022"></a><a class="code" href="constantes_8h.html#a11">00022</a> <span class="preprocessor"></span><span class="preprocessor">#define T_DECLARACION 1008</span>
+<a name="l00023"></a><a class="code" href="constantes_8h.html#a12">00023</a> <span class="preprocessor"></span><span class="preprocessor">#define T_IF 1009</span>
+<a name="l00024"></a><a class="code" href="constantes_8h.html#a13">00024</a> <span class="preprocessor"></span><span class="preprocessor">#define T_WHILE 1010</span>
+<a name="l00025"></a><a class="code" href="constantes_8h.html#a14">00025</a> <span class="preprocessor"></span><span class="preprocessor">#define T_FOR 1011</span>
+<a name="l00026"></a><a class="code" href="constantes_8h.html#a15">00026</a> <span class="preprocessor"></span><span class="preprocessor">#define T_TOKEN 1012</span>
+<a name="l00027"></a><a class="code" href="constantes_8h.html#a16">00027</a> <span class="preprocessor"></span><span class="preprocessor">#define T_CALL 1013</span>
+<a name="l00028"></a><a class="code" href="constantes_8h.html#a17">00028</a> <span class="preprocessor"></span><span class="preprocessor">#define T_CADENA 1015 </span><span class="comment">/*no usa*/</span>
+<a name="l00029"></a><a class="code" href="constantes_8h.html#a18">00029</a> <span class="preprocessor">#define OP_OR 1016</span>
+<a name="l00030"></a><a class="code" href="constantes_8h.html#a19">00030</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_AND 1017</span>
+<a name="l00031"></a><a class="code" href="constantes_8h.html#a20">00031</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_LT 1018</span>
+<a name="l00032"></a><a class="code" href="constantes_8h.html#a21">00032</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_LET 1019</span>
+<a name="l00033"></a><a class="code" href="constantes_8h.html#a22">00033</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_EQ 1020</span>
+<a name="l00034"></a><a class="code" href="constantes_8h.html#a23">00034</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_NEQ 1021</span>
+<a name="l00035"></a><a class="code" href="constantes_8h.html#a24">00035</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_GT 1022</span>
+<a name="l00036"></a><a class="code" href="constantes_8h.html#a25">00036</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_GET 1023</span>
+<a name="l00037"></a><a class="code" href="constantes_8h.html#a26">00037</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_SUMA 1024</span>
+<a name="l00038"></a><a class="code" href="constantes_8h.html#a27">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_RESTA 1025</span>
+<a name="l00039"></a><a class="code" href="constantes_8h.html#a28">00039</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_MULT 1026</span>
+<a name="l00040"></a><a class="code" href="constantes_8h.html#a29">00040</a> <span class="preprocessor"></span><span class="preprocessor">#define OP_DIV 1027</span>
+<a name="l00041"></a><a class="code" href="constantes_8h.html#a30">00041</a> <span class="preprocessor"></span><span class="preprocessor">#define T_INTEGER 1028</span>
+<a name="l00042"></a><a class="code" href="constantes_8h.html#a31">00042</a> <span class="preprocessor"></span><span class="preprocessor">#define T_BOOLEAN 1029</span>
+<a name="l00043"></a><a class="code" href="constantes_8h.html#a32">00043</a> <span class="preprocessor"></span><span class="preprocessor">#define T_STRING 1030</span>
+<a name="l00044"></a><a class="code" href="constantes_8h.html#a33">00044</a> <span class="preprocessor"></span><span class="preprocessor">#define T_LITERAL 1031</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>
+<a name="l00046"></a><a class="code" href="constantes_8h.html#a34">00046</a> <span class="preprocessor">#define T_PRINTCALL 1032</span>
+<a name="l00047"></a><a class="code" href="constantes_8h.html#a35">00047</a> <span class="preprocessor"></span><span class="preprocessor">#define T_PRINTSYMCALL 1033</span>
+<a name="l00048"></a>00048 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:06 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

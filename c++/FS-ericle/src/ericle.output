@@ -1,0 +1,1766 @@
+No terminales sin uso
+
+   ins_without_fields
+
+
+Terminales que no se usan
+
+   TK_CADENA
+   TK_NUMERO
+
+
+Reglas sin uso
+
+   56 ins_without_fields: INSERT INTO KW_AUTOR VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+   57                   | INSERT INTO KW_LIBRO VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+   58                   | INSERT INTO KW_CONTENIDO VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+   59                   | INSERT INTO KW_PRESTAMO VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+   60                   | INSERT INTO KW_TIPOUSUARIO VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+   61                   | INSERT INTO KW_TITULO VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+   62                   | INSERT INTO KW_USUARIO VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+
+Gramática
+
+    0 $accept: stmts $end
+
+    1 stmts: ins_stmts
+    2      | sel_stmt
+
+    3 ins_stmts: ins_stmts ins_stmt
+    4          | ins_stmt
+
+    5 ins_stmt: ins_with_fields
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+    7                | INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+    8                | INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+    9                | INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+   10                | INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+   11                | INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+   12                | INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+   14 tbtitulo_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+   16 tblibro_fields: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER
+
+   17 tbtusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+   18 tbprestamo_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+   19 tbcontenido_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+   21 tbtitulo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+   24 tbtusuario_vals: TK_INTEGER TK_COMA TK_STRING
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING
+
+   27 sel_stmt: SELECT fieldlist FROM table TK_PUNTOCOMA
+   28         | SELECT fieldlist FROM table WHERE conditions TK_PUNTOCOMA
+
+   29 fieldlist: fieldlist TK_COMA field
+   30          | field
+   31          | TK_OP_MULT
+
+   32 field: TK_IDENTIFICADOR
+
+   33 val: TK_STRING
+   34    | TK_INTEGER
+
+   35 table: KW_AUTOR
+   36      | KW_CONTENIDO
+   37      | KW_LIBRO
+   38      | KW_PRESTAMO
+   39      | KW_TIPOUSUARIO
+   40      | KW_TITULO
+   41      | KW_USUARIO
+
+   42 conditions: conditions condition
+   43           | condition
+
+   44 condition: cond_and
+
+   45 cond_and: cond_and KW_OP_AND cond_or
+   46         | cond_or
+
+   47 cond_or: cond_or KW_OP_OR comp
+   48        | comp
+
+   49 comp: field eq_op val
+
+   50 eq_op: TK_OP_EQ
+   51      | TK_OP_LT
+   52      | TK_OP_LET
+   53      | TK_OP_GT
+   54      | TK_OP_GET
+   55      | TK_OP_NOEQ
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256)
+TK_INTEGER (258) 16 20 21 22 23 24 25 26 34
+TK_STRING (259) 20 21 22 23 24 25 26 33
+TK_IDENTIFICADOR (260) 13 14 15 17 18 19 32
+INSERT (261) 6 7 8 9 10 11 12
+INTO (262) 6 7 8 9 10 11 12
+TK_APAREN (263) 6 7 8 9 10 11 12
+TK_CPAREN (264) 6 7 8 9 10 11 12
+VALUES (265) 6 7 8 9 10 11 12
+TK_PUNTOCOMA (266) 6 7 8 9 10 11 12 27 28
+SELECT (267) 27 28
+FROM (268) 27 28
+WHERE (269) 28
+KW_OP_OR (270) 47
+KW_OP_AND (271) 45
+KW_AUTOR (272) 6 35
+KW_CONTENIDO (273) 8 36
+KW_LIBRO (274) 7 37
+KW_PRESTAMO (275) 9 38
+KW_TIPOUSUARIO (276) 10 39
+KW_TITULO (277) 11 40
+KW_USUARIO (278) 12 41
+TK_OP_EQ (279) 50
+TK_OP_LT (280) 51
+TK_OP_LET (281) 52
+TK_OP_GT (282) 53
+TK_OP_GET (283) 54
+TK_OP_NOEQ (284) 55
+TK_OP_MULT (285) 31
+TK_COMA (286) 13 14 15 16 17 18 19 20 21 22 23 24 25 26 29
+TK_CADENA (287)
+TK_NUMERO (288)
+
+
+No terminales con las reglas donde aparecen
+
+$accept (34)
+    en la izquierda: 0
+stmts (35)
+    en la izquierda: 1 2, en la derecha: 0
+ins_stmts (36)
+    en la izquierda: 3 4, en la derecha: 1 3
+ins_stmt (37)
+    en la izquierda: 5, en la derecha: 3 4
+ins_with_fields (38)
+    en la izquierda: 6 7 8 9 10 11 12, en la derecha: 5
+tbautor_fields (39)
+    en la izquierda: 13, en la derecha: 6
+tbtitulo_fields (40)
+    en la izquierda: 14, en la derecha: 11
+tbusuario_fields (41)
+    en la izquierda: 15, en la derecha: 12
+tblibro_fields (42)
+    en la izquierda: 16, en la derecha: 7
+tbtusuario_fields (43)
+    en la izquierda: 17, en la derecha: 10
+tbprestamo_fields (44)
+    en la izquierda: 18, en la derecha: 9
+tbcontenido_fields (45)
+    en la izquierda: 19, en la derecha: 8
+tbautor_vals (46)
+    en la izquierda: 20, en la derecha: 6
+tbtitulo_vals (47)
+    en la izquierda: 21, en la derecha: 11
+tblibro_vals (48)
+    en la izquierda: 22, en la derecha: 7
+tbusuario_vals (49)
+    en la izquierda: 23, en la derecha: 12
+tbtusuario_vals (50)
+    en la izquierda: 24, en la derecha: 10
+tbprestamo_vals (51)
+    en la izquierda: 25, en la derecha: 9
+tbcontenido_vals (52)
+    en la izquierda: 26, en la derecha: 8
+sel_stmt (53)
+    en la izquierda: 27 28, en la derecha: 2
+fieldlist (54)
+    en la izquierda: 29 30 31, en la derecha: 27 28 29
+field (55)
+    en la izquierda: 32, en la derecha: 29 30 49
+val (56)
+    en la izquierda: 33 34, en la derecha: 49
+table (57)
+    en la izquierda: 35 36 37 38 39 40 41, en la derecha: 27 28
+conditions (58)
+    en la izquierda: 42 43, en la derecha: 28 42
+condition (59)
+    en la izquierda: 44, en la derecha: 42 43
+cond_and (60)
+    en la izquierda: 45 46, en la derecha: 44 45
+cond_or (61)
+    en la izquierda: 47 48, en la derecha: 45 46 47
+comp (62)
+    en la izquierda: 49, en la derecha: 47 48
+eq_op (63)
+    en la izquierda: 50 51 52 53 54 55, en la derecha: 49
+
+
+estado 0
+
+    0 $accept: . stmts $end
+
+    INSERT  desplazar e ir al estado 1
+    SELECT  desplazar e ir al estado 2
+
+    stmts            ir al estado 3
+    ins_stmts        ir al estado 4
+    ins_stmt         ir al estado 5
+    ins_with_fields  ir al estado 6
+    sel_stmt         ir al estado 7
+
+
+estado 1
+
+    6 ins_with_fields: INSERT . INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+    7                | INSERT . INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+    8                | INSERT . INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+    9                | INSERT . INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+   10                | INSERT . INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+   11                | INSERT . INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+   12                | INSERT . INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    INTO  desplazar e ir al estado 8
+
+
+estado 2
+
+   27 sel_stmt: SELECT . fieldlist FROM table TK_PUNTOCOMA
+   28         | SELECT . fieldlist FROM table WHERE conditions TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 9
+    TK_OP_MULT        desplazar e ir al estado 10
+
+    fieldlist  ir al estado 11
+    field      ir al estado 12
+
+
+estado 3
+
+    0 $accept: stmts . $end
+
+    $end  desplazar e ir al estado 13
+
+
+estado 4
+
+    1 stmts: ins_stmts .
+    3 ins_stmts: ins_stmts . ins_stmt
+
+    INSERT  desplazar e ir al estado 1
+
+    $default  reduce usando la regla 1 (stmts)
+
+    ins_stmt         ir al estado 14
+    ins_with_fields  ir al estado 6
+
+
+estado 5
+
+    4 ins_stmts: ins_stmt .
+
+    $default  reduce usando la regla 4 (ins_stmts)
+
+
+estado 6
+
+    5 ins_stmt: ins_with_fields .
+
+    $default  reduce usando la regla 5 (ins_stmt)
+
+
+estado 7
+
+    2 stmts: sel_stmt .
+
+    $default  reduce usando la regla 2 (stmts)
+
+
+estado 8
+
+    6 ins_with_fields: INSERT INTO . KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+    7                | INSERT INTO . KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+    8                | INSERT INTO . KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+    9                | INSERT INTO . KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+   10                | INSERT INTO . KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+   11                | INSERT INTO . KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+   12                | INSERT INTO . KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    KW_AUTOR        desplazar e ir al estado 15
+    KW_CONTENIDO    desplazar e ir al estado 16
+    KW_LIBRO        desplazar e ir al estado 17
+    KW_PRESTAMO     desplazar e ir al estado 18
+    KW_TIPOUSUARIO  desplazar e ir al estado 19
+    KW_TITULO       desplazar e ir al estado 20
+    KW_USUARIO      desplazar e ir al estado 21
+
+
+estado 9
+
+   32 field: TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 32 (field)
+
+
+estado 10
+
+   31 fieldlist: TK_OP_MULT .
+
+    $default  reduce usando la regla 31 (fieldlist)
+
+
+estado 11
+
+   27 sel_stmt: SELECT fieldlist . FROM table TK_PUNTOCOMA
+   28         | SELECT fieldlist . FROM table WHERE conditions TK_PUNTOCOMA
+   29 fieldlist: fieldlist . TK_COMA field
+
+    FROM     desplazar e ir al estado 22
+    TK_COMA  desplazar e ir al estado 23
+
+
+estado 12
+
+   30 fieldlist: field .
+
+    $default  reduce usando la regla 30 (fieldlist)
+
+
+estado 13
+
+    0 $accept: stmts $end .
+
+    $default  aceptar
+
+
+estado 14
+
+    3 ins_stmts: ins_stmts ins_stmt .
+
+    $default  reduce usando la regla 3 (ins_stmts)
+
+
+estado 15
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR . TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 24
+
+
+estado 16
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO . TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 25
+
+
+estado 17
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO . TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 26
+
+
+estado 18
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO . TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 27
+
+
+estado 19
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO . TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 28
+
+
+estado 20
+
+   11 ins_with_fields: INSERT INTO KW_TITULO . TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 29
+
+
+estado 21
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO . TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 30
+
+
+estado 22
+
+   27 sel_stmt: SELECT fieldlist FROM . table TK_PUNTOCOMA
+   28         | SELECT fieldlist FROM . table WHERE conditions TK_PUNTOCOMA
+
+    KW_AUTOR        desplazar e ir al estado 31
+    KW_CONTENIDO    desplazar e ir al estado 32
+    KW_LIBRO        desplazar e ir al estado 33
+    KW_PRESTAMO     desplazar e ir al estado 34
+    KW_TIPOUSUARIO  desplazar e ir al estado 35
+    KW_TITULO       desplazar e ir al estado 36
+    KW_USUARIO      desplazar e ir al estado 37
+
+    table  ir al estado 38
+
+
+estado 23
+
+   29 fieldlist: fieldlist TK_COMA . field
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 9
+
+    field  ir al estado 39
+
+
+estado 24
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN . tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 40
+
+    tbautor_fields  ir al estado 41
+
+
+estado 25
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN . tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 42
+
+    tbcontenido_fields  ir al estado 43
+
+
+estado 26
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN . tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 44
+
+    tblibro_fields  ir al estado 45
+
+
+estado 27
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN . tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 46
+
+    tbprestamo_fields  ir al estado 47
+
+
+estado 28
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN . tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 48
+
+    tbtusuario_fields  ir al estado 49
+
+
+estado 29
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN . tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 50
+
+    tbtitulo_fields  ir al estado 51
+
+
+estado 30
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN . tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 52
+
+    tbusuario_fields  ir al estado 53
+
+
+estado 31
+
+   35 table: KW_AUTOR .
+
+    $default  reduce usando la regla 35 (table)
+
+
+estado 32
+
+   36 table: KW_CONTENIDO .
+
+    $default  reduce usando la regla 36 (table)
+
+
+estado 33
+
+   37 table: KW_LIBRO .
+
+    $default  reduce usando la regla 37 (table)
+
+
+estado 34
+
+   38 table: KW_PRESTAMO .
+
+    $default  reduce usando la regla 38 (table)
+
+
+estado 35
+
+   39 table: KW_TIPOUSUARIO .
+
+    $default  reduce usando la regla 39 (table)
+
+
+estado 36
+
+   40 table: KW_TITULO .
+
+    $default  reduce usando la regla 40 (table)
+
+
+estado 37
+
+   41 table: KW_USUARIO .
+
+    $default  reduce usando la regla 41 (table)
+
+
+estado 38
+
+   27 sel_stmt: SELECT fieldlist FROM table . TK_PUNTOCOMA
+   28         | SELECT fieldlist FROM table . WHERE conditions TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 54
+    WHERE         desplazar e ir al estado 55
+
+
+estado 39
+
+   29 fieldlist: fieldlist TK_COMA field .
+
+    $default  reduce usando la regla 29 (fieldlist)
+
+
+estado 40
+
+   13 tbautor_fields: TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 56
+
+
+estado 41
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields . TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 57
+
+
+estado 42
+
+   19 tbcontenido_fields: TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 58
+
+
+estado 43
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields . TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 59
+
+
+estado 44
+
+   16 tblibro_fields: TK_INTEGER . TK_COMA TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER
+
+    TK_COMA  desplazar e ir al estado 60
+
+
+estado 45
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields . TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 61
+
+
+estado 46
+
+   18 tbprestamo_fields: TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 62
+
+
+estado 47
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields . TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 63
+
+
+estado 48
+
+   17 tbtusuario_fields: TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 64
+
+
+estado 49
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields . TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 65
+
+
+estado 50
+
+   14 tbtitulo_fields: TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 66
+
+
+estado 51
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields . TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 67
+
+
+estado 52
+
+   15 tbusuario_fields: TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 68
+
+
+estado 53
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields . TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 69
+
+
+estado 54
+
+   27 sel_stmt: SELECT fieldlist FROM table TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 27 (sel_stmt)
+
+
+estado 55
+
+   28 sel_stmt: SELECT fieldlist FROM table WHERE . conditions TK_PUNTOCOMA
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 9
+
+    field       ir al estado 70
+    conditions  ir al estado 71
+    condition   ir al estado 72
+    cond_and    ir al estado 73
+    cond_or     ir al estado 74
+    comp        ir al estado 75
+
+
+estado 56
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 76
+
+
+estado 57
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN . VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 77
+
+
+estado 58
+
+   19 tbcontenido_fields: TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 78
+
+
+estado 59
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN . VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 79
+
+
+estado 60
+
+   16 tblibro_fields: TK_INTEGER TK_COMA . TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER
+
+    TK_INTEGER  desplazar e ir al estado 80
+
+
+estado 61
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN . VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 81
+
+
+estado 62
+
+   18 tbprestamo_fields: TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 82
+
+
+estado 63
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN . VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 83
+
+
+estado 64
+
+   17 tbtusuario_fields: TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 84
+
+
+estado 65
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN . VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 85
+
+
+estado 66
+
+   14 tbtitulo_fields: TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 86
+
+
+estado 67
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN . VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 87
+
+
+estado 68
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 88
+
+
+estado 69
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN . VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    VALUES  desplazar e ir al estado 89
+
+
+estado 70
+
+   49 comp: field . eq_op val
+
+    TK_OP_EQ    desplazar e ir al estado 90
+    TK_OP_LT    desplazar e ir al estado 91
+    TK_OP_LET   desplazar e ir al estado 92
+    TK_OP_GT    desplazar e ir al estado 93
+    TK_OP_GET   desplazar e ir al estado 94
+    TK_OP_NOEQ  desplazar e ir al estado 95
+
+    eq_op  ir al estado 96
+
+
+estado 71
+
+   28 sel_stmt: SELECT fieldlist FROM table WHERE conditions . TK_PUNTOCOMA
+   42 conditions: conditions . condition
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 9
+    TK_PUNTOCOMA      desplazar e ir al estado 97
+
+    field      ir al estado 70
+    condition  ir al estado 98
+    cond_and   ir al estado 73
+    cond_or    ir al estado 74
+    comp       ir al estado 75
+
+
+estado 72
+
+   43 conditions: condition .
+
+    $default  reduce usando la regla 43 (conditions)
+
+
+estado 73
+
+   44 condition: cond_and .
+   45 cond_and: cond_and . KW_OP_AND cond_or
+
+    KW_OP_AND  desplazar e ir al estado 99
+
+    $default  reduce usando la regla 44 (condition)
+
+
+estado 74
+
+   46 cond_and: cond_or .
+   47 cond_or: cond_or . KW_OP_OR comp
+
+    KW_OP_OR  desplazar e ir al estado 100
+
+    $default  reduce usando la regla 46 (cond_and)
+
+
+estado 75
+
+   48 cond_or: comp .
+
+    $default  reduce usando la regla 48 (cond_or)
+
+
+estado 76
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 101
+
+
+estado 77
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES . TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 102
+
+
+estado 78
+
+   19 tbcontenido_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 103
+
+
+estado 79
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES . TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 104
+
+
+estado 80
+
+   16 tblibro_fields: TK_INTEGER TK_COMA TK_INTEGER . TK_COMA TK_INTEGER TK_COMA TK_INTEGER
+
+    TK_COMA  desplazar e ir al estado 105
+
+
+estado 81
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES . TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 106
+
+
+estado 82
+
+   18 tbprestamo_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 18 (tbprestamo_fields)
+
+
+estado 83
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES . TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 107
+
+
+estado 84
+
+   17 tbtusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 17 (tbtusuario_fields)
+
+
+estado 85
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES . TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 108
+
+
+estado 86
+
+   14 tbtitulo_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 109
+
+
+estado 87
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES . TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 110
+
+
+estado 88
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 111
+
+
+estado 89
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES . TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_APAREN  desplazar e ir al estado 112
+
+
+estado 90
+
+   50 eq_op: TK_OP_EQ .
+
+    $default  reduce usando la regla 50 (eq_op)
+
+
+estado 91
+
+   51 eq_op: TK_OP_LT .
+
+    $default  reduce usando la regla 51 (eq_op)
+
+
+estado 92
+
+   52 eq_op: TK_OP_LET .
+
+    $default  reduce usando la regla 52 (eq_op)
+
+
+estado 93
+
+   53 eq_op: TK_OP_GT .
+
+    $default  reduce usando la regla 53 (eq_op)
+
+
+estado 94
+
+   54 eq_op: TK_OP_GET .
+
+    $default  reduce usando la regla 54 (eq_op)
+
+
+estado 95
+
+   55 eq_op: TK_OP_NOEQ .
+
+    $default  reduce usando la regla 55 (eq_op)
+
+
+estado 96
+
+   49 comp: field eq_op . val
+
+    TK_INTEGER  desplazar e ir al estado 113
+    TK_STRING   desplazar e ir al estado 114
+
+    val  ir al estado 115
+
+
+estado 97
+
+   28 sel_stmt: SELECT fieldlist FROM table WHERE conditions TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 28 (sel_stmt)
+
+
+estado 98
+
+   42 conditions: conditions condition .
+
+    $default  reduce usando la regla 42 (conditions)
+
+
+estado 99
+
+   45 cond_and: cond_and KW_OP_AND . cond_or
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 9
+
+    field    ir al estado 70
+    cond_or  ir al estado 116
+    comp     ir al estado 75
+
+
+estado 100
+
+   47 cond_or: cond_or KW_OP_OR . comp
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 9
+
+    field  ir al estado 70
+    comp   ir al estado 117
+
+
+estado 101
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 118
+
+
+estado 102
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN . tbautor_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 119
+
+    tbautor_vals  ir al estado 120
+
+
+estado 103
+
+   19 tbcontenido_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 121
+
+
+estado 104
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN . tbcontenido_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 122
+
+    tbcontenido_vals  ir al estado 123
+
+
+estado 105
+
+   16 tblibro_fields: TK_INTEGER TK_COMA TK_INTEGER TK_COMA . TK_INTEGER TK_COMA TK_INTEGER
+
+    TK_INTEGER  desplazar e ir al estado 124
+
+
+estado 106
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN . tblibro_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 125
+
+    tblibro_vals  ir al estado 126
+
+
+estado 107
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN . tbprestamo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 127
+
+    tbprestamo_vals  ir al estado 128
+
+
+estado 108
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN . tbtusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 129
+
+    tbtusuario_vals  ir al estado 130
+
+
+estado 109
+
+   14 tbtitulo_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 131
+
+
+estado 110
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN . tbtitulo_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 132
+
+    tbtitulo_vals  ir al estado 133
+
+
+estado 111
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 134
+
+
+estado 112
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN . tbusuario_vals TK_CPAREN TK_PUNTOCOMA
+
+    TK_INTEGER  desplazar e ir al estado 135
+
+    tbusuario_vals  ir al estado 136
+
+
+estado 113
+
+   34 val: TK_INTEGER .
+
+    $default  reduce usando la regla 34 (val)
+
+
+estado 114
+
+   33 val: TK_STRING .
+
+    $default  reduce usando la regla 33 (val)
+
+
+estado 115
+
+   49 comp: field eq_op val .
+
+    $default  reduce usando la regla 49 (comp)
+
+
+estado 116
+
+   45 cond_and: cond_and KW_OP_AND cond_or .
+   47 cond_or: cond_or . KW_OP_OR comp
+
+    KW_OP_OR  desplazar e ir al estado 100
+
+    $default  reduce usando la regla 45 (cond_and)
+
+
+estado 117
+
+   47 cond_or: cond_or KW_OP_OR comp .
+
+    $default  reduce usando la regla 47 (cond_or)
+
+
+estado 118
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 137
+
+
+estado 119
+
+   20 tbautor_vals: TK_INTEGER . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 138
+
+
+estado 120
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 139
+
+
+estado 121
+
+   19 tbcontenido_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 19 (tbcontenido_fields)
+
+
+estado 122
+
+   26 tbcontenido_vals: TK_INTEGER . TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 140
+
+
+estado 123
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 141
+
+
+estado 124
+
+   16 tblibro_fields: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER . TK_COMA TK_INTEGER
+
+    TK_COMA  desplazar e ir al estado 142
+
+
+estado 125
+
+   22 tblibro_vals: TK_INTEGER . TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 143
+
+
+estado 126
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 144
+
+
+estado 127
+
+   25 tbprestamo_vals: TK_INTEGER . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 145
+
+
+estado 128
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 146
+
+
+estado 129
+
+   24 tbtusuario_vals: TK_INTEGER . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 147
+
+
+estado 130
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 148
+
+
+estado 131
+
+   14 tbtitulo_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 14 (tbtitulo_fields)
+
+
+estado 132
+
+   21 tbtitulo_vals: TK_INTEGER . TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 149
+
+
+estado 133
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 150
+
+
+estado 134
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 151
+
+
+estado 135
+
+   23 tbusuario_vals: TK_INTEGER . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 152
+
+
+estado 136
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals . TK_CPAREN TK_PUNTOCOMA
+
+    TK_CPAREN  desplazar e ir al estado 153
+
+
+estado 137
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 154
+
+
+estado 138
+
+   20 tbautor_vals: TK_INTEGER TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 155
+
+
+estado 139
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 156
+
+
+estado 140
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA . TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_INTEGER  desplazar e ir al estado 157
+
+
+estado 141
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 158
+
+
+estado 142
+
+   16 tblibro_fields: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER TK_COMA . TK_INTEGER
+
+    TK_INTEGER  desplazar e ir al estado 159
+
+
+estado 143
+
+   22 tblibro_vals: TK_INTEGER TK_COMA . TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_INTEGER  desplazar e ir al estado 160
+
+
+estado 144
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 161
+
+
+estado 145
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 162
+
+
+estado 146
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 163
+
+
+estado 147
+
+   24 tbtusuario_vals: TK_INTEGER TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 164
+
+
+estado 148
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 165
+
+
+estado 149
+
+   21 tbtitulo_vals: TK_INTEGER TK_COMA . TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 166
+
+
+estado 150
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 167
+
+
+estado 151
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 168
+
+
+estado 152
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 169
+
+
+estado 153
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN . TK_PUNTOCOMA
+
+    TK_PUNTOCOMA  desplazar e ir al estado 170
+
+
+estado 154
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 171
+
+
+estado 155
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 172
+
+
+estado 156
+
+    6 ins_with_fields: INSERT INTO KW_AUTOR TK_APAREN tbautor_fields TK_CPAREN VALUES TK_APAREN tbautor_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 6 (ins_with_fields)
+
+
+estado 157
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA TK_INTEGER . TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 173
+
+
+estado 158
+
+    8 ins_with_fields: INSERT INTO KW_CONTENIDO TK_APAREN tbcontenido_fields TK_CPAREN VALUES TK_APAREN tbcontenido_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 8 (ins_with_fields)
+
+
+estado 159
+
+   16 tblibro_fields: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_INTEGER .
+
+    $default  reduce usando la regla 16 (tblibro_fields)
+
+
+estado 160
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 174
+
+
+estado 161
+
+    7 ins_with_fields: INSERT INTO KW_LIBRO TK_APAREN tblibro_fields TK_CPAREN VALUES TK_APAREN tblibro_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 7 (ins_with_fields)
+
+
+estado 162
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 175
+
+
+estado 163
+
+    9 ins_with_fields: INSERT INTO KW_PRESTAMO TK_APAREN tbprestamo_fields TK_CPAREN VALUES TK_APAREN tbprestamo_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 9 (ins_with_fields)
+
+
+estado 164
+
+   24 tbtusuario_vals: TK_INTEGER TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 24 (tbtusuario_vals)
+
+
+estado 165
+
+   10 ins_with_fields: INSERT INTO KW_TIPOUSUARIO TK_APAREN tbtusuario_fields TK_CPAREN VALUES TK_APAREN tbtusuario_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 10 (ins_with_fields)
+
+
+estado 166
+
+   21 tbtitulo_vals: TK_INTEGER TK_COMA TK_STRING . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 176
+
+
+estado 167
+
+   11 ins_with_fields: INSERT INTO KW_TITULO TK_APAREN tbtitulo_fields TK_CPAREN VALUES TK_APAREN tbtitulo_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 11 (ins_with_fields)
+
+
+estado 168
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR . TK_COMA TK_IDENTIFICADOR
+
+    TK_COMA  desplazar e ir al estado 177
+
+
+estado 169
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 178
+
+
+estado 170
+
+   12 ins_with_fields: INSERT INTO KW_USUARIO TK_APAREN tbusuario_fields TK_CPAREN VALUES TK_APAREN tbusuario_vals TK_CPAREN TK_PUNTOCOMA .
+
+    $default  reduce usando la regla 12 (ins_with_fields)
+
+
+estado 171
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 179
+
+
+estado 172
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 180
+
+
+estado 173
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA . TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 181
+
+
+estado 174
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 182
+
+
+estado 175
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 183
+
+
+estado 176
+
+   21 tbtitulo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 184
+
+
+estado 177
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA . TK_IDENTIFICADOR
+
+    TK_IDENTIFICADOR  desplazar e ir al estado 185
+
+
+estado 178
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 186
+
+
+estado 179
+
+   13 tbautor_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 13 (tbautor_fields)
+
+
+estado 180
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 187
+
+
+estado 181
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 188
+
+
+estado 182
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 189
+
+
+estado 183
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 190
+
+
+estado 184
+
+   21 tbtitulo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 21 (tbtitulo_vals)
+
+
+estado 185
+
+   15 tbusuario_fields: TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR TK_COMA TK_IDENTIFICADOR .
+
+    $default  reduce usando la regla 15 (tbusuario_fields)
+
+
+estado 186
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 191
+
+
+estado 187
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 192
+
+
+estado 188
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 193
+
+
+estado 189
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 194
+
+
+estado 190
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 195
+
+
+estado 191
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING TK_COMA TK_STRING
+
+    TK_STRING  desplazar e ir al estado 196
+
+
+estado 192
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 197
+
+
+estado 193
+
+   26 tbcontenido_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 26 (tbcontenido_vals)
+
+
+estado 194
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 198
+
+
+estado 195
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 199
+
+
+estado 196
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING . TK_COMA TK_STRING
+
+    TK_COMA  desplazar e ir al estado 200
+
+
+estado 197
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 201
+
+
+estado 198
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 202
+
+
+estado 199
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 203
+
+
+estado 200
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA . TK_STRING
+
+    TK_STRING  desplazar e ir al estado 204
+
+
+estado 201
+
+   20 tbautor_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 20 (tbautor_vals)
+
+
+estado 202
+
+   22 tblibro_vals: TK_INTEGER TK_COMA TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 22 (tblibro_vals)
+
+
+estado 203
+
+   25 tbprestamo_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 25 (tbprestamo_vals)
+
+
+estado 204
+
+   23 tbusuario_vals: TK_INTEGER TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING TK_COMA TK_STRING .
+
+    $default  reduce usando la regla 23 (tbusuario_vals)

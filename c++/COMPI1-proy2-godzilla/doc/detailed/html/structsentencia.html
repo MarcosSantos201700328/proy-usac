@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura sentencia</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura sentencia</h1><!-- doxytag: class="sentencia" -->Clase de almacenamiento de raiz de un arbol de sentencias en el AST, siendo a su vez una lista.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="ast_8h-source.html">ast.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para sentencia:<p><center><img src="structsentencia__coll__graph.png" border="0" usemap="#sentencia__coll__map" alt="Collaboration graph"></center>
+<map name="sentencia__coll__map">
+<area href="structenunciadoIf.html" shape="rect" coords="545,853,638,957" alt="">
+<area href="structenunciadoWhile.html" shape="rect" coords="131,859,246,950" alt="">
+<area href="structenunciadoFor.html" shape="rect" coords="351,845,453,965" alt="">
+<area href="structdeclaracion.html" shape="rect" coords="231,397,335,487" alt="">
+<area href="structasignacion.html" shape="rect" coords="359,397,445,487" alt="">
+<area href="structexpr.html" shape="rect" coords="113,162,177,311" alt="">
+<area href="structoperacion.html" shape="rect" coords="7,390,93,494" alt="">
+<area href="structconstante.html" shape="rect" coords="46,7,126,98" alt="">
+<area href="structvariable.html" shape="rect" coords="150,7,257,98" alt="">
+<area href="structprintCall.html" shape="rect" coords="709,397,778,487" alt="">
+<area href="structtoken.html" shape="rect" coords="691,162,795,311" alt="">
+</map>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structsentencia.html">sentencia</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsentencia.html#o0">siguiente</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sentencia siguiente a evaluar.  <a href="#o0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsentencia.html#o1">tipo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tipo de sentencia.  <a href="#o1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsentencia.html#o2">numLinea</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Numero de linea en donde se encontraba la sentecia, esto es para escribir a archivo de error.  <a href="#o2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap>union {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="structenunciadoIf.html">enunciadoIf</a> *&nbsp;&nbsp;&nbsp;<a class="el" href="structsentencia.html#o3">if_nodo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="structenunciadoWhile.html">enunciadoWhile</a> *&nbsp;&nbsp;&nbsp;<a class="el" href="structsentencia.html#o4">while_nodo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="structenunciadoFor.html">enunciadoFor</a> *&nbsp;&nbsp;&nbsp;<a class="el" href="structsentencia.html#o5">for_nodo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="structdeclaracion.html">declaracion</a> *&nbsp;&nbsp;&nbsp;<a class="el" href="structsentencia.html#o6">decl</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="structprintCall.html">printCall</a> *&nbsp;&nbsp;&nbsp;<a class="el" href="structsentencia.html#o7">call</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="structasignacion.html">asignacion</a> *&nbsp;&nbsp;&nbsp;<a class="el" href="structsentencia.html#o8">asig</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsentencia.html#o9">hijo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nodos hijos del arbol de sentencias.  <a href="#o9"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase de almacenamiento de raiz de un arbol de sentencias en el AST, siendo a su vez una lista. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00227">227</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o8"></a><!-- doxytag: member="sentencia::asig" ref="o8" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structasignacion.html">asignacion</a>* <a class="el" href="structsentencia.html#o8">sentencia::asig</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00238">238</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o7"></a><!-- doxytag: member="sentencia::call" ref="o7" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structprintCall.html">printCall</a>* <a class="el" href="structsentencia.html#o7">sentencia::call</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00237">237</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o6"></a><!-- doxytag: member="sentencia::decl" ref="o6" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structdeclaracion.html">declaracion</a>* <a class="el" href="structsentencia.html#o6">sentencia::decl</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00236">236</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o5"></a><!-- doxytag: member="sentencia::for_nodo" ref="o5" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoFor.html">enunciadoFor</a>* <a class="el" href="structsentencia.html#o5">sentencia::for_nodo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00235">235</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o9"></a><!-- doxytag: member="sentencia::hijo" ref="o9" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">union { ... }  <a class="el" href="structsentencia.html#o9">sentencia::hijo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Nodos hijos del arbol de sentencias. 
+<p>
+
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>, y <a class="el" href="ast_8c-source.html#l00100">insertarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o3"></a><!-- doxytag: member="sentencia::if_nodo" ref="o3" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoIf.html">enunciadoIf</a>* <a class="el" href="structsentencia.html#o3">sentencia::if_nodo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00233">233</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o2"></a><!-- doxytag: member="sentencia::numLinea" ref="o2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structsentencia.html#o2">sentencia::numLinea</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Numero de linea en donde se encontraba la sentecia, esto es para escribir a archivo de error. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00230">230</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00280">error()</a>, y <a class="el" href="ast_8c-source.html#l00100">insertarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o0"></a><!-- doxytag: member="sentencia::siguiente" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structsentencia.html">sentencia</a>* <a class="el" href="structsentencia.html#o0">sentencia::siguiente</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sentencia siguiente a evaluar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00228">228</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8c-source.html#l00140">concatenarSentencia()</a>, <a class="el" href="ast_8c-source.html#l00100">insertarSentencia()</a>, y <a class="el" href="ast_8c-source.html#l00305">recorrerSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o1"></a><!-- doxytag: member="sentencia::tipo" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structsentencia.html#o1">sentencia::tipo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Tipo de sentencia. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00229">229</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l00914">borrarSentencias()</a>, <a class="el" href="ast_8c-source.html#l00317">evaluarSentencia()</a>, y <a class="el" href="ast_8c-source.html#l00100">insertarSentencia()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o4"></a><!-- doxytag: member="sentencia::while_nodo" ref="o4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structenunciadoWhile.html">enunciadoWhile</a>* <a class="el" href="structsentencia.html#o4">sentencia::while_nodo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00234">234</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="ast_8h-source.html">ast.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:40:12 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

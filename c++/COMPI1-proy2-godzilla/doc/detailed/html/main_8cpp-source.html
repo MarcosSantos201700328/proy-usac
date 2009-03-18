@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: /media/docs/progra/c++/compiladores1/proy2/godzilla/src/main.cpp Source File</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>main.cpp</h1><a href="main_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00003"></a>00003 <span class="comment">/* Godzilla</span>
+<a name="l00004"></a>00004 <span class="comment">* Proyecto No. 2 de Lenguajes y Compiladores 1</span>
+<a name="l00005"></a>00005 <span class="comment">* (c) 2006 Erik Giron C# 200313492</span>
+<a name="l00006"></a>00006 <span class="comment">*/</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;qapplication.h&gt;</span>
+<a name="l00009"></a>00009 <span class="keyword">extern</span> <span class="stringliteral">"C"</span>{
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include "<a class="code" href="parserheader_8h.html">parserheader.h</a>"</span>
+<a name="l00012"></a>00012 }
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="preprocessor">#include "<a class="code" href="godzilla_8h.html">godzilla.h</a>"</span>
+<a name="l00016"></a><a class="code" href="main_8cpp.html#a0">00016</a> <span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a0">main</a>( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> ** argv ) {
+<a name="l00017"></a>00017   <span class="comment">//QApplication a( argc, argv );</span>
+<a name="l00018"></a>00018   QApplication* a;
+<a name="l00019"></a>00019   <a class="code" href="classGodZilla.html">GodZilla</a> * mw<span class="comment">/* = new GodZilla()*/</span>;
+<a name="l00020"></a>00020     <span class="keywordflow">if</span>(argc ==1){
+<a name="l00021"></a>00021       a = <span class="keyword">new</span> QApplication(argc,argv);
+<a name="l00022"></a>00022       mw = <span class="keyword">new</span> <a class="code" href="classGodZilla.html">GodZilla</a>();
+<a name="l00023"></a>00023       mw-&gt;setCaption( <span class="stringliteral">"GodZilla"</span> );
+<a name="l00024"></a>00024       mw-&gt;show();
+<a name="l00025"></a>00025       a-&gt;connect( a, SIGNAL(lastWindowClosed()), a, SLOT(quit()) );
+<a name="l00026"></a>00026       <span class="keywordflow">return</span> a-&gt;exec();
+<a name="l00027"></a>00027       <span class="comment">//a.connect( &amp;a, SIGNAL(lastWindowClosed()), &amp;a, SLOT(quit()) );</span>
+<a name="l00028"></a>00028       <span class="comment">//return a.exec();</span>
+<a name="l00029"></a>00029     }
+<a name="l00030"></a>00030     <span class="keywordflow">else</span> <span class="keywordflow">if</span>(argc == 4)
+<a name="l00031"></a>00031     {
+<a name="l00032"></a>00032       <span class="keywordflow">if</span> (<a class="code" href="parserheader_8h.html#a0">inputparse</a>(argv[1],argv[2]) == 0)
+<a name="l00033"></a>00033         <span class="keywordflow">return</span> 0;
+<a name="l00034"></a>00034       <span class="keywordflow">else</span>{
+<a name="l00035"></a>00035         printf(<span class="stringliteral">"Se encontraron errores, se generara un XML de errores hacia %s"</span>,argv[3]);
+<a name="l00036"></a>00036         <a class="code" href="parserheader_8h.html#a1">generarSalidaError</a>(argv[3]);
+<a name="l00037"></a>00037         <span class="keywordflow">return</span> 1;
+<a name="l00038"></a>00038       }
+<a name="l00039"></a>00039     }      
+<a name="l00040"></a>00040     <span class="keywordflow">else</span>{
+<a name="l00041"></a>00041       printf(<span class="stringliteral">"ERROR: Debe ingresar parametros para archivo de entrada(texto), de salida(html), y de salida de error(xml)\n"</span>);
+<a name="l00042"></a>00042       printf(<span class="stringliteral">"\tEjemplo: $./godzilla input.txt salida.htm errores.xml\n\n"</span>);
+<a name="l00043"></a>00043       printf(<span class="stringliteral">"Tambien puede ingresar sin ningun paramentro para utilizarlo en modo grafico.\n NOTA: necesitara las librerias de X11 y QT si esta usando sistemas UNIX"</span>);
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045     <span class="keywordflow">return</span> 0;
+<a name="l00046"></a>00046 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:06 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

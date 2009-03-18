@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<errores>
+	<semanticos>
+		<error numero="2">
+			<linea>0</linea>
+			<descripcion>Resultado de expresion invalida, debe ser true o false</descripcion>
+		</error>
+		<error numero="3">
+			<linea>27</linea>
+			<descripcion>El error ocurrio dentro de esta sentencia</descripcion>
+		</error>
+		<error numero="4">
+			<linea>0</linea>
+			<descripcion>Resultado de expresion invalida, debe ser true o false</descripcion>
+		</error>
+		<error numero="5">
+			<linea>27</linea>
+			<descripcion>El error ocurrio dentro de esta sentencia</descripcion>
+		</error>
+		<error numero="6">
+			<linea>0</linea>
+			<descripcion>Imposible asginar, tipos no concuerdan</descripcion>
+		</error>
+		<error numero="7">
+			<linea>33</linea>
+			<descripcion>El error ocurrio dentro de esta sentencia</descripcion>
+		</error>
+		<error numero="8">
+			<linea>0</linea>
+			<descripcion>Imposible asginar, tipos no concuerdan</descripcion>
+		</error>
+		<error numero="9">
+			<linea>39</linea>
+			<descripcion>El error ocurrio dentro de esta sentencia</descripcion>
+		</error>
+	</semanticos>
+</errores>

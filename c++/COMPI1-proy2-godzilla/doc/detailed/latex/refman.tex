@@ -1,0 +1,84 @@
+\documentclass[a4paper]{book}
+\usepackage{a4wide}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage[spanish]{babel}
+\usepackage{doxygen}
+\makeindex
+\setcounter{tocdepth}{1}
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large godzilla Manual de referencia\\[1ex]\large 1.0 }\\
+\vspace*{1cm}
+{\large Generado por Doxygen 1.4.4}\\
+\vspace*{0.5cm}
+{\small Mon May 1 10:39:06 2006}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\chapter{godzilla Directory Hierarchy}
+\input{dirs}
+\chapter{godzilla Indice de clases}
+\input{annotated}
+\chapter{godzilla Indice de archivos}
+\input{files}
+\chapter{godzilla Directory Documentation}
+\input{dir_000003}
+\include{dir_000004}
+\include{dir_000001}
+\include{dir_000006}
+\include{dir_000000}
+\include{dir_000002}
+\include{dir_000005}
+\include{dir_000007}
+\chapter{godzilla Documentaci\'{o}n de clases}
+\input{structasignacion}
+\include{structast}
+\include{classBrowserDock}
+\include{structcolaErr}
+\include{structconstante}
+\include{structdeclaracion}
+\include{structenunciadoFor}
+\include{structenunciadoIf}
+\include{structenunciadoWhile}
+\include{structexpr}
+\include{classGodZilla}
+\include{structnodoColaErr}
+\include{structnodoHijo}
+\include{structoperacion}
+\include{structprintCall}
+\include{structraiz}
+\include{structsentencia}
+\include{structsymbol}
+\include{structsymtab}
+\include{structtipoError}
+\include{structtoken}
+\include{structvariable}
+\chapter{godzilla Documentaci\'{o}n de archivos}
+\input{ast_8c}
+\include{ast_8h}
+\include{browser_8cpp}
+\include{browser_8h}
+\include{colaerr_8c}
+\include{colaerr_8h}
+\include{constantes_8h}
+\include{godzilla_8cpp}
+\include{godzilla_8h}
+\include{main_8cpp}
+\include{parserheader_8h}
+\include{symtab_8c}
+\include{symtab_8h}
+\printindex
+\end{document}

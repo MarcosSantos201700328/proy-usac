@@ -1,0 +1,13 @@
+STRIM v. 1.0
+
+Descripcion:
+	Strim es un programa que reconoce cadenas de caracteres 
+desde un archivo de entrada y las opera entre ellas, utilizando operadores
+definidos dentro del mismo archivo de entrada.
+
+Requisitos para la Compilacion:
+GNU Flex (cualquier version, version utilizada: 2.5)
+GNU Bison (cualquier version, version utilizada: 1.875d)
+GNU GCC y G++ (Preferiblemente  v 4.0) o cualquier compilador que cumpla
+    con el estandar C99 & C++99
+GNU Make y Autotools-1.9

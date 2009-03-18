@@ -1,0 +1,132 @@
+Crear_Tipo_Instalacion(1, "Restoran");
+Crear_Tipo_Instalacion(2, "Hab. Simple");
+Crear_Tipo_Instalacion(1, "Hab. Doble");
+Crear_Tipo_Instalacion(3, "Hab. Simple");
+Crear_Tipo_Instalacion(4, "Patio al Aire Libre");
+Crear_Tipo_Instalacion(5, "Conferency Room");
+Crear_Tipo_Instalacion(6, "Comercio en Lobby");
+Crear_Tipo_Instalacion(7, "Capilla");
+
+/
+crear_tipo_instalacion(f,"prostibulo");
+\
+
+Agregar_Instalacion(1,1, "Ristoran don Pedro", 100 , 0 ,100 );
+Agregar_Instalacion(2,2, "Simple Suite",1,55,500);
+Agregar_Instalacion(3,1, "Ristoran Don Kijote", 300 , 0 , 100);
+Agregar_Instalacion(4,3, "Presidential Room", 5 , 3000.00, 500);
+Agregar_Instalacion(5,4, "Patio", 500 , 0 , 100);
+Agregar_Instalacion(6,5, "Sala de Conferencias VIP", 250 , 0 , 300);
+Agregar_Instalacion(7,5, "Kiosko", 3 , 0 , 100);
+Agregar_Instalacion(8,7, "Iglesia de Sor Judas", 150 , 0 , 400);
+
+Agregar_Instalacion(1,1, "Ristoran don Pedro", 100 , 0 ,100 );
+Agregar_Instalacion(2,2, "Simple Suite",1,55,500);
+Agregar_Instalacion(3,1, "Ristoran Don Kijote", 300 , 0 , 100);
+Agregar_Instalacion(4,3, "Presidential Room", 5 , 3000 , 500);
+Agregar_Instalacion(5,4, "Patio", 500 , 0 , 100);
+Agregar_Instalacion(6,5, "Sala de Conferencias VIP", 250 , 0 , 300);
+Agregar_Instalacion(7,5, "Kiosko", 3 , 0 , 100);
+Agregar_Instalacion(8,7, "Iglesia de Sor Judas", 150 , 0 , 400);
+
+
+/
+Agregar_Instalacion(3,66,"fsas",1,44,51);
+\
+Agregar_Cliente("1234567-8","Stephanie Galdamez", " 33 av 15-", "24497166", "10/08/1988","H");
+Agregar_Cliente("7418529-6","Carlos Estrada","3f asd ff","36925814","06/05/1983","E");
+Agregar_Cliente("1534567-8","Juan Perez","1 calle","74815926","12/05/1981","H");
+Agregar_Cliente("2234567-8","Jun Wong","1 calle adf  kfj  kal  f","123456-4811","12/05/2010","H");
+Agregar_Cliente("3234567-8","Kim Kapwhan","Korea Centera fasd kk fl lask j","96385278","12/05/1981","E");
+Agregar_Cliente("4234567-8","Mai Shiranui","Japan City 1aalle","74815926","12/05/1981","H");
+Agregar_Cliente("5234567-8","Rob Halford","22 Acacia Avenue","74815926","12/05/1981","E");
+Agregar_Cliente("6234567-8","Hattori Hanzo","33rd Ninja Street Kyoto","74815926","12/05/1981","H");
+Agregar_Cliente("7234567-8","Ronnie James Dio","Holy Diver Av. 415","74815926","12/05/1981","E");
+Agregar_Cliente("8234567-8","Ripper Owens","65 Av. 54551 Gettysburg USA","74815926","12/05/1981","E");
+
+
+Crear_Promocion(1, "Fiesta de Independencia 2005","01/09/2005","23/09/2005",3,10);
+Crear_Promocion(2, "Fiesta Graduacion", "05/10/2005","15/10/2005",1,20);
+Crear_Promocion(3, "Cumpleanios","17/09/2005","20/09/2005",3,8);
+Crear_Promocion(4, "Dia de muertos","30/10/2005","03/11/2005",8,0);
+Crear_Promocion(5, "OktoberFest","01/10/2005","15/10/2005",4,30);
+Crear_Promocion(6, "Semana Santa","19/4/2005","28/4/2005",2,50);
+Crear_Promocion(7, "Revolucion de octubre","20/10/2005","21/10/2005",3,15);
+Crear_Promocion(8, "Anio Nuevo","28/12/2005","02/01/2005",3,15);
+
+Crear_Tipo_Actividad(1,1, "Almuerzo");
+Crear_Tipo_Actividad(2,1,"Te Social");
+Crear_Tipo_Actividad(1,3,"Cumpleanios");
+Crear_Tipo_Actividad(3,5,"Conferencia COECYS")
+Crear_Tipo_Actividad(4,6,"Venta de Garage")
+Crear_Tipo_Actividad(5,7,"Misa semanal")
+Crear_Tipo_Actividad(6,8,"Erroneo")
+
+
+Hacer_Reservacion(1,1,"1234567-8","30/09/2005",3,1);
+Hacer_Reservacion(2,2,"7418529-6","08/11/2005",4,0);
+Hacer_Reservacion(3,2,"1234567-8","09/11/2005",1,0);
+Hacer_Reservacion(3,2,"1534567-8","09/12/2005",1,0);
+Hacer_Reservacion(4,2,"2234567-8","03/11/2005",5,2);
+Hacer_Reservacion(5,2,"3234567-8","03/12/2005",5,2);
+Hacer_Reservacion(6,2,"4234567-8","03/1/2005",5,2);
+Hacer_Reservacion(7,2,"5234567-8","03/2/2005",5,2);
+Hacer_Reservacion(8,2,"6234567-8","03/3/2005",5,2);
+Hacer_Reservacion(9,2,"7234567-8","03/4/2005",5,2);
+
+Extender_Reservacion(2,10);
+Extender_Reservacion(1,5);
+
+Eliminar_Reservacion(1,"1234567-8","30/09/2005");
+Eliminar_Reservacion(10,"1234567-8","30/09/2005");
+Eliminar_Reservacion(1,"1234567-8","30/10/2005");
+Eliminar_Reservacion(9,"7234567-8","03/4/2005");
+
+
+asignar_consumo_ayb(2,1,"1234567-8",60.00,"30/09/2005");
+asignar_consumo_ayb(2,1,"7418529-6",40.00,"09/11/2005");
+asignar_consumo_ayb(2,2,"1534567-8",150.00,"30/09/2005");
+asignar_consumo_ayb(2,2,"2234567-8",150.00,"04/11/2005");
+asignar_consumo_ayb(2,2,"3234567-8",150.00,"4/12/2005");
+asignar_consumo_ayb(2,2,"4234567-8",150.00,"4/1/2005");
+asignar_consumo_ayb(2,2,"5234567-8",150.00,"4/2/2005");
+asignar_consumo_ayb(2,2,"6234567-8",150.00,"4/3/2005");
+
+cambiar_descuento(50);
+cambiar_descuento(150);
+
+Consultar_Descuento();
+Consultar_Descuento(     );
+Consultar_Descuento( f);
+Consultar_Descuento(;
+
+Consultar_Precio(1);
+Consultar_Precio(2);
+Consultar_Precio(3);
+Consultar_Precio(4);
+
+Instalaciones_Disponibles("10/11/2005");
+Instalaciones_Disponibles("25/12/2005");
+Instalaciones_Disponibles("4/11/2005");
+Instalaciones_Disponibles("4/12/2005");
+Instalaciones_Disponibles("4/1/2005");
+Instalaciones_Disponibles("4/2/2005");
+
+listar_Clientes();
+Listar_Clientes(;);
+Listar_Clientes()
+Listar_Clientes(
+Listar_Clientes
+
+Listar_Reservaciones(1);
+Listar_Reservaciones(2);
+Listar_Reservaciones(3);
+Listar_Reservaciones(4);
+Listar_Reservaciones(5);
+Listar_Reservaciones(6);
+Listar_Reservaciones(7);
+
+
+Calcular_Gasto_Reserva("1234567-8",1,"1/10/2005");
+Calcular_Gasto_Reserva("7418529-6",2,"1/10/2005");
+Calcular_Gasto_Reserva("6234567-8",2,"5/3/2005");

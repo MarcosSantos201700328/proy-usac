@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: /media/docs/progra/c++/compiladores1/proy2/godzilla/src/symtab.h Source File</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>symtab.h</h1><a href="symtab_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00003"></a>00003 <span class="comment">/*    para el 2do proyecto de Compiladores 1</span>
+<a name="l00004"></a>00004 <span class="comment">    (c) 2006 Erik Giron*/</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#ifndef SYMTAB_H</span>
+<a name="l00006"></a>00006 <span class="preprocessor"></span><span class="preprocessor">#define SYMTAB_H</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="constantes_8h.html">constantes.h</a>"</span>
+<a name="l00008"></a>00008 
+<a name="l00010"></a><a class="code" href="symtab_8h.html#a0">00010</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsymtab.html">symtab</a> symtab;
+<a name="l00011"></a><a class="code" href="symtab_8h.html#a1">00011</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsymbol.html">symbol</a> symbol;
+<a name="l00013"></a><a class="code" href="structsymbol.html">00013</a> <span class="keyword">struct </span>symbol{
+<a name="l00014"></a><a class="code" href="structsymbol.html#o0">00014</a>   <span class="keywordtype">char</span>* <a class="code" href="structsymbol.html#o0">id</a>;
+<a name="l00015"></a><a class="code" href="structsymbol.html#o1">00015</a>   <span class="keywordtype">int</span> <a class="code" href="structsymbol.html#o1">tipo</a>;
+<a name="l00016"></a>00016   <span class="keyword">union </span>{
+<a name="l00017"></a><a class="code" href="structsymbol.html#o2">00017</a>     <span class="keywordtype">char</span>* <a class="code" href="structsymbol.html#o2">valorCadena</a>;
+<a name="l00018"></a><a class="code" href="structsymbol.html#o3">00018</a>     <span class="keywordtype">int</span> <a class="code" href="structsymbol.html#o3">valorEntero</a>;
+<a name="l00019"></a><a class="code" href="structsymbol.html#o4">00019</a>     <span class="keywordtype">char</span> <a class="code" href="structsymbol.html#o4">valorBoolean</a>;
+<a name="l00020"></a>00020   }<a class="code" href="structsymbol.html#o5">valor</a>;
+<a name="l00021"></a><a class="code" href="structsymbol.html#o6">00021</a>   symbol* <a class="code" href="structsymbol.html#o6">siguiente</a>;  
+<a name="l00022"></a>00022 };
+<a name="l00024"></a><a class="code" href="structsymtab.html">00024</a> <span class="keyword">struct </span>symtab{
+<a name="l00025"></a><a class="code" href="structsymtab.html#o0">00025</a>   symbol* <a class="code" href="structsymtab.html#o0">primero</a>;
+<a name="l00026"></a><a class="code" href="structsymtab.html#o1">00026</a>   symbol* <a class="code" href="structsymtab.html#o1">actual</a>;  
+<a name="l00027"></a>00027 };
+<a name="l00028"></a>00028 
+<a name="l00034"></a>00034 symbol* <a class="code" href="symtab_8c.html#a2">insertarSimbolo</a>(<span class="keywordtype">char</span>* <span class="keywordtype">id</span>, <span class="keywordtype">int</span> tipo);
+<a name="l00037"></a>00037 symbol* <a class="code" href="symtab_8c.html#a3">buscarSimbolo</a>(<span class="keywordtype">char</span>* <span class="keywordtype">id</span>);
+<a name="l00039"></a>00039 <span class="keywordtype">void</span> <a class="code" href="symtab_8c.html#a5">borrarTabla</a>(<span class="keywordtype">void</span>);
+<a name="l00042"></a>00042 <span class="keywordtype">int</span> <a class="code" href="symtab_8c.html#a6">openSymtabFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename);
+<a name="l00044"></a>00044 <span class="keywordtype">int</span> <a class="code" href="symtab_8c.html#a7">closeSymtabFile</a>(<span class="keywordtype">void</span>);
+<a name="l00047"></a>00047 <span class="keywordtype">int</span> <a class="code" href="symtab_8c.html#a8">printSymtabFile</a>(<span class="keywordtype">int</span> linea);
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:06 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

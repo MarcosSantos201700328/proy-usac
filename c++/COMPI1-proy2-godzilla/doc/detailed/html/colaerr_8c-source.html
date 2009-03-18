@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: /media/docs/progra/c++/compiladores1/proy2/godzilla/src/colaerr.c Source File</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<div class="nav">
+<a class="el" href="dir_000000.html">media</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000001.html">docs</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000002.html">progra</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000003.html">c++</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000004.html">compiladores1</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000005.html">proy2</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000006.html">godzilla</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_000007.html">src</a></div>
+<h1>colaerr.c</h1><a href="colaerr_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00004"></a>00004 <span class="comment">/* Godzilla</span>
+<a name="l00005"></a>00005 <span class="comment">* Proyecto No. 2 de Lenguajes y Compiladores 1</span>
+<a name="l00006"></a>00006 <span class="comment">* (c) 2006 Erik Giron C# 200313492</span>
+<a name="l00007"></a>00007 <span class="comment">*/</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span>{
+<a name="l00010"></a>00010 <span class="preprocessor">#endif</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="colaerr_8h.html">colaerr.h</a>"</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>}
+<a name="l00014"></a>00014 <span class="preprocessor">#endif</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span>
+<a name="l00016"></a><a class="code" href="colaerr_8c.html#a1">00016</a> <span class="keyword">static</span> <a class="code" href="structcolaErr.html">colaErr</a> <a class="code" href="colaerr_8c.html#a0">erroresLexicos</a>, <a class="code" href="colaerr_8c.html#a1">erroresSintacticos</a>, <a class="code" href="colaerr_8c.html#a2">erroresSemanticos</a>;
+<a name="l00017"></a><a class="code" href="colaerr_8c.html#a3">00017</a> <span class="keyword">static</span> FILE* <a class="code" href="colaerr_8c.html#a3">errfile</a>;
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="colaerr_8c.html#a4">00020</a> <span class="keywordtype">int</span> <a class="code" href="colaerr_8c.html#a4">huboErrorSintactico</a> = 0; <span class="comment">/*Es 0 si no ha habido error Sintactico*/</span>
+<a name="l00021"></a><a class="code" href="colaerr_8c.html#a5">00021</a> <span class="keywordtype">int</span> <a class="code" href="colaerr_8c.html#a5">huboErrorSemantico</a> = 0; <span class="comment">/*Es 0 si no ha habido error Semantico*/</span>
+<a name="l00022"></a><a class="code" href="colaerr_8c.html#a6">00022</a> <span class="keywordtype">int</span> <a class="code" href="colaerr_8c.html#a6">huboErrorLexico</a> = 0; <span class="comment">/*Es 0 si no ha habido error Semantico*/</span>
+<a name="l00024"></a><a class="code" href="colaerr_8h.html#a5">00024</a> <span class="keywordtype">void</span> <a class="code" href="colaerr_8c.html#a7">encolarError</a>(<a class="code" href="structcolaErr.html">colaErr</a>* cerr, <a class="code" href="structtipoError.html">tipoError</a>* err){
+<a name="l00025"></a>00025   <a class="code" href="structnodoColaErr.html">nodoColaErr</a>* nuevo;
+<a name="l00026"></a>00026   nuevo = (<a class="code" href="structnodoColaErr.html">nodoColaErr</a>*) malloc(<span class="keyword">sizeof</span>(<a class="code" href="structnodoColaErr.html">nodoColaErr</a>));
+<a name="l00027"></a>00027   nuevo-&gt;<a class="code" href="structnodoColaErr.html#o0">err</a> = err;
+<a name="l00028"></a>00028   nuevo-&gt;<a class="code" href="structnodoColaErr.html#o1">siguiente</a>=NULL;
+<a name="l00029"></a>00029   
+<a name="l00030"></a>00030   <span class="keywordflow">if</span>(cerr-&gt;<a class="code" href="structcolaErr.html#o1">ultimo</a>) cerr-&gt;<a class="code" href="structcolaErr.html#o1">ultimo</a>-&gt;<a class="code" href="structnodoColaErr.html#o1">siguiente</a> = nuevo;  
+<a name="l00031"></a>00031   cerr-&gt;<a class="code" href="structcolaErr.html#o1">ultimo</a> = nuevo;
+<a name="l00032"></a>00032   
+<a name="l00033"></a>00033   <span class="keywordflow">if</span>(!(cerr-&gt;<a class="code" href="structcolaErr.html#o0">primero</a>)) cerr-&gt;<a class="code" href="structcolaErr.html#o0">primero</a>= nuevo;  
+<a name="l00034"></a>00034 }
+<a name="l00036"></a><a class="code" href="colaerr_8h.html#a6">00036</a> <a class="code" href="structtipoError.html">tipoError</a>* <a class="code" href="colaerr_8c.html#a8">sacarError</a>(<a class="code" href="structcolaErr.html">colaErr</a>* cerr){
+<a name="l00037"></a>00037   <a class="code" href="structnodoColaErr.html">nodoColaErr</a>* <a class="code" href="structnodoHijo.html">nodo</a>;
+<a name="l00038"></a>00038   <a class="code" href="structtipoError.html">tipoError</a>* v;
+<a name="l00039"></a>00039   
+<a name="l00040"></a>00040   nodo = cerr-&gt;<a class="code" href="structcolaErr.html#o0">primero</a>;
+<a name="l00041"></a>00041   <span class="keywordflow">if</span>(!nodo) <span class="keywordflow">return</span> NULL;
+<a name="l00042"></a>00042   
+<a name="l00043"></a>00043   cerr-&gt;<a class="code" href="structcolaErr.html#o0">primero</a> = nodo-&gt;<a class="code" href="structnodoColaErr.html#o1">siguiente</a>;
+<a name="l00044"></a>00044   
+<a name="l00045"></a>00045   v = nodo-&gt;<a class="code" href="structnodoColaErr.html#o0">err</a>;
+<a name="l00046"></a>00046   
+<a name="l00047"></a>00047   free(nodo);
+<a name="l00048"></a>00048   
+<a name="l00049"></a>00049   <span class="keywordflow">if</span>(!(cerr-&gt;<a class="code" href="structcolaErr.html#o0">primero</a>)) cerr-&gt;<a class="code" href="structcolaErr.html#o1">ultimo</a> = NULL;
+<a name="l00050"></a>00050   <span class="keywordflow">return</span> v; 
+<a name="l00051"></a>00051 }
+<a name="l00053"></a><a class="code" href="colaerr_8h.html#a7">00053</a> <span class="keywordtype">void</span> <a class="code" href="colaerr_8c.html#a9">errorLexico</a>(<span class="keywordtype">char</span>* msg){
+<a name="l00054"></a>00054   <a class="code" href="colaerr_8c.html#a6">huboErrorLexico</a> = -1;
+<a name="l00055"></a>00055   <a class="code" href="structtipoError.html">tipoError</a>* nuevo = (<a class="code" href="structtipoError.html">tipoError</a>*) malloc(<span class="keyword">sizeof</span>(<a class="code" href="structtipoError.html">tipoError</a>));
+<a name="l00056"></a>00056   nuevo-&gt;<a class="code" href="structtipoError.html#o2">desc</a> = (<span class="keywordtype">char</span>*) malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * ( strlen(msg) + 1));
+<a name="l00057"></a>00057   nuevo-&gt;<a class="code" href="structtipoError.html#o0">linea</a> = <a class="code" href="colaerr_8h.html#a0">line_num</a>;
+<a name="l00058"></a>00058   nuevo-&gt;<a class="code" href="structtipoError.html#o1">col</a> = <a class="code" href="colaerr_8h.html#a1">column</a>;
+<a name="l00059"></a>00059   strcpy(nuevo-&gt;<a class="code" href="structtipoError.html#o2">desc</a>,msg);    
+<a name="l00060"></a>00060   <a class="code" href="colaerr_8c.html#a7">encolarError</a>(&amp;erroresLexicos,nuevo);
+<a name="l00061"></a>00061 } 
+<a name="l00063"></a><a class="code" href="colaerr_8h.html#a8">00063</a> <span class="keywordtype">void</span> <a class="code" href="colaerr_8c.html#a10">errorSintactico</a>(<span class="keywordtype">char</span>* msg){
+<a name="l00064"></a>00064   <a class="code" href="colaerr_8c.html#a4">huboErrorSintactico</a> = -1;
+<a name="l00065"></a>00065   <a class="code" href="structtipoError.html">tipoError</a>* nuevo = (<a class="code" href="structtipoError.html">tipoError</a>*) malloc(<span class="keyword">sizeof</span>(<a class="code" href="structtipoError.html">tipoError</a>));
+<a name="l00066"></a>00066   nuevo-&gt;<a class="code" href="structtipoError.html#o2">desc</a> = (<span class="keywordtype">char</span>*) malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * ( strlen(msg) + 1));
+<a name="l00067"></a>00067   nuevo-&gt;<a class="code" href="structtipoError.html#o0">linea</a> = <a class="code" href="colaerr_8h.html#a0">line_num</a>;
+<a name="l00068"></a>00068   nuevo-&gt;<a class="code" href="structtipoError.html#o1">col</a> = <a class="code" href="colaerr_8h.html#a1">column</a>;
+<a name="l00069"></a>00069   strcpy(nuevo-&gt;<a class="code" href="structtipoError.html#o2">desc</a>,msg);    
+<a name="l00070"></a>00070   <a class="code" href="colaerr_8c.html#a7">encolarError</a>(&amp;erroresSintacticos,nuevo);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 }
+<a name="l00074"></a><a class="code" href="colaerr_8h.html#a9">00074</a> <span class="keywordtype">void</span> <a class="code" href="colaerr_8c.html#a11">errorSemantico</a>(<span class="keywordtype">char</span>* msg,<span class="keywordtype">int</span> numLinea){
+<a name="l00075"></a>00075   <a class="code" href="colaerr_8c.html#a5">huboErrorSemantico</a> = -1;
+<a name="l00076"></a>00076   <a class="code" href="structtipoError.html">tipoError</a>* nuevo = (<a class="code" href="structtipoError.html">tipoError</a>*) malloc(<span class="keyword">sizeof</span>(<a class="code" href="structtipoError.html">tipoError</a>));
+<a name="l00077"></a>00077   nuevo-&gt;<a class="code" href="structtipoError.html#o2">desc</a> = (<span class="keywordtype">char</span>*) malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * ( strlen(msg) + 1));
+<a name="l00078"></a>00078   nuevo-&gt;<a class="code" href="structtipoError.html#o0">linea</a> = numLinea;
+<a name="l00079"></a>00079   nuevo-&gt;<a class="code" href="structtipoError.html#o1">col</a> = 0;
+<a name="l00080"></a>00080   strcpy(nuevo-&gt;<a class="code" href="structtipoError.html#o2">desc</a>,msg);    
+<a name="l00081"></a>00081   <a class="code" href="colaerr_8c.html#a7">encolarError</a>(&amp;erroresSemanticos,nuevo);
+<a name="l00082"></a>00082 }
+<a name="l00084"></a><a class="code" href="colaerr_8h.html#a10">00084</a> <span class="keywordtype">int</span> <a class="code" href="colaerr_8c.html#a12">escribirErrorLogXML</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename){
+<a name="l00085"></a>00085   <a class="code" href="structtipoError.html">tipoError</a>* tmp= NULL;
+<a name="l00086"></a>00086   <span class="keywordtype">int</span> i;
+<a name="l00087"></a>00087   <span class="keywordflow">if</span>((<a class="code" href="colaerr_8c.html#a3">errfile</a>=fopen(filename,<span class="stringliteral">"w"</span>)) != NULL){
+<a name="l00088"></a>00088     printf(<span class="stringliteral">"Generando archivo de errores ...\n"</span>);
+<a name="l00089"></a>00089     fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"&lt;?xml version=\"1.0\"?&gt;\n"</span>);
+<a name="l00090"></a>00090     fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"&lt;errores&gt;\n"</span>);
+<a name="l00091"></a>00091     <span class="keywordflow">if</span>(erroresLexicos.<a class="code" href="structcolaErr.html#o0">primero</a> != NULL){
+<a name="l00092"></a>00092       fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t&lt;lexicos&gt;\n"</span>);
+<a name="l00093"></a>00093       i = 1;
+<a name="l00094"></a>00094       <span class="keywordflow">while</span> (erroresLexicos.<a class="code" href="structcolaErr.html#o0">primero</a>!=NULL){
+<a name="l00095"></a>00095         tmp = <a class="code" href="colaerr_8c.html#a8">sacarError</a>(&amp;erroresLexicos);
+<a name="l00096"></a>00096         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t&lt;error numero=\"%d\"&gt;\n"</span>,++i);
+<a name="l00097"></a>00097         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;linea&gt;%d&lt;/linea&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o0">linea</a>);
+<a name="l00098"></a>00098         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;columna&gt;%d&lt;/columna&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o1">col</a>);
+<a name="l00099"></a>00099         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;descripcion&gt;%s&lt;/descripcion&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o2">desc</a>);
+<a name="l00100"></a>00100         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t&lt;/error&gt;\n"</span>);      
+<a name="l00101"></a>00101       }
+<a name="l00102"></a>00102       fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t&lt;/lexicos&gt;\n"</span>);     
+<a name="l00103"></a>00103       free(tmp-&gt;<a class="code" href="structtipoError.html#o2">desc</a>);
+<a name="l00104"></a>00104       free(tmp);
+<a name="l00105"></a>00105     }
+<a name="l00106"></a>00106     <span class="keywordflow">if</span>(erroresSintacticos.<a class="code" href="structcolaErr.html#o0">primero</a> != NULL){
+<a name="l00107"></a>00107       fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t&lt;sintacticos&gt;\n"</span>);
+<a name="l00108"></a>00108       i = 1;
+<a name="l00109"></a>00109       <span class="keywordflow">while</span> (erroresSintacticos.<a class="code" href="structcolaErr.html#o0">primero</a>!=NULL){
+<a name="l00110"></a>00110         tmp = <a class="code" href="colaerr_8c.html#a8">sacarError</a>(&amp;erroresSintacticos);
+<a name="l00111"></a>00111         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t&lt;error numero=\"%d\"&gt;\n"</span>,++i);
+<a name="l00112"></a>00112         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;linea&gt;%d&lt;/linea&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o0">linea</a>);
+<a name="l00113"></a>00113         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;columna&gt;%d&lt;/columna&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o1">col</a>);
+<a name="l00114"></a>00114         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;descripcion&gt;%s&lt;/descripcion&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o2">desc</a>);
+<a name="l00115"></a>00115         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t&lt;/error&gt;\n"</span>);      
+<a name="l00116"></a>00116       }
+<a name="l00117"></a>00117       fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t&lt;/sintacticos&gt;\n"</span>);     
+<a name="l00118"></a>00118       free(tmp-&gt;<a class="code" href="structtipoError.html#o2">desc</a>);
+<a name="l00119"></a>00119       free(tmp);
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121     <span class="keywordflow">if</span>(erroresSemanticos.<a class="code" href="structcolaErr.html#o0">primero</a> != NULL){
+<a name="l00122"></a>00122       fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t&lt;semanticos&gt;\n"</span>);
+<a name="l00123"></a>00123       i = 1;
+<a name="l00124"></a>00124       <span class="keywordflow">while</span> (erroresSemanticos.<a class="code" href="structcolaErr.html#o0">primero</a>!=NULL){
+<a name="l00125"></a>00125         tmp = <a class="code" href="colaerr_8c.html#a8">sacarError</a>(&amp;erroresSemanticos);
+<a name="l00126"></a>00126         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t&lt;error numero=\"%d\"&gt;\n"</span>,++i);
+<a name="l00127"></a>00127         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;linea&gt;%d&lt;/linea&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o0">linea</a>);
+<a name="l00128"></a>00128         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t\t&lt;descripcion&gt;%s&lt;/descripcion&gt;\n"</span>,tmp-&gt;<a class="code" href="structtipoError.html#o2">desc</a>);
+<a name="l00129"></a>00129         fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t\t&lt;/error&gt;\n"</span>);      
+<a name="l00130"></a>00130       }
+<a name="l00131"></a>00131       fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"\t&lt;/semanticos&gt;\n"</span>);     
+<a name="l00132"></a>00132       free(tmp-&gt;<a class="code" href="structtipoError.html#o2">desc</a>);
+<a name="l00133"></a>00133       free(tmp);
+<a name="l00134"></a>00134     }
+<a name="l00135"></a>00135     fprintf(<a class="code" href="colaerr_8c.html#a3">errfile</a>,<span class="stringliteral">"&lt;/errores&gt;\n"</span>);
+<a name="l00136"></a>00136     fclose(<a class="code" href="colaerr_8c.html#a3">errfile</a>);
+<a name="l00137"></a>00137     <span class="keywordflow">return</span> 0;
+<a name="l00138"></a>00138   }  
+<a name="l00139"></a>00139   <span class="keywordflow">return</span> -1;
+<a name="l00140"></a>00140 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:39:06 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

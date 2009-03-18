@@ -1,0 +1,46 @@
+<html>
+<head>
+</head>
+<body>
+<b>Tamanos de letras</b>
+<br>
+<%
+var i: integer;
+var j: boolean;
+var k: string;
+var l: integer;
+k:= 'a'+'b'+'c';
+l := 1;
+i := l*5;
+i := (((5+5)/2)-1)/2;
+print('<b>',k,'</b><br>');
+for i:= 1 to 5
+	begin
+		print('<font size = "',i,'"> Letra Tamano ',i,'</font><br>');
+		print('<br>',i,'<br>');
+		j:= true;
+	end;
+j:= true;
+print (j,i);
+i:=0;
+while i<4
+	begin
+		j := false;
+		i := i + 1;
+	end;
+
+if l >= 0 then
+	begin		
+		k:= '<br>'+'sentencia then';
+		i := i + 1;
+		print (k);
+	end;
+else
+	begin
+		k:= 'sentencia else';
+		i := i-1;
+		print (k);
+	end;
+%>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>godzilla: Referencia de la Estructura token</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="main.html">Página&nbsp;principal</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="dirs.html">Directories</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a> | <a class="qindex" href="globals.html">Archivos&nbsp;de&nbsp;los&nbsp;miembros</a></div>
+<h1>Referencia de la Estructura token</h1><!-- doxytag: class="token" -->Clase de almacenamiento de raiz de una lista enlazada de Tokens a imprimir con el comando Print en el AST.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="ast_8h-source.html">ast.h</a>&gt;</code>
+<p>
+Diagrama de colaboración para token:<p><center><img src="structtoken__coll__graph.png" border="0" usemap="#token__coll__map" alt="Collaboration graph"></center>
+<center><font size="2">[<a target="top" href="graph_legend.html">leyenda</a>]</font></center><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtoken.html#o0">tipo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tipo de token a evaluar.  <a href="#o0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structtoken.html">token</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtoken.html#o1">siguiente</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">puntero a token siguiente en la lista  <a href="#o1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap>union {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;char *&nbsp;&nbsp;&nbsp;<a class="el" href="structtoken.html#o2">cadena</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;char *&nbsp;&nbsp;&nbsp;<a class="el" href="structtoken.html#o3">identificador</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structtoken.html#o4">numero</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtoken.html#o5">hijo</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">puntero a token  <a href="#o5"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase de almacenamiento de raiz de una lista enlazada de Tokens a imprimir con el comando Print en el AST. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00243">243</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="o2"></a><!-- doxytag: member="token::cadena" ref="o2" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char* <a class="el" href="structtoken.html#o2">token::cadena</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00247">247</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o5"></a><!-- doxytag: member="token::hijo" ref="o5" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">union { ... }  <a class="el" href="structtoken.html#o5">token::hijo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+puntero a token 
+<p>
+
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l01036">borrarTokens()</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, y <a class="el" href="ast_8c-source.html#l00207">insertarToken()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o3"></a><!-- doxytag: member="token::identificador" ref="o3" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">char* <a class="el" href="structtoken.html#o3">token::identificador</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00248">248</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o4"></a><!-- doxytag: member="token::numero" ref="o4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structtoken.html#o4">token::numero</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00249">249</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o1"></a><!-- doxytag: member="token::siguiente" ref="o1" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structtoken.html">token</a>* <a class="el" href="structtoken.html#o1">token::siguiente</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+puntero a token siguiente en la lista 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00245">245</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l01036">borrarTokens()</a>, <a class="el" href="ast_8c-source.html#l00231">concatenarTokens()</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, y <a class="el" href="ast_8c-source.html#l00207">insertarToken()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="o0"></a><!-- doxytag: member="token::tipo" ref="o0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="structtoken.html#o0">token::tipo</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Tipo de token a evaluar. 
+<p>
+
+<p>
+Definición en la línea <a class="el" href="ast_8h-source.html#l00244">244</a> del archivo <a class="el" href="ast_8h-source.html">ast.h</a>.
+<p>
+Referenciado por <a class="el" href="ast_8c-source.html#l01036">borrarTokens()</a>, <a class="el" href="ast_8c-source.html#l00852">imprimirTokens()</a>, y <a class="el" href="ast_8c-source.html#l00207">insertarToken()</a>.    </td>
+  </tr>
+</table>
+<hr>La documentación para esta estructura fué generada a partir del siguiente archivo:<ul>
+<li>/media/docs/progra/c++/compiladores1/proy2/godzilla/src/<a class="el" href="ast_8h-source.html">ast.h</a></ul>
+<hr size="1"><address style="align: right;"><small>Generado el Mon May 1 10:40:17 2006 para godzilla por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

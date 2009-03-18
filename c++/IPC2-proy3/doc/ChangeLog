@@ -1,0 +1,96 @@
+2005-11-24  Erik Giron  <kreig@localhost.localdomain>
+
+	* lista.cpp: New file.
+
+2005-11-23  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.h:
+	Cambiadas algunos "#include" para lograr portarlo a borland C, que es el compilador usado en la facultad
+
+	* libra.cpp:
+	Hechos todos los cambios pertinentes para compilar en Borland C++ 3.11
+
+	* libra.cpp: Pequenos cambios en salida de datos
+
+2005-11-21  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp:
+	Arreglados muchos de los problemas que ocasionaba el metodo
+	Libro::prestar, Libra::agregarLibro, y los relacionados con prestamos
+	y devoluciones
+
+	* libra.h:
+	Aumentados los indices de Libra::cadena para que lea cadenas grandes
+
+2005-11-18  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp: Agregada Autores por Editora
+
+	* libra.h: *** empty log message ***
+
+2005-11-17  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp:
+	Implementadas los comandos Autores por Tema y Temas por Autor
+
+	* libra.h:
+	Implementados protipos para Autores por Tema y temas por autor
+
+2005-11-16  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp: *** empty log message ***
+
+	* libra.h: -[HECHO] Ejemplares Libro
+	 -[HECHO] Autores Libro
+
+2005-11-15  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.h: *** empty log message ***
+
+	* libra.cpp: Agregada funciones para Libros_Editora
+
+2005-11-14  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.h: *** empty log message ***
+
+	* libra.cpp:
+	Fixed some bugs related with pointers to Autor's List in Categoria
+
+	* libra.cpp: Agregada opcion de Libros por Tema
+
+	* libra.cpp: *** empty log message ***
+
+	* libra.h: Agregada funcion Consulta Estructura
+
+2005-11-11  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp: Agregada opcion de Solicitud_libro
+
+	* libra.h: Hecho el comando de Solicitud Libro
+
+2005-11-10  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp: AGregada los comandos Autor_Libro y Tema_libro
+
+2005-11-09  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp:
+	Instruccion crear_libro hecha, falta modificar destructor para que no lance errores en runtime
+
+	* libra.h: Agregado crear_libro
+
+2005-11-08  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.cpp: Implementada la funcion de crear_autor
+
+	* libra.h:
+	Agregado puntero hacia autor a categoria y constructores a dato y categoria
+
+	* libra.cpp: Arreglados los problemas de link
+	Agregada la funcion de Crear Categoria
+	Agregada la funcion de Crear Editora
+
+2005-11-06  Erik Giron  <kreig@localhost.localdomain>
+
+	* libra.h, libra.cpp: New file.
+

@@ -1,0 +1,57 @@
+\section{Referencia de la Estructura enunciado\-While}
+\label{structenunciadoWhile}\index{enunciadoWhile@{enunciadoWhile}}
+Clase de almacenamiento de enunciados while en el AST.  
+
+
+{\tt \#include $<$ast.h$>$}
+
+Diagrama de colaboraci\'{o}n para enunciado\-While:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{structenunciadoWhile__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Atributos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+{\bf expr} $\ast$ {\bf test}
+\begin{CompactList}\small\item\em Expresion booleana a evaluar (if(expr)). \item\end{CompactList}\item 
+{\bf sentencia} $\ast$ {\bf cuerpo}
+\begin{CompactList}\small\item\em Cuerpo de sentencias a evaluar. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Clase de almacenamiento de enunciados while en el AST. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 192 del archivo ast.h.
+
+\subsection{Documentaci\'{o}n de los datos miembro}
+\index{enunciadoWhile@{enunciado\-While}!cuerpo@{cuerpo}}
+\index{cuerpo@{cuerpo}!enunciadoWhile@{enunciado\-While}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf sentencia}$\ast$ {\bf enunciado\-While::cuerpo}}\label{structenunciadoWhile_o1}
+
+
+Cuerpo de sentencias a evaluar. 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 194 del archivo ast.h.
+
+Referenciado por borrar\-While(), evaluar\-While(), y insertar\-Ciclo\-While().\index{enunciadoWhile@{enunciado\-While}!test@{test}}
+\index{test@{test}!enunciadoWhile@{enunciado\-While}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf expr}$\ast$ {\bf enunciado\-While::test}}\label{structenunciadoWhile_o0}
+
+
+Expresion booleana a evaluar (if(expr)). 
+
+
+
+Definici\'{o}n en la l\'{\i}nea 193 del archivo ast.h.
+
+Referenciado por borrar\-While(), evaluar\-While(), y insertar\-Ciclo\-While().
+
+La documentaci\'{o}n para esta estructura fu\'{e} generada a partir del siguiente archivo:\begin{CompactItemize}
+\item 
+/media/docs/progra/c++/compiladores1/proy2/godzilla/src/{\bf ast.h}\end{CompactItemize}
