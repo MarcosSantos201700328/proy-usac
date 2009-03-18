@@ -1,0 +1,202 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="d7ca6401-462a-4ab5-898d-4c9c0fd7219c" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Venta</ID>
+  <Name>Dim Venta</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="8ea97ee8-513e-41d0-bf26-04da03ddbcb7">
+    <DataSourceViewID>Datawarehouse</DataSourceViewID>
+  </Source>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="ac914132-508b-4087-870e-156d32c73660">
+      <ID>Dim Venta</ID>
+      <Name>Dim Venta</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6c7620a0-1907-4b10-91d6-cbdb1448af91">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1833d2fe-9328-4757-80af-5e78d8969ac5">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>SalesOrderID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="dc03930f-ba30-47a9-8d8a-958d053922c5">
+          <AttributeID>Sales Order Detail ID</AttributeID>
+          <Name>Sales Order Detail ID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c4efa415-ba8f-4045-9531-8d00117ec4fa">
+          <AttributeID>Order Date</AttributeID>
+          <Name>Order Date</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1d622c97-e265-4463-b042-74139522b31d">
+          <AttributeID>Due Date</AttributeID>
+          <Name>Due Date</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3462041a-8cd5-4749-846c-bd72183512ce">
+          <AttributeID>Ship Date</AttributeID>
+          <Name>Ship Date</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="57988dcb-b227-4f3e-a624-c7ce57a693bc">
+          <AttributeID>Product ID</AttributeID>
+          <Name>Product ID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f99e2062-473a-4781-9351-b712d10d6750">
+          <AttributeID>Order Qty</AttributeID>
+          <Name>Order Qty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="59c68e45-f180-484b-8732-7f57279c28f2">
+          <AttributeID>Unit Price</AttributeID>
+          <Name>Unit Price</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="0b459602-3fb1-482f-b6b7-c01eb82aac29">
+      <ID>Sales Order Detail ID</ID>
+      <Name>Sales Order Detail ID</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f87756cb-0bf9-4cb4-b3e9-0c39848539e5">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="101ca2fb-97f5-430f-bc81-eaa08522e1c9">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>SalesOrderDetailID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="03ed8ac8-12a6-43df-ba45-c2fde7e5f891">
+      <ID>Order Date</ID>
+      <Name>Order Date</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="79c3bf9a-85a7-447d-9e88-aea8c1dd69cd">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="725bd36f-29ed-4f0c-bf18-1444bc8d8587">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>OrderDate</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="ef16d948-ee23-4605-b19b-2ddd7ad5dcd2">
+      <ID>Due Date</ID>
+      <Name>Due Date</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8f517a54-5d95-4857-a3a1-40ee8a72efe6">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6e088d26-2456-4510-b291-f008f721a058">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>DueDate</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="90458b52-260f-4702-9d27-c26cc39dbf78">
+      <ID>Ship Date</ID>
+      <Name>Ship Date</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="199e91e7-f8cc-463d-9b9a-42b67b5d41dc">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f1c28cbd-14bb-4eb8-b5d9-5f20dd868bae">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>ShipDate</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="93dddffa-e3af-41ee-ab4d-b82e7efa0378">
+      <ID>Product ID</ID>
+      <Name>Product ID</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="09a9edb2-bf1c-4597-81d9-7c6f2e34d977">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a0dd40d6-baf0-49f7-a5bb-899580a40f77">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>ProductID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>FilteredList</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="e49f2972-cde3-49b1-ae46-c5f0e60f552f">
+      <ID>Order Qty</ID>
+      <Name>Order Qty</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3ebf1b71-f494-41fa-86cd-1f9906b400ec">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1c7de962-6bc7-4dd3-b031-d37912201685">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>OrderQty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>FilteredList</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="0631fe11-923f-4118-ba8c-d75fb2842371">
+      <ID>Unit Price</ID>
+      <Name>Unit Price</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d2a73fc3-cb12-4ae5-be04-ba84f966b01c">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="91bcd3a2-f2c3-4529-a64b-473dae8b02d7">
+            <TableID>dbo_DimVenta</TableID>
+            <ColumnID>UnitPrice</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>FilteredList</InstanceSelection>
+    </Attribute>
+  </Attributes>
+</Dimension>

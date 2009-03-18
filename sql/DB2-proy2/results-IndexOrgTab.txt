@@ -1,0 +1,8 @@
+Resultados
+
+Index organized Tables
+===========
+1. Lookup to table from index is eliminated
+2. Storage requirements are reduced as data is stored only in one place.
+
+

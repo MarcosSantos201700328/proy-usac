@@ -1,0 +1,30 @@
+[PropertyInfo]
+avisoTurno,javax.swing.JLabel,false,false, , ,false,<default>
+cpu,JugadorVirtual,false,false, , ,false,<default>
+fichas,Ficha[][],false,false, , ,false,<default>
+fs,Ficha[],false,false, , ,false,<default>
+i,int,false,false, , ,false,<default>
+j,int,false,false, , ,false,<default>
+j1,Jugador,false,false, , ,false,<default>
+j2,Jugador,false,false, , ,false,<default>
+jLabelAb,javax.swing.JLabel,false,false, , ,false,<default>
+jLabelArr,javax.swing.JLabel,false,false, , ,false,<default>
+jLabelDer,javax.swing.JLabel,false,false, , ,false,<default>
+jLabelIzq,javax.swing.JLabel,false,false, , ,false,<default>
+jLabelPunteos,javax.swing.JLabel,false,false, , ,false,<default>
+jPanel1,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel2,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel3,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel4,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel5,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel6,javax.swing.JPanel,false,false, , ,false,<default>
+juegoIniciado,boolean,false,false, , ,true,<default>
+jugadorVirtual,Jugador,false,false, , ,true,<default>
+jugPos,Jugador,false,false, , ,true,<default>
+posInicialFichas,int,false,false, , ,true,<default>
+turno,int,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

@@ -1,0 +1,12 @@
+CONJUNTO1 = {UNO, DOS, TRES, 4}
+
+C2 = {UNO, DOS, TRES, 4}
+
+CONJUNTO1 = {UNO, DOS, TRES, 4}
+
+CONJUNTO1 = {UNO, DOS, TRES, 4}
+
+C3 = {UNO, DOS}
+
+U = {UNO, DOS, TRES, 4}
+

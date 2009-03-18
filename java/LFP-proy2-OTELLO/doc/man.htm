@@ -1,0 +1,978 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<link rel=File-List href="man_archivos/filelist.xml">
+<link rel=Edit-Time-Data href="man_archivos/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Manual de Usuario</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Erik Giron</o:Author>
+  <o:LastAuthor>Erik Giron</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>70</o:TotalTime>
+  <o:LastPrinted>2005-10-03T02:04:00Z</o:LastPrinted>
+  <o:Created>2005-10-03T02:14:00Z</o:Created>
+  <o:LastSaved>2005-10-03T02:15:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>626</o:Words>
+  <o:Characters>3819</o:Characters>
+  <o:Lines>31</o:Lines>
+  <o:Paragraphs>8</o:Paragraphs>
+  <o:CharactersWithSpaces>4437</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>75</w:Zoom>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:DoNotHyphenateCaps/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>6 pto</w:DrawingGridHorizontalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>2</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;
+	mso-font-alt:"\FF2D\FF33 \660E\671D";
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+@font-face
+	{font-family:"Century Gothic";
+	panose-1:2 11 5 2 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:18.0pt;
+	margin-right:0cm;
+	margin-bottom:18.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	text-transform:uppercase;
+	font-weight:bold;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-variant:small-caps;
+	font-weight:bold;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-variant:small-caps;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 212.6pt right 425.2pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.titulo-kreig, li.titulo-kreig, div.titulo-kreig
+	{mso-style-name:titulo-kreig;
+	mso-style-parent:"Título 1";
+	mso-style-next:"Título 2";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-font-kerning:16.0pt;
+	mso-ansi-language:ES-GT;
+	font-weight:bold;
+	text-decoration:underline;
+	text-underline:single;}
+span.comandos
+	{mso-style-name:comandos;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";
+	mso-ansi-language:ES-GT;
+	mso-fareast-language:X-NONE;
+	font-weight:bold;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("man_archivos/header.htm") fs;
+	mso-footnote-continuation-separator:url("man_archivos/header.htm") fcs;
+	mso-endnote-separator:url("man_archivos/header.htm") es;
+	mso-endnote-continuation-separator:url("man_archivos/header.htm") ecs;}
+@page Section1
+	{size:612.1pt 792.1pt;
+	margin:2.0cm 2.0cm 3.0cm 2.0cm;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-title-page:yes;
+	mso-footer:url("man_archivos/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:737171850;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1143415834 67502081 269090819 269090821 269090817 269090819 269090821 269090817 269090819 269090821;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1
+	{mso-list-id:828598985;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-458170350 67502081 67502083 67502085 67502081 67502083 67502085 67502081 67502083 67502085;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+@list l2
+	{mso-list-id:1881093722;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-136254120 67502095 67502105 67502107 67502095 67502105 67502107 67502095 67502105 67502107;}
+@list l2:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l2:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l2:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tabla normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="5122"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=DA link=blue vlink=purple style='tab-interval:65.2pt'>
+
+<div class=Section1>
+
+<p class=titulo-kreig><a name="_Toc115939251"><span lang=ES-GT>Introducción:</span></a></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>O_thell_O es un applet interactivo del popular juego
+de mesa Othello, para 2 jugadores humanos, implementando todas las reglas y
+movimientos básicos que el juego original tiene.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>El juego implementa control de punteos para ambos
+jugadores, como la selección inicial del nombre, posición en el tablero y
+selección del color de las fichas a utilizar. En la página Web dada con el
+paquete se puede acceder a este documento con el que el usuario se puede guiar.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>La interfaz del programa es muy simple, utilizando
+completamente el ratón para todas las operaciones que se hagan dentro de éste.
+El fin de este documento es guiar al usuario a través de los diferentes paneles
+que contiene el applet.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>El programa está hecho en lenguaje JAVA compilado bajo
+JDK 1.5, sin embargo es posible correr el applet en Java JRE ver. 1.3.<span
+style='mso-spacerun:yes'>  </span>Esto permite que tanto el código del juego
+sea portable entre las plataformas al no depender directamente del sistema
+operativo.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=titulo-kreig><a name="_Toc115939252"><span lang=ES-GT>Índice:</span></a></p>
+
+<p class=MsoToc1 style='tab-stops:right 498.2pt'><!--[if supportFields]><span
+lang=ES-GT style='mso-ansi-language:ES-GT'><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;1-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span><![endif]--><span
+class=MsoHyperlink><span style='mso-no-proof:yes'><a href="#_Toc115939251">Introducción:<span
+style='color:windowtext;display:none;mso-hide:screen'><span style='mso-tab-count:
+1'> </span></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-begin'></span>
+PAGEREF _Toc115939251 \h </span><span style='color:windowtext'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen'>1<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+text-transform:none;mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:
+HE;font-weight:normal;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='mso-no-proof:yes'><a href="#_Toc115939252">Índice:<span
+style='color:windowtext;display:none;mso-hide:screen'><span style='mso-tab-count:
+1'> </span></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-begin'></span>
+PAGEREF _Toc115939252 \h </span><span style='color:windowtext'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+text-transform:none;mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:
+HE;font-weight:normal;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='mso-no-proof:yes'><a href="#_Toc115939253">Requisitos del Sistema:<span
+style='color:windowtext;display:none;mso-hide:screen'><span style='mso-tab-count:
+1'> </span></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-begin'></span>
+PAGEREF _Toc115939253 \h </span><span style='color:windowtext'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350033000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+text-transform:none;mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:
+HE;font-weight:normal;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='mso-no-proof:yes'><a href="#_Toc115939254">Instrucciones de Uso:<span
+style='color:windowtext;display:none;mso-hide:screen'><span style='mso-tab-count:
+1'> </span></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-begin'></span>
+PAGEREF _Toc115939254 \h </span><span style='color:windowtext'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+text-transform:none;mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:
+HE;font-weight:normal;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='text-transform:uppercase;mso-no-proof:yes'><a href="#_Toc115939255"><span
+lang=ES-GT style='mso-ansi-language:ES-GT'>Pre-Pasos:</span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc115939255 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:HE;
+font-weight:normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='text-transform:uppercase;mso-no-proof:yes'><a href="#_Toc115939256"><span
+lang=ES-GT style='mso-ansi-language:ES-GT'>Pasos:</span><span style='color:
+windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc115939256 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:HE;
+font-weight:normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc1 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='mso-no-proof:yes'><a href="#_Toc115939257">¿CÓMO JUGAR?.<span
+style='color:windowtext;display:none;mso-hide:screen'><span style='mso-tab-count:
+1'> </span></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-begin'></span>
+PAGEREF _Toc115939257 \h </span><span style='color:windowtext'><span
+style='display:none;mso-hide:screen'><span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen'><span style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+text-transform:none;mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:
+HE;font-weight:normal;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><o:p></o:p></span></p>
+
+<p class=MsoToc2 style='tab-stops:right 498.2pt'><span class=MsoHyperlink><span
+style='text-transform:uppercase;mso-no-proof:yes'><a href="#_Toc115939258"><span
+lang=ES-GT style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>Reglas del Juego:</span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1'> </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span> PAGEREF
+_Toc115939258 \h </span><span style='color:windowtext;text-decoration:none;
+text-underline:none'><span style='display:none;mso-hide:screen'><span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310035003900330039003200350038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=ES-GT style='font-size:12.0pt;mso-fareast-font-family:"MS Mincho";
+mso-ansi-language:ES-GT;mso-fareast-language:JA;mso-bidi-language:HE;
+font-weight:normal;mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoNormal><!--[if supportFields]><span lang=ES-GT style='mso-ansi-language:
+ES-GT'><span style='mso-element:field-end'></span></span><![endif]--><span
+lang=ES-GT style='mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-GT style='mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<u><span lang=ES-GT style='font-size:16.0pt;font-family:Arial;mso-fareast-font-family:
+"Times New Roman";mso-font-kerning:16.0pt;mso-ansi-language:ES-GT;mso-fareast-language:
+DA;mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span></u>
+
+<p class=titulo-kreig><a name="_Toc115939253"><span lang=ES-GT>Requisitos del
+Sistema:</span></a></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l1 level1 lfo1;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Ordenador
+     con tarjeta gráfica, Unidad de CD-ROM y Ratón Funcionales.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l1 level1 lfo1;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Sistema
+     operativo que soporte el <i>Java Runtime Environment</i> (disponible en </span><span
+     lang=FR style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+     mso-ansi-language:FR'><a href="http://java.sun.com/"><span lang=ES-GT
+     style='mso-ansi-language:ES-GT'>http://java.sun.com</span></a></span><span
+     lang=ES-GT style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+     mso-ansi-language:ES-GT'>) ver 1.3 o mayor (Se recomienda Linux Java
+     Desktop 2).<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l1 level1 lfo1;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Navegador
+     de Internet que soporte el <i>Java Runtime Environment</i> (se recomienda
+     Mozilla Firefox, disponible para cualquier plataforma en <a
+     href="http://www.moziila.org/firefox">http://www.moziila.org/firefox</a>).<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>(NOTA: Asegúrese de cumplir los requisitos del
+sistema, o el programa no correrá como debería.)<o:p></o:p></span></p>
+
+<p class=titulo-kreig><a name="_Toc115939254"><span lang=ES-GT>Instrucciones de
+Uso:</span></a></p>
+
+<h2><a name="_Toc115939255"><span lang=ES-GT style='mso-ansi-language:ES-GT'>Pre-Pasos:</span></a><span
+lang=ES-GT style='mso-ansi-language:ES-GT'><o:p></o:p></span></h2>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l1 level1 lfo1;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Encienda su
+     computador y verifique que cumple con los requisitos del sistema.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l1 level1 lfo1;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Ingrese a
+     su sistema operativo.<o:p></o:p></span></li>
+</ul>
+
+<h2><a name="_Toc115939256"><span lang=ES-GT style='mso-ansi-language:ES-GT'>Pasos:</span></a><span
+lang=ES-GT style='mso-ansi-language:ES-GT'><o:p></o:p></span></h2>
+
+<ol style='margin-top:0cm' start=1 type=1>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Inserte en
+     la unidad de CD-ROM, el disco del programa.<o:p></o:p></span></li>
+</ol>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l0 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Acceda a su
+     unidad de CD-ROM por el método convencional y abra la pagina
+     “o_thell_o.htm” contenida en el disco.<o:p></o:p></span></li>
+</ul>
+
+<ol style='margin-top:0cm' start=2 type=1>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Luego de
+     que la página sea cargada en su navegador, seleccione las opciones de los jugadores
+     que desee configurar (fig. 1).<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Luego de
+     configurados los jugadores, haga clic en “Aplicar”, para luego hacer clic
+     en “Iniciar Juego…”. <o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><!--[if gte vml 1]><v:shapetype id="_x0000_t202"
+      coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+      <v:stroke joinstyle="miter"/>
+      <v:path gradientshapeok="t" o:connecttype="rect"/>
+     </v:shapetype><v:shape id="_x0000_s1029" type="#_x0000_t202" style='position:absolute;
+      left:0;text-align:left;margin-left:0;margin-top:64.3pt;width:234pt;
+      height:180pt;text-indent:0;z-index:-2;mso-position-horizontal:left'
+      wrapcoords="-108 -164 -108 21436 21708 21436 21708 -164 -108 -164">
+      <v:textbox style='mso-next-textbox:#_x0000_s1029'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal><span style='font-size:10.0pt'><v:shapetype id="_x0000_t75"
+          coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+          filled="f" stroked="f">
+          <v:stroke joinstyle="miter"/>
+          <v:formulas>
+           <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+           <v:f eqn="sum @0 1 0"/>
+           <v:f eqn="sum 0 0 @1"/>
+           <v:f eqn="prod @2 1 2"/>
+           <v:f eqn="prod @3 21600 pixelWidth"/>
+           <v:f eqn="prod @3 21600 pixelHeight"/>
+           <v:f eqn="sum @0 0 1"/>
+           <v:f eqn="prod @6 1 2"/>
+           <v:f eqn="prod @7 21600 pixelWidth"/>
+           <v:f eqn="sum @8 21600 0"/>
+           <v:f eqn="prod @7 21600 pixelHeight"/>
+           <v:f eqn="sum @10 21600 0"/>
+          </v:formulas>
+          <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+          <o:lock v:ext="edit" aspectratio="t"/>
+         </v:shapetype><v:shape id="_x0000_i1028" type="#_x0000_t75" style='width:226.5pt;
+          height:158.25pt'>
+          <v:imagedata src="man_archivos/image001.png" o:title="0796-otello_shot1"/>
+         </v:shape></span></p>
+         <p class=MsoNormal>Fig 1</p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+      <w:wrap type="square"/>
+     </v:shape><![endif]--><![if !vml]><img width=318 height=246
+     src="man_archivos/image002.gif" align=left hspace=12
+     alt="Cuadro de texto:  &#13;&#10;Fig 1&#13;&#10;" v:shapes="_x0000_s1029"><![endif]><span
+     lang=ES-GT style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+     mso-ansi-language:ES-GT'>Si desea terminar el juego o ya no hay
+     movimientos disponibles haga clic en “Terminar Juego”, inmediatamente se
+     mostrará el ganador del juego.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Dentro del
+     Juego podrá acceder a las opciones del juego de nuevo si hace clic sobre
+     el botón “Opciones Jugador”.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>También si
+     al iniciar el juego desea cambiar la disposición del las fichas podrá
+     hacer clic en “Posicionar Fichas”.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Si desea
+     ver cómo se hizo el programa podrá hacer clic en el botón “Ver Código
+     Fuente” para ver el código fuente del programa.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Si desea
+     Salir del programa simplemente cierre su ventana del navegador web.<o:p></o:p></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=ES-GT style='font-family:"Century Gothic";
+     mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'>Si tiene
+     dudas de las reglas del juego, diriígase a la siguiente seccion.<o:p></o:p></span></li>
+</ol>
+
+<u><span lang=ES-GT style='font-size:16.0pt;font-family:"Century Gothic";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Century Gothic";
+mso-font-kerning:16.0pt;mso-ansi-language:ES-GT;mso-fareast-language:DA;
+mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span></u>
+
+<p class=titulo-kreig><a name="_Toc115939257"><span lang=ES-GT>¿CÓMO JUGAR?.</span></a></p>
+
+<p class=MsoNormal><span lang=ES-GT style='font-family:"Century Gothic";
+mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-outline-level:2'><a name="_Toc115939258"><b
+style='mso-bidi-font-weight:normal'><span lang=ES-GT style='font-size:14.0pt;
+font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";mso-ansi-language:
+ES-GT'>Reglas del Juego:</span></b></a><b style='mso-bidi-font-weight:normal'><span
+lang=ES-GT style='font-size:14.0pt;font-family:"Century Gothic";mso-bidi-font-family:
+"Century Gothic";mso-ansi-language:ES-GT'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>Al inicio aparecerán 4 fichas, 2 del color del jugador
+1 y las otras 2 del color del jugador 2.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><!--[if gte vml 1]><v:shape id="_x0000_i1025" type="#_x0000_t75"
+ style='width:252pt;height:176.25pt'>
+ <v:imagedata src="man_archivos/image003.png" o:title="0796-otello_shot2"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=336 height=235
+src="man_archivos/image004.gif" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>El objetivo del juego conseguir el mayor número de
+fichas del mismo color al final del juego.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>El usuario podrá colocar fichas de su color siempre y
+cuando existan 1 o más fichas del color del oponente en la siguiente celda
+contigua a donde se va a colocar la ficha, y siguiendo la línea ya sea
+vertical, horizontal o diagonal existe 1 ficha del color del usuario que
+colocará la ficha. Al colocar las ficha, el usuario entonces capturará las
+fichas del oponente que estén entre la otra ficha del usuario y la ficha
+colocada. Al hacer esto se le sumarán los puntos correspondientes al punteo del
+usuario que “volteó” las fichas.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t13" coordsize="21600,21600" o:spt="13" adj="16200,5400" path="m@0,l@0@1,0@1,0@2@0@2@0,21600,21600,10800xe">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="val #0"/>
+  <v:f eqn="val #1"/>
+  <v:f eqn="sum height 0 #1"/>
+  <v:f eqn="sum 10800 0 #1"/>
+  <v:f eqn="sum width 0 #0"/>
+  <v:f eqn="prod @4 @3 10800"/>
+  <v:f eqn="sum width 0 @5"/>
+ </v:formulas>
+ <v:path o:connecttype="custom" o:connectlocs="@0,0;0,10800;@0,21600;21600,10800"
+  o:connectangles="270,180,90,0" textboxrect="0,@1,@6,@2"/>
+ <v:handles>
+  <v:h position="#0,#1" xrange="0,21600" yrange="0,10800"/>
+ </v:handles>
+</v:shapetype><v:shape id="_x0000_s1062" type="#_x0000_t13" style='position:absolute;
+ left:0;text-align:left;margin-left:0;margin-top:68.85pt;width:120pt;height:36pt;
+ z-index:2;mso-position-horizontal:left'>
+ <w:wrap type="square"/>
+</v:shape><![endif]--><![if !vml]><img width=163 height=52
+src="man_archivos/image005.gif" align=left hspace=12 v:shapes="_x0000_s1062"><![endif]><span
+lang=ES-GT style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><span style='mso-spacerun:yes'>      </span></span><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:155.25pt;height:155.25pt'
+ o:allowoverlap="f">
+ <v:imagedata src="man_archivos/image006.png" o:title="0796-otello_shot3"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=207 height=207
+src="man_archivos/image007.gif" v:shapes="_x0000_i1026"><![endif]><span
+lang=ES-GT style='mso-ansi-language:ES-GT'><span
+style='mso-spacerun:yes'>                                                  </span></span><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:156pt;height:156pt'
+ o:allowoverlap="f">
+ <v:imagedata src="man_archivos/image008.png" o:title="0796-otello_shot4"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=208 height=208
+src="man_archivos/image009.gif" v:shapes="_x0000_i1027"><![endif]><span
+lang=ES-GT style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=ES-GT
+style='font-family:"Century Gothic";mso-bidi-font-family:"Century Gothic";
+mso-ansi-language:ES-GT'>El juego termina si ya no se pueden colocar más fichas
+en el tablero o si al jugador al que le toca colocar ficha ya no tiene
+movimientos disponibles (Jugador atrapado).<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-GT style='mso-ansi-language:ES-GT'><span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-outline-level:2'><b style='mso-bidi-font-weight:
+normal'><span lang=ES-GT style='font-size:14.0pt;font-family:"Century Gothic";
+mso-bidi-font-family:"Century Gothic";mso-ansi-language:ES-GT'><o:p>&nbsp;</o:p></span></b></p>
+
+</div>
+
+</body>
+
+</html>

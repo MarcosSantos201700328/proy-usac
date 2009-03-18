@@ -1,0 +1,37 @@
+Leame de GenErik
+==============
+(c) 2008 Erik Giron (200313492)
+Distribuido bajo los términos de la GPL v2
+
+1. Descripcion:
+------------------
+Programa desarrollado en Python para resolución del problema de la mochila por medio de Algoritmos genéticos:
+Desarrollado para el curso Inteligencia Artificial 1, de la Universidad de San Carlos de Guatemala
+
+2. Qué se implementó:
+-----------------------------
+- 2 Metodos de Seleccion:
+    - Elitista
+    - Ruleta
+- 2 Métodos de Cruce
+    - probabilidad
+    - Acotado
+- Salida hacia Texto
+- Salida hacia Imágenes:
+- Salida hacia Video: 
+    
+3. Requerimientos del Sistema:
+-----------------------------------------
+- Windows, o cualquier Unix (probado sobre Ubuntu GNU/Linux 8.04)
+- Python V 2.5 o superior (CPython)
+- Pyton-Biggles  v 1.6 o superior
+- ImageMagick 3
+- Mencoder
+
+4, Uso
+----------
+Ejecutar el script GUI de la siguiente forma
+$ python gui.py
+
+luego establecer los parametros para la generacion del algoritmo genetico, y presionar el boton Generar
+

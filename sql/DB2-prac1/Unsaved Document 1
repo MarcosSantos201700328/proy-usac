@@ -1,0 +1,2 @@
+'creamos tablespace
+create tablespace walmart datafile 'E:\oraclexe\oradata\XE\walmart01.dbf' size 50M;

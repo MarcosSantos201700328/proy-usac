@@ -1,0 +1,53 @@
+﻿<ConfigurationSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Database>
+    <DataSources>
+      <DataSource>
+        <ID>Datawarehouse</ID>
+        <ConnectionString>Provider=SQLNCLI.1;Data Source=VMDPSERVER;Integrated Security=SSPI;Initial Catalog=datawarehouse</ConnectionString>
+        <ImpersonationInfo>
+          <ImpersonationMode>ImpersonateCurrentUser</ImpersonationMode>
+          <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+        </ImpersonationInfo>
+      </DataSource>
+    </DataSources>
+    <Dimensions>
+      <Dimension>
+        <ID>Fact Ventas</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Venta</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Cliente</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Tiempo</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Producto</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Territorio</ID>
+      </Dimension>
+    </Dimensions>
+    <Cubes>
+      <Cube>
+        <ID>Datawarehouse</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Fact Ventas</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Ventas</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+    </Cubes>
+    <DataSourceImpersonationInfo>
+      <ImpersonationMode>Default</ImpersonationMode>
+      <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+    </DataSourceImpersonationInfo>
+  </Database>
+</ConfigurationSettings>

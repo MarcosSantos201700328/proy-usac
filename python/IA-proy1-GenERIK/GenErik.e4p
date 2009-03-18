@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.2.dtd">
+<!-- eric4 project file for project GenErik -->
+<!-- Saved: 2008-09-19, 22:04:29 -->
+<!-- Copyright (C) 2008 Erik Giron, erik_giron@yahoo.com -->
+<Project version="4.2">
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Console</ProjectType>
+  <Description>Primer proyecto para inteligencia Artificial, demostrando el poder de los algoritmos genericos para la convergencia en soluciones complejas.</Description>
+  <Version>0.1</Version>
+  <Author>Erik Giron</Author>
+  <Email>erik_giron@yahoo.com</Email>
+  <Sources>
+    <Source>
+      <Dir>GenErikEngine</Dir>
+      <Name>moch.py</Name>
+    </Source>
+    <Source>
+      <Dir>GenErikEngine</Dir>
+      <Name>gui.py</Name>
+    </Source>
+  </Sources>
+  <Forms>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Resources>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <MainScript>
+    <Name>main.py</Name>
+  </MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+  </FiletypeAssociations>
+</Project>

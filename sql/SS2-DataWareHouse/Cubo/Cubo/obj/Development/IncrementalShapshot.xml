@@ -1,0 +1,96 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>Cubo</Database>
+    <Server>localhost</Server>
+    <ConnectionString>DataSource=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>nJo9UlQnqUz6C+C/Z+S/yw==06/12/2008 1:03:3806/12/2008 1:03:35</TimeStamp>
+        <ID>
+          <String>Datawarehouse</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>1DZK0zvAmZnyWC+GX3DRbw==06/12/2008 1:07:0906/12/2008 1:05:05</TimeStamp>
+        <ID>
+          <String>Datawarehouse</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>FFMkWLdYVmczO/qnryYAkg==06/12/2008 1:16:2906/12/2008 1:13:07</TimeStamp>
+        <ID>
+          <String>Fact Ventas</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>uxJkgasLX5VxkmVNSRZAeA==06/12/2008 1:19:2906/12/2008 1:18:40</TimeStamp>
+        <ID>
+          <String>Dim Venta</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>N3GnYASj+DOeksDIZIuRJA==06/12/2008 1:24:4806/12/2008 1:21:10</TimeStamp>
+        <ID>
+          <String>Dim Cliente</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ze4XiTNQkEtyTWJMltrmRQ==06/12/2008 1:24:4806/12/2008 1:21:47</TimeStamp>
+        <ID>
+          <String>Dim Tiempo</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>4ZvGNzQDjonXlTF3m0t9mQ==06/12/2008 1:30:0906/12/2008 1:22:27</TimeStamp>
+        <ID>
+          <String>Dim Producto</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Vdf8iAmc5YIHSDA2rdza3g==06/12/2008 1:24:4806/12/2008 1:23:44</TimeStamp>
+        <ID>
+          <String>Dim Territorio</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>sWiWhLEx9VizO34UyBZwOg==06/12/2008 1:30:1006/12/2008 1:18:40k6dAy7v1s9auKypiq9fYHA==06/12/2008 1:19:3006/12/2008 1:18:41</TimeStamp>
+        <ID>
+          <String>Datawarehouse</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>3z39IZ2I8IzMUOk0nHGmiw==06/12/2008 1:01:4806/12/2008 1:01:25</TimeStamp>
+      <ID>
+        <String>Cubo</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>false</ProcessingComplete>
+  <LastDeployed>2008-12-06T07:30:43Z</LastDeployed>
+</DeploymentSnapshot>

@@ -1,0 +1,21 @@
+/*eagle fly free*/programa ejemplo 
+conjuntos /*Lista de Conjuntos*/
+	conjunto1 = {uno, dos, tres, 4}/*conjunto 1*/
+	c2 = {} /*conjunto 2*/
+	c3 = {uno, /**/dos} /*conjunto 3*/
+inicio /**/
+	c2 /**/= conjunto1 + c3; /**/
+	si c3 % c2 /*ff*/
+	entonces /**/
+		c2 = conjunto1; /**/
+		c3 = conjunto1; /**/
+	sino /**/
+c2 = c3; /*ff*/
+	fin /**/si; /**/
+resultados /*fa*/
+	salida impresora /**/
+	escribir (conjunto1,c2,conjunto1)/*1*/
+	escribir (conjunto1) /*2*/
+	escribir (C3, U) 
+fin /*fin*/
+	

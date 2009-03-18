@@ -1,0 +1,9 @@
+[autorun]
+OPEN=bin\conjuntivity.exe
+ICON=conjuntivity.ico
+
+shell\configure=&Instalar .NET Framework...
+shell\configure\command=redist\dotnetfx.exe
+
+shell\install=&Instalar Aplicacion...
+shell\install\command=setup\setup.exe

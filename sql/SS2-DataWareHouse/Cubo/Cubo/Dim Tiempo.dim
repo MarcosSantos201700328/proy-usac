@@ -1,0 +1,172 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="50c4d11a-d3d8-4c5c-8e68-7839e1932634" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Tiempo</ID>
+  <Name>Dim Tiempo</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="34f05960-f896-4133-9b46-24e4a2bd26cd">
+    <DataSourceViewID>Datawarehouse</DataSourceViewID>
+  </Source>
+  <Type>Time</Type>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="b6c2a124-3e07-4691-ae8e-0fc10d0b47ab">
+      <ID>Año</ID>
+      <Name>anio</Name>
+      <Type>Years</Type>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="999419d9-6c32-4125-8ea4-68e2c44212ec">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d0e21fc5-f759-4f39-87f0-83a8b251966d">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>anio</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="32657c75-a9f3-4029-9760-d72b88bf91c2">
+        <DataType>WChar</DataType>
+        <DataSize>-1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8a5ac0f7-fb90-45c3-ab0a-c0654b8101cf">
+          <TableID>dbo_dimTiempo</TableID>
+          <ColumnID>anio</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="26297ca8-28e6-494a-b0ea-0c5e51248544">
+      <ID>Mes</ID>
+      <Name>Mes</Name>
+      <Type>Months</Type>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="deef02bc-8c24-45e3-842d-955e74ed8732">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3e2b9725-5deb-42c2-a662-96c52733ec1c">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>mes</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b3e8b390-057b-4820-8c6d-6c2bfe3c8102">
+        <DataType>WChar</DataType>
+        <DataSize>-1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="287d8fd2-8491-4775-9d5b-4cdd4fd1dd40">
+          <TableID>dbo_dimTiempo</TableID>
+          <ColumnID>mes</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="75a034a7-450a-450d-b5bd-0eb869dad67e">
+      <ID>MesID</ID>
+      <Name>MesID</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="556871eb-6c4d-4c6f-b1cc-93fadb2b020e">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="914641fb-ec74-4503-9f40-e3c80ebef9e0">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>MesID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d71e71dc-2ca1-4f60-9e2a-d9d21d738916">
+        <DataType>WChar</DataType>
+        <DataSize>-1</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="696e9b6e-f1dd-4eb7-8888-df00fdcef7a8">
+          <TableID>dbo_dimTiempo</TableID>
+          <ColumnID>MesID</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="1e7eadd7-f33a-4c56-8e04-dd6c2e9115a8">
+          <AttributeID>Año</AttributeID>
+          <Name>anio</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4c8fe01d-2676-40ff-b61b-ca656f2212ca">
+          <AttributeID>Mes</AttributeID>
+          <Name>Mes</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b6ffb5d7-9e9f-40ec-a73e-bbe2f1403b70">
+          <AttributeID>anio -  Mes Dim Tiempo Cálculos</AttributeID>
+          <Name>anio -  Mes Dim Tiempo Cálculos</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+    </Attribute>
+    <Attribute dwd:design-time-name="410c1098-63f2-4662-bb2e-89bdd9a88e4f">
+      <ID>anio -  Mes Dim Tiempo Cálculos</ID>
+      <Name>anio -  Mes Dim Tiempo Cálculos</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bbb2265a-8836-4f86-9c8a-6ee6872db1c5">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="626b5798-d919-47fa-b81c-919678caf24f">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>anio_x0020_-_x0020__x0020_Mes_x0020_Dim_x0020_Tiempo_x0020_Cálculos</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <DefaultMember>[anio -  Mes Dim Tiempo Cálculos].[Actual Dim Tiempo]</DefaultMember>
+      <IsAggregatable>false</IsAggregatable>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="6ea4a7f3-9b0e-482a-8208-c9202f91df07">
+      <ID>anio -  Mes</ID>
+      <Name>anio -  Mes</Name>
+      <Levels>
+        <Level dwd:design-time-name="dc73409a-9466-4c4f-8e35-76e2500f06b6">
+          <ID>anio</ID>
+          <Name>anio</Name>
+          <SourceAttributeID>Año</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="ce10472f-5fc3-4363-8c64-a04062c49224">
+          <ID>Mes</ID>
+          <Name>Mes</Name>
+          <SourceAttributeID>Mes</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+</Dimension>

@@ -1,0 +1,77 @@
+
+SQL*Loader: Release 10.2.0.1.0 - Production on Tue May 13 20:43:38 2008
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+Control File:   muni.ctl
+Data File:      c:\municipios.txt
+  Bad File:     municipios.bad
+  Discard File: municipios.dsc 
+ (Allow 999 discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:   1:1 = 0X2a(character '*'), in current physical record
+Path used:      Conventional
+
+Table MUNICIPIO, loaded from every logical record.
+Insert option in effect for this table: APPEND
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+CODIGO                              FIRST     *   ,  O(") CHARACTER            
+    SQL string for column : "trim(:codigo)"
+DEPARTAMENTO                         NEXT     *   ,  O(") CHARACTER            
+    SQL string for column : "trim(:departamento)"
+NOMBRE                               NEXT     *   ,  O(") CHARACTER            
+    SQL string for column : "trim(:nombre)"
+TIPO                                 NEXT     *   ,  O(") CHARACTER            
+    SQL string for column : "trim(:tipo)"
+
+Record 333: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 334: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 335: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 336: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 337: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 338: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 339: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 340: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 341: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 342: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 343: Rejected - Error on table MUNICIPIO, column CODIGO.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 344: Rejected - Error on table MUNICIPIO, column NOMBRE.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+
+Table MUNICIPIO:
+  332 Rows successfully loaded.
+  12 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                  66048 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:           344
+Total logical records rejected:        12
+Total logical records discarded:        0
+
+Run began on Tue May 13 20:43:38 2008
+Run ended on Tue May 13 20:43:38 2008
+
+Elapsed time was:     00:00:00.34
+CPU time was:         00:00:00.14

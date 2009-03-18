@@ -1,0 +1,438 @@
+Resultados
+
+Btree
+===========
+
+
+  COUNT(*)
+----------
+   4788735
+
+Elapsed: 00:00:40.86
+
+  COUNT(*)
+----------
+   9493847
+
+Elapsed: 00:01:31.87
+
+  COUNT(*)
+----------
+        22
+
+Elapsed: 00:00:00.21
+
+  COUNT(*)
+----------
+       332
+
+Elapsed: 00:00:00.14
+
+no rows selected
+
+Elapsed: 00:00:01.07
+
+no rows selected
+
+Elapsed: 00:02:47.13
+
+no rows selected
+
+Elapsed: 00:00:00.10
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+       156 Retalhuleu
+Retalhuleu                                                                0
+
+
+
+Elapsed: 00:00:00.10
+
+no rows selected
+
+Elapsed: 00:00:17.32
+
+  COUNT(*)
+----------
+   2980319
+
+Elapsed: 00:00:19.99
+
+no rows selected
+
+Elapsed: 00:00:00.03
+
+no rows selected
+
+Elapsed: 00:00:00.01
+
+T
+-
+V
+D
+N
+
+Elapsed: 00:00:22.31
+
+T
+-
+U
+I
+D
+
+Elapsed: 00:00:56.17
+
+T
+-
+D
+V
+
+Elapsed: 00:00:03.96
+
+T
+-
+D
+I
+
+Elapsed: 00:00:00.70
+
+  COUNT(*)
+----------
+     27846
+
+Elapsed: 00:04:35.52
+
+  COUNT(*)
+----------
+       286
+
+Elapsed: 00:00:53.17
+
+  COUNT(*)
+----------
+   9493847
+
+Elapsed: 00:00:19.30
+
+    CODIGO TRANSACCION NOMBRE                           VALOR      T VALOR_ANTE
+---------- ----------- -------------------------------- ---------- - ----------
+CLAVE1                           CLAVE2
+-------------------------------- --------------------------------
+   2363374   236515870 DATO                             -9         N -9
+413585_2505                      516514_7405
+
+   2363375   236515870 DATO                             32         N 31
+705_8512_453135405               205_1597_6471655040
+
+
+Elapsed: 00:00:00.71
+
+no rows selected
+
+Elapsed: 00:00:14.71
+
+  COUNT(*)
+----------
+   1219472
+
+Elapsed: 00:00:06.08
+
+    CODIGO OPERACION
+---------- --------------------------------
+NOMBRE                                                           FECHA     T
+---------------------------------------------------------------- --------- -
+TRANSACCION                      CLAVE1
+-------------------------------- --------------------------------
+CLAVE2                              MAESTRO  MUNICIPIO
+-------------------------------- ---------- ----------
+  14734080 204929274
+ERRORES_DE                                                       13-JUN-06 U
+204929274                        21_5885859_45
+89_5114150_65                      18209691         10
+
+
+Elapsed: 00:00:48.21
+
+  COUNT(*)
+----------
+         0
+
+Elapsed: 00:00:00.61
+
+  COUNT(*)
+----------
+    153295
+
+Elapsed: 00:00:00.73
+
+  COUNT(*)
+----------
+   9477579
+
+Elapsed: 00:00:13.03
+
+    CODIGO OPERACION
+---------- --------------------------------
+NOMBRE                                                           FECHA     T
+---------------------------------------------------------------- --------- -
+TRANSACCION                      CLAVE1
+-------------------------------- --------------------------------
+CLAVE2                              MAESTRO  MUNICIPIO
+-------------------------------- ---------- ----------
+  13268164 203087682
+TRANSACCIONES_DET                                                29-MAY-06 U
+203087682                        21_0814913395459_4501225
+89_0195097714550_6509775           18887188         22
+
+
+Elapsed: 00:00:01.38
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+       156 Retalhuleu
+Retalhuleu                                                                0
+
+
+       157 Retalhuleu
+San Sebastián                                                            89
+
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+
+       158 Retalhuleu
+Santa Cruz Muluá                                                         51
+
+
+       159 Retalhuleu
+San Martín Zapotitlán                                                    47
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+
+
+       160 Retalhuleu
+San Felipe                                                               82
+
+
+       161 Retalhuleu
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+San Andrés Villa Seca                                                     2
+
+
+       162 Retalhuleu
+Champerico                                                               21
+
+
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+       163 Retalhuleu
+Nuevo San Carlos                                                         84
+
+
+       164 Retalhuleu
+El Asintal                                                               40
+
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+
+
+9 rows selected.
+
+Elapsed: 00:00:00.18
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+       164 Retalhuleu
+El Asintal                                                               40
+
+
+
+Elapsed: 00:00:00.05
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+         1 Guatemala
+Guatemala                                                                 1
+
+
+        48 Chimaltenango
+Patzún                                                                    1
+
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+
+        95 Solola
+Santa Catarina Palopó                                                     1
+
+
+       200 Huehuetenango
+Jacaltenango                                                              1
+
+    CODIGO DEPARTAMENTO
+---------- --------------------------------------------------
+NOMBRE                                                                 TIPO
+---------------------------------------------------------------- ----------
+CODIGO_DEPTO
+------------
+
+
+       315 Jalapa
+Mataquescuintla                                                           1
+
+
+
+Elapsed: 00:00:00.07
+
+
+
+
+
+-- 1 --
+select * from maestro;	
+select * from detalle;
+select * from depto;
+select * from municipio;
+
+Elapsed: 00:00:00.00
+
+--2-- 
+
+
+select * from maestro where upper(nombre) = '';	
+Elapsed: 00:00:00.42 
+select * from detalle where upper(nombre) = 'NUMERO';
+Elapsed: 00:01:07.02 
+select * from depto where upper(nombre) = 'RETALHULEU';
+Elapsed: 00:00:00.02 
+select * from municipio where upper(nombre) = 'RETALHULEU';
+Elapsed: 00:00:00.08 
+
+--3--
+select * from maestro where nombre like '%NUMERO%';	
+Elapsed: 00:00:26.97 
+select count(*) from detalle where nombre like '%ERRORES_DE%';
+Elapsed: 00:01:16.63
+select * from depto where nombre like '%10%';
+Elapsed: 00:00:00.01 
+select * from municipio where upper(nombre) like '%10%';
+Elapsed: 00:00:00.09 
+
+--4--
+select distinct tipo from maestro;
+Elapsed: 00:00:25.88 
+select distinct tipo from detalle;
+Elapsed: 00:01:08.60 
+
+--5--
+select distinct tipo from maestro where tipo in ('D','I','1','V');
+Elapsed: 00:00:29.15 
+select distinct tipo from detalle where tipo in ('D','I','1','V');
+Elapsed: 00:01:08.20 
+
+--6--
+select count(*) from maestro ma, detalle de, municipio mu where ma.codigo = de.maestro and de.municipio = mu.codigo and ma.tipo in ('D','I','1','V','N') and de.fecha > '01-jan-2000';
+Elapsed: 00:01:08.20 
+--7--
+select count(*) from depto d, municipio m where m.codigo in (select municipio from detalle);
+
+
+Elapsed: 00:03:41.18 
+
+--8--
+select count(*) from detalle where  tipo in ('D','I','1','U','N');
+Elapsed: 00:01:21.28 
+
+--9--
+select * from maestro where transaccion = 236515870;
+Elapsed: 00:00:13.65 
+
+--10--
+select * from maestro where nombre like '%NUMERO%';
+Elapsed: 00:00:30.15
+
+--11--
+select * from maestro where tipo = 'D';
+Elapsed: 00:00:19.26 
+
+--12--
+select * from detalle where transaccion = '204929274';
+Elapsed: 00:00:46.65 
+
+--13--
+select * from detalle where nombre = 'ERRORES';
+Elapsed: 00:00:46.26 
+
+--14--
+select * from detalle where fecha = '13/06/06';
+Elapsed: 00:00:47.45 
+
+--15--
+select * from detalle where tipo = 'U';
+Elapsed: 00:00:48.14 
+
+--16--
+select * from detalle where operacion = '203087682';
+Elapsed: 00:00:50.87 
+
+--17--
+select count(*) from maestro m ,detalle d where m.codigo > 0;
+
+--18--
+select * from municipio where departamento = 'Retalhuleu';
+Elapsed: 00:00:00.01 
+
+--19--
+select * from municipio where nombre = 'El Asintal';
+Elapsed: 00:00:00.01 
+
+--20--
+select * from municipio where tipo = '1';
+Elapsed: 00:00:00.01 
+

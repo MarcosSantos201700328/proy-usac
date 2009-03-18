@@ -1,0 +1,26 @@
+[PropertyInfo]
+appletPrincipal,javax.swing.JApplet,false,false, , ,true,<default>
+jButton1,javax.swing.JButton,false,false, , ,false,<default>
+jButton2,javax.swing.JButton,false,false, , ,false,<default>
+jButton3,javax.swing.JButton,false,false, , ,false,<default>
+jButton4,javax.swing.JButton,false,false, , ,false,<default>
+jButton5,javax.swing.JButton,false,false, , ,false,<default>
+jButton6,javax.swing.JButton,false,false, , ,false,<default>
+jLabel1,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel2,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel3,javax.swing.JLabel,false,false, , ,false,<default>
+jLabelMensajes,javax.swing.JLabel,false,false, , ,false,<default>
+jPanel1,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel2,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel3,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel4,javax.swing.JPanel,false,false, , ,false,<default>
+jPanel5,javax.swing.JPanel,false,false, , ,false,<default>
+opcionesJug,OpcionesJugador,false,false, , ,false,<default>
+switchPosInicial,int,false,false, , ,false,<default>
+tab,Tablero,false,false, , ,false,<default>
+vc,VisorCodigo,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

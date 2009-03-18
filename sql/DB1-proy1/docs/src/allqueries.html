@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>allqueries.sql</title>
+</head>
+<body>
+<pre>
+<span style="font-style: italic;color: #808080;">-- UNIVERSIDAD DE SAN CARLOS DE GUATEMALA</span>
+<span style="font-style: italic;color: #808080;">-- FACULTAD DE INGENIERIA</span>
+<span style="font-style: italic;color: #808080;">-- SIST. DE ADMON. DE BASES DE DATOS 1</span>
+<span style="font-style: italic;color: #808080;">-- SECCION A+</span>
+<span style="font-style: italic;color: #808080;">-- </span>
+<span style="font-style: italic;color: #808080;">-- PROYECTO 1</span>
+<span style="font-style: italic;color: #808080;">-- </span>
+<span style="font-style: italic;color: #808080;">-- ERIK VLADIMIR GIRON MARQUEZ</span>
+<span style="font-style: italic;color: #808080;">-- 200313492</span>
+<span style="font-style: italic;color: #808080;">-- GUATEMALA, ABRIL DE 2007</span>
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 1*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR EL CARNET, NOMBRE, CARRERA, PLAN, PROMEDIO DE NOTAS Y NUMERO DE CREDITOS APROBADOS DE TODOS LOS ESTUDIANTES QUE HAN CERRADO ALGUNA CARRERA</span>
+
+<span style="font-style: italic;color: #808080;">OBTENER ESTUDIANTE TAL QUE EN CADA CARRERA TAL QUE EN EL PENSUM DE ESA CARRERA NO EXISTA NINGUN CURSO OBLIGATORIO QUE NO EXISTA COMO CURSO GANADO EN LAS ASIGNACIONES Y EXISTA UNA SUMA DE CREDITOS &gt; 250 */</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E.CARNET, E.PRIMER_NOMBRE || </span><span style="color: #dd0000;">' '</span><span style="color: #000000;"> || E.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E, CARRERA C, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL, ESTUDIANTE_CARR_PROM_EDAD ECPE</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> ECPE.CARNET = E.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ECPE.CARRERA = C.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CARRERA CA1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CA1.CARRERA = C.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1		</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> OBLIGATORIO = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1		</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CREDITOS)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CREDITOS) &gt; CA1.CREDITOS_CIERRE </span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)	</span>
+<span style="color: #000000;">);</span>
+
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 2*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR EL CARNET Y NOMBRE DE LOS ESTUDIANTES QUE NO HAN CERRADO NINGUNA CARRERA</span>
+
+<span style="font-style: italic;color: #808080;">OBTENER ESTUDIANTE TAL QUE EXISTAN  CERO CARRERAS TAL QUE EN EL PENSUM DE ESA CARRERA NO EXISTA NINGUN CURSO OBLIGATORIO QUE NO EXISTA COMO CURSO GANADO EN LAS ASIGNACIONES Y EXISTA UNA SUMA DE CREDITOS &gt; 250 */</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E.CARNET, E.PRIMER_NOMBRE || </span><span style="color: #dd0000;">' '</span><span style="color: #000000;"> || E.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> CA1.CARRERA)</span><span style="color: #008000;">"NUM_CARRERAS_APROBADAS"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CARRERA CA1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1		</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> OBLIGATORIO = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1		</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CREDITOS)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CREDITOS) &gt; CA1.CREDITOS_CIERRE </span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> CA1.CARRERA) = </span><span style="color: #0000ff;">0</span><span style="color: #000000;">	</span>
+<span style="color: #000000;">);</span>
+
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 3*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR EL CARNET Y NOMBRE DE LOS ESTUDIANTES QUE HAN CERRADO EN MAS DE UNA CARRERA.</span>
+
+<span style="font-style: italic;color: #808080;">OBTENER ESTUDIANTE TAL QUE EXISTA MAS DE UNA CARRERA TAL QUE EN EL PENSUM DE ESA CARRERA NO EXISTA NINGUN CURSO OBLIGATORIO QUE NO EXISTA COMO CURSO GANADO EN LAS ASIGNACIONES Y EXISTA UNA SUMA DE CREDITOS &gt; 250 */</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E.CARNET, E.PRIMER_NOMBRE || </span><span style="color: #dd0000;">' '</span><span style="color: #000000;"> || E.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> CA1.CARRERA)</span><span style="color: #008000;">"NUM_CARRERAS_APROBADAS"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CARRERA CA1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1		</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> OBLIGATORIO = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1		</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CREDITOS)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA= PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CREDITOS) &gt; CA1.CREDITOS_CIERRE </span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> CA1.CARRERA) &gt;= </span><span style="color: #0000ff;">2</span><span style="color: #000000;">	</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 4*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR EL NOMBRE DE LOS ESTUDIANTES QUE HAN LLEVADO ALGUN CURSO QUE HA SIDO IMPARTIDO POR ALGUNO DE LOS CATEDRATICOSQUE ALGUNA VEZ LE HAN DADO CLASE A ALGUNO DE LOS ESTUDIANTES QUE GANO ALGUN CURSO CON ALGUNO DE LOS CATEDRATICOS QUE HAN IMPARTIDO AL MENOS UNA VEZ EL CURSO DE BASE DE DATOS A ALGUNO DE LO LOS ESTUDIANTES QUE NO HAN GANADO EL CURSO DE SISTEMAS OPERATIVOS PERO SI LO HAN LLEVADO AL MENOS UNA VEZ</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos estudiante tal que tenga un curso asingado que exista en la seccion dado el mismo anio y ciclo de asignacion y tal que el catedratico que dio el curso tal que existan dos secciones una de base de datos y otra de SO de la misma carrera que el estudiante y que esten aprobadas</span>
+
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E1.CARNET, E1.PRIMER_NOMBRE || </span><span style="color: #dd0000;">' '</span><span style="color: #000000;"> || E1.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E1</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CARNET = E1.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> SECCION SE1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> SE1.CODIGO = AS1.CODIGO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ANIO = SE1.ANIO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CICLO = SE1.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CATEDRATICO CAT1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> SE1.CATEDRATICO = CAT1.CATEDRATICO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION A2, ASIGNACION A3, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, CARRERA CA1, APROBACION AP1</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> A2.CODIGO = (</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CU1.CURSO </span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU2 </span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU2.NOMBRE = </span><span style="color: #dd0000;">'%BASES DE DATOS%'</span>
+<span style="color: #000000;">					)</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A3.CODIGO = (</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CU1.CURSO </span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU2 </span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU2.NOMBRE = </span><span style="color: #dd0000;">'%SISTEMAS OPERATIVOS%'</span>
+<span style="color: #000000;">					)</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A3.CARNET </span><span style="font-weight: bold;color: #000000;">IN</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E3.CARNET</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E3</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E3.CARNET = A3.CARNET</span>
+<span style="color: #000000;">					)</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CA1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = A3.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= A3.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = A3.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= A3.CICLO)</span>
+<span style="color: #000000;">						</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; A3.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; A3.ANIO)</span>
+<span style="color: #000000;">					)</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = A3.CICLO</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A3.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A3.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">		)		</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 5*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR LOS DATOS GENERALES DE LOS ESTUDIANTES QUE HABIENDOSE ASIGNADO EXACTAMENTE LOS MISMOS CURSOS EN LA MISMA SECCION, SIEMPRE HAN APROBADO O REPROBADO A LA VEZ CADA CURSO.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos una pareja de estudiantes que esten asignados en la misma seccion y que hayan aprobado o reprobado el mismo curso asignado el mismo ciclo</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> E1.CARNET, E2.CARNET</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E1, ESTUDIANTE E2, ASIGNACION A1, ASIGNACION A2, APROBACION AP1, APROBACION AP2, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL2</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = A1.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E2.CARNET = A2.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.SECCION = A2.SECCION</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.CODIGO = A2.CODIGO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = A1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= A1.CICLO)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = A1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= A1.CICLO)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; A1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; A1.ANIO)</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.CARRERA = E2.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL2.ANIO_INICIO = A2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.CICLO_INICIO &lt;= A2.CICLO)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL2.ANIO_FIN = A2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.CICLO_FIN &gt;= A2.CICLO)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL2.ANIO_INICIO &lt; A2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.ANIO_FIN &gt; A2.ANIO)</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = A1.CICLO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP2.PLAN = PL2.PLAN</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP2.CARRERA = PL2.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP2.CICLO = A2.CICLO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (   (</span>
+<span style="color: #000000;">	A1.NOTA &lt; AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.ZONA &lt; AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A2.NOTA &lt; AP2.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A2.NOTA &lt; AP2.ZONA_MINIMA</span>
+<span style="color: #000000;">	) </span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	A1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A2.NOTA &gt;= AP2.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A2.NOTA &gt;= AP2.ZONA_MINIMA</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 6*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR LA LISTA DE CURSOS PARA AQUELLLOS CURSOSQUE EN EL PRESENTE PLAN TIENEN MAS CURSOS PERREQUISITO QUE POSTREQUISITO</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos todos los cursos tal que sus prerrequisitos sean mas que sus postrequisitos utilizando tablas como select anidados</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> CU1.*, POSTPRE, POSTCOD</span><span style="color: #008000;">"Cursos Postrrequisito"</span><span style="color: #000000;">, PREPRE</span><span style="color: #008000;">"Cursos Prerrequisito"</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1, ( </span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;">  P4.CARRERA</span><span style="color: #008000;">"POSTCAR"</span><span style="color: #000000;">, P4.PLAN </span><span style="color: #008000;">"POSTPLAN"</span><span style="color: #000000;">, P4.PRERREQUISITO</span><span style="color: #008000;">"POSTPRE"</span><span style="color: #000000;">, </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> P4.CODIGO)</span><span style="color: #008000;">"POSTCOD"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PRERREQUISITO P4</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> P4.CARRERA, P4.PLAN, P4.PRERREQUISITO</span>
+<span style="color: #000000;">	) , ( </span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;">  P5.CARRERA</span><span style="color: #008000;">"PRECAR"</span><span style="color: #000000;">, P5.PLAN </span><span style="color: #008000;">"PREPLAN"</span><span style="color: #000000;">, P5.CODIGO</span><span style="color: #008000;">"PRECOD"</span><span style="color: #000000;">, </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> P5.PRERREQUISITO)</span><span style="color: #008000;">"PREPRE"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PRERREQUISITO P5</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> P5.CARRERA, P5.PLAN, P5.CODIGO</span>
+<span style="color: #000000;">	) , </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span>
+<span style="color: #000000;">	PL1.PLAN = POSTPLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = POSTCAR</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.PLAN = PREPLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = PRECAR</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt;= </span><span style="color: #0000ff;">2007</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU1.CURSO = POSTPRE</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU1.CURSO = PRECOD</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> POSTCOD &lt; PREPRE</span>
+<span style="color: #000000;">;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 7*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR LA LISTA DE LOS CATEDRATICOS PONCAHDORES QUE EN CADA CARRERA SE CARACTERIZAN POR TENER LA MAYOR CANTIDAD DE ALUMNOR REPROBADOS</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos  todos los catedraticos que tengan mayor numero de promedio de estudiantes reprobados por carrera usando vista REPROBADOS_POR_CAT_CAR</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CAT.CATEDRATICO,CAT.NOMBRE,CA1.CARRERA,CA1.NOMBRE,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(PROM_REP)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CATEDRATICO CAT, CARRERA CA1, (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> R.CARR</span><span style="color: #008000;">"RCARRERA"</span><span style="color: #000000;">,R.CAT</span><span style="color: #008000;">"RCATED"</span><span style="color: #000000;">,</span><span style="color: #000080;">AVG</span><span style="color: #000000;">(NUM_REPROBADOS)</span><span style="color: #008000;">"PROM_REP"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> REPROBADOS_POR_CAT_CAR R</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> R.CARR,R.CAT</span>
+<span style="color: #000000;">	),CARRERA CAR</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CA1.CARRERA = RCARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> RCATED = CAT.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CAT.CATEDRATICO,CAT.NOMBRE,CA1.CARRERA,CA1.NOMBRE</span>
+<span style="color: #000000;">;</span>
+
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 8*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los estudiantes que en este semestre cada dia que vienen a la u no tienen periodos libres</span>
+
+<span style="font-style: italic;color: #808080;">es decir todos los estudiantes que para cualquier curso asignado en el semsetre actual no exista un dia habil que no este asignado en su horario y no exista algun periodo que dado el horario dado no exita mas de 2 periodos con horario_inicial&lt;&gt; horario_final</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> *</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> A.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION A</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> A.CARNET = E.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A.ANIO = </span><span style="color: #0000ff;">2007</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A.CICLO = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> DIA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> DIA_HABIL D</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> HORARIO H</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> H.ANIO = A.ANIO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.CICLO = A.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> D.DIA &lt;&gt; H.DIA</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> A.ANIO,A.CICLO,H1.DIA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> HORARIO H1, PERIODO P1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> H1.ANIO = A.ANIO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H1.CICLO = A.CICLO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P1.PERIODO = H1.PERIODO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> *</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> HORARIO H2, PERIODO P2</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> H2.ANIO = A.ANIO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H2.CICLO = A.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P2.PERIODO = H2.PERIODO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H1.DIA = H2.DIA	</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P2.PERIODO &lt;&gt; P1.PERIODO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P1.HORA_INICIO &lt;&gt; P2.HORA_FIN</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> A.ANIO,A.CICLO,H1.DIA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(*) &gt; </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 9*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los catedraticos que este semestre vienen todos los dias habiles para impartir exactamente una clase</span>
+
+<span style="font-style: italic;color: #808080;">es decir los catedraticos tal que exista cualquier catedratico exista en una seccion tal que no exista un dia que exista en el horario tal que no de clase en su seccion en el mismo dia de la semana y tal que en ese dia dado imparta exactamente una clase</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> *</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CATEDRATICO CAT</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> *</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> SECCION SEC</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> SEC.CATEDRATICO = CAT.CATEDRATICO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC.ANIO = </span><span style="color: #0000ff;">2007</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC.CICLO = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> DIA_HABIL D</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> HORARIO H</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> H.ANIO = SEC.ANIO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.CICLO = SEC.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.SECCION = SEC.SECCION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.DIA &lt;&gt; D.DIA</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> H.DIA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> HORARIO H, SECCION S1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> H.ANIO = SEC.ANIO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.CICLO = SEC.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.DIA = D.DIA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> S1.CATEDRATICO = CAT.CATEDRATICO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> H.SECCION = S1.SECCION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> H.DIA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(H.DIA) = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 10*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de las parejas de hermanos gemelos que estan estudiando en este semestre en alguna clase comun.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos los datos de una pareja de estudiantes tal que concuerden sus apelllidos y su fecha de nacimiento y que exista alguna asignacion que hayan llevado juntos.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E1.PRIMER_NOMBRE||</span><span style="color: #dd0000;">' Y '</span><span style="color: #000000;">||E2.PRIMER_NOMBRE||</span><span style="color: #dd0000;">' '</span><span style="color: #000000;">||E1.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E1,ESTUDIANTE E2</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.PRIMER_APELLIDO = E2.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E1.SEGUNDO_APELLIDO = E2.SEGUNDO_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E1.FECHA_NACIMIENTO = E2.FECHA_NACIMIENTO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E1.CARNET &gt; E2.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;">  </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION A1, ASIGNACION A2</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> A1.CARNET = E1.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A2.CARNET = E2.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.CODIGO = A2.CODIGO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.SECCION = A2.SECCION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.CICLO = A2.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A1.ANIO = A2.ANIO</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 12*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">DAR EL NOMBRE DE LOS ESTUDIANTES QUE MAS VECES HAN LLEVADO ALGUN CURSO</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos todos los estudiantes  tal que tenga el mayor numero de veces repetido algun crurso</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CODIGO,E1.CARNET,E1.PRIMER_NOMBRE||</span><span style="color: #dd0000;">' '</span><span style="color: #000000;">||E1.PRIMER_APELLIDO,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(VECES)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E1,(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARNET</span><span style="color: #008000;">"CARNET1"</span><span style="color: #000000;">,CODIGO,</span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(CODIGO)</span><span style="color: #008000;">"VECES"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CARNET,CODIGO</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = CARNET1</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CODIGO,E1.CARNET,E1.PRIMER_NOMBRE,E1.PRIMER_APELLIDO;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 13*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">dar el nombre de los estudiantes que pueden consederarse candidatos a mejores setudantes de cada carrera en el presente plan, para ser candidato a mojr estudiante de una carrera debe tenerse en este momento el mejor promedio de su promocion y carrera, no haber perdido ninguna vez un curso, tener mas creditos aprobados que el resto de estudiantes de su promocion y carrera</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos todos los estudiantes tal que alguno de estos tenga el maximo promedio y que no exista algun  curso que haya perdido y que exista que para su carrera haya aprobado el numero de creditos dados.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> ES.CARNET,ES.PRIMER_NOMBRE||</span><span style="color: #dd0000;">' '</span><span style="color: #000000;">||ES.PRIMER_APELLIDO,CA.NOMBRE</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL, CARRERA CA, ESTUDIANTE ES</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CA.CARRERA = ES.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL.CARRERA = CA.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARNET1,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(PROM)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> AS1.CARNET</span><span style="color: #008000;">"CARNET1"</span><span style="color: #000000;">, </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(NOTA)</span><span style="color: #008000;">"PROM"</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-style: italic;color: #808080;">/*WHERE PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CARNET</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CARNET1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> CARNET1 = ES.CARNET</span>
+<span style="color: #000000;">) </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CARNET = ES.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_FIN &gt; AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">	*/</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &lt; AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &lt; AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">) </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARRERA,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(NUM_CREDITOS)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> AS1.CARNET</span><span style="color: #008000;">"CARNET"</span><span style="color: #000000;">, E2.CARRERA, </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(CU1.CREDITOS)</span><span style="color: #008000;">"NUM_CREDITOS"</span><span style="color: #000000;">, </span><span style="color: #000080;">SUBSTR</span><span style="color: #000000;">(</span><span style="color: #000080;">TO_CHAR</span><span style="color: #000000;">(AS1.CARNET),</span><span style="color: #0000ff;">1</span><span style="color: #000000;">,</span><span style="color: #0000ff;">4</span><span style="color: #000000;">)</span><span style="color: #008000;">"PROMO"</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1,CARRERA CA2, ESTUDIANTE E2, PENSUM PE1,CURSO CU1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E2.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CA2.CARRERA = E2.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.CARRERA = E2.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CODIGO = PE1.CODIGO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU1.CURSO = AS1.CODIGO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CARNET,E2.CARRERA</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CARNET = ES.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CARRERA</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 14*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Excluyendo los estudiantes de ingenieria quimica, e ingenieria civil, dar el nombre y promedio de los estudiantes que tienen mejor promedio que el promedio de los estudiantes de quimica pero peor promedio que el promedio de los estudiantes de civil y una edad menor que la edad promedio de los estudiantes de civil pero mayor que la edad promedio de los estudiantes de quimica</span>
+
+<span style="font-style: italic;color: #808080;">estudiantes que en el pensum de su carrera no exista algun curso obligatorio que no exista en los cursos que ya gano y que tenga un conteo de creditos &gt; creditos_cierre de carrera</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E1.CARNET,E1.PRIMER_NOMBRE ||</span><span style="color: #dd0000;">' '</span><span style="color: #000000;">||E1.PRIMER_APELLIDO,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(ANUM_CREDITOS)</span><span style="font-style: italic;color: #808080;">/*,MAX(ANUM_CURSOS)*/</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> LISTADO_ESTUDIANTES_CIERRE C1, ESTUDIANTE E1, (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> AS1.CARNET</span><span style="color: #008000;">"ACARNET"</span><span style="color: #000000;">,</span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CU1.CREDITOS)</span><span style="color: #008000;">"ANUM_CREDITOS"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, APROBACION AP1, CURSO CU1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CARNET</span>
+<span style="color: #000000;">	)</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = ACARNET</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> E1.CARNET,E1.PRIMER_NOMBRE,E1.PRIMER_APELLIDO;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 15*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Excluyendo los estudiantes de ingenieria quimica, e ingenieria civil, dar el nombre y promedio de los estudiantes que tienen mejor promedio que el promedio de los estudiantes de quimica pero peor promedio que el promedio de los estudiantes de civil y una edad menor que la edad promedio de los estudiantes de civil pero mayor que la edad promedio de los estudiantes de quimica</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos promedios y edades de todos los estudiantes de quimica y civil y los comparamos entre si, para los promedios se utilizo la tabla ESTUDIANTE_CARR_PROM_EDAD</span>
+
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> EC3.CARNET,E1.PRIMER_NOMBRE||</span><span style="color: #dd0000;">' '</span><span style="color: #000000;">||E1.PRIMER_APELLIDO,EC3.PROM</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE_CARR_PROM_EDAD EC3, ESTUDIANTE E1</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> EC3.CARNET = E1.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EC3.CARRERA </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">LIKE</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'%civil%'</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EC3.CARRERA </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">LIKE</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'%quimica%'</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EC3.EDAD &gt; (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(EC1.PROM)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE_CARR_PROM_EDAD EC1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> EC1.CARRERA </span><span style="font-weight: bold;color: #000000;">LIKE</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'%quimica%'</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> EC1.CARRERA</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EC3.EDAD &lt; (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(EC1.PROM)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE_CARR_PROM_EDAD EC1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> EC1.CARRERA </span><span style="font-weight: bold;color: #000000;">LIKE</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'%civil%'</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> EC1.CARRERA</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EC3.PROM &gt; (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(EC1.EDAD)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE_CARR_PROM_EDAD EC1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> EC1.CARRERA </span><span style="font-weight: bold;color: #000000;">LIKE</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'%quimica%'</span>
+<span style="color: #000000;"> 	</span><span style="font-weight: bold;color: #000000;">gROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> EC1.CARRERA</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EC3.PROM &lt; (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(EC1.EDAD)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE_CARR_PROM_EDAD EC1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> EC1.CARRERA </span><span style="font-weight: bold;color: #000000;">LIKE</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'%civil%'</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> EC1.CARRERA</span>
+<span style="color: #000000;">)</span>
+<span style="color: #000000;">;</span>
+<span style="color: #000000;">	</span>
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 16*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los estudiantes, su ingreso en numeros y letras para todos los estudiatnes que tienen un ingreso familar mayor a 10000.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos el ingreso de los estudiantes en letras y numeros usando un Stored Procedure que convierte de numeros a letras.</span>
+
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARNET,</span><span style="color: #000080;">CONCAT</span><span style="color: #000000;">(PRIMER_NOMBRE,</span><span style="color: #dd0000;">' '</span><span style="color: #000000;">)||PRIMER_APELLIDO,INGRESO_FAMILIAR,NUMALET(INGRESO_FAMILIAR)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> INGRESO_FAMILIAR &gt;= </span><span style="color: #0000ff;">10000</span>
+<span style="color: #000000;">;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 17*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los estudiantes y del curso quese han registrado por lo menos 3 veces en un mismo curso</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos todos aquiellos estudiatnes tal que se el conteo de veces asignadas sea &gt;=3</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> AS1.CARNET,C.NOMBRE,</span><span style="color: #000080;">CONCAT</span><span style="color: #000000;">(E.PRIMER_NOMBRE,E.PRIMER_APELLIDO),</span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(AS1.CODIGO)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, ESTUDIANTE E, CURSO C</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CARNET = E.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CODIGO = C.CURSO</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CARNET,C.NOMBRE,</span><span style="color: #000080;">CONCAT</span><span style="color: #000000;">(E.PRIMER_NOMBRE,E.PRIMER_APELLIDO)</span>
+<span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(AS1.CODIGO) &gt;= </span><span style="color: #0000ff;">3</span>
+<span style="color: #000000;">;</span>
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 19*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Listado de curso/catedratico/auxiliar donde los alumnos tengan mejor nota promedio que otra seccion del mismo anio y ciclo anterior tal que no haya sido el mismo catedratico</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos el curso, catedratico, auxiliar, y promocion tal que en un par de secciones dadas por diferente catedratico exista mejor promedio, se uso vista PROM_POR_CUR_SEC_ANIO_CICLO.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> SEC1.CODIGO,CAT1.NOMBRE,AUX1.AUXILIAR,P1.PROM,P2.PROM</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> SECCION SEC1, SECCION SEC2, CATEDRATICO CAT1, CATEDRATICO CAT2, AUXILIAR AUX1, AUXILIAR AUX2,PROM_POR_CUR_SEC_ANIO_CICLO P1, PROM_POR_CUR_SEC_ANIO_CICLO P2</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> P1.SECCION = SEC1.SECCION</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P1.CICLO = SEC1.CICLO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P1.CURSO = SEC1.CODIGO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P2.SECCION = SEC2.SECCION</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P2.CICLO = SEC2.CICLO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P2.CURSO = SEC2.CODIGO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC1.AUXILIAR = AUX1.AUXILIAR</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC2.AUXILIAR = AUX2.AUXILIAR</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC1.CATEDRATICO = CAT1.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC2.CATEDRATICO = CAT2.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC1.CATEDRATICO &lt;&gt; SEC2.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC1.AUXILIAR &lt;&gt; SEC2.AUXILIAR</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> P1.PROM &gt; P2.PROM</span>
+<span style="color: #000000;">;</span>
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 20*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Listado de catedraticos/cursos que han reprobado en promedio mas alumnos que todos los otros catedraticos que hayan impartido el mismo curso, tomando en cuenta solo los alumnos que no han sido repitentes del curso.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos los catedraticos y los cursos tal que exista algun curso que tenga un promedio de reprobados por seccion mayor al del otro catedratico. se utilizo la vista num_rep_per_sec.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> CA1.NOMBRE, CU1.NOMBRE</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CATEDRATICO CA1, CATEDRATICO CA2, SECCION SA1, SECCION SA2, CURSO CU1, CURSO CU2</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CA1.CATEDRATICO = SA1.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CA2.CATEDRATICO = SA2.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CA1.CATEDRATICO &lt;&gt; CA2.CATEDRATICO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU1.CURSO = SA1.CODIGO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU2.CURSO = SA2.CODIGO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU1.CURSO = CU2.CURSO</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CU3.CURSO, </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(N1.REPROB), </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(N2.REPROB)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> NUM_REPROB_NREP_PER_SEC N1, NUM_REPROB_NREP_PER_SEC N2, CURSO CU3</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> SA1.ANIO = N1.ANIO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA2.ANIO = N2.ANIO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> N1.CURSO = CU1.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> N2.CURSO = CU2.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA2.CODIGO = CU2.CURSO	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA1.CICLO = N1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA2.CICLO = N2.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA1.SECCION = N1.SECCION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SA2.SECCION = N2.SECCION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU3.CURSO = N1.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> CU3.CURSO = N2.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CU3.CURSO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(N1.REPROB) &gt; </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(N2.REPROB)</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 21*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Para el proximo ciclo, debe insertar una asignacion automatica en la seccion A de Bases de datos 2 para todos los estudiantes que han aprobado los prerrequisitos necesarios del curso en algunos de los ciclos anteriores</span>
+
+<span style="font-style: italic;color: #808080;">Insertamos una nueva asignacion para el ciclo 2007,2 del curso base de datos 2 tal que no exista lgun prerrequisito de este curso que no este ganado en las asignaciones.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">INSERT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">INTO</span><span style="color: #000000;"> ASIGNACION (ANIO,CICLO,CODIGO,SECCION,CARNET,ZONA,NOTA) (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #dd0000;">'2007'</span><span style="color: #000000;">,</span><span style="color: #dd0000;">'2'</span><span style="color: #000000;">,CU1.CURSO,</span><span style="color: #dd0000;">'A'</span><span style="color: #000000;">,E1.CARNET,</span><span style="color: #dd0000;">'0'</span><span style="color: #000000;">,</span><span style="color: #dd0000;">'0'</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1, ESTUDIANTE E1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.NOMBRE = </span><span style="color: #dd0000;">'%BASES DE DATOS 2%'</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PRERREQUISITO PR1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PR1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PR1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, ASIGNACION AS1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_FIN &gt; AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">			*/</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA			</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 22*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Eliminar todas las a signaciones que se han hecho en las cuales los estudiantes no habian aprobado previamente los prerrequisitos del curso</span>
+
+<span style="font-style: italic;color: #808080;">Borramos de la tabla asignacion si existe algun curso asignado donde exista algun prerrequisito de la carrera de algun estudiante tal que no exista un curso que no haya ganado</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">DELETE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1, ESTUDIANTE E1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = AS1.CODIGO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PRERREQUISITO PR1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PR1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PR1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, ASIGNACION AS1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA			</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">);</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 23*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Normalizar las notas de todos los cursos asumiendo que la nueva nota minima de aprobacion sera de 75 independientemente del ciclo en que se eaprobo el curso.</span>
+
+<span style="font-style: italic;color: #808080;">Actualiza utilizando formula AS1.NOTA +(75-(nota_aprobacion actual))) todas las notas ganadas de cualquier asignacion dada</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">UPDATE</span><span style="color: #000000;"> ASIGNACION AS1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SET</span><span style="color: #000000;"> AS1.NOTA = AS1.NOTA +(</span><span style="color: #0000ff;">75</span><span style="color: #000000;">-(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">UNIQUE</span><span style="color: #000000;"> AP1.NOTA_APROBACION</span><span style="color: #008000;">"NOTA_APROBRACION"</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, ESTUDIANTE E1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">		))</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span>
+<span style="color: #000000;">	AS1.NOTA &lt; </span><span style="color: #0000ff;">100</span><span style="color: #000000;"> - (</span><span style="color: #0000ff;">75</span><span style="color: #000000;"> - </span>
+<span style="color: #000000;">		(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">UNIQUE</span><span style="color: #000000;"> AP1.NOTA_APROBACION</span><span style="color: #008000;">"NOTA_APROBRACION"</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, ESTUDIANTE E1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 24*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los estudiantes y su promedio, para los estudiantes que tienen el promedio mas alto de su promocion y carrera</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos el carnet, promociion, carrera y el maximo promedio por la carrera y promocion de algun estudiante desde la vista prom_por_promo_carrera</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> E.CARNET, P.PROMO,P.CARRERA,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(P.PROMEDIO)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E, PROM_POR_PROMO_CARRERA P</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E.CARNET = P.CARNET</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E.CARRERA = P.CARRERA</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> E.CARNET,P.PROMO, P.CARRERA;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 25*/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los cursos que tienen el promedio de repitentes mas alto.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos el curso, y el maximo del promedio de repeitentes de la vista count_rep_curso_per_ciclo agrupado por curso</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CURSO,</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(AVG_REP)</span><span style="color: #008000;">"CONTEO MAXIMO REPITENTES"</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CURSO,</span><span style="color: #000080;">AVG</span><span style="color: #000000;">(COUNT_REP)</span><span style="color: #008000;">"AVG_REP"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> COUNT_REP_CURSO_PER_CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CURSO</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CURSO;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 26**/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Dar el nombre de los estudiantes que han llevado más cursos en un ciclo, habiéndolos ganado todos y ninguno de los culaes se habia asignado antes, y tenia el prerrequisito aprobado.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos el maximo de cursos que un estudiiante se haya asignado tal que no exista algun curso asignado que no exista como curso ganado previamente y nno exista ninguna otra asignacion tque no sea del mismo ciclo que la asignacion anterior y quen o exista algun prerequisito   que no haya aprobado en alguna asignacion.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARNET,ANIO,CICLO, </span><span style="color: #000080;">MAX</span><span style="color: #000000;">(NUM_CURSOS)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> AS1.CARNET</span><span style="color: #008000;">"CARNET"</span><span style="color: #000000;">, AS1.ANIO</span><span style="color: #008000;">"ANIO"</span><span style="color: #000000;">, AS1.CICLO</span><span style="color: #008000;">"CICLO"</span><span style="color: #000000;">, </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(AS1.CODIGO) </span><span style="color: #008000;">"NUM_CURSOS"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span>
+<span style="color: #000000;">	(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = AS1.CODIGO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS2, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, APROBACION AP1, ESTUDIANTE E1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS2.CARNET=AS1.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS2.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS2.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS2.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS2.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.ANIO_FIN &gt; AS2.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_INICIO &lt;= AS2.CICLO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_FIN &gt; AS2.CICLO*/</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E1.CARNET = AS2.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS2.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span>
+<span style="color: #000000;">	(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS3</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span>
+<span style="color: #000000;">		( </span>
+<span style="color: #000000;">		AS3.CICLO &lt;&gt; AS1.CICLO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS3.ANIO = AS1.ANIO</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> </span>
+<span style="color: #000000;">		(</span>
+<span style="color: #000000;">		AS3.ANIO &lt;&gt; AS1.ANIO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS3.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS3.CODIGO = AS1.CODIGO</span>
+<span style="color: #000000;">		)		</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span>
+<span style="color: #000000;">	(</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PRERREQUISITO PR1, ESTUDIANTE E2</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PR1.CODIGO = AS1.CODIGO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E2.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PR1.CARRERA = E2.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS4, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL2, APROBACION AP2			</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS4.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS4.CODIGO = PR1.PRERREQUISITO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL2.ANIO_INICIO = AS4.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.CICLO_INICIO &lt;= AS4.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL2.ANIO_FIN = AS4.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.CICLO_FIN &gt;= AS4.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL2.ANIO_INICIO &lt; AS4.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.ANIO_FIN &gt; AS4.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-style: italic;color: #808080;">/*AND PL2.ANIO_INICIO &lt;= AS4.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL2.ANIO_FIN &gt; AS4.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL2.CICLO_INICIO &lt;= AS4.CICLO</span>
+<span style="font-style: italic;color: #808080;">			AND PL2.CICLO_FIN &gt; AS4.CICLO*/</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E2.CARNET = AS4.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL2.CARRERA = E2.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP2.PLAN = PL2.PLAN</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP2.CARRERA = PL2.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP2.CICLO = AS4.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS4.NOTA &gt;= AP2.NOTA_APROBACION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS4.ZONA &gt;= AP2.ZONA_MINIMA</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CARNET,AS1.ANIO,AS1.CICLO</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CARNET,ANIO,CICLO;</span>
+
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 27**/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Para cada carrera, dar el nombre de los estudiantes que han cerrado pensum en menos tiempo.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos datos de estudiante y carrera y los relacionamos con la vista Listado_estudiantes_cierre que contiene el listado de estudiantes de cierre y el tiempo tardado en cerrar.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E.CARRERA,C.NOMBRE, E.PRIMER_NOMBRE || E.PRIMER_APELLIDO</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E, CARRERA C</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARNET, </span><span style="color: #000080;">MAX</span><span style="color: #000000;">(DELTAT)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> LISTADO_ESTUDIANTES_CIERRE</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E.CARNET = CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> E.CARRERA</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> C.CARRERA = E.CARRERA</span>
+<span style="color: #000000;">;</span>
+
+
+<span style="font-style: italic;color: #808080;">/**CONSULTA 28**/</span>
+<span style="font-style: italic;color: #808080;">/*</span>
+<span style="font-style: italic;color: #808080;">Indicar cuantos estudiantes de cada carrera no han ganando ningun curso.</span>
+
+<span style="font-style: italic;color: #808080;">Obtenemos datos del estudiante y relacionamoes este con el pensum y el plan de tal manera que no exista algun curso tal que no se haya asignado el curso y lo haya perdido.</span>
+
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E1.CARRERA, </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> E1.CARNET)</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E1</span>
+<span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> *</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = E1.CARRERA 	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.PLAN = PE1.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = PE1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CU1.CURSO = PE1.CODIGO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS2 ,APROBACION AP1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PL1.CARRERA = PE1.CARRERA	</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.CARNET = E1.CARNET	</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS2.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS2.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS2.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS2.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.ANIO_FIN &gt; AS2.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_INICIO &lt;= AS2.CICLO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_FIN &gt; AS2.CICLO*/</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS2.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.ZONA &lt; AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.NOTA &lt; AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> E1.CARRERA;</span>
+
+
+
+
+
+
+<span style="font-style: italic;color: #808080;">/********************************************** VIEWS ************************************/</span>
+
+<span style="font-style: italic;color: #808080;">/**Vista Count_Rep_Curso_Per_Ciclo</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 25</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve el anio, ciclo, curso y numero de repitentes que ha tenido dicho curso en cualquier anio y ciclo.</span>
+
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">CREATE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">VIEW</span><span style="color: #000000;"> COUNT_REP_CURSO_PER_CICLO </span><span style="font-weight: bold;color: #000000;">AS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> A.ANIO </span><span style="color: #008000;">"ANIO"</span><span style="color: #000000;">, A.CICLO </span><span style="color: #008000;">"CICLO"</span><span style="color: #000000;">, A.CODIGO </span><span style="color: #008000;">"CURSO"</span><span style="color: #000000;">, </span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> A.CARNET)</span><span style="color: #008000;">"COUNT_REP"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION A, ESTUDIANTE E, APROBACION AP, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> A.CARNET = E.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL.CARRERA = E.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL.ANIO_INICIO = A.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL.CICLO_INICIO &lt;= A.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL.ANIO_FIN = A.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL.CICLO_FIN &gt;= A.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL.ANIO_INICIO &lt; A.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL.ANIO_FIN &gt; A.ANIO)</span>
+<span style="color: #000000;">	)</span>
+<span style="font-style: italic;color: #808080;">/*	AND PL.ANIO_INICIO &lt;= A.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL.ANIO_FIN &gt; A.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL.CICLO_INICIO &lt;= A.CICLO</span>
+<span style="font-style: italic;color: #808080;">	AND PL.CICLO_FIN &gt; A.CICLO</span>
+<span style="font-style: italic;color: #808080;">*/</span><span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP.PLAN = PL.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP.CARRERA = PL.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP.CICLO = A.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A.ZONA &lt; AP.ZONA_MINIMA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> A.NOTA &lt; AP.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> A.ANIO , A.CICLO , A.CODIGO</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**Vista prom_por_promo_carrera</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 24</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve carnet, promocion (como los primeros 4 digitos del carnet), carrera, promedio de notas</span>
+<span style="font-style: italic;color: #808080;">agrupados por promocion y carrera</span>
+
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">CREATE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">VIEW</span><span style="color: #000000;"> PROM_POR_PROMO_CARRERA </span><span style="font-weight: bold;color: #000000;">AS</span><span style="color: #000000;">(</span>
+<span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CARNET,PROMO,CARRERA,</span><span style="color: #000080;">AVG</span><span style="color: #000000;">(NOTA)</span><span style="color: #008000;">"PROMEDIO"</span>
+<span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> E.CARNET</span><span style="color: #008000;">"CARNET"</span><span style="color: #000000;">,</span><span style="color: #000080;">SUBSTR</span><span style="color: #000000;">(E.CARNET,</span><span style="color: #0000ff;">1</span><span style="color: #000000;">,</span><span style="color: #0000ff;">4</span><span style="color: #000000;">)</span><span style="color: #008000;">"PROMO"</span><span style="color: #000000;">,E.CARRERA</span><span style="color: #008000;">"CARRERA"</span><span style="color: #000000;">,AS2.NOTA</span><span style="color: #008000;">"NOTA"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E, ASIGNACION AS2, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, APROBACION AP1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS2.CARNET = E.CARNET</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS2.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS2.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS2.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS2.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">		</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS2.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.ANIO_FIN &gt; AS2.ANIO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_INICIO &lt;= AS2.CICLO</span>
+<span style="font-style: italic;color: #808080;">		AND PL1.CICLO_FIN &gt; AS2.CICLO*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS2.CICLO</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS2.ZONA &gt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">)</span>
+<span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CARNET,PROMO,CARRERA</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**Vista num_reprob_nrep_per_sec</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 20</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve anio, ciclo, curso, seccion y el numero de reprobados tal que no se hayan asignado este curso previamente( no repitentes)</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+
+<span style="font-weight: bold;color: #000000;">CREATE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">VIEW</span><span style="color: #000000;"> NUM_REPROB_NREP_PER_SEC </span><span style="font-weight: bold;color: #000000;">AS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> AS1.ANIO</span><span style="color: #008000;">"ANIO"</span><span style="color: #000000;">, AS1.CICLO</span><span style="color: #008000;">"CICLO"</span><span style="color: #000000;">, AS1.CODIGO</span><span style="color: #008000;">"CURSO"</span><span style="color: #000000;">,AS1.SECCION</span><span style="color: #008000;">"SECCION"</span><span style="color: #000000;">,</span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> AS1.CARNET)</span><span style="color: #008000;">"REPROB"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, ESTUDIANTE E1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, APROBACION AP1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &lt; AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &lt; AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.ANIO,AS1.CICLO,AS1.CODIGO,AS1.SECCION	</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**Vista prom_por_cur_sec_anio_ciclo</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 19</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve curso, seccion anio, ciclo y primedio de notas de la asigancion, agrupado por curso, seccion anio, ciclo</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+
+<span style="font-weight: bold;color: #000000;">CREATE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">VIEW</span><span style="color: #000000;"> PROM_POR_CUR_SEC_ANIO_CICLO </span><span style="font-weight: bold;color: #000000;">AS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> AS1.CODIGO</span><span style="color: #008000;">"CURSO"</span><span style="color: #000000;">,AS1.SECCION</span><span style="color: #008000;">"SECCION"</span><span style="color: #000000;">,AS1.ANIO</span><span style="color: #008000;">"ANIO"</span><span style="color: #000000;">,AS1.CICLO</span><span style="color: #008000;">"CICLO"</span><span style="color: #000000;">, </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(AS1.NOTA)</span><span style="color: #008000;">"PROM"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CODIGO,AS1.SECCION,AS1.ANIO,AS1.CICLO	</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**Vista ESTUDIANTE_CARR_PROM_EDAD</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 15</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve carrera, carnet, promedio y edad de los estudiantes.</span>
+<span style="font-style: italic;color: #808080;">*/</span>
+<span style="font-weight: bold;color: #000000;">CREATE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">VIEW</span><span style="color: #000000;"> ESTUDIANTE_CARR_PROM_EDAD </span><span style="font-weight: bold;color: #000000;">AS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> E1.CARRERA</span><span style="color: #008000;">"CARRERA"</span><span style="color: #000000;">, E1.CARNET</span><span style="color: #008000;">"CARNET"</span><span style="color: #000000;">, </span><span style="color: #000080;">AVG</span><span style="color: #000000;">(AS1.NOTA)</span><span style="color: #008000;">"PROM"</span><span style="color: #000000;">,</span><span style="color: #000080;">EXTRACT</span><span style="color: #000000;">(</span><span style="color: #800000;">YEAR</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;">(</span><span style="color: #000080;">SYSDATE</span><span style="color: #000000;"> - E1.FECHA_NACIMIENTO) </span><span style="color: #800000;">YEAR</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">TO</span><span style="color: #000000;"> </span><span style="color: #800000;">MONTH</span><span style="color: #000000;">)</span><span style="color: #008000;">"EDAD"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE E1, CARRERA C1, ASIGNACION AS1,APROBACION AP1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> E1.CARNET = AS1.CARNET </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> E1.CARRERA = C1.CARRERA	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = E1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> E1.CARRERA,E1.CARNET,E1.FECHA_NACIMIENTO</span>
+<span style="color: #000000;">); </span>
+
+<span style="font-style: italic;color: #808080;">/**Vista LISTADO_ESTUDIANTES_CIERRE</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 27,14</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve los estudiantes que han cerrado alguna carrera*/</span>
+
+<span style="font-weight: bold;color: #000000;">create</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">view</span><span style="color: #000000;"> listado_estudiantes_cierre </span><span style="font-weight: bold;color: #000000;">as</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> ES1.CARNET</span><span style="color: #008000;">"CARNET"</span><span style="color: #000000;">, (</span><span style="color: #000080;">MAX</span><span style="color: #000000;">(AS0.ANIO)-MIN(AS0.ANIO))</span><span style="color: #008000;">"DELTAT"</span><span style="color: #000000;">,ES1.CARRERA</span><span style="color: #008000;">"CARRERA"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ESTUDIANTE ES1, CARRERA CA1, ASIGNACION AS0</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> CA1.CARRERA = ES1.CARRERA </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS0.CARNET = ES1.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">( </span><span style="font-style: italic;color: #808080;">/**OBLIGATORIEDAD*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA </span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = CA1.CARRERA </span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PE1.OBLIGATORIO = </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CURSO CU1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">NOT</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CARNET = ES1.CARNET</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">					</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">				)</span>
+<span style="color: #000000;">				</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">				AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">				AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">				AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">( </span><span style="font-style: italic;color: #808080;">/**CONTEO CREDITOS*/</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> PENSUM PE1, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> PE1.CARRERA = CA1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.PLAN = PE1.PLAN</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = PE1.CARRERA</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">EXISTS</span><span style="color: #000000;">(</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> </span><span style="color: #0000ff;">1</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> ASIGNACION AS1, APROBACION AP1, CURSO CU1			</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> AS1.CARNET = ES1.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.CODIGO = CU1.CURSO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (	(PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">				</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">			)</span>
+<span style="color: #000000;">			</span><span style="font-style: italic;color: #808080;">/*AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">			AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.NOTA &gt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AS1.ZONA &gt;= AP1.ZONA_MINIMA	</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> AS1.CARNET</span>
+<span style="color: #000000;">			</span><span style="font-weight: bold;color: #000000;">HAVING</span><span style="color: #000000;"> </span><span style="color: #000080;">SUM</span><span style="color: #000000;">(CU1.CREDITOS) &gt;= CA1.CREDITOS_CIERRE</span>
+<span style="color: #000000;">		)</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> ES1.CARRERA,ES1.CARNET</span>
+<span style="color: #000000;">);</span>
+
+<span style="font-style: italic;color: #808080;">/**Vista REPROBADOS_POR_CAT_CAR</span>
+
+<span style="font-style: italic;color: #808080;">Usada en: Query 07</span>
+
+<span style="font-style: italic;color: #808080;">Devuelve un promedio de estudiantes reprobados por catedratico y carrera*/</span>
+<span style="font-weight: bold;color: #000000;">CREATE</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">VIEW</span><span style="color: #000000;"> REPROBADOS_POR_CAT_CAR </span><span style="font-weight: bold;color: #000000;">AS</span><span style="color: #000000;"> (</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">SELECT</span><span style="color: #000000;"> CAR.CARRERA</span><span style="color: #008000;">"CARR"</span><span style="color: #000000;">, CAT.CATEDRATICO</span><span style="color: #008000;">"CAT"</span><span style="color: #000000;">,AS1.CODIGO,</span><span style="color: #000080;">COUNT</span><span style="color: #000000;">(</span><span style="font-weight: bold;color: #000000;">DISTINCT</span><span style="color: #000000;"> EST.CARNET)</span><span style="color: #008000;">"NUM_REPROBADOS"</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">FROM</span><span style="color: #000000;"> CATEDRATICO CAT, CARRERA CAR, ASIGNACION AS1, SECCION SEC, ESTUDIANTE EST, </span><span style="font-weight: bold;color: #000000;">PLAN</span><span style="color: #000000;"> PL1, APROBACION AP1</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">WHERE</span><span style="color: #000000;"> SEC.CATEDRATICO = CAT.CATEDRATICO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC.ANIO = AS1.ANIO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC.CODIGO = AS1.CODIGO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> SEC.SECCION = AS1.SECCION</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EST.CARNET = AS1.CARNET</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> EST.CARRERA = CAR.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CARRERA = EST.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> ((PL1.ANIO_INICIO = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_INICIO &lt;= AS1.CICLO)</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_FIN = AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.CICLO_FIN &gt;= AS1.CICLO)</span>
+<span style="color: #000000;">		</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> (PL1.ANIO_INICIO &lt; AS1.ANIO </span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> PL1.ANIO_FIN &gt; AS1.ANIO)</span>
+<span style="color: #000000;">	)</span>
+<span style="font-style: italic;color: #808080;">/*	AND PL1.ANIO_INICIO &lt;= AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.ANIO_FIN &gt; AS1.ANIO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_INICIO &lt;= AS1.CICLO</span>
+<span style="font-style: italic;color: #808080;">	AND PL1.CICLO_FIN &gt; AS1.CICLO*/</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CICLO = AS1.CICLO</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.PLAN = PL1.PLAN</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> AP1.CARRERA = PL1.CARRERA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">AND</span><span style="color: #000000;"> (AS1.ZONA &lt;= AP1.ZONA_MINIMA</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">OR</span><span style="color: #000000;"> AS1.NOTA &lt;= AP1.NOTA_APROBACION</span>
+<span style="color: #000000;">	)</span>
+<span style="color: #000000;">	</span><span style="font-weight: bold;color: #000000;">GROUP</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">BY</span><span style="color: #000000;"> CAR.CARRERA,CAT.CATEDRATICO,AS1.CODIGO</span>
+<span style="color: #000000;">);</span>
+
+
+
+
+
+
+
+
+
+</pre></body>
+</html>

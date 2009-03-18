@@ -1,0 +1,18 @@
+LOAD DATA
+INFILE 'h:\detalle.txt'
+APPEND
+CONTINUEIF THIS (1) = '*'
+INTO TABLE detalle 
+--OPTIONALLY ENCLOSED BY '"'
+(
+codigo position(1:10) integer external,
+operacion position(12:21) char,
+nombre position(23:48) char,
+--fecha position(51:58) date "MM-DD-YY",
+tipo position(60:60) char,
+transaccion  position(62:72) char,
+clave1 position(74:102) char,
+clave2 position(105:134) char,
+maestro position(136:143) integer external,
+municipio position(176:178) integer external
+)

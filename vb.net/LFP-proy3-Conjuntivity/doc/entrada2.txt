@@ -1,0 +1,20 @@
+programa ejemplo2
+conjuntos
+	a={1,2,3,4} b={1}
+	cb1 = {v1,valor2,1,5,3,3456,dia}
+	v = {}
+inicio
+	v= a + b - cb1 +v + a@ + a <> cb1;
+	si 1 % a
+	entonces v={};
+	sino
+		v = {r};
+	fin si;
+	si b % a
+	entonces b = v;
+	fin si;
+resultados
+	salida archivo
+	escribir(a,b,cb1,v,u)
+fin
+		

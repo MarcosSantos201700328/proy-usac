@@ -1,0 +1,97 @@
+2005-09-01  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas: Agregada validacion para no permitir intervalos negativos.
+
+	* proy1.pas: Arreglado el bug de que no permite mas de 16 intervalos;
+	Mejorada la pagina HTML generada.
+
+2005-08-31  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Mejorada la compatibilidad con Turbo Pascal al quitar el upcase de cadena, mejorado el parser, ahora ya acepta numeros negativos y sin cero predecesor en los decimales.
+
+2005-08-30  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Corregido el error si el archivo de entrada tiene lineas en blanco
+
+	* proy1.pas:
+	Arreglados unos pequenos problemitas con la generacion HTML y los datos mostrados,
+
+	* proy1.pas: Validadas divisiones entre 0,
+	agregado los calculos a HTML
+
+	* proy1.pas:
+	Agregada la opcion para salida de archivo a HTML como opcion adicional
+
+	* proy1.pas: Version beta 1.
+
+2005-08-29  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Agregado algunas mejoras visuales, asi como informacion del programa
+
+	* proy1.pas: *** empty log message ***
+
+2005-08-28  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Terminada funcion de mostrar en pantalla basada en el archivo de salida recien creado.
+
+2005-08-27  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Se crea funcion principal que controla el programa desde arriba;
+	Terminada la Generacion de tabla a archivo de texto,
+
+	* proy1.pas: *** empty log message ***
+
+	* proy1.pas: - Agregada funcion de Varianza, y FxDiffMedia;
+	- DataGen ahora genera todos los datos pedidos en la tabla y los calculos en el arreglo de calculos
+
+	* proy1.pas: Agregada Media Geomtrica
+
+2005-08-26  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas: - Agregada funcion de moda;
+
+	* proy1.pas:
+	- Agregado Esqueleto para funcion que genera la tabla a imprimir;
+	- Algoritmo de Media Geometrica terminado
+	- Inclusion del Algoritmo quicksort por si sirve en algun caso;o
+
+	* proy1.pas: Agregado :
+	 Funcion Frec Acum, LogPM, f*logPM, invPM DiffMedia, MediaArit
+
+2005-08-25  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Cambiada el procedimiento Punto Medio por funcion(PuntoMedio()), agregada fuciones para desviacion REspecto a la Media Supuesta y agregado procedimiento para el Total de la desviacion;
+
+	* proy1.pas:
+	Implementado procedimiento PuntoMedio que genera valor de puntomedio en el array PM[] para cada intervalo
+
+	* proy1.pas:
+	Agregada la funcion Frecuencia, que ordena los datos en cantidades especificadas en el vector 'frec[]' respecto el intervalo al que pertenecen
+
+2005-08-24  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Agregado el parser para Intervalos, acepta espacios entre el signo '<', y guarda los datos en los arrays intervd e intervi
+
+	* proy1.pas:
+	Cambiada la funcion EsNum por el procedimiento mas general parse.
+	Ya lee datos en el bloque DATOS y los almacena en el array DATOS
+
+	* proy1.pas:
+	Agregada la funcion isnum, probarla para su uso en la linea 105
+
+2005-08-23  Erik Giron  <kreig@localhost.localdomain>
+
+	* proy1.pas:
+	Armado el esqueleto del las acciones principales a ser tomadas
+
+	* proy1.pas: Agregado reconocimiento de comandos en inputfile()
+
+	* proy1.pas: New file.
+

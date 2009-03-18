@@ -1,0 +1,16 @@
+LOAD DATA
+INFILE 'H:\maestro.txt'
+replace
+CONTINUEIF THIS (1) = '*'
+INTO TABLE maestro
+--OPTIONALLY ENCLOSED BY '"'
+(
+codigo position(1:11) integer external,
+transaccion position(13:22) char,
+nombre position(24:49) char,
+--valor position(51:52) integer external,
+tipo position(54:54) char,
+--valor_anterior position(56:57) integer external,
+clave1 position(59:75) char,
+clave2 position(90:112) char
+)

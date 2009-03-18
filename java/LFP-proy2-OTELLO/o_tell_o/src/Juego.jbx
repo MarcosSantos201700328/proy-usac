@@ -1,0 +1,10 @@
+[PropertyInfo]
+hist,Historial,false,false, , ,false,<default>
+j1,Jugador,false,false, , ,false,<default>
+jugador,Jugador,false,false, , ,true,<default>
+tab,Tablero,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

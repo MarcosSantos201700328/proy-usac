@@ -1,0 +1,10 @@
+UNIVERSIDAD DE SAN CARLOS DE GUATEMALA
+Facultad de Ingenieria
+Lenguajes Formales y de Programacion
+
+Tercer Proyecto, Conjuntivity
+
+Erik Vladimir Giron Marquez
+C#200313492
+
+Octubre 2005

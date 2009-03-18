@@ -1,0 +1,107 @@
+Resultados
+
+Sin Indices
+===========
+
+-- 1 --
+select * from maestro;	
+select * from detalle;
+select * from depto;
+select * from municipio;
+
+Elapsed: 00:00:00.00
+
+--2-- 
+
+
+select * from maestro where upper(nombre) = '';	
+Elapsed: 00:00:00.42 
+select * from detalle where upper(nombre) = 'NUMERO';
+Elapsed: 00:01:07.02 
+select * from depto where upper(nombre) = 'RETALHULEU';
+Elapsed: 00:00:00.02 
+select * from municipio where upper(nombre) = 'RETALHULEU';
+Elapsed: 00:00:00.08 
+
+--3--
+select * from maestro where nombre like '%NUMERO%';	
+Elapsed: 00:00:26.97 
+select count(*) from detalle where nombre like '%ERRORES_DE%';
+Elapsed: 00:01:16.63
+select * from depto where nombre like '%10%';
+Elapsed: 00:00:00.01 
+select * from municipio where upper(nombre) like '%10%';
+Elapsed: 00:00:00.09 
+
+--4--
+select distinct tipo from maestro;
+Elapsed: 00:00:25.88 
+select distinct tipo from detalle;
+Elapsed: 00:01:08.60 
+
+--5--
+select distinct tipo from maestro where tipo in ('D','I','1','V');
+Elapsed: 00:00:29.15 
+select distinct tipo from detalle where tipo in ('D','I','1','V');
+Elapsed: 00:01:08.20 
+
+--6--
+select * from maestro ma, detalle de, municipio mu where ma.codigo = de.maestro and de.municipio = mu.codigo and ma.tipo in ('D','I','1','V','N') and de.fecha > '01-jan-2000';
+Elapsed: 00:01:08.20 
+--7--
+select count(*) from depto d, municipio m where m.codigo in (select municipio from detalle);
+
+
+Elapsed: 00:03:41.18 
+
+--8--
+select count(*) from detalle where  tipo in ('D','I','1','U','N');
+Elapsed: 00:01:21.28 
+
+--9--
+select * from maestro where transaccion = 236515870;
+Elapsed: 00:00:13.65 
+
+--10--
+select * from maestro where nombre like '%NUMERO%';
+Elapsed: 00:00:30.15
+
+--11--
+select * from maestro where tipo = 'D';
+Elapsed: 00:00:19.26 
+
+--12--
+select * from detalle where transaccion = '204929274';
+Elapsed: 00:00:46.65 
+
+--13--
+select * from detalle where nombre = 'ERRORES';
+Elapsed: 00:00:46.26 
+
+--14--
+select * from detalle where fecha = '13/06/06';
+Elapsed: 00:00:47.45 
+
+--15--
+select * from detalle where tipo = 'U';
+Elapsed: 00:00:48.14 
+
+--16--
+select * from detalle where operacion = '203087682';
+Elapsed: 00:00:50.87 
+
+--17--
+select count(*) from maestro m ,detalle d where m.codigo > 0;
+
+--18--
+select * from municipio where departamento = 'Retalhuleu';
+Elapsed: 00:00:00.01 
+
+--19--
+select * from municipio where nombre = 'El Asintal';
+Elapsed: 00:00:00.01 
+
+--20--
+select * from municipio where tipo = '1';
+Elapsed: 00:00:00.01 
+

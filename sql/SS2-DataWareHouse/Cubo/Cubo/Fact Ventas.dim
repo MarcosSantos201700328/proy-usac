@@ -1,0 +1,553 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="10e2ab20-2f96-4d49-8535-01c70ad5c49f" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Fact Ventas</ID>
+  <Name>Fact Ventas</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="dd7d576a-acb0-4d62-beba-84f2a167a4bd">
+    <DataSourceViewID>Datawarehouse</DataSourceViewID>
+  </Source>
+  <Type>Quantitative</Type>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="e1933e65-3176-4ff4-ab15-dc5177ebfa73">
+      <ID>Fact Ventas</ID>
+      <Name>Fact Ventas</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4666424f-82f5-484d-a26b-0bc96b6ef15c">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e7c6cdd4-0aa7-411b-b6aa-309de9b66050">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>IdVenta</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="b7fd70f1-0651-4ad5-b92b-48c930aac935">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9cabc03f-51b6-422c-9ff5-d27e8ba15adc">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>IdCliente</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="0290c9f7-bb7e-496e-93b1-55b3e4218aaf">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ed501fe3-0416-4cff-ba60-b98521988d84">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>IdMes</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="a4e00630-a785-4517-8951-4143ebdca63f">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bd8624a1-0d6c-47ac-a3a8-04f59b3ef944">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>IdProducto</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="7da30a57-4a43-4527-86ed-af211c27306b">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d9060303-3f14-4e83-94cc-ab0d1b846837">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>IdTerritorio</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6a8e5804-089c-45c1-be64-39be022dbef6">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d862dc38-f46e-4470-9267-195d9a5b576e">
+          <TableID>dbo_FactVentas</TableID>
+          <ColumnID>ContribucionMarginal</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="e418f344-ce5e-4a92-97b1-c2dfc7d38520">
+          <AttributeID>Sub Total</AttributeID>
+          <Name>Sub Total</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f90027c9-d147-44ac-8f64-14b3be82d8f5">
+          <AttributeID>Tax</AttributeID>
+          <Name>Tax</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8cc9ace1-2cfd-462f-9200-0846d4da647a">
+          <AttributeID>Flete</AttributeID>
+          <Name>Flete</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="69465f1b-f1a7-4884-82a5-57f0478ac966">
+          <AttributeID>Total Due</AttributeID>
+          <Name>Total Due</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="78e99261-b5e7-4c61-a13b-5b3414e76f49">
+          <AttributeID>Dim Territorio</AttributeID>
+          <Name>Dim Territorio</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="dfdecf28-ad5a-4e41-bb4f-3972acd4fcb3">
+          <AttributeID>Dim Cliente</AttributeID>
+          <Name>Dim Cliente</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0368a5f6-b285-4898-b716-5dba0cdbb8b2">
+          <AttributeID>Dim Producto</AttributeID>
+          <Name>Dim Producto</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="242267ea-d40d-447e-8d13-aec1a82b1003">
+          <AttributeID>Dim Tiempo</AttributeID>
+          <Name>Dim Tiempo</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+    </Attribute>
+    <Attribute dwd:design-time-name="35222308-8678-486a-ba96-a7238a2c4d84">
+      <ID>Sub Total</ID>
+      <Name>Sub Total</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cf229276-d18e-4301-8685-77e003f970b3">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f1ab235a-015c-4a1c-bfc9-f1dff81e9d6d">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>subTotal</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="3162cf23-aec1-4594-b3a3-41fd7aa6c15e">
+      <ID>Tax</ID>
+      <Name>Tax</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d6347504-a8b3-4dc1-ae71-4baf8be97149">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a782f27f-4029-4dba-b5c8-a83529378143">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>Tax</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="3b905740-d617-46bc-bf71-8541b6f4aaf5">
+      <ID>Flete</ID>
+      <Name>Flete</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="beb7b76c-1d71-4fb9-9fc1-487c6b66413c">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="995f7d2c-c92c-4165-b99c-418c5437705e">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>Flete</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="e21f290c-285c-42ab-849c-59320ed53584">
+      <ID>Total Due</ID>
+      <Name>Total Due</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0b91f5dd-c78b-4ea5-a903-e6dcc65de7b5">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d011a23b-ca33-42a9-93b5-5d5ea01d31de">
+            <TableID>dbo_FactVentas</TableID>
+            <ColumnID>TotalDue</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="aa82b05e-0e6d-43a9-8a30-a9b93b9f913d">
+      <ID>Dim Territorio</ID>
+      <Name>Dim Territorio</Name>
+      <EstimatedCount>10</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c707f684-5315-4485-bd0e-470433b04c60">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="06add09c-b7d5-4797-8ce7-80b92146b507">
+            <TableID>dbo_DimTerritorio</TableID>
+            <ColumnID>TerritoryID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="b52019ed-2e36-4c84-857d-ef25031d6982">
+          <AttributeID>Country</AttributeID>
+          <Name>Country</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="291d8a1f-abf5-4fe0-80c8-4d7d3d56eb90">
+          <AttributeID>Nombre</AttributeID>
+          <Name>Nombre</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="e93fb0b3-649f-4ce6-9b86-ef64f3e00994">
+      <ID>Country</ID>
+      <Name>Country</Name>
+      <EstimatedCount>6</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9a9191bf-d1ee-42c1-a4f2-0fbdfb8ca9c7">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1a1a6480-529f-4833-93dd-b2fc9b817add">
+            <TableID>dbo_DimTerritorio</TableID>
+            <ColumnID>Country</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="4e930a6b-ef4e-48f6-b05f-061f7dd28724">
+      <ID>Nombre</ID>
+      <Name>Nombre</Name>
+      <EstimatedCount>10</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3307d589-fa52-4ef1-8c2b-29988106ea8e">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="00c6942a-6428-4f25-bc60-11deef84bcab">
+            <TableID>dbo_DimTerritorio</TableID>
+            <ColumnID>Nombre</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="9f8244a4-bfd9-4b1e-b6d5-df722ac96270">
+      <ID>Dim Cliente</ID>
+      <Name>Dim Cliente</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ac29ddb8-6fcd-48bb-ab3a-6429416dae35">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="324db36c-f136-4b34-852f-5f4e2d71cccf">
+            <TableID>dbo_DimCliente</TableID>
+            <ColumnID>CustomerID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="85f9d6d7-2e41-4c65-8f03-cef7e35def11">
+          <AttributeID>Dim Cliente - Nombre</AttributeID>
+          <Name>Dim Cliente - Nombre</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f66d95be-0d47-4dd1-be37-04ff9af624d9">
+          <AttributeID>Email Promotion</AttributeID>
+          <Name>Email Promotion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2b4e5667-e868-4ec6-af03-00a03c85e1ed">
+          <AttributeID>Customer Type</AttributeID>
+          <Name>Customer Type</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="c2ddfa01-b227-4723-b9c5-38e4745e3b88">
+      <ID>Dim Cliente - Nombre</ID>
+      <Name>Dim Cliente - Nombre</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f0919c46-6577-48cb-b042-467db97caab4">
+          <DataType>WChar</DataType>
+          <DataSize>200</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="80f0ded8-ed56-4343-9f68-af4461ee6118">
+            <TableID>dbo_DimCliente</TableID>
+            <ColumnID>Nombre</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>MandatoryFilter</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="4221596d-f348-4607-81a4-75507195d68a">
+      <ID>Email Promotion</ID>
+      <Name>Email Promotion</Name>
+      <EstimatedCount>3</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="11c48755-c036-49d5-984c-597808e68c83">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="28f21af5-91ca-4d09-90a2-a5fa3c08813f">
+            <TableID>dbo_DimCliente</TableID>
+            <ColumnID>EmailPromotion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="c6e9624b-d658-461a-9288-24ca0b3a1dbd">
+      <ID>Customer Type</ID>
+      <Name>Customer Type</Name>
+      <EstimatedCount>1</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a34671a6-3540-4db7-b2b8-ed630a9ba594">
+          <DataType>WChar</DataType>
+          <DataSize>1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9b958876-cbcb-4cbd-9ba8-04bad9bfcd5b">
+            <TableID>dbo_DimCliente</TableID>
+            <ColumnID>CustomerType</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="955aafea-622e-4401-8173-aae2b9f526c3">
+      <ID>Dim Producto</ID>
+      <Name>Dim Producto</Name>
+      <EstimatedCount>504</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="978849e0-5d07-4d86-8cf0-cebf6c8a7aec">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3ef58c6b-1fa7-4182-a53e-30eaa662d37f">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>ProductID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="b4accb90-aac9-4771-b7ac-b0435bd1f535">
+          <AttributeID>Name</AttributeID>
+          <Name>Name_</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="daf28451-fa5b-4e5b-88e0-95b25d7674db">
+          <AttributeID>List Price</AttributeID>
+          <Name>List Price</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4cc93a09-6e4f-422e-b7dd-4be21988380f">
+          <AttributeID>Standar Cost</AttributeID>
+          <Name>Standar Cost</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a33e973d-4b9f-4fa1-b23d-4bf443249dcd">
+          <AttributeID>Rating</AttributeID>
+          <Name>Rating</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2d6c1792-6805-4972-a5b4-38c06adba2a8">
+          <AttributeID>Category</AttributeID>
+          <Name>Category</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1300d4f4-6e29-4d57-88fb-37b76d3b747f">
+          <AttributeID>Review Date</AttributeID>
+          <Name>Review Date</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e48bd53d-c17a-47eb-9a89-00f7b8544940">
+          <AttributeID>Sub Category</AttributeID>
+          <Name>Sub Category</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>FilteredList</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="e6eaab84-8050-4c64-ba2c-a6ab5914a093">
+      <ID>Name</ID>
+      <Name>Name</Name>
+      <EstimatedCount>504</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="aa871df8-4cbc-4399-93d5-fdbcd98e47c8">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f9c171be-5b9d-4859-aa11-d176fc40efc6">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>Name</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>FilteredList</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="72366c0c-8cc0-4e4a-95ea-15b6502bf4fb">
+      <ID>List Price</ID>
+      <Name>List Price</Name>
+      <EstimatedCount>103</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a58d479f-7ea5-4237-86d8-a5793efab895">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="41d6a967-1484-45b4-ab50-0a342bd2bf39">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>ListPrice</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>List</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="09823b6e-2768-4a7f-80a2-59c5d7bfeee0">
+      <ID>Standar Cost</ID>
+      <Name>Standar Cost</Name>
+      <EstimatedCount>114</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="04023a16-a543-43a1-8b70-76334427356a">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="134c5942-f0fa-4805-87fd-888d1217d79b">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>StandarCost</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>List</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="f13b5437-c00e-48e7-be23-39bf8c77cfc6">
+      <ID>Rating</ID>
+      <Name>Rating</Name>
+      <EstimatedCount>3</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bb391689-5871-4fc6-9fb2-d2f8baf92226">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e760e3c6-49a2-4608-9e62-e563b02907ad">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>Rating</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="658b7cb3-3a5c-4151-92fe-a1229ba37731">
+      <ID>Category</ID>
+      <Name>Category</Name>
+      <EstimatedCount>5</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ddefdc20-4787-4355-bc1e-08c22662cd3b">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b7f2c1c0-5b98-4699-b8a3-1ec71ade1451">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>Category</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="b4850706-dd69-4ba6-8da4-1354f9318dc0">
+      <ID>Review Date</ID>
+      <Name>Review Date</Name>
+      <EstimatedCount>1</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="778c1aa7-e04d-41f8-b933-30d6cb289f9a">
+          <DataType>WChar</DataType>
+          <DataSize>10</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d63984fa-1d7a-4687-a05a-8d455ec15bd3">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>ReviewDate</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="dacfdfd0-4f94-4dc1-b6eb-70fa99a8747b">
+      <ID>Sub Category</ID>
+      <Name>Sub Category</Name>
+      <EstimatedCount>38</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0334bc72-0d40-466c-802a-c3a88e70fbdb">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="34436166-1b37-4d78-9a86-7acc7d0efa71">
+            <TableID>dbo_DimProducto</TableID>
+            <ColumnID>SubCategory</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="cee60bc7-dd68-4279-9c68-c557d9370558">
+      <ID>Dim Tiempo</ID>
+      <Name>Dim Tiempo</Name>
+      <EstimatedCount>156</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="600dbd11-db99-49a8-81d9-428ab0747fdc">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e50e4b39-b2a4-4f28-a17a-d39823c6a184">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>MesID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="0f044b79-837f-4767-8982-c83c8083d816">
+          <AttributeID>Mes</AttributeID>
+          <Name>Mes</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="657c0d05-5d1d-4796-aaf8-91955b240257">
+          <AttributeID>Anio</AttributeID>
+          <Name>Anio</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>List</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="fc3cca61-92c3-4e3a-8cfb-2f485393727c">
+      <ID>Mes</ID>
+      <Name>Mes</Name>
+      <EstimatedCount>12</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f1ed6e7d-a543-49a1-8e14-9e03d625bc4c">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e70ca20d-fdeb-4fec-84f4-4b315c20f665">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>mes</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+    <Attribute dwd:design-time-name="8ac5e775-6d96-42a4-9d3a-5b35469d5366">
+      <ID>Anio</ID>
+      <Name>Anio</Name>
+      <EstimatedCount>13</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4d8825fa-6571-42fc-8c16-aa132e45134b">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1698c660-4b56-4e30-b62d-c9bdba2d5fbe">
+            <TableID>dbo_dimTiempo</TableID>
+            <ColumnID>anio</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+    </Attribute>
+  </Attributes>
+</Dimension>

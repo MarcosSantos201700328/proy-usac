@@ -1,0 +1,10 @@
+[PropertyInfo]
+col,int,false,false, , ,false,<default>
+colorf,ColorFichas,false,false, , ,false,<default>
+iconHeight,int,false,false, , ,true,<default>
+iconWidth,int,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

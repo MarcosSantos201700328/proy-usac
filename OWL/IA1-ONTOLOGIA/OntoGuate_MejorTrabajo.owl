@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://200.49.171.57/ONTOGUATE_MejorTrabajo.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://200.49.171.57/ONTOGUATE_MejorTrabajo.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Riesgo_Ergonomico">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Riesgo"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Riesgo_Biologico">
+    <rdfs:subClassOf rdf:resource="#Riesgo"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Plaza"/>
+  <owl:Class rdf:ID="Instalacion_cerrada">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Instalacion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Clima">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Se refiere al clima organizacional en el que se encuentra</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Clima_Nocivo">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Baja cantidad de contaminantes de cualquier tipo</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Clima"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Jefe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Personal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Plaza_Operadora">
+    <rdfs:subClassOf rdf:resource="#Plaza"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Gobierno">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Organizacion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Instalacion">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Se refiere a toda aquella área donde el personal desarrollará sus labores</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ONG">
+    <rdfs:subClassOf rdf:resource="#Organizacion"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Clima_Normal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sin contaminates</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Clima"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Clima_Molesto">
+    <rdfs:subClassOf rdf:resource="#Clima"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alta cantidad de contaminantes</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Riesgo_Fisico">
+    <rdfs:subClassOf rdf:resource="#Riesgo"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Instalacion_abierta">
+    <rdfs:subClassOf rdf:resource="#Instalacion"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Privada">
+    <rdfs:subClassOf rdf:resource="#Organizacion"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Subordinado">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Personal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Personal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Refiere a todo empleado dentro del area de trabajo</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Plaza_Ejecutiva">
+    <rdfs:subClassOf rdf:resource="#Plaza"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Riesgo_Psicofisicologico">
+    <rdfs:subClassOf rdf:resource="#Riesgo"/>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

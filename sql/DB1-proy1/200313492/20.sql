@@ -1,0 +1,32 @@
+/**CONSULTA 20*/
+/*
+Listado de catedraticos/cursos que han reprobado en promedio mas alumnos que todos los otros catedraticos que hayan impartido el mismo curso, tomando en cuenta solo los alumnos que no han sido repitentes del curso.
+
+Obtenemos los catedraticos y los cursos tal que exista algun curso que tenga un promedio de reprobados por seccion mayor al del otro catedratico. se utilizo la vista num_rep_per_sec.
+*/
+SELECT DISTINCT CA1.NOMBRE, CU1.NOMBRE
+FROM CATEDRATICO CA1, CATEDRATICO CA2, SECCION SA1, SECCION SA2, CURSO CU1, CURSO CU2
+WHERE CA1.CATEDRATICO = SA1.CATEDRATICO
+AND CA2.CATEDRATICO = SA2.CATEDRATICO
+AND CA1.CATEDRATICO <> CA2.CATEDRATICO
+AND CU1.CURSO = SA1.CODIGO
+AND CU2.CURSO = SA2.CODIGO
+AND CU1.CURSO = CU2.CURSO
+AND EXISTS (
+	SELECT CU3.CURSO, AVG(N1.REPROB), AVG(N2.REPROB)
+	FROM NUM_REPROB_NREP_PER_SEC N1, NUM_REPROB_NREP_PER_SEC N2, CURSO CU3
+	WHERE SA1.ANIO = N1.ANIO
+	AND SA2.ANIO = N2.ANIO
+	AND N1.CURSO = CU1.CURSO
+	AND N2.CURSO = CU2.CURSO
+	AND SA1.CODIGO = CU1.CURSO
+	AND SA2.CODIGO = CU2.CURSO	
+	AND SA1.CICLO = N1.CICLO
+	AND SA2.CICLO = N2.CICLO
+	AND SA1.SECCION = N1.SECCION
+	AND SA2.SECCION = N2.SECCION
+	AND CU3.CURSO = N1.CURSO
+	AND CU3.CURSO = N2.CURSO
+	GROUP BY CU3.CURSO
+	HAVING AVG(N1.REPROB) > AVG(N2.REPROB)
+);

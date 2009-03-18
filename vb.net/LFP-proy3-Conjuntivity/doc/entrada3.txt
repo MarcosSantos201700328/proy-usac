@@ -1,0 +1,39 @@
+programa ejemplo2
+conjuntos
+	a={1,2,3,4} b={1} c = {31} z5 = {a,b,c}
+vocales = {a,e,i,o,u} digitos = {0,1,2,3,4,5,6,7,8,9}
+even = {0,2,4,6,8}
+odd = {1,3,5,7,9}
+	cb1 = {v1,valor2,1,5,3,3456,dia}
+	v = {}
+res1 = {}
+res2 = {}
+res3 = {}
+inicio
+	v = a + cb1;
+	v = a * cb1;
+	v = a - cb1;
+	v = b - cb1;
+	v = a@;
+	v = a <> cb1;
+res1= vocales + digitos;
+res2 = even + odd;
+res3 = digitos - res2;
+	si 1 % a
+	entonces v={};
+	sino
+		v = {r};
+	fin si;
+	v = a - cb1 +b;
+
+	v= a + b - cb1 +v + a@ + a <> cb1;
+
+	si b % a
+	entonces b = v;
+	fin si;
+resultados
+	salida pantalla
+	escribir(a,b,c,z5,vocales,digitos,even,odd,cb1,v,u)
+escribir(res1,res2,res3)
+fin
+		
