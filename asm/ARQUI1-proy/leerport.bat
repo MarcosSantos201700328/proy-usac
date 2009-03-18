@@ -1,0 +1,1 @@
+nasm -f bin leerport.asm -o leerport.com

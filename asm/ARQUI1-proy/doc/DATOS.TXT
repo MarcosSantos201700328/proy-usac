@@ -1,0 +1,38 @@
+Universidad de San Carlos de Guatemala
+Facultad de Ingeniería
+Escuela de Ciencias y Sistemas
+Curso: Arquitectura de Computadoras y Ensambladores 1
+Catedrático: Ing. Otto Escobar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Proyecto Final:
+Embotelladora
+
+
+
+
+
+
+
+
+
+
+
+Erik Vladimir Girón Márquez, Carnet # 200313492 
+Marlon Alfredo Manzo Iboy, Carnet # 200313178 
+Rolando Giovanni Marroquin Gonzalez, Carnet # 200312642 
+
+27/11/06
+Sección A+

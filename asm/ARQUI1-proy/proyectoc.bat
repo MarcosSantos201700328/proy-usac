@@ -1,0 +1,1 @@
+nasm -f bin proyecto.asm -o proyecto.com

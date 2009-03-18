@@ -1,0 +1,1 @@
+nasm -f bin cadenas.asm -o cadenas.com

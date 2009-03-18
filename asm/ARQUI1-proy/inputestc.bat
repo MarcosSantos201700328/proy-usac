@@ -1,0 +1,1 @@
+nasm -f bin inputest.asm -o inputest.com

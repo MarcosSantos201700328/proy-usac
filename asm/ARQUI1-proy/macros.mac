@@ -1,0 +1,59 @@
+	;; macros para los puertos
+%define pa 0x260
+%define pb 0x261
+%define pc 0x262
+%define pconf 0x263
+	;; byte de control del ppic
+%define wc 0x80	
+%define aout_bout_cout 0x80	
+%define ain_bin_cin 0x9b	
+%define aout_bout_cin 0x89
+%define aout_bin_cin 0x8b
+%define tiempo_espera_recipiente 4
+%define reporte_error 0xb0
+%define reporte_OK 0xa0
+%define tiempo_llenado_unidad 3
+	;; macro para escribir en puerto especificado por el primer parametro y con el dato del segundo parametro 
+%macro writeppic 2		; macro para escribir en ppic
+	mov dx,%1
+	mov al,%2
+	out dx,al		; escribe en puerto	
+%endmacro
+
+	;; macro para leer desde el puerto del param 1 al registro ax
+%macro readppic 1
+	mov dx,%1
+	in al,dx
+%endmacro	
+
+	;;lee caracter usando funcion 06 int21, almacena en al el valor leido
+%macro leertecla 0 
+	mov ah,06
+	mov dl,0xff
+	int 0x21
+%endmacro
+
+	;;Escribe caracter dado por el primer parametro usando int21, el string debe terminar en 24h
+%macro escribirchar 1
+	mov ah,06
+	mov dl,%1
+	int 0x21
+%endmacro
+
+;;lee caracter usando funcion 01 hint21, almacena en al el valor leido
+%macro leerchar 0 
+	mov ah,01h	
+	int 0x21
+%endmacro
+
+	;;Escribe string apuntado por el primer parametro usando int21, el string debe terminar en 24h
+%macro escribirstring 1
+	mov dx,%1
+	mov ah,09h
+	int 0x21
+%endmacro
+	;;lee la hora del sistema con precision de segundos almacena en ch la hora, en cl el min, en ch el segundo
+%macro leer_hora 0
+	mov ah, 0x2C
+	int 0x21
+%endmacro

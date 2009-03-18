@@ -1,0 +1,1 @@
+nasm -f bin practica4.asm -o practica4.com

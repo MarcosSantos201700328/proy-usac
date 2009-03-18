@@ -1,0 +1,4 @@
+1)
+nasm -f elf -g -F stabs ex003.asm
+2)
+ld -o ex003 ex003.o
