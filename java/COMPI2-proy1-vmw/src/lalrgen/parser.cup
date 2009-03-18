@@ -1,0 +1,201 @@
+package lalrgen;
+
+import java_cup.runtime.*;
+import java.util.*;
+import vmw.*;
+import lalrgen.*;
+import errormanager.*;
+// Preliminaries to set up and use the scanner.  
+//init with {: scanner.init();    :}
+//scan with {: return scanner.next_token();:};
+
+
+action code {:	
+	//static Vacc engine;
+:};
+parser code {:
+	protected static Vacc engine = new Vacc(); /**Instancia de vacc*/
+	/**Asignacion de motor*/
+	public static void setEngine(Vacc eng){
+		engine = eng;
+	}
+
+	public static Vacc getEngine(){
+		return engine;
+	}	
+	public void syntax_error(Symbol cur_token){
+		Lexer yylex = (Lexer) getScanner();
+		ErrorManager.agregarErrorSintactico(yylex.getLine(),yylex.getChar(),"Error de sintaxis.");
+		report_error("Error de Sintaxis en linea " + yylex.getLine() + ", Posicion " + yylex.getChar(), cur_token);
+	}
+	/**Manipulacion de errores*/
+	public void report_error(String message, Object info){
+		
+		System.out.println("Error: " + message);		
+	}
+:};
+/* Terminals (tokens returned by the scanner). */
+terminal           TK_SEPARATOR, TK_PRODUCE, TK_DOSPUNTOS, TK_APARPUN, TK_CPARPUN, KW_TERM, KW_NO,TK_PUNCOMA, TK_COMA;
+terminal	KW_INT,KW_REAL,KW_STR;
+
+terminal TokenValue TK_ID, STR_SENTENCIAS;
+
+/* Non-terminals */
+non terminal inicio, ldefterms, defterms;
+non terminal Gramatica   grammar;
+non terminal Elemento	 prod;
+non terminal Simbolo	elem,li,nterm,simbolo;
+non terminal String accion;
+non terminal ArrayList lterm, lnterm;
+non terminal Vector listasimbolo, listaprod;
+non terminal LadoDerecho ld;
+non terminal Integer tipoterm;
+
+/* Precedences */
+
+//precedence left    POR;
+/* The grammar */
+inicio ::=	ldefterms TK_SEPARATOR grammar {:/* Vmw.setVacc(engine);*/:}
+;
+ldefterms ::= ldefterms defterms
+	   | defterms
+;
+
+defterms ::= KW_TERM tipoterm:tipo lterm:lista TK_PUNCOMA {:
+				parser.getEngine().insertarTerminales(tipo.intValue(),lista);:}
+	| KW_TERM lterm:lista TK_PUNCOMA {: parser.getEngine().insertarTerminales(0,lista);:}
+	| KW_NO KW_TERM tipoterm:tipo lterm:lista TK_PUNCOMA {:parser.getEngine().insertarNoTerminales(tipo.intValue(),lista);:}
+	| KW_NO KW_TERM lterm:lista TK_PUNCOMA{:parser.getEngine().insertarNoTerminales(0,lista);:}
+;
+
+lterm ::= lterm:lt TK_COMA TK_ID:id1 {:if (parser.getEngine().buscarSimbolo(id1.toString()) == null){
+					lt.add(new String(id1.toString())); RESULT = lt;
+				}
+				else 
+					ErrorManager.agregarErrorSemantico(
+								-1,
+								-1,
+								"Imposible agregar simbolo " + lt.toString() + " pues ya ha sido declarado previamente."
+								);
+					
+					//throw new Exception("Error semantico");
+				:}
+	| TK_ID:id1 {: 	if (parser.getEngine().buscarSimbolo(id1.toString()) == null){
+				ArrayList tmplista = new ArrayList();
+				tmplista.add(new String(id1.toString()));
+				RESULT = tmplista;
+			} else 	
+				ErrorManager.agregarErrorSemantico(
+								-1,
+								-1,
+								"Imposible agregar simbolo " + id1.toString() + " pues ya ha sido declarado previamente."
+								);
+				//throw new Exception("Error semantico");
+				:}
+;
+/*lnterm ::= lnterm TK_ID
+	| TK_ID
+;
+*/
+tipoterm ::= KW_INT {:RESULT = new Integer(1);:}
+	| KW_REAL {:RESULT = new Integer(2);:}
+	| KW_STR {:RESULT = new Integer(3);:}
+;
+grammar::=	listaprod:lp {:parser.getEngine().insertarProducciones(lp);:}
+;
+listaprod::=	listaprod:lp prod:p1 {:lp.add(p1); RESULT = lp;:}
+		| prod:p1  {: 	Vector<Elemento> tmplista = new Vector<Elemento>();
+				tmplista.add(p1);
+				RESULT = tmplista;:}
+;
+prod ::=	li:i TK_PRODUCE ld:d accion:a TK_PUNCOMA{:Elemento e = new Elemento(i,d,a.toString());
+					if (parser.getEngine().buscarElemento(e) == null)
+						//RESULT = e;
+						parser.getEngine().insertarElemento(e);:}
+		| li:i TK_PRODUCE accion:a TK_PUNCOMA{:Elemento e = new Elemento(i,a.toString());
+					if (parser.getEngine().buscarElemento(e) == null)
+						//RESULT = e;
+						parser.getEngine().insertarElemento(e);:}
+		| li:i TK_PRODUCE ld:d TK_PUNCOMA{:Elemento e = new Elemento(i,d,new String(""));
+					if (parser.getEngine().buscarElemento(e) == null)
+						//RESULT = e;
+						parser.getEngine().insertarElemento(e);:}
+		| li:i TK_PRODUCE TK_PUNCOMA{:Elemento e = new Elemento(i,new String(""));
+					if (parser.getEngine().buscarElemento(e) == null)
+						//RESULT = e;
+						parser.getEngine().insertarElemento(e);:}
+;
+
+li ::= nterm:n1 {:RESULT = n1;:}
+;
+nterm ::= TK_ID:i1 {:
+		Simbolo s = parser.getEngine().buscarSimbolo(i1.toString());
+		Simbolo snew;
+		if (s!= null){
+			snew = new NoTerminal(s);
+			snew.setSemId("RESULT");	
+			//s.setSemId("RESULT");
+			//RESULT = s;
+			RESULT = snew;
+		}
+		else 
+			ErrorManager.agregarErrorSemantico(
+								-1,
+								-1,
+								"Imposible agregar simbolo para no terminal del lado izquierdo, el simbolo" + i1.toString() + "no se ha declarado."
+								);
+//throw new Exception("Error semantico");
+		:}
+;
+ld ::= listasimbolo:vls {: LadoDerecho ld = new LadoDerecho();
+			ld.setSimbolos(vls);
+			RESULT = ld;
+		:}
+;
+
+listasimbolo ::= listasimbolo:ls simbolo:s1  {:ls.add(s1); RESULT = ls;:}
+		| simbolo:s1 {:	Vector tmplista = new Vector();
+				tmplista.add(s1);
+				RESULT = tmplista;:}
+;
+simbolo  ::= TK_ID:i1 	{: 	
+			Simbolo s = parser.getEngine().buscarSimbolo(i1.toString());
+			Simbolo s1;
+			if (s  != null)	{
+				s1 = new Simbolo(s);						
+				RESULT = s1;
+				//RESULT = s;
+			}
+			else 
+				ErrorManager.agregarErrorSemantico(
+								-1,
+								-1,
+								"Imposible agregar simbolo, el simbolo" + i1.toString() + "no se ha declarado."
+								);
+				//throw new Exception("Error semantico");
+			:}
+	| TK_ID:i1 TK_DOSPUNTOS TK_ID:i2 {: 
+			Simbolo s = parser.getEngine().buscarSimbolo(i1.toString());
+			Simbolo s1;
+			if (s != null){
+				s1 = new Simbolo(s);						
+				s1.setSemId(i2.toString());	
+				RESULT = s1;	
+				//s.setSemId(i2.toString());
+				//RESULT = s;
+				
+			}
+			else 
+				ErrorManager.agregarErrorSemantico(
+								-1,
+								-1,
+								"Imposible agregar simbolo el simbolo" + i1.toString() + "no se ha declarado."
+								);
+			:}
+;
+
+accion ::= TK_APARPUN STR_SENTENCIAS:s TK_CPARPUN {: RESULT = new String(s.toString());:}
+;
+
+
+

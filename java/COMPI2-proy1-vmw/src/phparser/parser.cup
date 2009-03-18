@@ -1,0 +1,257 @@
+package phparser;
+
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+//import vmw.*;
+//import lalrgen.*;
+import errormanager.*;
+
+// Preliminaries to set up and use the scanner.  
+//init with {: scanner.init();    :}
+//scan with {: return scanner.next_token();:};
+
+
+action code {:	
+	//static Vacc engine;
+:};
+parser code {:
+
+	public static void main(String args[]){
+		if(args[0] != null){
+			try{
+			parser p = new parser(new Lexer(new FileReader(args[0])));
+			p.debug_parse();
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+		}
+	}
+	
+	public static String ambitoActual = new String("$root");
+
+:};
+/* Terminals (tokens returned by the scanner). */
+terminal TokenValue TK_ID,TK_IDVAR, TK_INTEGER, TK_STRING, TK_FLOAT;
+
+terminal TK_AMP, TK_MAS, TK_MENOS, TK_STAR, TK_SLASH, TK_PUNTOCOMA, TK_APAREN, TK_CPAREN, TK_ALLAVE,  TK_CLLAVE, TK_COMA, TK_IGUAL, TK_OR, TK_AND, TK_LT, TK_GT, TK_EQ, TK_NOTEQ;
+
+terminal KW_PROCEDURE, KW_FUNCTION, KW_RETURN, KW_GET,KW_ECHO, KW_IF, KW_WHILE, KW_ELSE;
+
+
+
+/* Non-terminals */
+
+non terminal php, sentenciaInit;
+non terminal String nombrefunproc;
+//non terminal/*, matchedIf, notMatchedIf*/;
+non terminal NodoAst  procedimiento, funcion, opArit, opMul, opDiv, opCond, opAnd, opComp, operando, sentenciaSimple, callFunc, literal, asignacionVal, asignacionRef, condicion, bucle, callSimple,param, arg, callProc;
+non terminal LinkedList bloque, listaParam, listaSentencias, listaArgs;
+
+
+/*non terminal inicio, ldefterms, defterms;
+non terminal Gramatica   grammar;
+non terminal Elemento	 prod;
+non terminal Simbolo	elem,li,nterm,simbolo;
+non terminal String accion;
+non terminal ArrayList lterm, lnterm;
+non terminal Vector listasimbolo, listaprod;
+non terminal LadoDerecho ld;
+non terminal Integer tipoterm;
+*/
+/* Precedences */
+precedence left TK_APAREN, TK_CPAREN;
+precedence left TK_ALLAVE, TK_CLLAVE;
+precedence left KW_ELSE;
+precedence left TK_MAS,TK_MENOS;
+precedence left TK_STAR,TK_SLASH;
+precedence left TK_LT, TK_GT;
+precedence left TK_EQ, TK_NOTEQ;
+
+
+/* The grammar */
+
+php ::=   php sentenciaInit
+	| sentenciaInit
+	;
+
+sentenciaInit ::= asignacionVal:a {:Ast.asignarValor(a,parser.ambitoActual);:}
+		| asignacionRef:ar {:	try{Ast.asignarReferencia(ar,parser.ambitoActual);}
+					catch(Exception e){System.out.println(e);
+						parser.report_fatal_error("Imposible continuar con el analisis", null);} :}
+		| procedimiento
+		| funcion
+		| callProc:cp {:Ast.ejecutarFuncion(cp,parser.ambitoActual);:}
+		| condicion:a {:Ast.ejecutarIf(a,parser.ambitoActual);:}
+		| bucle:b {:Ast.ejecutarWhile(b,parser.ambitoActual);:}
+		;
+/**Asignaciones*/
+asignacionVal ::= 	  TK_IDVAR:var1 TK_IGUAL opArit:o1 TK_PUNTOCOMA {:RESULT = Ast.crearNodoAsignacion(Ast.N_ASIGVAL,o1,var1.toString(),null);:} 
+		;
+asignacionRef ::= TK_IDVAR:var1 TK_IGUAL TK_AMP TK_IDVAR:var2 TK_PUNTOCOMA  {:RESULT = Ast.crearNodoAsignacion(Ast.N_ASIGREF,null,var1.toString(),var2.toString()); :}
+		;
+
+/**Funciones y Procedimientos*/
+procedimiento ::= KW_PROCEDURE nombrefunproc:nombre TK_APAREN listaParam:lp TK_CPAREN TK_ALLAVE listaSentencias:ls TK_CLLAVE {: 
+RESULT = Ast.crearNodoFuncion(Ast.N_FUNC,nombre,lp,ls,null);
+parser.ambitoActual = new String("$root"); 
+	:}
+		;
+
+nombrefunproc ::= TK_ID:i1 {: parser.ambitoActual = new String(i1.toString()); RESULT = new String(i1.toString()); :} /**Marcador cambiar de ambito*/
+		;
+listaParam ::= 	  listaParam:lp TK_COMA param:pa {: lp.add(pa); RESULT = lp;:}
+		| param:pa 	{:
+				LinkedList<NodoAst> p = new LinkedList<NodoAst>();
+			   	p.add(pa); RESULT = p; 
+				:}
+		;
+
+param ::= 	  TK_IDVAR:id TK_IGUAL literal:li {: RESULT = Ast.crearNodoParam(Ast.N_PARAM,new String(id.toString()),li); :}
+		| TK_IDVAR:id 		{: RESULT = Ast.crearNodoParam(Ast.N_PARAM,new String(id.toString()),null); :}
+		;	
+listaSentencias ::= listaSentencias:ls sentenciaSimple:ss {:ls.add(ss); RESULT = ls;:}
+		| sentenciaSimple:ss {:LinkedList<NodoAst> nodos = new LinkedList<NodoAst>();
+					nodos.add(ss); RESULT = nodos;:}
+		;
+
+sentenciaSimple ::= callSimple:cs {:RESULT = cs;:}
+		| condicion:c {:RESULT = c;:}
+		| bucle:b {:RESULT = b;:}
+		| asignacionVal:av {:RESULT = av;:}
+		| asignacionRef:ar {:RESULT = ar;:}
+		;
+
+funcion ::= KW_FUNCTION nombrefunproc:nombre TK_APAREN listaParam:lp TK_CPAREN TK_ALLAVE listaSentencias:ls KW_RETURN opArit:ret TK_PUNTOCOMA TK_CLLAVE {: 
+RESULT = Ast.crearNodoFuncion(Ast.N_FUNC,nombre,lp,ls,ret);
+parser.ambitoActual = new String("$root"); 
+	:}
+		;
+/**Invocaciones*/
+callSimple ::= 	  callProc:cp {: RESULT = cp; :}
+		| callFunc:cf TK_PUNTOCOMA  {: RESULT = cf; :}
+		;
+
+callProc ::=	KW_ECHO opArit:o TK_PUNTOCOMA {:
+			LinkedList<NodoAst> listaTemp = new LinkedList<NodoAst>();
+			listaTemp.add(o);
+RESULT = Ast.crearNodoCallFunc(Ast.N_CALL,new String("@echo"),listaTemp);:}
+		| TK_ID:id TK_APAREN listaArgs:args TK_CPAREN TK_PUNTOCOMA {:RESULT = Ast.crearNodoCallFunc(Ast.N_CALL,new String(id.toString()),args);:}
+		;
+
+callFunc ::=	  KW_GET  {:RESULT = Ast.crearNodoCallFunc(Ast.N_CALL,new String("@get"),null);:}
+		| TK_ID:id TK_APAREN listaArgs:args TK_CPAREN {:RESULT = Ast.crearNodoCallFunc(Ast.N_CALL,new String(id.toString()),args);:}
+		;
+
+listaArgs ::=	  listaArgs:la TK_COMA arg:o {:la.add(o); RESULT = la;:}
+		| arg:o {:
+				LinkedList<NodoAst> largs = new LinkedList<NodoAst>();
+				largs.add(o); RESULT = largs;
+			:}
+		;
+
+arg ::= 	  opArit:o {: RESULT = Ast.crearNodoParam(Ast.N_PARAMBYVAL,null,o);:}
+		| TK_AMP TK_IDVAR:id 	{: RESULT = Ast.crearNodoParam(Ast.N_PARAMBYREF,new String(id.toString()),null); :}
+		;
+		
+/** Sentencia If*/
+/*
+condicion ::= 	  matchedIf
+		| notMatchedIf
+		;
+matchedIf ::= KW_IF TK_APAREN opCond TK_CPAREN matchedIf KW_ELSE matchedIf
+		//| bloque
+		;
+notMatchedIf ::=  KW_IF TK_APAREN opCond TK_CPAREN bloque
+		| KW_IF TK_APAREN opCond TK_CPAREN matchedIf KW_ELSE notMatchedIf
+		;
+*/
+/*
+condicion ::=	  KW_IF TK_APAREN opCond TK_CPAREN bloque
+		| matchedIf
+		;
+
+matchedIf ::= 	  KW_IF TK_APAREN opCond TK_CPAREN matchedIf KW_ELSE bloque
+		| bloque
+		;
+*/
+condicion ::=     KW_IF TK_APAREN opCond:cond TK_CPAREN bloque:sTrue KW_ELSE bloque:sFalse {:RESULT = Ast.crearNodoIf(Ast.N_IF,cond,sTrue,sFalse);:}
+		| KW_IF TK_APAREN opCond:cond TK_CPAREN bloque:sTrue {:RESULT = Ast.crearNodoIf(Ast.N_IF,cond,sTrue,null);:}
+		;
+
+/**Sentencia While*/
+
+bucle ::= 	  KW_WHILE TK_APAREN opCond:cond TK_CPAREN bloque:sTrue {:RESULT = Ast.crearNodoWhile(Ast.N_WHILE,cond,sTrue);:}
+		;
+
+/**bloque*/
+bloque ::=	  sentenciaSimple:ss {:LinkedList<NodoAst> nodos = new LinkedList<NodoAst>();
+					nodos.add(ss); RESULT = nodos;:}
+		| TK_ALLAVE listaSentencias:ls TK_CLLAVE {:RESULT = ls;:}
+		;
+
+/**Expresiones comparativa y booleanas*/
+
+opCond ::= opCond:oc TK_OR opAnd:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOND,oc,oa,null,Ast.OP_OR); :}
+	| opAnd:oa {:RESULT = oa;:} 
+	;
+
+opAnd ::= opAnd:oa TK_AND opComp:oc {: RESULT = Ast.crearNodo(Ast.N_OPCOND,oa,oc,null,Ast.OP_AND); :}
+	| opComp:oc {:RESULT = oc;:}
+	| TK_APAREN opCond:oc TK_CPAREN {:RESULT = oc;:}
+	;
+
+opComp ::= 	  opComp:oc TK_EQ opArit:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOMP,oc,oa,null,Ast.OP_EQ); :}
+		| opComp:oc TK_NOTEQ opArit:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOMP,oc,oa,null,Ast.OP_NE); :}
+		| opComp:oc TK_LT TK_EQ opArit:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOMP,oc,oa,null,Ast.OP_LTE); :}
+		| opComp:oc TK_GT TK_EQ opArit:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOMP,oc,oa,null,Ast.OP_GTE); :}
+		| opComp:oc TK_LT opArit:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOMP,oc,oa,null,Ast.OP_LT); :}
+		| opComp:oc TK_GT opArit:oa {: RESULT = Ast.crearNodo(Ast.N_OPCOMP,oc,oa,null,Ast.OP_GT); :}
+		| TK_APAREN opComp:o TK_CPAREN {:RESULT = o;:}
+		| opArit:o {:RESULT = o;:}
+		;
+
+
+
+		//sentenciaSimple
+		//| KW_IF TK_APAREN opCond TK_CPAREN TK_ALLAVE listaSentencias TK_CLLAVE
+			
+
+/** Expresiones Aritmeticas */
+opArit ::= 	  opArit:o1 TK_MAS opMul:o2 {: RESULT = Ast.crearNodo(Ast.N_OPARIT,o1,o2,null,Ast.OP_MAS); :}
+		| opArit:o1 TK_MENOS opMul:o2 {: RESULT = Ast.crearNodo(Ast.N_OPARIT,o1,o2,null,Ast.OP_MENOS); :}
+		| opMul:o {: RESULT = o;:}
+		; 
+
+opMul ::=	  opMul:o1 TK_STAR opDiv:o2 {: RESULT = Ast.crearNodo(Ast.N_OPARIT,o1,o2,null,Ast.OP_MUL); :}
+		| opDiv:o {: RESULT = o;:} 
+		;
+opDiv ::= 	  opDiv:o1 TK_SLASH operando:o2 {: RESULT = Ast.crearNodo(Ast.N_OPARIT,o1,o2,null,Ast.OP_DIV); :}
+		| operando:o {: RESULT = o;:}
+		;
+
+operando ::= 	  TK_APAREN opArit:oa TK_CPAREN {: RESULT = oa;:}
+		| callFunc:cf {: RESULT = cf; :}
+		| literal:l1 {: RESULT = l1;:}
+		;
+
+literal ::= 	  TK_INTEGER:t1 {: RESULT = Ast.crearNodo(Ast.N_LIT_INT,null,null,new Integer(Integer.parseInt(t1.toString())),-1);
+					/*System.out.println("SSs: " + t1 + "\n");*/:}
+		| TK_STRING:t1 {: RESULT = Ast.crearNodo(Ast.N_LIT_STRING,null,null,t1.toString(),-1);
+/*System.out.println("SSs: " + t1 + "\n");*/:}
+		| TK_FLOAT:t1 {: RESULT = Ast.crearNodo(Ast.N_LIT_FLOAT,null,null,new Float(Float.parseFloat(t1.toString())),-1);
+			/*System.out.println("SSs: " + t1 + "\n");*/:}
+		| TK_IDVAR:t1 {:// SymTab.SymTabEntry s;  if((s = PhParser.getTablaSimbolos().get(t1.toString())) != null)
+			 	 	RESULT = Ast.crearNodo(Ast.N_SYMTABENTRY,null,null,t1.toString(),-1);
+				//else{
+				//	ErrorManager.agregarErrorSemantico(-1,-1,"Variable " + t1.toString() + " no existe.");
+				//	parser.report_fatal_error("Imposible continuar con el analisis", null);
+				//}
+					
+			/*System.out.println("SSs: " + t1 + "\n");*/:}
+		;
+
+
+
+
