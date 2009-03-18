@@ -1,0 +1,536 @@
+---------------------------------------------
+PIC ASSEMBLER LISTING
+Line    Address Opcode  Instruction
+---------------------------------------------
+0001    0000            ; Begin
+0002    0000            	R0L EQU 0x20
+0003    0000            	R0H EQU 0x21
+0004    0000            	R1L EQU 0x22
+0005    0000            	R1H EQU 0x23
+0006    0000            	R2L EQU 0x24
+0007    0000            	R2H EQU 0x25
+0008    0000            	R3L EQU 0x26
+0009    0000            	R3H EQU 0x27
+0010    0000            	R4L EQU 0x28
+0011    0000            	R4H EQU 0x29
+0012    0000            	R5L EQU 0x2A
+0013    0000            	R5H EQU 0x2B
+0014    0000            	ORG 0x0000
+0015    0000    118A    	BCF PCLATH,3
+0016    0001    120A    	BCF PCLATH,4
+0017    0002    2805    	GOTO L0001
+0018    0003            	ORG 0x0004
+0019    0004    0009    	RETFIE
+0020    0005            L0001:
+0021    0005            ; 1:  'ESPECIFICACIONES:
+0022    0005            ; 2:  'PUERTO B:
+0023    0005            ; 3:  ' RB0, RB1. MOTOR PLASTICO 1
+0024    0005            ; 4:  ' RB2, RB3. MOTOR PLASTICO 2
+0025    0005            ; 5:  ' RB4, RB5. MOTOR TENAZA
+0026    0005            ; 6:  ' RB6, RB7. MOTOR TENAZA inversa
+0027    0005            ; 7: 
+0028    0005            ; 8:  'PUERTO A:
+0029    0005            ; 9:  ' RA0, RA1,RA2,RA3. MOTOR EMBUDO
+0030    0005            ; 10:  ' RA4. RESISTENCIAS CALOR
+0031    0005            ; 11: 
+0032    0005            ; 12:  'Motores plastico
+0033    0005            ; 13: Const timeout1 = 0 '50
+0034    0005            ;       The value of 'timeout1' is 0
+0035    0005            ; 14: Const num1 = 4 '1000
+0036    0005            ;       The value of 'num1' is 4
+0037    0005            ; 15:  'motor tenazas fase 1
+0038    0005            ; 16: Const timeout2 = 0 '50
+0039    0005            ;       The value of 'timeout2' is 0
+0040    0005            ; 17: Const num2 = 4 '1000
+0041    0005            ;       The value of 'num2' is 4
+0042    0005            ; 18:  'motor tenazas fase 2
+0043    0005            ; 19: Const timeout3 = 0 '50
+0044    0005            ;       The value of 'timeout3' is 0
+0045    0005            ; 20: Const num3 = 4 '1000
+0046    0005            ;       The value of 'num3' is 4
+0047    0005            ; 21:  'motor embudo
+0048    0005            ; 22: Const timeout4 = 0 '50
+0049    0005            ;       The value of 'timeout4' is 0
+0050    0005            ; 23: Const num4 = 4 '1000
+0051    0005            ;       The value of 'num4' is 4
+0052    0005            ; 24:  'resistencia calor
+0053    0005            ; 25: Const timeout5 = 0 '500
+0054    0005            ;       The value of 'timeout5' is 0
+0055    0005            ; 26:  'tiempo de llenado
+0056    0005            ; 27: Const timeout6 = 0 '150
+0057    0005            ;       The value of 'timeout6' is 0
+0058    0005            ; 28: 
+0059    0005            ; 29:  'asignamos todos los puertos como salidas
+0060    0005            ; 30: TRISA = 0
+0061    0005    1683    	BSF STATUS,RP0
+0062    0006    0185    	CLRF 0x05
+0063    0007    1283    	BCF STATUS,RP0
+0064    0008            ; 31: TRISB = 0
+0065    0008    1683    	BSF STATUS,RP0
+0066    0009    0186    	CLRF 0x06
+0067    000A    1283    	BCF STATUS,RP0
+0068    000B            ; 32: TRISC = 0
+0069    000B    1683    	BSF STATUS,RP0
+0070    000C    0187    	CLRF 0x07
+0071    000D    1283    	BCF STATUS,RP0
+0072    000E            ; 33: 
+0073    000E            ; 34: PORTA = 0
+0074    000E    0185    	CLRF 0x05
+0075    000F            ; 35: PORTB = 0
+0076    000F    0186    	CLRF 0x06
+0077    0010            ; 36:  '-------INICIO----------
+0078    0010            ; 37:  'movemos motores de plastico
+0079    0010            ; 38: Dim i As Word
+0080    0010            ;       The address of 'i' is 0x2C
+0081    0010            	i EQU 0x2C
+0082    0010            ; 39: Dim j As Byte
+0083    0010            ;       The address of 'j' is 0x2E
+0084    0010            	j EQU 0x2E
+0085    0010            ; 40: 
+0086    0010            ; 41: For i = 0 To num1
+0087    0010    01AC    	CLRF 0x2C
+0088    0011    01AD    	CLRF 0x2D
+0089    0012            L0002:
+0090    0012    082C    	MOVF 0x2C,W
+0091    0013    00A0    	MOVWF R0L
+0092    0014    082D    	MOVF 0x2D,W
+0093    0015    00A1    	MOVWF R0H
+0094    0016    01A3    	CLRF R1H
+0095    0017    3004    	MOVLW 0x04
+0096    0018    2129    	CALL C006
+0097    0019    1D03    	BTFSS STATUS,Z
+0098    001A    2831    	GOTO L0003
+0099    001B            ; 42: PORTB = %00000101
+0100    001B    3005    	MOVLW 0x05
+0101    001C    0086    	MOVWF 0x06
+0102    001D            ; 43: WaitMs timeout1
+0103    001D    3000    	MOVLW 0x00
+0104    001E    00A0    	MOVWF R0L
+0105    001F    01A1    	CLRF R0H
+0106    0020    213C    	CALL W001
+0107    0021            ; 44: PORTB = %00001010
+0108    0021    300A    	MOVLW 0x0A
+0109    0022    0086    	MOVWF 0x06
+0110    0023            ; 45: WaitMs timeout1
+0111    0023    3000    	MOVLW 0x00
+0112    0024    00A0    	MOVWF R0L
+0113    0025    01A1    	CLRF R0H
+0114    0026    213C    	CALL W001
+0115    0027            ; 46: Next i
+0116    0027    3001    	MOVLW 0x01
+0117    0028    07AC    	ADDWF 0x2C,F
+0118    0029    3000    	MOVLW 0x00
+0119    002A    1803    	BTFSC STATUS,C
+0120    002B    3E01    	ADDLW 0x01
+0121    002C    1803    	BTFSC STATUS,C
+0122    002D    2831    	GOTO L0003
+0123    002E    07AD    	ADDWF 0x2D,F
+0124    002F    1C03    	BTFSS STATUS,C
+0125    0030    2812    	GOTO L0002
+0126    0031    301F    L0003:	MOVLW 0x1F
+0127    0032    0583    	ANDWF STATUS,F
+0128    0033            ; 47:  'apagamos motores plastico
+0129    0033            ; 48: PORTB = 0
+0130    0033    0186    	CLRF 0x06
+0131    0034            ; 49:  'activamos tenazas
+0132    0034            ; 50: 
+0133    0034            ; 51: For i = 0 To num2
+0134    0034    01AC    	CLRF 0x2C
+0135    0035    01AD    	CLRF 0x2D
+0136    0036            L0004:
+0137    0036    082C    	MOVF 0x2C,W
+0138    0037    00A0    	MOVWF R0L
+0139    0038    082D    	MOVF 0x2D,W
+0140    0039    00A1    	MOVWF R0H
+0141    003A    01A3    	CLRF R1H
+0142    003B    3004    	MOVLW 0x04
+0143    003C    2129    	CALL C006
+0144    003D    1D03    	BTFSS STATUS,Z
+0145    003E    2855    	GOTO L0005
+0146    003F            ; 52: PORTB = %00010000
+0147    003F    3010    	MOVLW 0x10
+0148    0040    0086    	MOVWF 0x06
+0149    0041            ; 53: WaitMs timeout2
+0150    0041    3000    	MOVLW 0x00
+0151    0042    00A0    	MOVWF R0L
+0152    0043    01A1    	CLRF R0H
+0153    0044    213C    	CALL W001
+0154    0045            ; 54: PORTB = %00100000
+0155    0045    3020    	MOVLW 0x20
+0156    0046    0086    	MOVWF 0x06
+0157    0047            ; 55: WaitMs timeout2
+0158    0047    3000    	MOVLW 0x00
+0159    0048    00A0    	MOVWF R0L
+0160    0049    01A1    	CLRF R0H
+0161    004A    213C    	CALL W001
+0162    004B            ; 56: Next i
+0163    004B    3001    	MOVLW 0x01
+0164    004C    07AC    	ADDWF 0x2C,F
+0165    004D    3000    	MOVLW 0x00
+0166    004E    1803    	BTFSC STATUS,C
+0167    004F    3E01    	ADDLW 0x01
+0168    0050    1803    	BTFSC STATUS,C
+0169    0051    2855    	GOTO L0005
+0170    0052    07AD    	ADDWF 0x2D,F
+0171    0053    1C03    	BTFSS STATUS,C
+0172    0054    2836    	GOTO L0004
+0173    0055    301F    L0005:	MOVLW 0x1F
+0174    0056    0583    	ANDWF STATUS,F
+0175    0057            ; 57: 
+0176    0057            ; 58:  'activamos portezuela embudo
+0177    0057            ; 59: Dim rot As Word
+0178    0057            ;       The address of 'rot' is 0x2F
+0179    0057            	rot EQU 0x2F
+0180    0057            ; 60: 
+0181    0057            ; 61: For i = 0 To num3
+0182    0057    01AC    	CLRF 0x2C
+0183    0058    01AD    	CLRF 0x2D
+0184    0059            L0006:
+0185    0059    082C    	MOVF 0x2C,W
+0186    005A    00A0    	MOVWF R0L
+0187    005B    082D    	MOVF 0x2D,W
+0188    005C    00A1    	MOVWF R0H
+0189    005D    01A3    	CLRF R1H
+0190    005E    3004    	MOVLW 0x04
+0191    005F    2129    	CALL C006
+0192    0060    1D03    	BTFSS STATUS,Z
+0193    0061    289F    	GOTO L0007
+0194    0062            ; 62: rot = %0011
+0195    0062    3003    	MOVLW 0x03
+0196    0063    00AF    	MOVWF 0x2F
+0197    0064    01B0    	CLRF 0x30
+0198    0065            ; 63: For j = 0 To 3
+0199    0065    01AE    	CLRF 0x2E
+0200    0066            L0008:
+0201    0066    082E    	MOVF 0x2E,W
+0202    0067    3C03    	SUBLW 0x03
+0203    0068    1C03    	BTFSS STATUS,C
+0204    0069    2893    	GOTO L0009
+0205    006A            ; 64: If j = 0 Then
+0206    006A    082E    	MOVF 0x2E,W
+0207    006B    3C00    	SUBLW 0x00
+0208    006C    1D03    	BTFSS STATUS,Z
+0209    006D    2871    	GOTO L0010
+0210    006E            ; 65: PORTA = rot
+0211    006E    082F    	MOVF 0x2F,W
+0212    006F    0085    	MOVWF 0x05
+0213    0070            ; 66: Else
+0214    0070    2889    	GOTO L0011
+0215    0071    301F    L0010:	MOVLW 0x1F
+0216    0072    0583    	ANDWF STATUS,F
+0217    0073            ; 67: If j = 3 Then
+0218    0073    082E    	MOVF 0x2E,W
+0219    0074    3C03    	SUBLW 0x03
+0220    0075    1D03    	BTFSS STATUS,Z
+0221    0076    287A    	GOTO L0012
+0222    0077            ; 68: PORTA = %1001
+0223    0077    3009    	MOVLW 0x09
+0224    0078    0085    	MOVWF 0x05
+0225    0079            ; 69: Else
+0226    0079    2887    	GOTO L0013
+0227    007A    301F    L0012:	MOVLW 0x1F
+0228    007B    0583    	ANDWF STATUS,F
+0229    007C            ; 70: rot = ShiftLeft(rot, 1)
+0230    007C    082F    	MOVF 0x2F,W
+0231    007D    00A0    	MOVWF R0L
+0232    007E    0830    	MOVF 0x30,W
+0233    007F    00A1    	MOVWF R0H
+0234    0080    3001    	MOVLW 0x01
+0235    0081    2168    	CALL SL00
+0236    0082    00AF    	MOVWF 0x2F
+0237    0083    0821    	MOVF R0H,W
+0238    0084    00B0    	MOVWF 0x30
+0239    0085            ; 71: PORTA = rot
+0240    0085    082F    	MOVF 0x2F,W
+0241    0086    0085    	MOVWF 0x05
+0242    0087            ; 72: Endif
+0243    0087    301F    L0013:	MOVLW 0x1F
+0244    0088    0583    	ANDWF STATUS,F
+0245    0089            ; 73: Endif
+0246    0089    301F    L0011:	MOVLW 0x1F
+0247    008A    0583    	ANDWF STATUS,F
+0248    008B            ; 74: WaitMs timeout3
+0249    008B    3000    	MOVLW 0x00
+0250    008C    00A0    	MOVWF R0L
+0251    008D    01A1    	CLRF R0H
+0252    008E    213C    	CALL W001
+0253    008F            ; 75: Next j
+0254    008F    3001    	MOVLW 0x01
+0255    0090    07AE    	ADDWF 0x2E,F
+0256    0091    1C03    	BTFSS STATUS,C
+0257    0092    2866    	GOTO L0008
+0258    0093    301F    L0009:	MOVLW 0x1F
+0259    0094    0583    	ANDWF STATUS,F
+0260    0095            ; 76: Next i
+0261    0095    3001    	MOVLW 0x01
+0262    0096    07AC    	ADDWF 0x2C,F
+0263    0097    3000    	MOVLW 0x00
+0264    0098    1803    	BTFSC STATUS,C
+0265    0099    3E01    	ADDLW 0x01
+0266    009A    1803    	BTFSC STATUS,C
+0267    009B    289F    	GOTO L0007
+0268    009C    07AD    	ADDWF 0x2D,F
+0269    009D    1C03    	BTFSS STATUS,C
+0270    009E    2859    	GOTO L0006
+0271    009F    301F    L0007:	MOVLW 0x1F
+0272    00A0    0583    	ANDWF STATUS,F
+0273    00A1            ; 77: WaitMs timeout6
+0274    00A1    3000    	MOVLW 0x00
+0275    00A2    00A0    	MOVWF R0L
+0276    00A3    01A1    	CLRF R0H
+0277    00A4    213C    	CALL W001
+0278    00A5            ; 78:  'cerramos portezuela
+0279    00A5            ; 79: For i = 0 To num3
+0280    00A5    01AC    	CLRF 0x2C
+0281    00A6    01AD    	CLRF 0x2D
+0282    00A7            L0014:
+0283    00A7    082C    	MOVF 0x2C,W
+0284    00A8    00A0    	MOVWF R0L
+0285    00A9    082D    	MOVF 0x2D,W
+0286    00AA    00A1    	MOVWF R0H
+0287    00AB    01A3    	CLRF R1H
+0288    00AC    3004    	MOVLW 0x04
+0289    00AD    2129    	CALL C006
+0290    00AE    1D03    	BTFSS STATUS,Z
+0291    00AF    28ED    	GOTO L0015
+0292    00B0            ; 80: rot = %1100
+0293    00B0    300C    	MOVLW 0x0C
+0294    00B1    00AF    	MOVWF 0x2F
+0295    00B2    01B0    	CLRF 0x30
+0296    00B3            ; 81: For j = 0 To 3
+0297    00B3    01AE    	CLRF 0x2E
+0298    00B4            L0016:
+0299    00B4    082E    	MOVF 0x2E,W
+0300    00B5    3C03    	SUBLW 0x03
+0301    00B6    1C03    	BTFSS STATUS,C
+0302    00B7    28E1    	GOTO L0017
+0303    00B8            ; 82: If j = 0 Then
+0304    00B8    082E    	MOVF 0x2E,W
+0305    00B9    3C00    	SUBLW 0x00
+0306    00BA    1D03    	BTFSS STATUS,Z
+0307    00BB    28BF    	GOTO L0018
+0308    00BC            ; 83: PORTA = rot
+0309    00BC    082F    	MOVF 0x2F,W
+0310    00BD    0085    	MOVWF 0x05
+0311    00BE            ; 84: Else
+0312    00BE    28D7    	GOTO L0019
+0313    00BF    301F    L0018:	MOVLW 0x1F
+0314    00C0    0583    	ANDWF STATUS,F
+0315    00C1            ; 85: If j = 3 Then
+0316    00C1    082E    	MOVF 0x2E,W
+0317    00C2    3C03    	SUBLW 0x03
+0318    00C3    1D03    	BTFSS STATUS,Z
+0319    00C4    28C8    	GOTO L0020
+0320    00C5            ; 86: PORTA = %1001
+0321    00C5    3009    	MOVLW 0x09
+0322    00C6    0085    	MOVWF 0x05
+0323    00C7            ; 87: Else
+0324    00C7    28D5    	GOTO L0021
+0325    00C8    301F    L0020:	MOVLW 0x1F
+0326    00C9    0583    	ANDWF STATUS,F
+0327    00CA            ; 88: rot = ShiftRight(rot, 1)
+0328    00CA    082F    	MOVF 0x2F,W
+0329    00CB    00A0    	MOVWF R0L
+0330    00CC    0830    	MOVF 0x30,W
+0331    00CD    00A1    	MOVWF R0H
+0332    00CE    3001    	MOVLW 0x01
+0333    00CF    2170    	CALL SR00
+0334    00D0    00AF    	MOVWF 0x2F
+0335    00D1    0821    	MOVF R0H,W
+0336    00D2    00B0    	MOVWF 0x30
+0337    00D3            ; 89: PORTA = rot
+0338    00D3    082F    	MOVF 0x2F,W
+0339    00D4    0085    	MOVWF 0x05
+0340    00D5            ; 90: Endif
+0341    00D5    301F    L0021:	MOVLW 0x1F
+0342    00D6    0583    	ANDWF STATUS,F
+0343    00D7            ; 91: Endif
+0344    00D7    301F    L0019:	MOVLW 0x1F
+0345    00D8    0583    	ANDWF STATUS,F
+0346    00D9            ; 92: WaitMs timeout3
+0347    00D9    3000    	MOVLW 0x00
+0348    00DA    00A0    	MOVWF R0L
+0349    00DB    01A1    	CLRF R0H
+0350    00DC    213C    	CALL W001
+0351    00DD            ; 93: Next j
+0352    00DD    3001    	MOVLW 0x01
+0353    00DE    07AE    	ADDWF 0x2E,F
+0354    00DF    1C03    	BTFSS STATUS,C
+0355    00E0    28B4    	GOTO L0016
+0356    00E1    301F    L0017:	MOVLW 0x1F
+0357    00E2    0583    	ANDWF STATUS,F
+0358    00E3            ; 94: Next i
+0359    00E3    3001    	MOVLW 0x01
+0360    00E4    07AC    	ADDWF 0x2C,F
+0361    00E5    3000    	MOVLW 0x00
+0362    00E6    1803    	BTFSC STATUS,C
+0363    00E7    3E01    	ADDLW 0x01
+0364    00E8    1803    	BTFSC STATUS,C
+0365    00E9    28ED    	GOTO L0015
+0366    00EA    07AD    	ADDWF 0x2D,F
+0367    00EB    1C03    	BTFSS STATUS,C
+0368    00EC    28A7    	GOTO L0014
+0369    00ED    301F    L0015:	MOVLW 0x1F
+0370    00EE    0583    	ANDWF STATUS,F
+0371    00EF            ; 95: 
+0372    00EF            ; 96:  'cerramos tenazas
+0373    00EF            ; 97: For i = 0 To num4
+0374    00EF    01AC    	CLRF 0x2C
+0375    00F0    01AD    	CLRF 0x2D
+0376    00F1            L0022:
+0377    00F1    082C    	MOVF 0x2C,W
+0378    00F2    00A0    	MOVWF R0L
+0379    00F3    082D    	MOVF 0x2D,W
+0380    00F4    00A1    	MOVWF R0H
+0381    00F5    01A3    	CLRF R1H
+0382    00F6    3004    	MOVLW 0x04
+0383    00F7    2129    	CALL C006
+0384    00F8    1D03    	BTFSS STATUS,Z
+0385    00F9    2910    	GOTO L0023
+0386    00FA            ; 98: PORTB = %10000000
+0387    00FA    3080    	MOVLW 0x80
+0388    00FB    0086    	MOVWF 0x06
+0389    00FC            ; 99: WaitMs timeout4
+0390    00FC    3000    	MOVLW 0x00
+0391    00FD    00A0    	MOVWF R0L
+0392    00FE    01A1    	CLRF R0H
+0393    00FF    213C    	CALL W001
+0394    0100            ; 100: PORTB = %01000000
+0395    0100    3040    	MOVLW 0x40
+0396    0101    0086    	MOVWF 0x06
+0397    0102            ; 101: WaitMs timeout4
+0398    0102    3000    	MOVLW 0x00
+0399    0103    00A0    	MOVWF R0L
+0400    0104    01A1    	CLRF R0H
+0401    0105    213C    	CALL W001
+0402    0106            ; 102: Next i
+0403    0106    3001    	MOVLW 0x01
+0404    0107    07AC    	ADDWF 0x2C,F
+0405    0108    3000    	MOVLW 0x00
+0406    0109    1803    	BTFSC STATUS,C
+0407    010A    3E01    	ADDLW 0x01
+0408    010B    1803    	BTFSC STATUS,C
+0409    010C    2910    	GOTO L0023
+0410    010D    07AD    	ADDWF 0x2D,F
+0411    010E    1C03    	BTFSS STATUS,C
+0412    010F    28F1    	GOTO L0022
+0413    0110    301F    L0023:	MOVLW 0x1F
+0414    0111    0583    	ANDWF STATUS,F
+0415    0112            ; 103:  'encendemos resistencia
+0416    0112            ; 104: PORTA = %10000000
+0417    0112    3080    	MOVLW 0x80
+0418    0113    0085    	MOVWF 0x05
+0419    0114            ; 105: WaitMs timeout5
+0420    0114    3000    	MOVLW 0x00
+0421    0115    00A0    	MOVWF R0L
+0422    0116    01A1    	CLRF R0H
+0423    0117    213C    	CALL W001
+0424    0118            ; 106:  'apagamos resistencias
+0425    0118            ; 107: PORTA = 0
+0426    0118    0185    	CLRF 0x05
+0427    0119            ; 108:  'abrimos tenazas
+0428    0119            ; 109:  ' como usamos reversa en motor 2 fases???
+0429    0119            ; 110: 
+0430    0119            ; 111:  '---------FIN-----------
+0431    0119            ; 112: 
+0432    0119            ; End of program
+0433    0119    2919    L0024:	GOTO L0024
+0434    011A            ; Comparison Routine
+0435    011A    00A2    C001:	MOVWF R1L
+0436    011B    3005    	MOVLW 0x05
+0437    011C    292C    	GOTO C007
+0438    011D    00A2    C002:	MOVWF R1L
+0439    011E    3002    	MOVLW 0x02
+0440    011F    292C    	GOTO C007
+0441    0120    00A2    C003:	MOVWF R1L
+0442    0121    3006    	MOVLW 0x06
+0443    0122    292C    	GOTO C007
+0444    0123    00A2    C004:	MOVWF R1L
+0445    0124    3003    	MOVLW 0x03
+0446    0125    292C    	GOTO C007
+0447    0126    00A2    C005:	MOVWF R1L
+0448    0127    3004    	MOVLW 0x04
+0449    0128    292C    	GOTO C007
+0450    0129    00A2    C006:	MOVWF R1L
+0451    012A    3001    	MOVLW 0x01
+0452    012B    292C    	GOTO C007
+0453    012C    00A8    C007:	MOVWF R4L
+0454    012D    0823    	MOVF R1H,W
+0455    012E    0221    	SUBWF R0H,W
+0456    012F    1D03    	BTFSS STATUS,Z
+0457    0130    2933    	GOTO C008
+0458    0131    0822    	MOVF R1L,W
+0459    0132    0220    	SUBWF R0L,W
+0460    0133    3004    C008:	MOVLW 0x04
+0461    0134    1803    	BTFSC STATUS,C
+0462    0135    3001    	MOVLW 0x01
+0463    0136    1903    	BTFSC STATUS,Z
+0464    0137    3002    	MOVLW 0x02
+0465    0138    0528    	ANDWF R4L,W
+0466    0139    1D03    	BTFSS STATUS,Z
+0467    013A    30FF    	MOVLW 0xFF
+0468    013B    0008    	RETURN
+0469    013C            ; Waitms Routine
+0470    013C    08A0    W001:	MOVF R0L,F
+0471    013D    1903    	BTFSC STATUS,Z
+0472    013E    2947    	GOTO W002
+0473    013F    214E    	CALL W003
+0474    0140    03A0    	DECF R0L,F
+0475    0141    0000    	NOP
+0476    0142    0000    	NOP
+0477    0143    0000    	NOP
+0478    0144    0000    	NOP
+0479    0145    0000    	NOP
+0480    0146    293C    	GOTO W001
+0481    0147    08A1    W002:	MOVF R0H,F
+0482    0148    1903    	BTFSC STATUS,Z
+0483    0149    0008    	RETURN
+0484    014A    214E    	CALL W003
+0485    014B    03A1    	DECF R0H,F
+0486    014C    03A0    	DECF R0L,F
+0487    014D    293C    	GOTO W001
+0488    014E    300C    W003:	MOVLW 0x0C
+0489    014F    00A5    	MOVWF R2H
+0490    0150    0BA5    W004:	DECFSZ R2H,F
+0491    0151    2950    	GOTO W004
+0492    0152    0000    	NOP
+0493    0153    0000    	NOP
+0494    0154    3062    	MOVLW 0x62
+0495    0155    00A2    	MOVWF R1L
+0496    0156    0BA2    W005:	DECFSZ R1L,F
+0497    0157    295D    	GOTO W006
+0498    0158    215F    	CALL W007
+0499    0159    215F    	CALL W007
+0500    015A    0000    	NOP
+0501    015B    0000    	NOP
+0502    015C    0008    	RETURN
+0503    015D    215F    W006:	CALL W007
+0504    015E    2956    	GOTO W005
+0505    015F    300D    W007:	MOVLW 0x0D
+0506    0160    00A4    	MOVWF R2L
+0507    0161    0BA4    W008:	DECFSZ R2L,F
+0508    0162    2961    	GOTO W008
+0509    0163    0000    	NOP
+0510    0164    0008    	RETURN
+0511    0165            ; ShiftLeft Routine
+0512    0165    1003    SL01:	BCF STATUS,C
+0513    0166    0DA0    	RLF R0L,F
+0514    0167    0DA1    	RLF R0H,F
+0515    0168    3EFF    SL00:	ADDLW 0xFF
+0516    0169    1803    	BTFSC STATUS,C
+0517    016A    2965    	GOTO SL01
+0518    016B    0820    	MOVF R0L,W
+0519    016C    0008    	RETURN
+0520    016D            ; ShiftRight Routine
+0521    016D    1003    SR01:	BCF STATUS,C
+0522    016E    0CA1    	RRF R0H,F
+0523    016F    0CA0    	RRF R0L,F
+0524    0170    3EFF    SR00:	ADDLW 0xFF
+0525    0171    1803    	BTFSC STATUS,C
+0526    0172    296D    	GOTO SR01
+0527    0173    0820    	MOVF R0L,W
+0528    0174    0008    	RETURN
+0529    0175            ; End of listing
+0530    0175            	END
+---------------------------------------------
+Number of errors = 0
