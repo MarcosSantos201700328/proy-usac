@@ -1,0 +1,95 @@
+package ui;
+
+import java_cup.runtime.*;
+import errormanager.*;
+import java.util.*;
+import java.io.*;
+//import IlGen.TokenValue;
+
+action code {:	
+	Consola actual = MainWindow.getConsolaActual();
+:};
+parser code  {: 
+  	public void syntax_error(java_cup.runtime.Symbol cur_token){
+		MainWindow.getConsolaActual().writeLn("(" + ((TokenValue)cur_token.value).getPosLine() + "," + ((TokenValue)cur_token.value).getPosChar() +"): Error de Sintaxis al leer " + cur_token.value + " esto no va aqui");
+		done_parsing();
+	}
+
+:};
+
+
+terminal TokenValue CD, EXIT, CLOSE, CLEAR, NEW, ARROBA, SHOW, MVC, MV;
+terminal TokenValue FILENAME, FILE, DOTDOT;
+terminal TokenValue HELP;
+terminal TokenValue SO, SR, SP, ST, SI;
+terminal TokenValue SS, LX, SX, SE;
+
+non terminal goal, comandos, comando, dir_comando, clear_comando, new_comando, load_comando, show_comando, show_opts, show_err, compile_comando, run_comando;
+
+start with goal;
+
+// The Syntactic Grammar
+goal ::= comandos
+	;
+comandos ::= comandos comando
+	| comando
+	;
+
+comando ::= dir_comando
+	| clear_comando
+	| new_comando
+	| load_comando
+	| show_comando
+	| compile_comando
+	| run_comando
+	| EXIT {: Consola.salir();:}
+	| CLOSE {: MainWindow.cerrarTab();:} 
+	;
+
+dir_comando ::= CD FILENAME:f {: actual.cambiarDir(f.toString()); :}
+		| CD HELP {: actual.helpDir(); :}
+		| CD DOTDOT {: actual.cambiarDirSup(); :}
+	;
+		
+clear_comando ::= CLEAR HELP {: actual.helpClear(); :}
+	| CLEAR {: actual.clear(); :}
+	;
+
+new_comando ::= NEW HELP {: actual.helpNew(); :}
+	| NEW {: actual.addTab();; :}
+	;
+
+load_comando::= ARROBA FILENAME:f {: actual.load(f.toString()); :}
+	| ARROBA HELP {: actual.helpLoad(); :}
+	;
+
+show_comando::= SHOW show_opts 
+	| SHOW show_err
+	| SHOW show_opts show_err
+	| SHOW HELP {: actual.helpShow(); :}
+	;
+
+show_opts ::= SO FILENAME:f {: actual.showAllOpts(f.toString()); :}
+	| SO SR FILENAME:f {: actual.showExpOpt(f.toString()); :}
+	| SO SP FILENAME:f {: actual.showPropOpt(f.toString()); :}
+	| SO ST FILENAME:f {: actual.showTransOpt(f.toString()); :}
+	| SO SI FILENAME:f //{: actual.showJumpOpt(f.toString()); :}
+	;
+// show -so sr /home/kreig/test/outtest.out.c
+show_err ::= SS FILENAME:f {: actual.showAllErrors(f.toString()); :}
+	| SS LX FILENAME:f {: actual.showLexErrors(f.toString()); :}
+	| SS SX FILENAME:f {: actual.showSynErrors(f.toString()); :}
+	| SS SE FILENAME:f {: actual.showSemErrors(f.toString()); :}
+	| SS {: actual.showAllErrors(null); :}
+	| SS LX {: actual.showLexErrors(null); :}
+	| SS SX {: actual.showSynErrors(null); :}
+	| SS SE {: actual.showSemErrors(null); :}
+	;
+
+compile_comando::= MVC HELP {: actual.helpCompile(); :}
+	| MVC FILENAME:f {: actual.compile(f.toString()); :}
+	;
+
+run_comando::= MV HELP {: actual.helpRun(); :}
+	| MV FILENAME:f {: actual.run(f.toString()); :}
+	;

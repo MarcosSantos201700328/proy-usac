@@ -1,0 +1,101 @@
+function patito1(){
+$t0 = 5 + 0;
+$t1 = $STACK[ $t0];
+$t1 = 0
+Linic0:
+$t2 = 5 + 0;
+$t3 = $STACK[ $t2];
+if $t3 < 5 goto(L1);
+goto(L2);
+L1:
+
+$t4 = 4 + 0;
+$t5 = $STACK[ $t4];
+$t5 = 'a'
+$t6 = 4 + 0;
+$t7 = $STACK[ $t6];
+if $t7 < 5 goto(L3);
+goto(L4);
+L3:
+L1:
+
+$t8 = 5 + 0;
+$t9 = $STACK[ $t8];
+$t10 = $t9 * 4;
+$t11 = $t10 + 5
+$t12 = $t11 + 0;
+$t13 = 3 + $t12;
+$t14 = $STACK[ $t13];
+$t15 = 5 + 0;
+$t16 = $STACK[ $t15];
+$t17 = $t16 * 9;
+$t18 = 5 * 9;
+$t19 = $t18 + 5
+$t20 = $t17 + $arr1
+$t14 = $arr1
+L3:
+L1:
+
+goto(LInic1);
+L4:
+L2:
+
+$t21 = 4 + 0;
+$t22 = $STACK[ $t21];
+ if $t22 == 1 goto( L5);
+goto( L6);
+L3:
+L1:
+L5:
+
+$t23 = 6 + 0;
+$t24 = $STACK[ $t23];
+$t24 = 'a'
+goto(Lsig0);
+L4:
+L2:
+L6:
+
+ if $t22 == 2 goto( L7);
+goto( L8);
+L3:
+L1:
+L5:
+L7:
+
+$t25 = 6 + 0;
+$t26 = $STACK[ $t25];
+$t26 = 'b'
+goto(Lsig0);
+L4:
+L2:
+L6:
+L8:
+
+$t27 = 6 + 0;
+$t28 = $STACK[ $t27];
+$t28 = 'c'
+Lsig0:
+}
+function patito2(){
+$t29 = 0 + 0;
+$t30 = $STACK[ $t29];
+$gd = $t30
+}
+$STACK[1] = $gb;
+$STACK[2] = $gc;
+$STACK[3] = $gd;
+patito1();
+$t31 = $STACK[0];
+$ga = $t31
+$STACK[8] = $gb;
+patito2();
+$t32 = $STACK[4];
+$STACK[15] = $ga;
+$STACK[16] = $gb;
+$STACK[17] = $gc;
+writeln();
+$t33 = $STACK[9];
+$STACK[28] = $ge;
+readln();
+$t34 = $STACK[18];

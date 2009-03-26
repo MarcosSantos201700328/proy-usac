@@ -1,0 +1,105 @@
+void patito1(){
+t0 = p + 45;
+t1 = STACK[ t0];
+t1 = 0
+Linic0:
+t2 = p + 45;
+t3 = STACK[ t2];
+if (t3 < 5) goto L1;
+goto L2;
+L1:
+
+t4 = p + 44;
+t5 = STACK[ t4];
+t5 = 'a'
+t6 = p + 44;
+t7 = STACK[ t6];
+if (t7 == 5) goto L3;
+goto L4;
+L3:
+L1:
+
+t8 = p + 45;
+t9 = STACK[ t8];
+t10 = t9 * 4;
+t11 = t10 + 5
+t12 = t11 + p;
+t13 = 8 + t12;
+t14 = STACK[ t13];
+t15 = p + 45;
+t16 = STACK[ t15];
+t17 = t16 * 9;
+t18 = 5 * 9;
+t19 = t18 + 5
+t20 = t17 + arr1
+t14 = arr1
+L3:
+L1:
+
+goto LInic1;
+L4:
+L2:
+
+t21 = p + 44;
+t22 = STACK[ t21];
+ if (t22 == 1) goto L5;
+goto L6;
+L3:
+L1:
+L5:
+
+t23 = p + 46;
+t24 = STACK[ t23];
+t24 = 'a'
+goto Lsig0;
+L4:
+L2:
+L6:
+
+ if (t22 == 2) goto L7;
+goto L8;
+L3:
+L1:
+L5:
+L7:
+
+t25 = p + 46;
+t26 = STACK[ t25];
+t26 = 'b'
+goto Lsig0;
+L4:
+L2:
+L6:
+L8:
+
+t27 = p + 46;
+t28 = STACK[ t27];
+t28 = 'c'
+Lsig0:
+}
+void patito2(){
+t29 = p + 0;
+t30 = STACK[ t29];
+gd = t30
+}
+void main(){
+t31 = p + 1;
+STACK[ t31] = gb;
+t32 = p + 2;
+STACK[ t32] = gc;
+t33 = p + 3;
+STACK[ t33] = gd;
+p = p + 4;
+patito1();
+p = p - 4;
+t34 = STACK[p];
+ga = t34
+t35 = p + 0;
+STACK[ t35] = gb;
+p = p + 1;
+patito2();
+p = p - 1;
+t36 = STACK[p];
+printf("%d%d%d%s\n",ga,gb,gc,'a ');
+scanf("%d\n",ge);
+}

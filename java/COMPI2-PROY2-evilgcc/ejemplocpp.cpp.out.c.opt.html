@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Reporte de optimizacion - EvilGCC (c) 2007 Erik Giron</title>
+</head>
+<body>
+<h1> REPORTE DE  OPTIMIZACION </h1>
+<font color = "#666666" face="helvetica">void suma() {</font><br>
+<font color = "#0000AA" face="helvetica">t1 = STACK[p];</font><br>
+<font color = "#666666" face="helvetica">t2 = p + 1;</font><br>
+<font color = "#666666" face="helvetica">t3 = STACK[t2];</font><br>
+<font color = "#666666" face="helvetica">t4 = t1 + t3;</font><br>
+<font color = "#666666" face="helvetica">STACK[p] = t4;</font><br>
+<font color = "#666666" face="helvetica">}</font><br>
+<font color = "#666666" face="helvetica">void resta() {</font><br>
+<font color = "#0000AA" face="helvetica">t6 = STACK[p];</font><br>
+<font color = "#0000AA" face="helvetica">t8 = STACK[t2];</font><br>
+<font color = "#666666" face="helvetica">t9 = t6 - t8;</font><br>
+<font color = "#666666" face="helvetica">STACK[p] = t9;</font><br>
+<font color = "#666666" face="helvetica">}</font><br>
+<font color = "#666666" face="helvetica">void main() {</font><br>
+<font color = "#0000AA" face="helvetica">STACK[p] = 10;</font><br>
+<font color = "#0000AA" face="helvetica">STACK[t2] = 15;</font><br>
+<font color = "#0000AA" face="helvetica">t13 = STACK[p];</font><br>
+<font color = "#0000AA" face="helvetica">t15 = STACK[t2];</font><br>
+<font color = "#0000AA" face="helvetica">STACK[t2] = t13;</font><br>
+<font color = "#666666" face="helvetica">t17 = p + 2;</font><br>
+<font color = "#666666" face="helvetica">STACK[t17] = t15;</font><br>
+<font color = "#666666" face="helvetica">p = p + 3;</font><br>
+<font color = "#666666" face="helvetica">suma();</font><br>
+<font color = "#666666" face="helvetica">p = p - 3;</font><br>
+<font color = "#666666" face="helvetica">t18 = STACK[p];</font><br>
+<font color = "#666666" face="helvetica">t19 = p + 2;</font><br>
+<font color = "#666666" face="helvetica">STACK[t19] = t18;</font><br>
+<font color = "#0000AA" face="helvetica">t21 = STACK[p];</font><br>
+<font color = "#666666" face="helvetica">t22 = p + 1;</font><br>
+<font color = "#666666" face="helvetica">t23 = STACK[t22];</font><br>
+<font color = "#0000AA" face="helvetica">STACK[t22] = t21;</font><br>
+<font color = "#0000AA" face="helvetica">STACK[t19] = t23;</font><br>
+<font color = "#666666" face="helvetica">p = p + 3;</font><br>
+<font color = "#666666" face="helvetica">resta();</font><br>
+<font color = "#666666" face="helvetica">p = p - 3;</font><br>
+<font color = "#666666" face="helvetica">t26 = STACK[p];</font><br>
+<font color = "#666666" face="helvetica">t27 = p + 3;</font><br>
+<font color = "#666666" face="helvetica">STACK[t27] = t26;</font><br>
+<font color = "#666666" face="helvetica">}</font><br>
+</body></html>

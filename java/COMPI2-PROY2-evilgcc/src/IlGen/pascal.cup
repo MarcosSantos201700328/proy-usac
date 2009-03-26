@@ -1,0 +1,1374 @@
+package IlGen;
+
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+//import vmw.*;
+//import lalrgen.*;
+import errormanager.*;
+
+// Preliminaries to set up and use the scanner.  
+//init with {: scanner.init();    :}
+//scan with {: return scanner.next_token();:};
+
+
+action code {:	
+	int contadorparams = 0; /**contador de parametros*/
+	SymTab tablaSimbolos = new SymTab(); /**Tabla de Simbolos*/
+	SymTab aux = new SymTab(); /**Tablas de simbolos auxiliares*/
+	String currScope = new String("global");/**Ambito Actual*/
+	String currType = new String();/**Tipo actual*/
+	String currFunc = new String();/**Funcion actual*/
+	int currAccess = -1; /**Class Access Type*/
+	int desplazamiento = 0; /**Desplazamiento del puntero*/
+	int pos = 0; /**Posicion del puntero*/
+	int temp = 0; /**Temporales*/
+	int etiqActual = 0; /**Etiquetas normales*/
+	int etiqSig = 0; /**Etiquetas de verdadero false*/
+	int etiqInic = 0; /**Etiquetas de ciclos*/
+	ArrayList idxListActual = new ArrayList(); /**Lista de indices actual para matrices*/
+	int idxActual = 0; /**Indice actual para matrices*/
+	ExpAttribute switchExp;/**Atributo del switch*/// == new ExpAttribute();
+	BackFill relleno = new BackFill(); /**relleno de retroceso*/	
+:};
+parser code {:
+
+	public void syntax_error(java_cup.runtime.Symbol cur_token){
+		//TokenValue tk = (TokenValue) cur_token.value;
+		//if(cur_token.value == null){
+			ErrorManager.agregarErrorSintactico(((TokenValue)cur_token.value).getPosLine(),((TokenValue)cur_token.value).getPosChar(),"Error de Sintaxis al leer " + cur_token.value + " esto no va aqui");
+			System.out.println("(" + ((TokenValue)cur_token.value).getPosLine() + "," + ((TokenValue)cur_token.value).getPosChar() + "): Error de Sintaxis al leer " + cur_token.value + " esto no va aqui");
+	//	}
+	//	else{
+	//		ErrorManager.agregarErrorSintactico(tk.getPosLine(),tk.getPosChar(),"Error de Sintaxis en simbolo " + tk.toString());
+	//		System.out.println("Error de Sintaxis");
+	//	}
+		//report_fatal_error("Error de Sintaxis", tk);
+		done_parsing();
+	}
+
+
+	public static void main(String args[]){
+		if(args[0] != null){
+			
+			try{
+			Output.setOutputFile("/home/kreig/test","outtest");
+			PascalParser p = new PascalParser(new PascalLexer(new FileReader(args[0])));
+			p.debug_parse();			
+			}
+			catch(Exception e){
+				System.out.println(e);
+				
+			}
+			finally{
+				Output.close();
+			}
+		}
+	}
+	
+	public static String a_bitoActual = new String("$root");
+
+:};
+/* Terminals (tokens returned by the scanner). */
+
+/**keywords*/
+terminal TokenValue AND ,ARRAY ,ASSIGNMENT ,CASE ,CHARACTER_STRING ,COLON ,COMMA ,CONST ,DIGSEQ, USES;
+terminal TokenValue DIV ,DO ,DOT ,DOTDOT ,DOWNTO ,ELSE ,END ,EQUAL ,EXTERNAL ,FOR ,FORWARD ,FUNCTION;
+terminal TokenValue GE ,GOTO ,GT ,IDENTIFIER ,IF ,IN ,LABEL ,LBRAC ,LE ,LPAREN ,LT ,MINUS ,MOD ,NIL ,NOT;
+terminal TokenValue NOTEQUAL ,OF ,OR ,OTHERWISE ,PACKED ,PBEGIN ,PFILE ,PLUS ,PROCEDURE ,PROGRAM ,RBRAC;
+terminal TokenValue REALNUMBER ,RECORD ,REPEAT ,RPAREN ,SEMICOLON ,SET ,SLASH ,STAR ,STARSTAR ,THEN;
+terminal TokenValue TO ,TYPE ,UNTIL ,UPARROW ,VAR ,WHILE ,WITH, WRITE, WRITELN, READ, READLN;
+
+terminal INTEGER, REAL, STRING, CHAR;
+/* Non-terminals */
+non terminal file, program, program_heading, uses_clause_list_opt, uses_clause_list, uses_clause, block, module, label_declaration_part;
+
+non terminal label_list, label, constant_definition_part, constant_list, constant_definition, cexpression;
+
+non terminal csimple_expression, cterm, cfactor, cexponentiation, cprimary,  sign;
+
+non terminal type_definition_part, type_definition_list, type_definition;
+
+non terminal enumerated_type; 
+
+
+
+non terminal record_type, record_section_list; 
+
+non terminal record_section, variant_part, variant_selector, variant_list, variant, case_constant_list, case_constant;
+
+non terminal tag_field, tag_type, set_type, base_type, file_type, new_pointer_type;
+
+non terminal variable_declaration_part, variable_declaration_list, variable_declaration;
+
+non terminal procedure_and_function_declaration_part, proc_or_func_declaration_list, proc_or_func_declaration;
+
+non terminal procedure_declaration, procedure_heading, directive;
+
+non terminal procedure_block, function_declaration, function_heading;
+
+non terminal  function_block, statement_part, compound_statement, statement_sequence, statement, open_statement;
+
+non terminal closed_statement, non_labeled_closed_statement, non_labeled_open_statement, repeat_statement, open_while_statement, closed_while_statement;
+
+non terminal open_for_statement, closed_for_statement, open_with_statement, closed_with_statement, open_if_statement, closed_if_statement, assignment_statement;
+
+non terminal  field_designator, procedure_statement,  goto_statement;
+
+non terminal case_statement, case_index, case_list_element_list, case_list_element, otherwisepart,  direction;
+
+non terminal record_variable_list;
+
+non terminal ExpAttribute control_variable, initial_value , final_value, boolean_expression, expression, simple_expression, term, factor, exponentiation, primary, unsigned_constant, unsigned_number, unsigned_integer, unsigned_real, function_designator;
+
+non terminal ExpAttribute set_constructor, member_designator_list, member_designator, addop, mulop, relop,index_expression;
+
+non terminal  semicolon,  comma;
+
+non terminal ExpAttribute logical_and_expression, logical_or_expression,indexed_variable, actual_parameter, variable_access, rwarg;
+
+non terminal TokenValue constant, identifier, non_string, procedure_identification, function_identification;
+
+non terminal ArrElem subrange_type, new_ordinal_type, ordinal_type, index_type;
+
+non terminal ArrayList index_list, identifier_list,index_expression_list, formal_parameter_section_list, formal_parameter_list, params, variable_parameter_specification, value_parameter_specification, formal_parameter_section, actual_parameter_list, rwargs;
+
+non terminal td_head, mrk_func,init_decl, mark_and, mark_or, mark_e1, iev, fev, ief, fef, write_etiq_sig, beginmark;
+
+non terminal DataType type_denoter, component_type, result_type, domain_type, new_structured_type, structured_type, array_type, new_type;
+
+non terminal IlGen.Symbol matrix_head;
+
+non terminal Integer p_inic;
+
+/* Precedences */
+
+
+/*
+precedence left CPAR;
+precedence right ELSE;
+*/
+start with file;
+/* The grammar */
+
+file ::= program
+ | module
+ ;
+
+program ::= program_heading init_decl semicolon block DOT {: Output.createHeader(temp,tablaSimbolos);:}
+ ;
+
+
+init_decl::= /*empty*/{: //Agregamos funciones printf, pcanf, free. tc
+		DataType dt;
+		Symbol s;
+		dt = new DataType(SymTab.T_INT);
+		s = tablaSimbolos.addFunction(new String("writeln"),"global",dt,-1,null,-1);
+		dt = new DataType(SymTab.T_STRING);
+		s = tablaSimbolos.addFunction(new String("readln"),"global",dt,-1,null,-1);
+		dt = new DataType(SymTab.T_INT);
+		s = tablaSimbolos.addFunction(new String("write"),"global",dt,-1,null,-1);
+		dt = new DataType(SymTab.T_STRING);
+		s = tablaSimbolos.addFunction(new String("read"),"global",dt,-1,null,-1);
+		Output.writeHeader();
+			
+	:}
+	;
+
+program_heading ::= PROGRAM identifier {::}
+ | PROGRAM identifier LPAREN identifier_list RPAREN
+ ;
+
+uses_clause_list_opt ::= /*empty*/
+		| uses_clause_list
+		;
+
+uses_clause_list ::= uses_clause_list uses_clause
+	| uses_clause
+
+	;
+
+uses_clause ::= USES identifier semicolon
+	;
+
+identifier_list ::= identifier_list:id1 comma identifier:id2 {:id1.add(id2.toString()); RESULT = id1;:}
+ | identifier:id {:ArrayList res = new ArrayList(); res.add(new String(id.toString())); RESULT = res; currType = new String(id.toString());:}
+ ;
+
+block ::=  uses_clause_list_opt
+	label_declaration_part
+ constant_definition_part
+ type_definition_part
+ variable_declaration_part
+ procedure_and_function_declaration_part 
+ statement_part
+ ;
+
+module ::= constant_definition_part
+ type_definition_part
+ variable_declaration_part
+ procedure_and_function_declaration_part
+ ;
+
+label_declaration_part ::= LABEL label_list semicolon
+ |
+ ;
+
+label_list ::= label_list comma label
+ | label
+ ;
+
+label ::= DIGSEQ
+ ;
+
+constant_definition_part ::= CONST constant_list
+ |
+ ;
+
+constant_list ::= constant_list constant_definition
+ | constant_definition
+ ;
+
+constant_definition ::= identifier EQUAL cexpression semicolon
+ ;
+
+/*constant ::= cexpression ;  /* good stuff! */
+
+cexpression ::= csimple_expression
+ | csimple_expression relop csimple_expression
+ ;
+
+csimple_expression ::= cterm
+ | csimple_expression addop cterm
+ ;
+
+cterm ::= cfactor
+ | cterm mulop cfactor
+ ;
+
+cfactor ::= sign cfactor
+ | cexponentiation
+ ;
+
+cexponentiation ::= cprimary
+ | cprimary STARSTAR cexponentiation
+ ;
+
+cprimary ::= identifier
+ | LPAREN cexpression RPAREN
+ | unsigned_constant//:en {:RESULT = en;:}
+ | NOT cprimary
+ ;
+
+constant ::= non_string:ns {:RESULT = ns;:}
+ | sign non_string:ns {:RESULT = ns;:}
+ | CHARACTER_STRING:ns {:RESULT = ns;:}
+ ;
+
+sign ::= PLUS
+ | MINUS
+ ;
+
+non_string ::=// DIGSEQ:dg {:RESULT = DG;:}
+ /*|*/ identifier:dg {:RESULT = dg;:}
+ | REALNUMBER:dg {:RESULT = dg;:}
+ ;
+
+type_definition_part ::= TYPE type_definition_list
+ |
+ ;
+
+type_definition_list ::= type_definition_list type_definition
+ | type_definition
+ ;
+
+type_definition ::= td_head EQUAL type_denoter semicolon {: currType = new String();:}
+ ;
+
+td_head ::= identifier:id {:
+	currType = new String(id.toString());
+	:}
+	;
+
+
+type_denoter ::= identifier:id {: RESULT = new DataType(new String(id.toString()),true,tablaSimbolos.getSize(id.toString()));:}
+ | new_type:s {:RESULT = s;:}
+ | INTEGER {: RESULT = new DataType(SymTab.T_INT);:}
+ | REAL {: RESULT = new DataType(SymTab.T_FLOAT);:}
+ | STRING {: RESULT = new DataType(SymTab.T_STRING);:}
+ | CHAR {: RESULT = new DataType(SymTab.T_CHAR);:}
+ ;
+
+new_type ::=// new_ordinal_type
+ /*| */new_structured_type:s {:RESULT = s;:}
+ | new_pointer_type
+ ;
+
+new_ordinal_type ::= //enumerated_type
+ | subrange_type:st {: RESULT = st;:}
+ ;
+
+//enumerated_type ::= LPAREN identifier_list RPAREN
+ //;
+
+subrange_type ::= constant:c1 DOTDOT constant:c2 {:ArrElem ar = new ArrElem(c1.toInt(),c2.toInt()); RESULT = ar;:}
+ ;
+
+new_structured_type ::= structured_type:s {:RESULT = s;:}
+// | PACKED structured_type
+ ;
+
+structured_type ::= array_type:a {:RESULT = a;:}
+ | record_type
+ | set_type
+ | file_type
+ ;
+
+array_type ::= ARRAY:a LBRAC index_list:rl RBRAC OF component_type:dt {:	
+		try{
+			 
+			IlGen.Symbol s = tablaSimbolos.addArray(new String(currType.toString()),rl,currScope,dt,currAccess,desplazamiento);
+			Iterator i = rl.iterator();
+			ArrElem aractual;
+			int sizeActual = 1;
+			while(i.hasNext()){
+				aractual = (ArrElem)(i.next());
+				sizeActual *= aractual.getFrom() - aractual.getTo();				
+			}
+			if(!currScope.equals("global"))
+				desplazamiento += sizeActual;//s.getSize() + 1;
+			s.setSize(sizeActual);
+			RESULT = new DataType(SymTab.C_ARRAY);
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(a.getPosLine(),a.getPosChar(),e.toString());
+			throw(e);
+		}
+	:}
+ ;
+
+index_list ::= index_list:rl comma index_type:r {:rl.add(r); RESULT = rl;:}
+ | index_type:r {:ArrayList res = new ArrayList(); res.add(r); RESULT = res;:}
+ ;
+
+index_type ::= ordinal_type:ot{:RESULT = ot;:} ;
+
+ordinal_type ::= new_ordinal_type:not{:RESULT = not;:}
+// | identifier
+ ;
+
+component_type ::= type_denoter:td {:RESULT = td;:};
+
+record_type ::= RECORD record_section_list END
+ | RECORD record_section_list semicolon variant_part END
+ | RECORD variant_part END
+ ;
+
+record_section_list ::= record_section_list semicolon record_section
+ | record_section
+ ;
+
+record_section ::= identifier_list COLON type_denoter
+ ;
+
+variant_part ::= CASE variant_selector OF variant_list semicolon
+ | CASE variant_selector OF variant_list
+ |
+ ;
+
+variant_selector ::= tag_field COLON tag_type
+ | tag_type
+ ;
+
+variant_list ::= variant_list semicolon variant
+ | variant
+ ;
+
+variant ::= case_constant_list COLON LPAREN record_section_list RPAREN
+ | case_constant_list COLON LPAREN record_section_list semicolon
+  variant_part RPAREN
+ | case_constant_list COLON LPAREN variant_part RPAREN
+ ;
+
+case_constant_list ::= case_constant_list comma case_constant
+ | case_constant
+ ;
+
+case_constant ::= constant:c2 {: Output.writeLn(" if (" + switchExp.getCad() + " == " + c2.toString() + ") goto L" + (etiqActual + 1)+";");
+     		Output.writeLn("goto L" + (etiqActual + 2)+";");
+     		relleno.insertarTrue(etiqActual + 1); /*Insertamos a listado de etiquetas en relleno*/
+     		relleno.insertarFalse(etiqActual + 2); 
+     		etiqActual += 2; /*Aumentamos etiquetas*/
+     		RESULT = new ExpAttribute(); 
+     		:}
+// | constant DOTDOT constant 
+ ;
+
+tag_field ::= identifier ;
+
+tag_type ::= identifier ;
+
+set_type ::= SET OF base_type
+ ;
+
+base_type ::= ordinal_type ;
+
+file_type ::= PFILE OF component_type
+ ;
+
+new_pointer_type ::= UPARROW domain_type:dt 
+	{: try{
+			ArrayList il = new ArrayList();
+			il.add(new String(currType));
+			IlGen.Symbol s = tablaSimbolos.addPointers(il,currScope,dt,currAccess,desplazamiento);
+			desplazamiento += il.size();
+			
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(0,0,e.toString());
+			throw(e);
+		}
+	:}
+ ;
+
+domain_type ::= type_denoter:dt {:RESULT = dt;:}//identifier ;
+;
+variable_declaration_part ::= VAR variable_declaration_list semicolon
+ |
+ ;
+
+variable_declaration_list ::=
+   variable_declaration_list semicolon variable_declaration
+ | variable_declaration
+ ;
+
+variable_declaration ::= identifier_list:il COLON type_denoter:dt {:
+		try{
+			IlGen.Symbol s = tablaSimbolos.addVariables(il,currScope,dt,currAccess,desplazamiento);
+			desplazamiento += il.size();			
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(0,0,e.toString());
+			throw(e);
+		}
+	:}
+ ;
+
+procedure_and_function_declaration_part ::=
+  proc_or_func_declaration_list semicolon
+ |
+ ;
+
+proc_or_func_declaration_list ::=
+   proc_or_func_declaration_list semicolon proc_or_func_declaration
+ | proc_or_func_declaration 
+ ;
+
+proc_or_func_declaration ::= procedure_declaration {:desplazamiento = 0;:}
+ | function_declaration {:desplazamiento = 0;:}
+ ;
+
+procedure_declaration ::= procedure_heading semicolon directive {:currScope = new String("global");Output.writeLn("}"); contadorparams = 0;:}
+ | procedure_heading semicolon procedure_block {:currScope = new String("global");Output.writeLn("}");:}
+ ;
+
+procedure_heading ::= procedure_identification:id mrk_func {:
+		try{
+			DataType dt = new DataType(SymTab.T_VOID);
+			Symbol s = tablaSimbolos.addFunction(new String(id.toString()),"global",dt,0,new ArrayList(),currAccess);
+			currFunc = new String(id.toString());
+			currScope = new String(id.toString());
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+		:}
+ | procedure_identification:id mrk_func formal_parameter_list:p {: 
+		//if(tablaSimbolos.getFunction(ident.toString(),contadorparams,"global",dt) == null)
+		try{
+			DataType dt = new DataType(SymTab.T_VOID);		
+			Symbol s = tablaSimbolos.addFunction(new String(id.toString()),"global",dt,contadorparams,p,currAccess);
+
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+		
+	:}
+ ;
+
+mrk_func ::= {:
+Output.writeLn("void " + currFunc.toString() + "(){");// desplazamiento = 0;
+:}
+;
+directive ::= FORWARD
+ | EXTERNAL
+ ;
+
+formal_parameter_list ::= LPAREN formal_parameter_section_list:fpls RPAREN {:RESULT = fpls;:};
+
+formal_parameter_section_list ::= formal_parameter_section_list:p1 semicolon formal_parameter_section:p2 {:  p1.addAll(p2);contadorparams = p1.size(); RESULT = p1;:} /**CHANGED*/
+ | formal_parameter_section:p1 {: /*ArrayList res = new ArrayList(); res.add(p1); contadorparams = 1;*/contadorparams = p1.size(); RESULT = p1;:}
+ ;
+
+formal_parameter_section ::= value_parameter_specification:v1 {:RESULT = v1;:}
+ | variable_parameter_specification:v1 {:RESULT = v1;:}
+// | procedural_parameter_specification:v1 {:RESULT = v1;:}
+// | functional_parameter_specification:v1 {:RESULT = v1;:}
+ ;
+
+value_parameter_specification ::= identifier_list:il COLON type_denoter:dt {: /* RESULT = new IlGen.Symbol(dt,SymTab.C_VAR); */
+		try{
+			if (dt.getType() == SymTab.T_INT || dt.getType() == SymTab.T_CHAR || dt.getType() == SymTab.T_FLOAT || dt.getType() == SymTab.T_STRING){
+				tablaSimbolos.addVariables(il,currScope,dt,currAccess,desplazamiento);
+			}
+			desplazamiento += il.size();
+			RESULT = il;
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(0,0,e.toString());
+			throw(e);
+		}	
+:}
+ ;
+
+variable_parameter_specification ::= VAR identifier_list:il COLON type_denoter:dt {:/* dt.setReference(true);  RESULT = new IlGen.Symbol(dt,SymTab.C_VAR); */
+ try{
+			
+			tablaSimbolos.addPointers(il,currScope,dt,currAccess,desplazamiento);
+			desplazamiento += il.size();
+			RESULT = il;
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(0,0,e.toString());
+			throw(e);
+		}	
+
+:}
+ ;
+/*
+procedural_parameter_specification ::= procedure_heading ;
+
+functional_parameter_specification ::= function_heading ;
+*/
+procedure_identification ::= PROCEDURE IDENTIFIER:id {: /*RESULT = id;*/			currFunc = new String(id.toString());
+			currScope = new String(id.toString());  RESULT = id;:} ;
+
+procedure_block ::= block ;
+
+function_declaration ::= function_heading semicolon directive {:currScope = new String("global");Output.writeLn("}"); contadorparams = 0;:}
+// | function_identification semicolon function_block
+ | function_heading semicolon function_block {:currScope = new String("global");Output.writeLn("}");:}
+ ;
+
+function_heading ::= function_identification:id mrk_func COLON result_type:dt{: try{			
+			Symbol s = tablaSimbolos.addFunction(new String(id.toString()),"global",dt,0,new ArrayList(),currAccess);
+			
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+		:}
+ | function_identification:id mrk_func formal_parameter_list:p COLON result_type:dt {: 
+		//if(tablaSimbolos.getFunction(ident.toString(),contadorparams,"global",dt) == null)
+		try{	
+			Symbol s = tablaSimbolos.addFunction(new String(id.toString()),"global",dt,contadorparams,p,currAccess);
+			currFunc = new String(id.toString());
+			currScope = new String(id.toString());
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+		
+	:}
+ ;
+
+function_identification ::= FUNCTION IDENTIFIER:id {:currFunc = new String(id.toString());
+			currScope = new String(id.toString()); RESULT = id;:}
+;
+
+result_type ::= type_denoter:dt {:RESULT = dt;:};
+
+//function_identification ::= FUNCTION identifier ;
+
+function_block ::= block ;
+
+statement_part ::= compound_statement ;
+
+compound_statement ::= PBEGIN beginmark statement_sequence END {:
+if(currScope.equals("global")){
+		Output.writeLn("}");
+}
+:} ;
+
+beginmark ::= /*empty*/
+{:
+if(currScope.equals("global")){
+		Output.writeLn("void main(){");
+}
+:}
+;
+statement_sequence ::= statement_sequence semicolon statement
+ | statement
+ ;
+
+statement ::= open_statement
+ | closed_statement
+ ;
+
+open_statement ::= label COLON non_labeled_open_statement
+ | non_labeled_open_statement
+ ;
+
+closed_statement ::= label COLON non_labeled_closed_statement
+ | non_labeled_closed_statement
+ ;
+
+non_labeled_closed_statement ::= assignment_statement
+ | procedure_statement
+ | goto_statement
+ | compound_statement
+ | case_statement write_etiq_sig
+ | repeat_statement iev
+// | closed_with_statement
+ | closed_if_statement
+ | closed_while_statement fev
+ | closed_for_statement fev
+ |
+ ;
+
+non_labeled_open_statement ::= open_if_statement
+ | open_while_statement fev
+ | open_for_statement fev
+ ;
+
+p_inic::= /* empty*/ {:Output.writeLn("Linic" + (etiqInic) + ":");			
+			etiqInic++;
+			RESULT = new Integer(etiqInic - 1);:}
+	;
+
+repeat_statement ::= REPEAT p_inic:pe iev statement_sequence UNTIL boolean_expression// fev
+		{:Output.writeLn("goto " + "LInic" + pe.toString() + ";");:}
+ ;
+
+open_while_statement ::= WHILE p_inic:pe boolean_expression DO iev open_statement//fev
+			{:Output.writeLn("goto " + "LInic" + pe.toString() + ";");:}
+ ;
+
+closed_while_statement ::= WHILE p_inic:pe boolean_expression DO iev closed_statement// fev
+		{:Output.writeLn("goto " + "LInic" + pe.toString() + ";");:}
+ ;
+
+open_for_statement ::= FOR p_inic:p  assignment_statement /*control_variable ASSIGNMENT initial_value*/ direction
+   final_value DO iev open_statement {:Output.writeLn("goto " + "LInic" + p.toString() + ";");:}
+ ;
+
+closed_for_statement ::= FOR p_inic:p assignment_statement /*control_variable ASSIGNMENT initial_value*/ direction
+   final_value DO iev closed_statement {:Output.writeLn("goto " + "LInic" + p.toString() + ";");:}
+ ;
+
+open_with_statement ::= WITH record_variable_list DO open_statement
+ ;
+
+closed_with_statement ::= WITH record_variable_list DO closed_statement
+ ;
+
+open_if_statement ::= IF boolean_expression iev THEN statement ief
+ | IF boolean_expression iev THEN closed_statement fef fev  ELSE ief open_statement fef write_etiq_sig
+ ;
+
+closed_if_statement ::= IF boolean_expression iev THEN closed_statement fef fev
+   ELSE ief closed_statement fef
+ ;
+
+	
+iev ::= /*empty*/ {:Output.writeLn(relleno.sacarVerdaderas());:}
+	;
+	
+fev ::= /*empty*/ {:Output.writeLn(relleno.sacarFalsas());:}
+	;
+	
+ief ::= /*empty*/{:Output.writeLn(relleno.sacarVerdaderas());:}
+	;
+	
+fef ::= /*empty*/{:Output.writeLn("goto " + "Lsig" + (etiqSig) + ";");
+		//etiqSig++;
+		Output.writeLn(relleno.sacarFalsas());
+		RESULT = etiqSig;:}
+	;
+	
+write_etiq_sig ::= /*empty*/{:Output.writeLn("Lsig" + (etiqSig)+":"); etiqSig++;	RESULT = new Integer(etiqSig);:}
+	;
+
+assignment_statement ::= /*variable_access:id ASSIGNMENT expression:e  {:
+		Output.writeLn(id.getCad() + " = " + e.getCad());
+
+	:}*/
+	identifier:id  ASSIGNMENT expression:ex{:
+    		ExpAttribute pe = new ExpAttribute();
+    		try{
+    			
+    			IlGen.Symbol s = tablaSimbolos.getVar(new String(id.toString()),currScope);
+    			if(s==null){
+    				s = tablaSimbolos.getVar(new String(id.toString()),"global");
+    			}
+    			if(s==null){
+    				throw new Exception("Variable " + id.toString() + " no existe");
+    			}
+    			pe.setTipo(s.getType().getType());
+    			if(s.getScope().equals("global")){
+    				//devolvemos string con nombre de variable global
+				Output.writeLn(s.getId() + " = "+ ex.getCad() +";");
+    				pe.setCad(new String(s.getId()));
+    			}
+    			else{	  				// devolvemos pila
+    				Output.writeLn("t" + temp +" = p + " + s.getPosition() + ";");
+    				temp++;
+    				Output.writeLn("STACK[ t" + (temp - 1) + "] = "+ ex.getCad() +";");
+    				//temp++;
+    				pe.setCad("t" + (temp - 1));
+    			}    			
+    			RESULT = pe;
+    		}
+    		catch(Exception e){
+    			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString());
+    			throw(e);
+    		}
+    		:}
+	| matrix_head:mh LBRAC index_expression_list:re RBRAC ASSIGNMENT expression:ex {: 
+		ExpAttribute pe = new ExpAttribute();		
+    		try{
+    			IlGen.Symbol s = mh;
+    			if(s.getScope().equals("global")){
+    				//devolvemos string con nombre de variable global
+    				pe.setCad(new String(s.getId()));
+				pe.setTipo(s.getType().getType());
+    			}
+    			else{	  				// devolvemos pila
+    				Output.writeLn("t" + temp +" = " +((ExpAttribute)re.get(re.size()-1)).getCad() + " + p" + /*pos + */";");
+    				temp++;
+    				Output.writeLn("t" + temp +" = " +s.getPosition() + " + t" + (temp-1) + ";");
+    				temp++;
+    				Output.writeLn("STACK[ t" + (temp - 1) + "] = "+ ex.getCad() +";");
+    				//temp++;
+    				pe.setCad("t" + (temp-1));
+				pe.setTipo(s.getType().getType());
+    			}
+    			RESULT = pe;
+    		}
+    		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(0,0,e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+	:}
+ ;
+
+variable_access ::= identifier:id {:
+    		ExpAttribute pe = new ExpAttribute();
+    		try{
+    			
+    			IlGen.Symbol s = tablaSimbolos.getVar(new String(id.toString()),currScope);
+    			if(s==null){
+    				s = tablaSimbolos.getVar(new String(id.toString()),"global");
+    			}
+    			if(s==null){
+    				throw new Exception("Variable " + id.toString() + " no existe");
+    			}
+    			pe.setTipo(s.getType().getType());
+    			if(s.getScope().equals("global")){
+    				//devolvemos string con nombre de variable global
+    				pe.setCad(new String(s.getId()));
+    			}
+    			else{	  				// devolvemos pila
+    				Output.writeLn("t" + temp +" = p + " + s.getPosition() + ";");
+    				temp++;
+    				Output.writeLn("t" + temp +" = STACK[ t" + (temp - 1) + "];");
+    				temp++;
+    				pe.setCad("t" + (temp - 1));
+    			}    			
+    			RESULT = pe;
+    		}
+    		catch(Exception e){
+    			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString());
+    			throw(e);
+    		}
+    		:}
+ | indexed_variable:m {:RESULT = m;:}
+ | field_designator
+ | variable_access UPARROW
+ ;
+
+indexed_variable ::= //variable_access LBRAC index_expression_list RBRAC
+	matrix_head:mh LBRAC index_expression_list:re RBRAC {: 
+		ExpAttribute pe = new ExpAttribute();		
+    		try{
+    			IlGen.Symbol s = mh;
+    			if(s.getScope().equals("global")){
+    				//devolvemos string con nombre de variable global
+    				pe.setCad(new String(s.getId()));
+				pe.setTipo(s.getType().getType());
+    			}
+    			else{	  				// devolvemos pila
+    				Output.writeLn("t" + temp +" = " +((ExpAttribute)re.get(re.size()-1)).getCad() + " + p" + /*pos + */";");
+    				temp++;
+    				Output.writeLn("t" + temp +" = " +s.getPosition() + " + t" + (temp-1) + ";");
+    				temp++;
+    				Output.writeLn("t" + temp +" = STACK[ t" + (temp - 1) + "];");
+    				temp++;
+    				pe.setCad("t" + (temp-1));
+				pe.setTipo(s.getType().getType());
+    			}
+    			RESULT = pe;
+    		}
+    		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(0,0,e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+	:}
+	;
+matrix_head ::= identifier:id {:
+			try{
+				IlGen.Symbol symMatActual = tablaSimbolos.getVar(new String(id.toString()),currScope);
+				if(symMatActual==null){
+    					symMatActual = tablaSimbolos.getVar(new String(id.toString()),"global");
+    				}
+    				if(symMatActual==null){
+    					throw new Exception("Array " + id.toString() + " no existe");
+    				}
+				idxListActual = (ArrayList) symMatActual.getContents();
+				idxActual = 0;
+				RESULT = symMatActual;
+			}
+			catch(Exception e){
+				ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString());
+				throw(e);
+			}:}
+	;
+
+index_expression_list ::= index_expression_list:re comma index_expression:e1 {: 
+		/*temp++;*/ idxActual++;
+		Output.writeLn("t" + temp +" = " + ((ExpAttribute)re.get(re.size() - 1)).getCad() + " + " + e1.getCad() + ";");
+		temp++;
+		ArrElem arrElemActual;// = (ArrElem)idxListActual.get(idxActual);
+		try{
+			arrElemActual = (ArrElem)idxListActual.get(idxActual);
+			if(arrElemActual!= null){
+				//temp++;
+				Output.writeLn("t" + temp +" = " + e1.getCad() + " * " + (arrElemActual.getTo() - arrElemActual.getFrom()) + ";");
+				temp++;		
+		//	idxActual ++;
+			}
+			ExpAttribute pe = new ExpAttribute(new String("t" + (temp - 1)),SymTab.C_ARRAY);
+			re.add(pe);
+			RESULT = re;
+		}
+		catch(IndexOutOfBoundsException ex1){			
+			ExpAttribute pe = new ExpAttribute(new String("t" + (temp - 1)),SymTab.C_ARRAY);
+			re.add(pe);
+			RESULT = re;
+		}
+		catch(Exception ex2){
+			throw ex2;
+		}		
+		/*
+		ExpAttribute pe = new ExpAttribute(new String("$t" + (temp - 1)),SymTab.C_ARRAY);
+		re.add(pe);
+		RESULT = re;*/
+		:}
+ | index_expression:e {: 
+		ArrayList ret = new ArrayList();
+		/*temp++;*/ idxActual++;
+		ArrElem arrElemActual = (ArrElem) idxListActual.get(idxActual);
+		Output.writeLn("t" + temp +" = "+ e.getCad() + " * " + (arrElemActual.getTo() - arrElemActual.getFrom()) + ";");		
+		temp++;
+		ExpAttribute pe = new ExpAttribute(new String("t" + (temp - 1)),SymTab.C_ARRAY);
+		ret.add(pe);
+		RESULT = ret;
+		//idxListActual ++;
+		:}
+	;
+
+
+index_expression ::= expression:e {:RESULT = e;:};
+
+field_designator ::= variable_access DOT identifier
+ ;
+
+procedure_statement ::= identifier:id params:la {:
+		try{			
+			ExpAttribute pe = new ExpAttribute();
+			int count = 0;
+			IlGen.Symbol symActual = tablaSimbolos.getFunc(id.toString(),currScope);
+			//si es funcion, apartamos memoria para valor de retorno y lo devolvemos cmo expAttributte
+			if(symActual==null){
+				symActual = tablaSimbolos.getFunc(id.toString(),"global");
+			}
+			if(symActual==null){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),"Funcion " + id.toString() + " no existe");
+			throw new Exception("Variable " + id.toString() + " no existe");
+			}
+			if(symActual.getSize() != la.size() && symActual.getSize() != -1){
+				ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),"Error: Numero de parametros invalido para la llamada a " + id.toString());
+				throw new Exception("Error: Numero de parametros invalido para la llamada");				
+			}
+			if(symActual.getType().getType() != SymTab.T_VOID){
+				
+				//pos += desplazamiento;	
+				desplazamiento++; // apartamos memoria para el valor de retorno
+				count = 1;
+				Iterator i = la.iterator();
+				ExpAttribute eactual;				
+				while(i.hasNext()){
+					eactual = (ExpAttribute) i.next();
+					Output.writeLn("t" + temp +" = p + " + count/*s.getPosition()*/ + ";");
+    				temp++;
+					Output.writeLn("STACK[ t" + (temp - 1) + "] = " + eactual.getCad() +";");// obtenemos
+					//desplazamiento ++;
+					count ++;
+				}			
+				//if(!symActual.getScope().equals("global"))
+					//pos += desplazamiento;				
+				Output.writeLn("p = p + " + count + ";");
+				//desplazamiento += count;
+				Output.writeLn(symActual.getId() + "();");
+				Output.writeLn("p = p - " + count + ";");
+				//desplazamiento -= count;
+				Output.writeLn("t" + temp +" = STACK[p];");// obtenemos valor de retorno				
+				// push a todos los parametros y les asignamos memoria
+    				pe.setCad("t" + temp);
+    				temp++;
+    				RESULT = pe;
+    			}// si es funcion a void no apartamos ni devolvemos nada
+    			else{
+    				pos += desplazamiento;
+				Iterator i = la.iterator();
+				ExpAttribute eactual;				
+				while(i.hasNext()){
+					eactual = (ExpAttribute) i.next();	
+					Output.writeLn("t" + temp +" = p + " + count/*s.getPosition()*/ + ";");
+    				temp++;			
+					Output.writeLn("STACK[ t" + (temp - 1) + "] = " + eactual.getCad() +";");// obtenemos
+					//desplazamiento ++;
+					count ++;
+				}			
+				if(!symActual.getScope().equals("global"))
+					pos += desplazamiento;					
+				Output.writeLn("p = p + " + count + ";");
+				Output.writeLn(symActual.getId() + "();");
+				Output.writeLn("p = p - " + count + ";");
+				Output.writeLn("t" + temp +" = STACK[p];");// obtenemos valor de retorno				
+				// push a todos los parametros y les asignamos memoria
+    				pe.setCad("t" + temp);
+    				temp++;
+    				RESULT = pe;
+    			}    		
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+	:}
+		| WRITE LPAREN rwargs:la RPAREN {:
+			Output.write("printf(\"" + Utility.getPrintFormat(la) + "\"");        
+			Iterator i = la.iterator();
+			while(i.hasNext()){
+				Output.write(",");
+				Output.write(((ExpAttribute)i.next()).getCad());        	
+			}
+			Output.writeLn(");");
+		:}
+		| WRITELN LPAREN rwargs:la RPAREN {:
+			Output.write("printf(\"" + Utility.getPrintFormat(la) + "\\n\"");        
+			Iterator i = la.iterator();
+			while(i.hasNext()){
+				Output.write(",");
+				Output.write(((ExpAttribute)i.next()).getCad());        	
+			}
+			Output.writeLn(");");
+		:}
+		| READ LPAREN rwargs:la RPAREN {:
+			Output.write("scanf(\"" + Utility.getScanFormat(la) + "\"");        
+			Iterator i = la.iterator();
+			while(i.hasNext()){
+				Output.write(",");
+				Output.write(((ExpAttribute)i.next()).getCad());        	
+			}
+			Output.writeLn(");");
+		:}
+		| READLN LPAREN rwargs:la RPAREN {:
+			Output.write("scanf(\"" + Utility.getScanFormat(la) + "\\n\"");        
+			Iterator i = la.iterator();
+			while(i.hasNext()){
+				Output.write(",&");
+				Output.write(((ExpAttribute)i.next()).getCad());        	
+			}
+			Output.writeLn(");");			
+			Output.writeLn("STACK[ t" + (temp - 2) +"] = t" + (temp - 1) + ";");
+		:}
+ | identifier:id {:
+		try{
+			ExpAttribute pe = new ExpAttribute();
+			IlGen.Symbol symActual = tablaSimbolos.getFunc(id.toString(),currScope);
+			//si es funcion, apartamos memoria para valor de retorno y lo devolvemos cmo expAttributte
+			if(symActual==null){
+				symActual = tablaSimbolos.getFunc(id.toString(),"global");
+			}
+			if(symActual==null){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),"Funcion " + id.toString() + " no existe");
+			throw new Exception("Variable " + id.toString() + " no existe");
+			}
+			if(symActual.getType().getType() != tablaSimbolos.T_VOID){
+				desplazamiento++; // apartamos memoria para el valor de retorno
+				Output.writeLn(symActual.getId() + "();");
+				Output.writeLn("t" + temp +" = STACK[p];");// obtenemos valor de retorno				
+    				pe.setCad("t" + temp);
+    				temp++;
+    				desplazamiento--;
+    				RESULT = pe;
+    			}// si es funcion a void no apartamos ni devolvemos nada
+    			else{
+    				Output.writeLn(symActual.getId() + "();");
+    				RESULT = null;
+    			}
+    		
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+		
+	:}
+ ;
+
+params ::= LPAREN actual_parameter_list:apl RPAREN {:RESULT = apl;:}
+;
+actual_parameter_list ::= actual_parameter_list:e1 comma actual_parameter:e {: e1.add(e); RESULT = e1;:}
+ | actual_parameter:e {:ArrayList ret = new ArrayList(); ret.add(e); RESULT = ret;:}
+ ;
+
+/*
+ * this forces you to check all this to be sure that only write and
+ * writeln use the 2nd and 3rd forms, you really can't do it easily in
+ * the grammar, especially since write and writeln aren't reserved
+ */
+actual_parameter ::= expression:e1 {: RESULT  = e1;:}
+ | expression:e1 COLON expression {: RESULT  = e1;:}
+ | expression:e1 COLON expression COLON expression {: RESULT  = e1;:}
+ ;
+
+goto_statement ::= GOTO label
+ ;
+
+case_statement ::= CASE case_index OF case_list_element_list END
+ | CASE case_index OF case_list_element_list SEMICOLON END
+ | CASE case_index OF case_list_element_list semicolon
+   otherwisepart statement END
+ | CASE case_index OF case_list_element_list semicolon
+   otherwisepart statement SEMICOLON END
+ ;
+
+case_index ::= expression:e {: switchExp = e;:} ;
+
+case_list_element_list ::= case_list_element_list semicolon case_list_element
+ | case_list_element
+ ;
+
+case_list_element ::= case_constant_list COLON iev  statement fef
+ ;
+
+otherwisepart ::= OTHERWISE
+ | OTHERWISE COLON
+ | ELSE
+ | ELSE COLON
+ ;
+
+control_variable ::= identifier:id {:
+    		ExpAttribute pe = new ExpAttribute();
+    		try{
+    			
+    			IlGen.Symbol s = tablaSimbolos.getVar(new String(id.toString()),currScope);
+    			if(s==null){
+    				s = tablaSimbolos.getVar(new String(id.toString()),"global");
+    			}
+    			if(s==null){
+    				throw new Exception("Variable " + id.toString() + " no existe");
+    			}
+    			pe.setTipo(s.getType().getType());
+    			if(s.getScope().equals("global")){
+    				//devolvemos string con nombre de variable global
+    				pe.setCad(new String(s.getId()));
+    			}
+    			else{	  				// devolvemos pila
+    				Output.writeLn("t" + temp +" = " + s.getPosition() + " + " + pos + ";");
+    				temp++;
+    				Output.writeLn("t" + temp +" = STACK[ t" + (temp - 1) + "];");
+    				temp++;
+    				pe.setCad("t" + (temp - 1));
+    			}    			
+    			RESULT = pe;
+    		}
+    		catch(Exception e){
+    			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString());
+    			throw(e);
+    		}
+    		:}
+;
+initial_value ::= expression:e1 {:RESULT = e1;:};
+
+direction ::= TO
+ | DOWNTO
+ ;
+
+final_value ::= expression:e1 {:RESULT = e1;:};
+
+record_variable_list ::= record_variable_list comma variable_access
+ | variable_access
+ ;
+
+boolean_expression ::= logical_or_expression:e1 {:RESULT = e1;:} 
+;
+
+logical_and_expression::=             
+	expression:e1 {:RESULT = e1;:}
+     |  logical_and_expression:e1 AND mark_and expression:e2 {: RESULT = e2;:}
+     ;
+
+logical_or_expression::=              
+	logical_and_expression:e1 {:RESULT = e1;:}
+     |  logical_or_expression:e1 OR mark_or logical_and_expression:e2 {: RESULT = e2;:}
+	;
+
+mark_and ::= /*empty*/	{:Output.writeLn(relleno.sacarVerdaderas());:}
+	;
+mark_or ::= /*empty*/	{:Output.writeLn(relleno.sacarFalsas());:}
+	;
+
+expression ::= simple_expression:e1 {:RESULT = e1;:}
+ | expression:e1 relop:op simple_expression:e2 {:
+     		Output.writeLn("if (" + e1.getCad() + op.getCad() + e2.getCad() + ") goto " + "L" + (etiqActual + 1)+";");
+     		Output.writeLn("goto " + "L" + (etiqActual + 2)+";");
+     		relleno.insertarTrue(etiqActual + 1); /*Insertamos a listado de etiquetas en relleno*/
+     		relleno.insertarFalse(etiqActual + 2); 
+     		etiqActual += 2; /*Aumentamos etiquetas*/
+     		 RESULT = e2; 
+     		:}
+ ;
+
+simple_expression ::= term:e1 {:RESULT = e1;:}
+ | simple_expression:e1 addop:op term:e2 {:
+     		if(SymTab.tiposCompatibles(e1.getTipo(),e2.getTipo())){
+     		 ExpAttribute pe = new ExpAttribute(new String("t" + temp),e1.getTipo()); 
+     		 Output.writeLn(pe.getCad() + " = " + e1.getCad() + op.getCad() + e2.getCad() + ";");
+     		 temp++;
+     		 RESULT = pe; 
+     		 }
+     		else{
+     			ErrorManager.agregarErrorSemantico(/*s.getPosLine()*/-1,/*s.getPosChar()*/-1,"Error: Type Mismatch, Tipo de datos entre operandos es invalido");
+     			throw new Exception("Error: Type Mismatch, Tipo de datos entre operandos es invalido");
+     		}
+     	:}
+ ;
+
+term ::= factor:e1 {:RESULT = e1;:}
+ | term:e1 mulop:op factor:e2 {:
+     		if(SymTab.tiposCompatibles(e1.getTipo(),e2.getTipo())){
+     		 ExpAttribute pe = new ExpAttribute(new String("t" + temp),e1.getTipo()); 
+     		 Output.writeLn(pe.getCad() + " = " + e1.getCad() + op.getCad() + e2.getCad() + ";");
+     		 temp++;
+     		 RESULT = pe; 
+     		 }
+     		else{
+     			ErrorManager.agregarErrorSemantico(/*s.getPosLine()*/-1,/*s.getPosChar()*/-1,"Error: Type Mismatch, Tipo de datos entre operandos de multiplicacion es invalido");
+     			throw new Exception("Error: Type Mismatch, Tipo de datos entre operandos de multiplicacion es invalido");
+     		}
+     	:}
+ ;
+
+factor ::= sign factor:e2 {: ExpAttribute pe = new ExpAttribute(new String("t" + temp),e2.getTipo()); 
+     		 Output.writeLn(pe.getCad() + " = " + "0 - " + e2.getCad() + ";");
+     		 temp++;
+     		 RESULT = pe; :}
+ | exponentiation:e1 {:RESULT = e1;:}
+ ;
+
+exponentiation ::= primary:e1 {:RESULT = e1;:}
+ | primary:e1 STARSTAR:s exponentiation:e2 {:
+     		if(SymTab.tiposCompatibles(e1.getTipo(),e2.getTipo())){
+     		 ExpAttribute pe = new ExpAttribute(new String("t" + temp),e1.getTipo()); 
+     		 Output.writeLn(pe.getCad() + " = " + e1.getCad() + " ^ " + e2.getCad() + ";");
+     		 temp++;
+     		 RESULT = pe; 
+     		 }
+     		else{
+     			ErrorManager.agregarErrorSemantico(s.getPosLine(),s.getPosChar(),"Error: Type Mismatch, Tipo de datos entre operandos de exponenciacion es invalido");
+     			throw new Exception("Error: Type Mismatch, Tipo de datos entre operandos de exponenciacion es invalido");
+     		}
+     	:}
+ ;
+
+primary ::= variable_access:e1 {:RESULT = e1;:}
+ | unsigned_constant:e1 {:RESULT = e1;:}
+ | function_designator:e1 {:RESULT = e1;:}
+// | set_constructor
+ | LPAREN mark_e1 boolean_expression:e1 RPAREN {: /*Fusionamos listas de verdadero y false*/
+    					relleno.fusionarListas(); 
+    					RESULT = e1;:}
+ | NOT primary:e1 {:relleno.invertir();RESULT = e1;:}
+ ;
+
+mark_e1 ::= /* empty */ {: relleno.nuevaLista();/*Creamos nueva lista de V y F y las asignamos como actual*/:}
+	;
+
+unsigned_constant ::= unsigned_number:en {:RESULT = en;:}
+ | CHARACTER_STRING:st {:ExpAttribute pe = new ExpAttribute(new String(st.toString()),SymTab.T_STRING); RESULT = pe;:}
+ | NIL {:ExpAttribute pe = new ExpAttribute(null,SymTab.T_VOID); RESULT = pe;:}
+ ;
+
+unsigned_number ::= unsigned_integer:en {:RESULT = en;:} | unsigned_real:en {:RESULT = en;:} ;
+
+unsigned_integer ::= DIGSEQ:ft {:ExpAttribute pe = new ExpAttribute(new String(ft.toString()),SymTab.T_INT); RESULT = pe;:}
+ ;
+
+unsigned_real ::= REALNUMBER:ft  {:ExpAttribute pe = new ExpAttribute(new String(ft.toString()),SymTab.T_FLOAT); RESULT = pe;:}
+ ;
+
+/* functions with no params will be handled by plain identifier */
+function_designator ::= identifier:id params:la {:
+		try{			
+			ExpAttribute pe = new ExpAttribute();
+			int count = 0;
+			IlGen.Symbol symActual = tablaSimbolos.getFunc(id.toString(),currScope);
+			//si es funcion, apartamos memoria para valor de retorno y lo devolvemos cmo expAttributte
+			if(symActual==null){
+				symActual = tablaSimbolos.getFunc(id.toString(),"global");
+			}
+			if(symActual==null){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),"Funcion " + id.toString() + " no existe");
+			throw new Exception("Variable " + id.toString() + " no existe");
+			}
+			if(symActual.getSize() != la.size() && symActual.getSize() != -1){
+				ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),"Error: Numero de parametros invalido para la llamada a " + id.toString());
+				throw new Exception("Error: Numero de parametros invalido para la llamada");				
+			}
+			if(symActual.getType().getType() != SymTab.T_VOID){
+				
+
+				//pos += desplazamiento;	
+				desplazamiento++; // apartamos memoria para el valor de retorno
+				count = 1;
+				Iterator i = la.iterator();
+				ExpAttribute eactual;				
+				while(i.hasNext()){
+					eactual = (ExpAttribute) i.next();				
+					Output.writeLn("t" + temp +" = p + " + count/*s.getPosition()*/ + ";");
+    				temp++;
+					Output.writeLn("STACK[ t" + (temp - 1) + "] = " + eactual.getCad() +";");// obtenemos
+					//desplazamiento ++;
+					count ++;
+				}			
+				//if(!symActual.getScope().equals("global"))
+				//	pos += desplazamiento;					
+				
+				Output.writeLn("p = p + " + count + ";");
+				Output.writeLn(symActual.getId() + "();");
+				Output.writeLn("p = p - " + count + ";");
+				Output.writeLn("t" + temp +" = STACK[p];");// obtenemos valor de retorno				
+				// push a todos los parametros y les asignamos memoria
+    				pe.setCad("t" + temp);
+    				temp++;
+    				RESULT = pe;
+    			}// si es funcion a void no apartamos ni devolvemos nada
+    			else{
+    				pos += desplazamiento;
+				Iterator i = la.iterator();
+				ExpAttribute eactual;				
+				while(i.hasNext()){
+					eactual = (ExpAttribute) i.next();				
+					Output.writeLn("t" + temp +" = p + " + count/*s.getPosition()*/ + ";");
+    				temp++;			
+					Output.writeLn("STACK[ t" + (temp - 1) + "] = " + eactual.getCad() +";");// obtenemos
+					//desplazamiento ++;
+					count ++;
+				}			
+				if(!symActual.getScope().equals("global"))
+					pos += desplazamiento;					
+				Output.writeLn("p = p + " + count + ";");
+				Output.writeLn(symActual.getId() + "();");
+				Output.writeLn("p = p - " + count + ";");
+				Output.writeLn("t" + temp +" = STACK[p];");// obtenemos valor de retorno				
+				// push a todos los parametros y les asignamos memoria
+    				pe.setCad("t" + temp);
+    				temp++;
+    				RESULT = pe;
+    			}    		
+		}
+		catch(Exception e){
+			ErrorManager.agregarErrorSemantico(id.getPosLine(),id.getPosChar(),e.toString()/*"Error: Funcion " + ident.toString() +" ya definida previamente"*/);
+			throw(e);
+		}
+	:}
+		
+ ;
+
+rwargs ::= rwargs:rs COMMA rwarg:ra {: rs.add(ra); RESULT = rs;:}
+	| rwarg:ra {:
+		ArrayList ret = new ArrayList();
+		ret.add(ra);
+		RESULT = ret;
+	:}
+	;
+
+rwarg ::= variable_access:va {:
+		RESULT = va;
+	:}
+	| unsigned_constant:c {: 
+		//ExpAttribute e = new ExpAttribute(c.toString());
+		RESULT = c;
+	:}
+	;
+
+set_constructor ::= LBRAC member_designator_list RBRAC
+ | LBRAC RBRAC
+ ;
+
+member_designator_list ::= member_designator_list comma member_designator
+ | member_designator
+ ;
+
+member_designator ::= member_designator DOTDOT expression
+ | expression
+ ;
+
+addop ::= PLUS {:ExpAttribute pe = new ExpAttribute(new String(" + "),SymTab.T_OP); RESULT = pe;:}
+ | MINUS {:ExpAttribute pe = new ExpAttribute(new String(" - "),SymTab.T_OP); RESULT = pe;:}
+// | OR 
+ ;
+
+mulop ::= STAR {:ExpAttribute pe = new ExpAttribute(new String(" * "),SymTab.T_OP); RESULT = pe;:}
+ | SLASH {:ExpAttribute pe = new ExpAttribute(new String(" / "),SymTab.T_OP); RESULT = pe;:}
+ | DIV {:ExpAttribute pe = new ExpAttribute(new String(" / "),SymTab.T_OP); RESULT = pe;:}
+ | MOD {:ExpAttribute pe = new ExpAttribute(new String(" % "),SymTab.T_OP); RESULT = pe;:}
+// | AND
+ ;
+
+relop ::= EQUAL {:ExpAttribute pe = new ExpAttribute(new String(" == "),SymTab.T_OP); RESULT = pe;:}
+ | NOTEQUAL {:ExpAttribute pe = new ExpAttribute(new String(" != "),SymTab.T_OP); RESULT = pe;:}
+ | LT {:ExpAttribute pe = new ExpAttribute(new String(" < "),SymTab.T_OP); RESULT = pe;:}
+ | GT {:ExpAttribute pe = new ExpAttribute(new String(" > "),SymTab.T_OP); RESULT = pe;:}
+ | LE {:ExpAttribute pe = new ExpAttribute(new String(" <= "),SymTab.T_OP); RESULT = pe;:}
+ | GE {:ExpAttribute pe = new ExpAttribute(new String(" >= "),SymTab.T_OP); RESULT = pe;:}
+ | IN {:ExpAttribute pe = new ExpAttribute(new String(" IN "),SymTab.T_OP); RESULT = pe;:}
+ ;
+
+identifier ::= IDENTIFIER:id {: RESULT = id; :}
+ ;
+
+semicolon ::= SEMICOLON
+ ;
+
+comma ::= COMMA
+ ;

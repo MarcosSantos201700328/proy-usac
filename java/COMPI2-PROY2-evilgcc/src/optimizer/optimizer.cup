@@ -1,0 +1,165 @@
+package optimizer;
+
+import IlGen.*;
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+//import vmw.*;
+//import lalrgen.*;
+import errormanager.*;
+
+// Preliminaries to set up and use the scanner.  
+//init with {: scanner.init();    :}
+//scan with {: return scanner.next_token();:};
+
+
+action code {:	
+	//static Vacc engine;
+
+:};
+parser code {:
+	public void syntax_error(java_cup.runtime.Symbol cur_token){
+		//TokenValue tk = (TokenValue) cur_token.value;
+		//if(cur_token.value == null){
+			ErrorManager.agregarErrorSintactico(((TokenValue)cur_token.value).getPosLine(),((TokenValue)cur_token.value).getPosChar(),"Error de Sintaxis al leer " + cur_token.value + " esto no va aqui");
+			System.out.println("(" + ((TokenValue)cur_token.value).getPosLine() + "," + ((TokenValue)cur_token.value).getPosChar() + "): Error de Sintaxis al leer " + cur_token.value + " esto no va aqui");
+	//	}
+	//	else{
+	//		ErrorManager.agregarErrorSintactico(tk.getPosLine(),tk.getPosChar(),"Error de Sintaxis en simbolo " + tk.toString());
+	//		System.out.println("Error de Sintaxis");
+	//	}
+		//report_fatal_error("Error de Sintaxis", tk);
+		done_parsing();
+	}
+
+	public static void main(String args[]){
+		if(args[0] != null){
+			try{
+				OptParser p = new OptParser(new OptLexer(new FileReader(args[0])));
+				p.debug_parse();
+				//p.parse();
+ 			}
+ 			catch(Exception e){
+ 				System.out.println(e);
+ 			}
+ 			//finally{
+ 			//	Output.close();
+ 			//}
+ 		}
+// 		if(args[0] != null){
+// 			try{
+// 			Output.setOutputFile("/home/kreig/test","outtest");
+// 			CppParser p = new CppParser(new CppLexer(new FileReader(args[0])));
+// 			p.debug_parse();
+// 			//p.parse();
+// 			}
+// 			catch(Exception e){
+// 				System.out.println(e);
+// 			}
+// 			finally{
+// 				Output.close();
+// 			}
+// 		}
+	}
+	
+	public static String a_bitoActual = new String("$root");
+
+:};
+/* Terminals (tokens returned by the scanner). */
+
+/**keywords*/
+terminal TokenValue VOID, IDENTIFIER, APAR, CPAR, SEMICOLON, COLON, EQUALS, PERCENT;
+terminal TokenValue ACOR, CCOR, INTEGER_LITERAL, CHAR_LITERAL, FLOATING_LITERAL;
+terminal TokenValue PLUS, MINUS, ASTERISK, SLASH, SHR, SHL, ALLAVE, CLLAVE;
+terminal TokenValue IF, GOTO, LE,GE, EQ, NE, LT, GT, PRINTF, SCANF, STRING_LITERAL;
+/* Non-terminals */
+
+non terminal TokenValue optimizer, proc, proc_head, proc_body, statements, statement,asig, id_num, ifstmt, label, callstmt,  gotostmt, initial;
+
+non terminal Integer arit_op, op_comp;
+
+non terminal String iostmt, setup;
+
+/*
+precedence left CPAR;
+precedence right ELSE;
+*/
+start with initial;
+/* The grammar */
+
+initial ::= setup optimizer {: Optimizer.naranjas(); //debug
+:}
+;
+
+setup ::= /*empty*/ {:Optimizer.init();:}
+	;
+optimizer ::= optimizer proc
+	| proc
+	;
+
+proc ::= proc_head:ph proc_body:pb {:Optimizer.addEndProc(ph.toString(),pb.getPosLine());:}
+	;
+
+proc_head ::= VOID IDENTIFIER:id APAR CPAR {:Optimizer.addBeginProc(id.toString(),id.getPosLine()); RESULT = id;:}
+	;
+
+proc_body ::= ALLAVE statements CLLAVE:cl {: RESULT = cl;:}
+	;
+
+statements ::= statements statement
+	| statement
+	;
+
+statement ::= asig SEMICOLON
+	| ifstmt SEMICOLON
+	| label COLON
+	| gotostmt SEMICOLON
+	| callstmt SEMICOLON
+	| SEMICOLON
+	| iostmt
+	;
+asig ::= IDENTIFIER:id1 EQUALS IDENTIFIER:id2 ACOR id_num:id3 CCOR {:Optimizer.addDesRef(id1.toString(),id2.toString(),id3.toString(),id1.getPosLine());:}
+	| IDENTIFIER:id1 ACOR id_num:id2 CCOR EQUALS id_num:id3 {:Optimizer.addMatAsig(id1.toString(),id2.toString(),id3.toString(),id1.getPosLine());:}
+	| IDENTIFIER:id1 EQUALS id_num:id2 arit_op:op id_num:id3 {:Optimizer.addAritOp(id1.toString(),id2.toString(),id3.toString(),op.intValue(),id1.getPosLine());:}
+	| IDENTIFIER:id1 EQUALS id_num:id2 {:Optimizer.addScalarAsig(id1.toString(),id2.toString(),id1.getPosLine());:}
+	;
+
+id_num ::= IDENTIFIER:id {: RESULT = id;:}
+	| INTEGER_LITERAL:il {: RESULT = il;:}
+	| CHAR_LITERAL:cl {: RESULT = cl;:}
+	| FLOATING_LITERAL:fl {: RESULT = fl;:}
+	| STRING_LITERAL:sl {: RESULT = sl;:}
+	;
+
+arit_op ::= PLUS {:RESULT = new Integer(Optimizer.OP_PLUS); :}
+	| MINUS {:RESULT = new Integer(Optimizer.OP_MINUS); :}
+	| ASTERISK {:RESULT = new Integer(Optimizer.OP_MULT); :}
+	| SLASH {:RESULT = new Integer(Optimizer.OP_DIV); :}
+	| PERCENT {:RESULT = new Integer(Optimizer.OP_MOD); :}
+	;
+
+ifstmt ::= IF APAR id_num:id1 op_comp:op id_num:id2 CPAR GOTO IDENTIFIER:id3 {:Optimizer.addIf(id1.toString(),op.intValue(),id2.toString(),id3.toString(),id1.getPosLine());:}
+	;
+
+gotostmt ::= GOTO IDENTIFIER:id {:Optimizer.addGoto(id.toString(),id.getPosLine());:}
+	;
+	
+label ::= IDENTIFIER:id {:Optimizer.addLabel(id.toString(),id.getPosLine());:}
+	;
+
+callstmt ::= IDENTIFIER:id APAR CPAR  {:Optimizer.addIgnoreString(
+						new String(id + "();")
+						,id.getPosLine());:}
+	;
+
+iostmt ::= PRINTF:pf {:Optimizer.addIgnoreString(pf.toString(),pf.getPosLine());:}
+	| SCANF:sf   {:Optimizer.addIgnoreString(sf.toString(),sf.getPosLine());:}
+	;
+
+op_comp ::= LE {:RESULT = new Integer(Optimizer.OP_LE); :}
+	| GE {:RESULT = new Integer(Optimizer.OP_GE); :}
+	| EQ {:RESULT = new Integer(Optimizer.OP_EQ); :}
+	| NE {:RESULT = new Integer(Optimizer.OP_NE); :}
+	| LT {:RESULT = new Integer(Optimizer.OP_LT); :}
+	| GT {:RESULT = new Integer(Optimizer.OP_GT); :}
+	;

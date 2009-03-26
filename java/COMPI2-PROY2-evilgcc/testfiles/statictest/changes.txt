@@ -1,0 +1,17 @@
+TraChanges in Pascal:
+value_parameter_specification ::= 
+	Added a validation to take only the variables and not the matrixes
+indexed_variable ::= matrix_head:mh LBRAC index_expression_list:re RBRAC
+	Added type from matrix head to returned expression with line
+		pe.setTipo(s.getType().getType());	
+Changed the syntax to complain with the C89 grammar
+Add a main() function to the 3-address code
+Fix the SetPosition
+Fix the matrix alignment on declaration
+Fix the Calls adding return value
+Fix the Stack ptr count
+Translate the print calls to the C89 Equivalent
+TODO:
+Fix the Label Generator
+Test with the Official Input Files
+Reflex all this changes to the CPP grammar

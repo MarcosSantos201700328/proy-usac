@@ -1,0 +1,5 @@
+cd /home/kreig/tmp
+mvc /home/kreig/test/test2.cpp
+show -s sx
+
+

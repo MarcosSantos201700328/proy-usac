@@ -1,0 +1,490 @@
+package IlGen;
+
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+//import vmw.*;
+//import lalrgen.*;
+import errormanager.*;
+
+// Preliminaries to set up and use the scanner.  
+//init with {: scanner.init();    :}
+//scan with {: return scanner.next_token();:};
+
+
+action code {:	
+	//static Vacc engine;
+:};
+parser code {:
+
+	public static void main(String args[]){
+		if(args[0] != null){
+			try{
+			CppParser p = new CppParser(new CppLexer(new FileReader(args[0])));
+			p.debug_parse();
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+		}
+	}
+	
+	public static String a_bitoActual = new String("$root");
+
+:};
+/* Terminals (tokens returned by the scanner). */
+
+/**keywords*/
+terminal SIZEOF,THIS;
+terminal CASE, DEFAULT, IF, ELSE, SWITCH, WHILE, DO, FOR, CONTINUE, BREAK, RETURN;
+terminal TYPEDEF, EXTERN, STATIC, AUTO, REGISTER, PUBLIC, PROTECTED, PRIVATE,VIRTUAL, INLINE;
+terminal BOOL, CHAR, INT, FLOAT, CONST, VOLATILE, VOID;
+terminal CLASS, STRUCT, UNION ;
+/**Literals*/
+terminal IDENTIFIER, STRING_LITERAL, INTEGER_LITERAL ,CHAR_LITERAL, FLOATING_LITERAL,FALSE,TRUE,NULL_LITERAL;
+/**operators*/
+terminal INC, DEC, SHL, SHR, LE, GE, EQ, NE,DELETE,NEW;
+terminal ASS_MUL, ASS_DIV, ASS_MOD ,ASS_ADD;
+terminal ASS_SUB, ASS_SHL ,ASS_SHR,ASS_AND;
+terminal ASS_XOR, ASS_OR;
+terminal PUNTO /*.*/,COMA /*,*/,AMPERSAND/*&*/,ASTERISK/* * */,LOG_AND/*&&*/,LOG_OR/*||*/, PLUS/*+*/,MINUS/*-*/,NOTBIN/*~*/,NOTLOG/*!*/,SLASH/* / */ ,DOT_STAR/*.**/,ARROW_STAR/*->**/,SCOPE/*::*/,ARROW/*->*/;
+/**Marks*/
+terminal ELLIPSIS/*...*/, APAR /*(*/, CPAR /*)*/, ACOR /*[*/, CCOR /*]*/, PERCENT/*%*/,LT/*<*/,GT/*>*/,CARET/*^*/,BAR/*|*/,QUEST/*?*/,COLON/*:*/,EQUALS/*=*/,SEMICOLON/*;*/,ALLAVE/*{*/,CLLAVE/*}*/;//,NUMERAL/*#*/;
+/**Util*/
+terminal SHIFT_THERE, REDUCE_HERE_MOSTLY;
+
+/* Non-terminals */
+
+non terminal identifier, id ,global_scope,id_scope,nested_id, scoped_id,destructor_id, nested_special_function_id, scoped_special_function_id, declarator_id, built_in_type_id;
+non terminal pseudo_destructor_id, nested_pseudo_destructor_id, scoped_pseudo_destructor_id, string, literal, boolean_literal, translation_unit, primary_expression, abstract_expression, type1_parameters, mark_type1, postfix_expression, expression_list_opt, expression_list, unary_expression;
+non terminal delete_expression, new_expression, new_type_id, new_declarator, direct_new_declarator, new_initializer_opt, cast_expression, pm_expression, multiplicative_expression, additive_expression;
+non terminal shift_expression, relational_expression, equality_expression, and_expression, exclusive_or_expression, inclusive_or_expression, logical_or_expression, logical_and_expression;
+non terminal conditional_expression, assignment_expression, assignment_operator, expression_opt, expression, constant_expression, looping_statement, looped_statement, statement, control_statement;
+non terminal labeled_statement, compound_statement, statement_seq_opt, selection_statement, condition_opt, condition, iteration_statement, for_init_statement, jump_statement;
+non terminal declaration_statement, compound_declaration, declaration_seq_opt, looping_declaration, looped_declaration, declaration, specialised_declaration, block_declaration;
+non terminal simple_declaration, suffix_built_in_decl_specifier_raw, suffix_built_in_decl_specifier, suffix_named_decl_specifier, suffix_named_decl_specifier_bi;
+non terminal suffix_named_decl_specifiers, suffix_named_decl_specifiers_sf, suffix_decl_specified_ids, suffix_decl_specified_scope, decl_specifier_affix, decl_specifier_suffix, decl_specifier_prefix;
+non terminal storage_class_specifier, function_specifier, type_specifier, elaborate_type_specifier, simple_type_specifier, built_in_type_specifier, linkage_specification, init_declarations, init_declaration;
+non terminal star_ptr_operator, nested_ptr_operator, ptr_operator, ptr_operator_seq, ptr_operator_seq_opt, cv_qualifier_seq_opt, cv_qualifier;
+non terminal parenthesis_clause, parameters_clause, parameter_declaration_clause, parameter_declaration_list;
+non terminal abstract_pointer_declaration, abstract_parameter_declaration, special_parameter_declaration, parameter_declaration, function_definition, func_definition;
+non terminal ctor_definition, constructor_head, function_body, initializer_clause, braced_initializer, initializer_list, looping_initializer_clause, looped_initializer_clause, colon_mark;
+non terminal elaborated_class_specifier, class_specifier_head, class_key, class_specifier, member_specification_opt, looping_member_declaration, looped_member_declaration, member_declaration;
+non terminal simple_member_declaration, member_init_declarations, member_init_declaration, access_bility_specifier, bit_field_declaration, bit_field_width, bit_field_init_declaration;
+non terminal base_specifier_list, base_specifier, access_specifier;
+non terminal advance_search, bang, mark, nest, start_search, start_search1, util;
+
+
+
+
+/* Precedences */
+precedence nonassoc SHIFT_THERE;
+precedence nonassoc SCOPE, ELSE, INC, DEC, PLUS, MINUS, ASTERISK, AMPERSAND, ACOR, ALLAVE, LT, COLON, STRING_LITERAL, NULL_LITERAL;
+precedence nonassoc REDUCE_HERE_MOSTLY;
+precedence nonassoc APAR;
+
+/*
+precedence left CPAR;
+precedence right ELSE;
+*/
+start with translation_unit;
+/* The grammar */
+
+/*IDENTIFIERs*/
+
+identifier::=                         IDENTIFIER
+;id::=                                 identifier                          %prec SHIFT_THERE       /* Force < through test */
+;global_scope::=                       SCOPE
+;id_scope::=                           id SCOPE
+
+;nested_id::=                          id                                  %prec SHIFT_THERE       /* Maximise length */
+     |  id_scope nested_id
+;scoped_id::=                          nested_id
+     |  global_scope nested_id
+
+
+/*Destructor*/
+
+;destructor_id::=                      NOTBIN id
+;nested_special_function_id::=      id_scope destructor_id
+     |  id_scope nested_special_function_id
+;scoped_special_function_id::=         nested_special_function_id
+     |  global_scope nested_special_function_id
+
+;declarator_id::=                      scoped_id
+     |  scoped_special_function_id
+     |  destructor_id
+
+/*pseudodestructor*/
+
+;built_in_type_id::=                   built_in_type_specifier
+     |  built_in_type_id built_in_type_specifier
+;pseudo_destructor_id::=               built_in_type_id SCOPE NOTBIN built_in_type_id
+     |  NOTBIN built_in_type_id
+;nested_pseudo_destructor_id::=        pseudo_destructor_id
+     |  id_scope nested_pseudo_destructor_id
+;scoped_pseudo_destructor_id::=        nested_pseudo_destructor_id
+     |  global_scope scoped_pseudo_destructor_id
+
+/*Lexical Conventions*/
+
+
+;string::=                             STRING_LITERAL
+					| NULL_LITERAL
+/*;string::=                           StringLiteral                           %prec SHIFT_THERE */
+/*  |                               StringLiteral string  -- Perverse order avoids conflicts -- */
+;literal::=                            INTEGER_LITERAL
+     |  CHAR_LITERAL
+     |  FLOATING_LITERAL
+     |  string
+     |  boolean_literal
+;boolean_literal::=                    FALSE
+     |  TRUE
+                            global_scope scoped_pseudo_destructor_id
+/*Init*/
+
+;translation_unit::=                   declaration_seq_opt
+
+/*Expressions*/
+;primary_expression::=                 literal
+     |  THIS
+     |  suffix_decl_specified_ids
+    |      
+/*abstract exp*/                         abstract_expression               %prec REDUCE_HERE_MOSTLY  /* Prefer_binary to unary ops, cast to call */
+;abstract_expression::=                parenthesis_clause
+     |  ACOR expression_opt CCOR    
+/*param*/                     
+;type1_parameters::=       /*----*/    parameter_declaration_list SEMICOLON
+    |                   /*----*/    type1_parameters parameter_declaration_list SEMICOLON
+;mark_type1::=                         /* empty */                                             //{ mark_type1(); yyclearin; }
+;postfix_expression::=                 primary_expression
+    |                   /*----*/    postfix_expression parenthesis_clause mark_type1 MINUS
+    |                   /*----*/    postfix_expression parenthesis_clause mark_type1 PLUS type1_parameters mark ALLAVE error 
+    |                   /*----*/    postfix_expression parenthesis_clause mark_type1 PLUS type1_parameters mark error 
+                        /*----*/                    //{ yyerrok; yyclearin; remark_type1(); unmark(); unmark(); }
+    |                   /*----*/    postfix_expression parenthesis_clause mark_type1 PLUS error
+                        /*----*/                   // { yyerrok; yyclearin; remark_type1(); unmark(); }
+     |  postfix_expression ACOR expression_opt CCOR
+     |  postfix_expression PUNTO declarator_id
+     |  postfix_expression PUNTO scoped_pseudo_destructor_id
+     |  postfix_expression ARROW declarator_id
+     |  postfix_expression ARROW scoped_pseudo_destructor_id   
+     |  postfix_expression INC
+     |  postfix_expression DEC
+;expression_list_opt::=                /* empty */
+     |  expression_list
+;expression_list::=                    assignment_expression
+     |  expression_list COMA assignment_expression
+
+;unary_expression::=                   postfix_expression
+     |  INC cast_expression
+     |  DEC cast_expression
+     |  ptr_operator cast_expression
+     |  suffix_decl_specified_scope star_ptr_operator cast_expression   /* covers e.g int ::;type::=:* const t = 4 */
+     |  PLUS cast_expression
+     |  MINUS cast_expression
+     |  NOTLOG cast_expression
+     |  NOTBIN cast_expression
+     |  SIZEOF unary_expression
+     |  new_expression
+     |  global_scope new_expression
+     |  delete_expression
+     |  global_scope delete_expression
+;delete_expression::=                  DELETE cast_expression                                  /* also covers DELETE[] cast_expression */
+
+;new_expression::=                     NEW new_type_id new_initializer_opt
+     |  NEW parameters_clause new_type_id new_initializer_opt
+     |  NEW parameters_clause
+     |  NEW parameters_clause parameters_clause new_initializer_opt
+;new_type_id::=                        type_specifier ptr_operator_seq_opt
+     |  type_specifier new_declarator
+     |  type_specifier new_type_id
+;new_declarator::=                     ptr_operator new_declarator
+     |  direct_new_declarator
+;direct_new_declarator::=              ACOR expression CCOR
+     |  direct_new_declarator ACOR constant_expression CCOR
+;new_initializer_opt::=                /* empty */
+     |  APAR expression_list_opt CPAR
+/*cast expressions*/
+;cast_expression::=                    unary_expression
+     |  abstract_expression cast_expression
+;pm_expression::=                      cast_expression
+     |  pm_expression DOT_STAR cast_expression
+     |  pm_expression ARROW_STAR cast_expression
+;multiplicative_expression::=          pm_expression
+     |  multiplicative_expression star_ptr_operator pm_expression
+     |  multiplicative_expression SLASH pm_expression
+     |  multiplicative_expression PERCENT pm_expression
+;additive_expression::=                multiplicative_expression
+     |  additive_expression PLUS multiplicative_expression
+     |  additive_expression MINUS multiplicative_expression
+;shift_expression::=                   additive_expression
+     |  shift_expression SHL additive_expression
+     |  shift_expression SHR additive_expression
+;relational_expression::=              shift_expression
+     |  relational_expression LT shift_expression
+     |  relational_expression GT shift_expression
+     |  relational_expression LE shift_expression
+     |  relational_expression GE shift_expression
+;equality_expression::=                relational_expression
+     |  equality_expression EQ relational_expression
+     |  equality_expression NE relational_expression
+;and_expression::=                     equality_expression
+     |  and_expression AMPERSAND equality_expression
+;exclusive_or_expression::=            and_expression
+     |  exclusive_or_expression CARET and_expression
+;inclusive_or_expression::=            exclusive_or_expression
+     |  inclusive_or_expression BAR exclusive_or_expression
+;logical_and_expression::=             inclusive_or_expression
+     |  logical_and_expression LOG_AND inclusive_or_expression
+;logical_or_expression::=              logical_and_expression
+     |  logical_or_expression LOG_OR logical_and_expression
+;conditional_expression::=             logical_or_expression
+     |  logical_or_expression QUEST expression COLON assignment_expression
+/*assignment expression*/
+;assignment_expression::=              conditional_expression
+     |  logical_or_expression assignment_operator assignment_expression
+     |  logical_or_expression EQUALS braced_initializer
+;assignment_operator::=                EQUALS | ASS_ADD | ASS_AND | ASS_DIV | ASS_MOD | ASS_MUL | ASS_OR | ASS_SHL | ASS_SHR | ASS_SUB | ASS_XOR
+/*expression*/
+;expression_opt::=                     /* empty */
+     |  expression
+;expression::=                         assignment_expression
+     |  expression_list COMA assignment_expression
+;constant_expression::=                conditional_expression
+
+/*Statements*/
+;looping_statement::=                  start_search looped_statement                               //{ end_search(); }
+;looped_statement::=                   statement
+     |  advance_search PLUS looped_statement
+     |  advance_search MINUS
+;statement::=                          control_statement
+/*  |                               expression_statement                                        -- covered by declaration_statement */
+     |  compound_statement
+     |  declaration_statement
+;control_statement::=                  labeled_statement
+     |  selection_statement
+     |  iteration_statement
+     |  jump_statement
+;labeled_statement::=                  identifier COLON looping_statement
+     |  CASE constant_expression COLON looping_statement
+     |  DEFAULT COLON looping_statement
+/*;expression_statement::=             expression_opt SEMICOLON                                          -- covered by declaration_statement */
+;compound_statement::=                 ALLAVE statement_seq_opt CLLAVE
+//     |  ALLAVE statement_seq_opt looping_statement NUMERAL bang error CLLAVE  //{ UNBANG("Bad statement-seq."); }
+;statement_seq_opt::=                  /* empty */
+     |  statement_seq_opt looping_statement
+//     |  statement_seq_opt looping_statement NUMERAL bang error SEMICOLON      //{ UNBANG("Bad statement."); }
+
+/*if-while-for-jump*/
+;selection_statement::=                IF APAR condition CPAR looping_statement    %prec SHIFT_THERE
+     |  IF APAR condition CPAR looping_statement ELSE looping_statement
+     |  SWITCH APAR condition CPAR looping_statement
+;condition_opt::=                      /* empty */
+     |  condition
+;condition::=                          parameter_declaration_list
+/*  |                               expression                                                  -- covered by parameter_declaration_list */
+/*  |                               type_specifier_seq declarator EQUALS assignment_expression     -- covered by parameter_declaration_list */
+;iteration_statement::=                WHILE APAR condition CPAR looping_statement
+     |  DO looping_statement WHILE APAR expression CPAR SEMICOLON
+     |  FOR APAR for_init_statement condition_opt SEMICOLON expression_opt CPAR looping_statement
+
+;for_init_statement::=                 simple_declaration
+/*  |                               expression_statement                                        -- covered by simple_declaration */
+;jump_statement::=                     BREAK SEMICOLON
+     |  CONTINUE SEMICOLON
+     |  RETURN expression_opt SEMICOLON
+;declaration_statement::=              block_declaration
+
+/* Declarations*/
+;compound_declaration::=               ALLAVE nest declaration_seq_opt CLLAVE                            //{ unnest(); }
+//     |  ALLAVE nest declaration_seq_opt util looping_declaration NUMERAL bang error CLLAVE
+                                                                                                //{ unnest(); UNBANG("Bad declaration-seq."); }
+;declaration_seq_opt::=                /* empty */
+     |  declaration_seq_opt util looping_declaration
+//     |  declaration_seq_opt util looping_declaration NUMERAL bang error SEMICOLON //{ UNBANG("Bad declaration."); }
+;looping_declaration::=                start_search1 looped_declaration                            //{ end_search(); }
+;looped_declaration::=                 declaration
+     |  advance_search PLUS looped_declaration
+     |  advance_search MINUS
+;declaration::=                        block_declaration
+     |  function_definition
+/*  |                               explicit_instantiation                                      -- covered by relevant declarations */
+     |  specialised_declaration
+;specialised_declaration::=            linkage_specification
+;block_declaration::=                  simple_declaration
+;simple_declaration::=                 SEMICOLON
+     |  init_declaration SEMICOLON
+     |  init_declarations SEMICOLON
+     |  decl_specifier_prefix simple_declaration
+;suffix_built_in_decl_specifier_raw::= built_in_type_specifier
+     |  suffix_built_in_decl_specifier_raw built_in_type_specifier
+     |  suffix_built_in_decl_specifier_raw decl_specifier_suffix
+;suffix_built_in_decl_specifier::=     suffix_built_in_decl_specifier_raw
+;suffix_named_decl_specifier::=        scoped_id
+     |  elaborate_type_specifier
+     |  suffix_named_decl_specifier decl_specifier_suffix
+;suffix_named_decl_specifier_bi::=     suffix_named_decl_specifier
+     |  suffix_named_decl_specifier suffix_built_in_decl_specifier_raw
+;suffix_named_decl_specifiers::=       suffix_named_decl_specifier_bi
+     |  suffix_named_decl_specifiers suffix_named_decl_specifier_bi
+;suffix_named_decl_specifiers_sf::=    scoped_special_function_id          /* operators etc */
+     |  suffix_named_decl_specifiers
+     |  suffix_named_decl_specifiers scoped_special_function_id
+;suffix_decl_specified_ids::=          suffix_built_in_decl_specifier
+     |  suffix_built_in_decl_specifier suffix_named_decl_specifiers_sf
+     |  suffix_named_decl_specifiers_sf
+;suffix_decl_specified_scope::=        suffix_named_decl_specifiers SCOPE
+     |  suffix_built_in_decl_specifier suffix_named_decl_specifiers SCOPE
+     |  suffix_built_in_decl_specifier SCOPE
+
+;decl_specifier_affix::=               storage_class_specifier
+     |  function_specifier
+     |  TYPEDEF
+     |  cv_qualifier
+
+;decl_specifier_suffix::=              decl_specifier_affix
+
+;decl_specifier_prefix::=              decl_specifier_affix
+
+;storage_class_specifier::=            REGISTER | STATIC
+     |  EXTERN                  %prec SHIFT_THERE                   /* Prefer linkage specification */
+     |  AUTO
+/*toremove*/
+;function_specifier::=              INLINE
+     |  VIRTUAL
+
+;type_specifier::=                     simple_type_specifier
+     |  elaborate_type_specifier
+     |  cv_qualifier
+
+;elaborate_type_specifier::=           class_specifier
+     |  elaborated_class_specifier
+;simple_type_specifier::=              scoped_id
+     |  built_in_type_specifier
+;built_in_type_specifier::=            CHAR | BOOL | INT | FLOAT | VOID
+/*toremove*/
+;linkage_specification::=              EXTERN string looping_declaration
+     |  EXTERN string compound_declaration
+
+/*Declarators*/
+;init_declarations::=                  assignment_expression COMA init_declaration
+     |  init_declarations COMA init_declaration
+;init_declaration::=                   assignment_expression
+;star_ptr_operator::=                  ASTERISK
+     |  star_ptr_operator cv_qualifier
+;nested_ptr_operator::=                star_ptr_operator
+     |  id_scope nested_ptr_operator
+;ptr_operator::=                       AMPERSAND
+     |  nested_ptr_operator
+     |  global_scope nested_ptr_operator
+;ptr_operator_seq::=                   ptr_operator
+     |  ptr_operator ptr_operator_seq
+;ptr_operator_seq_opt::=               /* empty */                         %prec SHIFT_THERE       /* Maximise type length */
+     |  ptr_operator ptr_operator_seq_opt
+
+;cv_qualifier_seq_opt::=               /* empty */
+     |  cv_qualifier_seq_opt cv_qualifier
+;cv_qualifier::=                       CONST | VOLATILE
+;parenthesis_clause::=                 parameters_clause cv_qualifier_seq_opt
+;parameters_clause::=                  APAR parameter_declaration_clause CPAR
+;parameter_declaration_clause::=       /* empty */
+     |  parameter_declaration_list
+     |  parameter_declaration_list ELLIPSIS
+;parameter_declaration_list::=         parameter_declaration
+     |  parameter_declaration_list COMA parameter_declaration
+;abstract_pointer_declaration::=       ptr_operator_seq
+     |  multiplicative_expression star_ptr_operator ptr_operator_seq_opt
+;abstract_parameter_declaration::=     abstract_pointer_declaration
+     |  and_expression AMPERSAND
+     |  and_expression AMPERSAND abstract_pointer_declaration
+;special_parameter_declaration::=      abstract_parameter_declaration
+     |  abstract_parameter_declaration EQUALS assignment_expression
+     |  ELLIPSIS
+;parameter_declaration::=              assignment_expression
+     |  special_parameter_declaration
+     |  decl_specifier_prefix parameter_declaration
+;function_definition::=                ctor_definition
+     |  func_definition
+;func_definition::=                    assignment_expression function_body
+     |  decl_specifier_prefix func_definition
+;ctor_definition::=                    constructor_head function_body
+     |  decl_specifier_prefix ctor_definition
+;constructor_head::=                  bit_field_init_declaration
+     |  constructor_head COMA assignment_expression
+;function_body::=                      compound_statement
+;initializer_clause::=                 assignment_expression
+     |  braced_initializer
+;braced_initializer::=                 ALLAVE initializer_list CLLAVE
+     |  ALLAVE initializer_list COMA CLLAVE
+     |  ALLAVE CLLAVE
+//     |  ALLAVE looping_initializer_clause NUMERAL bang error CLLAVE           //{ UNBANG("Bad initializer_clause."); }
+//     |  ALLAVE initializer_list COMA looping_initializer_clause NUMERAL bang error CLLAVE
+                                                                                                //{ UNBANG("Bad initializer_clause."); }
+;initializer_list::=                   looping_initializer_clause
+     |  initializer_list COMA looping_initializer_clause
+;looping_initializer_clause::=         start_search looped_initializer_clause                      //{ end_search(); }
+;looped_initializer_clause::=          initializer_clause
+     |  advance_search PLUS looped_initializer_clause
+     |  advance_search MINUS
+
+/*Classes*/
+
+;colon_mark::=                         COLON                                                         //{ mark(); }
+;elaborated_class_specifier::=         class_key scoped_id                    %prec SHIFT_THERE
+     |  class_key scoped_id colon_mark error                        //{ rewind_colon(); }
+;class_specifier_head::=               class_key scoped_id colon_mark base_specifier_list ALLAVE      //{ unmark(); }
+     |  class_key COLON base_specifier_list ALLAVE
+     |  class_key scoped_id ALLAVE
+     |  class_key ALLAVE
+;class_key::=                          CLASS | STRUCT | UNION
+;class_specifier::=                    class_specifier_head member_specification_opt CLLAVE
+//     |  class_specifier_head member_specification_opt util looping_member_declaration NUMERAL bang error CLLAVE
+                                            //{ UNBANG("Bad member_specification_opt."); }
+;member_specification_opt::=           /* empty */
+     |  member_specification_opt util looping_member_declaration
+//     |  member_specification_opt util looping_member_declaration NUMERAL bang error SEMICOLON
+                                                                                                //{ UNBANG("Bad member-declaration."); }
+;looping_member_declaration::=         start_search looped_member_declaration                      //{ end_search(); }
+;looped_member_declaration::=          member_declaration
+     |  advance_search PLUS looped_member_declaration
+     |  advance_search MINUS
+;member_declaration::=                 access_bility_specifier
+     |  simple_member_declaration
+     |  function_definition
+;simple_member_declaration::=          SEMICOLON
+     |  assignment_expression SEMICOLON
+     |  constructor_head SEMICOLON
+     |  member_init_declarations SEMICOLON
+     |  decl_specifier_prefix simple_member_declaration
+;member_init_declarations::=           assignment_expression COMA member_init_declaration
+     |  constructor_head COMA bit_field_init_declaration
+     |  member_init_declarations COMA member_init_declaration
+;member_init_declaration::=            assignment_expression
+;access_bility_specifier::=            access_specifier COLON
+;bit_field_declaration::=              assignment_expression COLON bit_field_width
+     |  COLON bit_field_width
+;bit_field_width::=                    logical_or_expression
+/*  |                               logical_or_expression QUEST expression COLON assignment_expression  -- has SR conflict w.r.t later = */
+     |  logical_or_expression QUEST bit_field_width COLON bit_field_width
+;bit_field_init_declaration::=        bit_field_declaration
+    |                              bit_field_declaration EQUALS initializer_clause
+/*;base_clause::=                      COLON base_specifier_list                                     -- flattened */
+;base_specifier_list::=                base_specifier
+     |  base_specifier_list COMA base_specifier
+;base_specifier::=                     scoped_id
+     |  access_specifier base_specifier
+     |  VIRTUAL base_specifier
+;access_specifier::=                   PRIVATE | PROTECTED | PUBLIC
+/*Context Support Flags*/
+/*---------------------------------------------------------------------------------------------------
+ * Back-tracking and context support
+ *---------------------------------------------------------------------------------------------------*/
+;advance_search::=                     error               //{ yyerrok; yyclearin; advance_search(); } /* Rewind and queue PLUS or MINUS NUMERAL */       
+//;bang::=                               /* empty */         //{ BANG(); }   /* set flag to suppress "parse error" */ 
+;mark::=                               /* empty */         //{ mark(); }        /* Push lookahead and input token stream context onto a stack */
+;nest::=                               /* empty */         //{ nest(); }        /* Push a declaration nesting depth onto the parse stack */
+;start_search::=                       /* empty */         //{ start_search(false); }    /* Create/reset_binary search context */
+;start_search1::=                      /* empty */         //{ start_search(true); }     /* Create/reset_binary search context */
+;util::=                               /* empty */           /* Get current utility mode */
+;
